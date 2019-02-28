@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file index.php
+ *
+ * View waar de gebruiker lesmomenten kan bekijken
+ * -gebruikt bootstrap
+ */
+?>
+
 <div class="pull-right">
 	<a href="<?php echo site_url('gebruiker_lesmoment/add'); ?>" class="btn btn-success">Add</a> 
 </div>

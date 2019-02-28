@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file add.php
+ *
+ * View waar je een nieuwe mail kan opstellen
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('mail/add',array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

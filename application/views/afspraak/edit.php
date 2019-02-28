@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file edit.php
+ *
+ * View waar de gebruiker een afspraak kan aanpassen
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('afspraak/edit/'.$afspraak['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

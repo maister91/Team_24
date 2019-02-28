@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file edit.php
+ *
+ * View waar je een traject kan aanpassen
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('traject/edit/'.$traject['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

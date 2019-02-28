@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file index.php
+ *
+ * View mails
+ * -gebruikt bootstrap
+ */
+?>
+
 <div class="pull-right">
 	<a href="<?php echo site_url('mail/add'); ?>" class="btn btn-success">Add</a> 
 </div>

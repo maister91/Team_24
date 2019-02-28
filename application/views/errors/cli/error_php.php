@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file error_php.php
+ *
+ * View waar de juiste error wordt weergeven aan de hand van een aangepaste foutboodschap
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 A PHP Error was encountered

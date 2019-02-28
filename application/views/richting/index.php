@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file index.php
+ *
+ * View waar je richtingen kan bekijken
+ * -gebruikt bootstrap
+ */
+?>
+
 <div class="pull-right">
 	<a href="<?php echo site_url('richting/add'); ?>" class="btn btn-success">Add</a> 
 </div>

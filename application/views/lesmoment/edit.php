@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file edit.php
+ *
+ * View waar een lesmoment kan worden aangepast
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('lesmoment/edit/'.$lesmoment['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

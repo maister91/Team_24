@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file layout.php
+ *
+ * View waar de layout wordt opgebouwd
+ * -gebruikt bootstrap
+ */
+?>
+
 <!DOCTYPE html>
 <html>
 

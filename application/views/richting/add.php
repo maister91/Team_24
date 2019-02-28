@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file add.php
+ *
+ * View waar je een nieuwe richting kan toevoegen
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('richting/add',array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

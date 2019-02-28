@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file index.php
+ *
+ * View waar je alle vakken kan bekijken
+ * -gebruikt bootstrap
+ */
+?>
+
 <div class="pull-right">
 	<a href="<?php echo site_url('vak/add'); ?>" class="btn btn-success">Add</a> 
 </div>

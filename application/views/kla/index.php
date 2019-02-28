@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file index.php
+ *
+ * View waar een lijst van klassen kan worden bekeken
+ * -gebruikt bootstrap
+ */
+?>
+
 <div class="pull-right">
 	<a href="<?php echo site_url('kla/add'); ?>" class="btn btn-success">Add</a> 
 </div>

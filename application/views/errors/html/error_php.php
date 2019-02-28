@@ -1,4 +1,14 @@
 <?php
+/**
+ * @file error_php.php
+ *
+ * View waar vooral de juiste stijl wordt aangemaakt voor de bijpassende error pagina
+ * -gebruikt bootstrap
+ */
+?>
+
+
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 

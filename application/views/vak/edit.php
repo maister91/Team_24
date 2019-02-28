@@ -1,3 +1,13 @@
+<?php
+/**
+ * @file edit.php
+ *
+ * View waar je een vak kan aanpassen
+ * -aantal studiepunten
+ * -naam
+ */
+?>
+
 <?php echo form_open('vak/edit/'.$vak['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">
