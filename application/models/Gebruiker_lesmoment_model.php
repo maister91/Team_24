@@ -33,8 +33,8 @@ class Gebruiker_lesmoment_model extends CI_Model
      */
     function get_all_gebruiker_lesmoment()
     {
-        $this->db->order_by('Gebruiker_idGebruiker', 'desc');
-        return $this->db->get('Gebruiker_has_Lesmoment')->result_array();
+        $this->db->order_by('id', 'desc');
+        return $this->db->get('gebruiker_lesmoment')->result_array();
     }
 
     /**
@@ -44,7 +44,7 @@ class Gebruiker_lesmoment_model extends CI_Model
      */
     function add_gebruiker_lesmoment($params)
     {
-        $this->db->insert('Gebruiker_has_Lesmoment',$params);
+        $this->db->insert('gebruiker_lesmoment',$params);
         return $this->db->insert_id();
     }
     /**
@@ -60,7 +60,7 @@ class Gebruiker_lesmoment_model extends CI_Model
     }
 
     /**
-     * Verwijdert een record (Gebruiker met lesmoment) uit aan de tabel Gebruiker_has_lesmoment
+     * Verwijdert een record (Gebruiker met lesmoment) uit aan de tabel gebruiker_lesmoment
      * @param $id de id van de record dat verwijderd wordt
      * @return record verwijderd
      */
