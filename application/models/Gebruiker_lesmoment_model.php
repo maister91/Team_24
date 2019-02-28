@@ -14,9 +14,9 @@ class Gebruiker_lesmoment_model extends CI_Model
     /*
      * Get gebruiker_lesmoment by 
      */
-    function get_gebruiker_lesmoment($)
+    function get_gebruiker_lesmoment($id)
     {
-        return $this->db->get_where('gebruiker_lesmoment',array(''=>$))->row_array();
+        return $this->db->get_where('gebruiker_lesmoment',array(''=>$id))->row_array();
     }
         
     /*
@@ -40,17 +40,17 @@ class Gebruiker_lesmoment_model extends CI_Model
     /*
      * function to update gebruiker_lesmoment
      */
-    function update_gebruiker_lesmoment($,$params)
+    function update_gebruiker_lesmoment($id,$params)
     {
-        $this->db->where('',$);
+        $this->db->where('',$id);
         return $this->db->update('gebruiker_lesmoment',$params);
     }
     
     /*
      * function to delete gebruiker_lesmoment
      */
-    function delete_gebruiker_lesmoment($)
+    function delete_gebruiker_lesmoment($id)
     {
-        return $this->db->delete('gebruiker_lesmoment',array(''=>$));
+        return $this->db->delete('gebruiker_lesmoment',array(''=>$id));
     }
 }

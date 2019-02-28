@@ -53,9 +53,5 @@ class Lokaal_model extends CI_Model
     {
         return $this->db->delete('lokaal',array('id'=>$id));
     }
-    function insertLokaal($dataLokaal)
-    {
-        $this->db->insert_batch('lokaal', $dataLokaal);
-        return $this->db->insert_id();
-    }
+
 }

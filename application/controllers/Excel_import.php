@@ -4,7 +4,7 @@
 /**
  *@property Klas_model $klas_model
  * @property Lesmoment_model $lesmoment_model
- * @property Lokaal_model $lokaal_model
+ * @property Richting_model $richting_model
  * @property Vak_model $vak_model
 
  */
@@ -17,7 +17,7 @@ class Excel_import extends CI_Controller
         $this->load->model('excel_import_model');
         $this->load->model('klas_model');
         $this->load->model('lesmoment_model');
-        $this->load->model('lokaal_model');
+        $this->load->model('richting_model');
         $this->load->model('vak_model');
         $this->load->library('excel');
     }
@@ -38,7 +38,7 @@ class Excel_import extends CI_Controller
    <th>Vak</th>
     <th>Weekdag</th>
     <th>Lesblok</th>
-    <th>Lokaal</th>
+    <th>Richting</th>
     <th>Klas</th>
     <th>maxAantal</th>
    </tr>
@@ -48,7 +48,7 @@ class Excel_import extends CI_Controller
             $output .= '
                <tr>
                <td>'.$row->vakId.'</td>
-                <td>'.$row->weekdag.'</td>
+                <td>'.$row->weekdag.'</td>   
                 <td>'.$row->lesblok.'</td>
                 <td>'.$row->richtingId.'</td>
                 <td>'.$row->klasId.'</td>
@@ -76,7 +76,7 @@ class Excel_import extends CI_Controller
                     $vak = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
                     $weekdag = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
                     $lesblok = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                    $lokaal = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $richting = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
                     $klas = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
                     $maxAantal = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 
@@ -85,12 +85,15 @@ class Excel_import extends CI_Controller
                         'maxAantal' => $maxAantal ?? 0,
                     );
                     $klasId = $this->klas_model->insert($data);
-                    $dataLokaal = array(
-                        'naam' => $lokaal
+
+                    $dataRichting = array(
+                        'naam' => $richting ?? 0,
                     );
+                    $richtingId = $this->richting_model->insertRichting($dataRichting);
 
                     $dataVak = array(
                         'naam' => $vak ?? '',
+                        'richtingId' => $richtingId,
                     );
                     $vakId = $this->vak_model->insertVak($dataVak);
                     if ($weekdag !== null) {
@@ -99,10 +102,11 @@ class Excel_import extends CI_Controller
                             'lesblok' => $lesblok,
                             'klasId' => $klasId,
                             'vakId' => $vakId,
+                            'richtingId' => $richtingId,
                         );
                         $this->lesmoment_model->insertLesmoment($dataLesmoment);
                     }
-                    // $dataLokaalId = $this->lokaal_model->insertLokaal($dataLokaal);
+
                 }
             }
             echo 'Data Imported successfully';
