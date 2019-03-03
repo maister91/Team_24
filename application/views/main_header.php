@@ -1,0 +1,1 @@
+<?php echo toonAfbeelding('images/logo.png'); ?>

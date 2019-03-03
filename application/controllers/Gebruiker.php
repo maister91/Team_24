@@ -5,14 +5,15 @@
  */
 
 /**
- * @property  Authex authex
+ * @property Template $template
+ * @property  Authex $authex
  */
  
 class Gebruiker extends CI_Controller{
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Gebruiker_model');
+        $this->load->helper('form');
     } 
 
     /*
@@ -20,42 +21,58 @@ class Gebruiker extends CI_Controller{
      */
     function index()
     {
-        $data['gebruiker'] = $this->Gebruiker_model->get_all_gebruiker();
-        
-        $data['_view'] = 'gebruiker/index';
-        $this->load->view('layouts/main',$data);
-    }
-
-
-    function login(){
-        $data['titel'] = 'Aanmelden';
+        $data['titel'] = 'Home';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
         $partials = array('hoofding' => 'main_header',
             'menu' => 'main_menu',
-            'inhoud' => 'home_aanmelden',
+            'inhoud' => 'gebruiker/index',
             'voetnoot' => 'main_footer');
 
         $this->template->load('main_master', $partials, $data);
     }
 
-    public function checklogin()
-    {
-        $email = $this->input->post('email');
-        $wachtwoord = $this->input->post('wachtwoord');
+    public function meldAan(){
+        $data['titel'] = 'Aanmelden';
+        $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
-        if ($this->authex->meldAan($email, $wachtwoord)) {
-            redirect('home/index');
+        $partials = array('hoofding' => 'main_header',
+            'menu' => 'main_menu',
+            'inhoud' => 'aanmelden',
+            'voetnoot' => 'main_footer');
+
+        $this->template->load('main_master', $partials, $data);
+    }
+
+    public function controleerAanmelden(){
+        $email = $this->input->post('email');
+        $paswoord = $this->input->post('paswoord');
+
+        if ($this->authex->meldAan($email, $paswoord)){
+            redirect('gebruiker/index');
         } else {
-            redirect('home/toonFout');
+            redirect('gebruiker/toonFout');
         }
     }
 
-    public function meldAf()
-    {
+    public function meldAf(){
         $this->authex->meldAf();
-        redirect('home/index');
+        redirect('gebruiker/index');
     }
+
+    public function toonFout()
+    {
+        $data['titel'] = 'Fout';
+        $data['gebruiker'] = $this->authex->getGebruikerInfo();
+
+        $partials = array('hoofding' => 'main_header',
+            'menu' => 'main_menu',
+            'inhoud' => 'fout_aanmelden',
+            'voetnoot' => 'main_footer');
+
+        $this->template->load('main_master', $partials, $data);
+    }
+
     /*
      * Adding a new gebruiker
      */

@@ -17,14 +17,34 @@ class Gebruiker_model extends CI_Model
         parent::__construct();
     }
 
+    function get($id)
+    {
+        // geef gebruiker-object met opgegeven $id
+        $this->db->where('id', $id);
+        $query = $this->db->get('gebruiker');
+        return $query->row();
+    }
+
     /**
      * Haalt een gebruiker op uit de tabel Gebruiker
      * @param $id de id van de gebruiker
      * @return Gebruiker
      */
-    function get_gebruiker($id)
+    function getGebruiker($email, $paswoord)
     {
-        return $this->db->get_where('gebruiker',array('id'=>$id))->row_array();
+        $this->db->where('email', $email);
+        $query = $this->db->get('gebruiker');
+
+        if ($query->num_rows() == 1){
+            $gebruiker = $query->row();
+            if (password_verify($paswoord, $gebruiker->paswoord)){
+                return $gebruiker;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
 
     /**
