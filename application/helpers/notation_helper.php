@@ -1,17 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-// +----------------------------------------------------------
-// | notation_helper
-// +----------------------------------------------------------
-// | 2 ITF - 2018-2019
-// +----------------------------------------------------------
-// | Notation Helper
-// +----------------------------------------------------------
-// | M. Decabooter, J. Janssen
-// +----------------------------------------------------------
-
-// databasedatum in juiste formaat zetten (van yyyy-mm-dd naar dd/mm/jjjj)
-
     function zetOmNaarDDMMYYYY($input)
     {
         if ($input == "") {
