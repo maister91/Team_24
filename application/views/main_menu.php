@@ -12,10 +12,10 @@ if ($gebruiker == null) { // niet aangemeld
             redirect('traject/index');
             break;
         case 2: // administrator
-            redirect('docent_landing');
+            redirect('gebruikertype/docent');
             break;
         case 3:
-            redirect('isp_landing');
+            redirect('gebruikertype/isp');
             break;
     }
 }

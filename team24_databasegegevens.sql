@@ -19,8 +19,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `project`
+-- Database: `team24`
 --
+CREATE DATABASE IF NOT EXISTS `team24` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `team24`;
 
 -- --------------------------------------------------------
 
@@ -51,14 +53,14 @@ CREATE TABLE `gebruiker` (
   `voornaam` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `achternaam` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `passwoord` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `paswoord` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `gebruiker`
 --
 
-INSERT INTO `gebruiker` (`id`, `gebruikertypeId`, `klasId`, `trajectId`, `afspraakId`, `voornaam`, `achternaam`, `email`, `passwoord`) VALUES
+INSERT INTO `gebruiker` (`id`, `gebruikertypeId`, `klasId`, `trajectId`, `afspraakId`, `voornaam`, `achternaam`, `email`, `paswoord`) VALUES
 (1, 1, NULL, NULL, NULL, 'Melih', 'Doksanbir', 'r0720857@student.thomasmore.be', 'r0720857'),
 (4, 1, 2, 1, 1, 'test', 'test', 'test', 'test');
 
@@ -79,7 +81,8 @@ CREATE TABLE `gebruikertype` (
 
 INSERT INTO `gebruikertype` (`id`, `beschrijving`) VALUES
 (1, 'student'),
-(2, 'docent');
+(2, 'docent'),
+(3, 'isp');
 
 -- --------------------------------------------------------
 

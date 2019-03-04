@@ -28,5 +28,8 @@
             <a href="<?php echo site_url('traject/remove/'.$t['id']); ?>" class="btn btn-danger btn-xs">Delete</a>
         </td>
     </tr>
+
 	<?php } ?>
+
 </table>
+<?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>

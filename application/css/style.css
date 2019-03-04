@@ -40,7 +40,7 @@ body {
 }
 
 #voetnoot {
-    background: #FFCC00;
+    background: #3e21b2;
     position: fixed;
     bottom: 0;
     height: 50px;
@@ -50,22 +50,19 @@ body {
     color: white;
 }
 
-h4 {
-    color: #EE3441;
-}
-
 a:link {
-    color: #447DC2;
+    color: #3e21b2;
 }
 
 a:active {
-    color: #447DC2;
+    color: #3e21b2;
 }
 
 a:visited {
-    color: #447DC2;
+    color: #3e21b2;
 }
 
 a:hover {
     color: #447DC2;
+    text-decoration: underline;
 }

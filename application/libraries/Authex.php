@@ -77,19 +77,4 @@
 
             $CI->session->unset_userdata('id');
         }
-
-//        function registreer($naam, $email, $paswoord)
-//        {
-//            // nieuwe gebruiker registreren als email nog niet bestaat
-//            $CI =& get_instance();
-//
-//            if ($CI->gebruiker_model->controleerEmailVrij($email)) {
-//                $id = $CI->gebruiker_model->insert($naam, $email, $paswoord);
-//                return $id;
-//            } else {
-//                return 0;
-//            }
-//        }
-
-
     }

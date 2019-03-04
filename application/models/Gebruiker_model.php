@@ -9,7 +9,7 @@
 
 class Gebruiker_model extends CI_Model
 {
-    function __construct()
+    public function __construct()
     {
         /**
          * Constructor
@@ -39,6 +39,26 @@ class Gebruiker_model extends CI_Model
             $gebruiker = $query->row();
             if (password_verify($paswoord, $gebruiker->paswoord)){
                 return $gebruiker;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+
+    function controleerWachtwoord($id, $paswoord)
+    {
+        // geef gebruiker-object met $email en $wachtwoord EN geactiveerd = 1
+        $this->db->where('id', $id);
+
+        $query = $this->db->get('gebruiker');
+
+        if ($query->num_rows() == 1) {
+            $gebruiker = $query->row();
+            // controleren of het wachtwoord overeenkomt
+            if (password_verify($paswoord, $gebruiker->paswoord)) {
+                return 1 ;
             } else {
                 return null;
             }
