@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81f8174-a693-4763-9941-52ca2b9480d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/application/views/aanmelden.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/aanmelden.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/libraries/Authex.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/libraries/Authex.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +44,7 @@
           <entry key="gitignore" value="1" />
           <entry key="htaccess" value="2" />
           <entry key="html" value="1" />
-          <entry key="php" value="128" />
+          <entry key="php" value="129" />
           <entry key="png" value="1" />
         </counts>
       </usages-collector>
@@ -53,7 +53,7 @@
           <entry key="CSS" value="2" />
           <entry key="HTML" value="1" />
           <entry key="Image" value="1" />
-          <entry key="PHP" value="128" />
+          <entry key="PHP" value="129" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="htaccess" value="2" />
         </counts>
@@ -88,7 +88,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/aanmelden.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
@@ -128,8 +128,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Gebruiker.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
+            <state relative-caret-position="2195">
               <caret line="156" column="5" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/libraries/Authex.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -156,7 +165,6 @@
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/application/config/autoload.php" />
         <option value="$PROJECT_DIR$/application/config/config.php" />
-        <option value="$PROJECT_DIR$/application/libraries/Authex.php" />
         <option value="$PROJECT_DIR$/application/config/database.php" />
         <option value="$PROJECT_DIR$/application/models/Gebruiker_model.php" />
         <option value="$PROJECT_DIR$/application/views/main_menu.php" />
@@ -166,6 +174,7 @@
         <option value="$PROJECT_DIR$/application/views/isp_landing.php" />
         <option value="$PROJECT_DIR$/application/controllers/Gebruiker.php" />
         <option value="$PROJECT_DIR$/application/views/aanmelden.php" />
+        <option value="$PROJECT_DIR$/application/libraries/Authex.php" />
       </list>
     </option>
   </component>
@@ -208,6 +217,12 @@
               <item name="Team_24" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Team_24" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Team_24" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="libraries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Team_24" type="b2602c69:ProjectViewProjectNode" />
@@ -265,12 +280,12 @@
       <updated>1551358198744</updated>
       <workItem from="1551358200075" duration="11660000" />
       <workItem from="1551539490413" duration="12893000" />
-      <workItem from="1551689412243" duration="6027000" />
+      <workItem from="1551689412243" duration="6787000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30580000" />
+    <option name="totallyTimeSpent" value="31340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="846" extended-state="6" />
@@ -424,13 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/libraries/Authex.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1334">
@@ -508,13 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Gebruiker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="156" column="5" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/isp_landing.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -529,6 +530,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Gebruiker.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2195">
+          <caret line="156" column="5" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/Authex.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
         </state>
       </provider>
     </entry>
