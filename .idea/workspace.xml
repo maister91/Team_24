@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81f8174-a693-4763-9941-52ca2b9480d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/application/controllers/Gebruiker.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Gebruiker.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/aanmelden.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/aanmelden.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/aanmelden.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+            <state relative-caret-position="408">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -125,7 +125,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Gebruiker.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="512">
@@ -157,7 +157,6 @@
         <option value="$PROJECT_DIR$/application/config/autoload.php" />
         <option value="$PROJECT_DIR$/application/config/config.php" />
         <option value="$PROJECT_DIR$/application/libraries/Authex.php" />
-        <option value="$PROJECT_DIR$/application/views/aanmelden.php" />
         <option value="$PROJECT_DIR$/application/config/database.php" />
         <option value="$PROJECT_DIR$/application/models/Gebruiker_model.php" />
         <option value="$PROJECT_DIR$/application/views/main_menu.php" />
@@ -166,6 +165,7 @@
         <option value="$PROJECT_DIR$/application/views/traject/index.php" />
         <option value="$PROJECT_DIR$/application/views/isp_landing.php" />
         <option value="$PROJECT_DIR$/application/controllers/Gebruiker.php" />
+        <option value="$PROJECT_DIR$/application/views/aanmelden.php" />
       </list>
     </option>
   </component>
@@ -265,12 +265,12 @@
       <updated>1551358198744</updated>
       <workItem from="1551358200075" duration="11660000" />
       <workItem from="1551539490413" duration="12893000" />
-      <workItem from="1551689412243" duration="5987000" />
+      <workItem from="1551689412243" duration="6027000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30540000" />
+    <option name="totallyTimeSpent" value="30580000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="846" extended-state="6" />
@@ -445,13 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/aanmelden.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Traject.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -493,16 +486,6 @@
     <entry file="file://$PROJECT_DIR$/application/models/Traject_model.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/isp_landing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#6#114#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Gebruikertype.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -529,6 +512,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
           <caret line="156" column="5" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/isp_landing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#6#114#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/aanmelden.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>

@@ -23,8 +23,3 @@
 
 <?php echo form_close(); ?>
 
-<p>Geen account?
-
-    <?php echo anchor('Gebruiker/maakGebruiker', 'Registreren'); ?>
-
-</p>
