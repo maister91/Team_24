@@ -155,17 +155,5 @@ class Gebruiker extends CI_Controller{
         else
             show_error('The gebruiker you are trying to delete does not exist.');
     }
-
-    public function maakGebruiker()
-    {
-        $gebruiker = new stdClass();
-        $gebruiker->voornaam = "isp";
-        $gebruiker->achternaam = "verantwoordelijke";
-        $gebruiker->email = "isp";
-        $gebruiker->paswoord = password_hash("isp", PASSWORD_DEFAULT);
-        $gebruiker->gebruikertypeId = 3;
-        $this->db->insert('gebruiker', $gebruiker);
-        return $this->db->insert_id();
-    }
     
 }

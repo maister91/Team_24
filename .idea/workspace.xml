@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81f8174-a693-4763-9941-52ca2b9480d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sql met database.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/config/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/Gebruiker.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Gebruiker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Gebruikertype.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Gebruikertype.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/application/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/libraries/Authex.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/libraries/Authex.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Gebruiker_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Gebruiker_model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/aanmelden.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/aanmelden.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/docent_landing.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/docent_landing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/isp_landing.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/isp_landing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/main_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/main_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/traject/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/traject/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/team24_databasegegevens.sql" beforeDir="false" afterPath="$PROJECT_DIR$/team24_databasegegevens.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +44,7 @@
           <entry key="gitignore" value="1" />
           <entry key="htaccess" value="2" />
           <entry key="html" value="1" />
-          <entry key="php" value="127" />
+          <entry key="php" value="128" />
           <entry key="png" value="1" />
         </counts>
       </usages-collector>
@@ -68,7 +53,7 @@
           <entry key="CSS" value="2" />
           <entry key="HTML" value="1" />
           <entry key="Image" value="1" />
-          <entry key="PHP" value="127" />
+          <entry key="PHP" value="128" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="htaccess" value="2" />
         </counts>
@@ -91,6 +76,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/Gebruiker_model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-355">
+              <caret line="58" column="35" lean-forward="true" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
+              <folding>
+                <element signature="e#6#143#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/aanmelden.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -124,15 +121,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/Gebruikertype_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-204" />
+            <state relative-caret-position="-559" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/Gebruiker.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="165" column="39" selection-start-line="165" selection-start-column="39" selection-end-line="165" selection-end-column="39" />
+            <state relative-caret-position="512">
+              <caret line="156" column="5" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -183,8 +180,8 @@
       <server host="localhost" id="0d1b3a5a-e435-4ffc-9684-97c027a86e5c" name="AMPPS" />
     </servers>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="952" />
     <option name="width" value="977" />
     <option name="height" value="1048" />
   </component>
@@ -210,38 +207,13 @@
               <item name="Team_24" type="b2602c69:ProjectViewProjectNode" />
               <item name="Team_24" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Team_24" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Team_24" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Team_24" type="b2602c69:ProjectViewProjectNode" />
               <item name="Team_24" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="libraries" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Team_24" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Team_24" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Team_24" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Team_24" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Team_24" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Team_24" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="traject" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -293,12 +265,12 @@
       <updated>1551358198744</updated>
       <workItem from="1551358200075" duration="11660000" />
       <workItem from="1551539490413" duration="12893000" />
-      <workItem from="1551689412243" duration="4941000" />
+      <workItem from="1551689412243" duration="5987000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29494000" />
+    <option name="totallyTimeSpent" value="30540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="846" extended-state="6" />
@@ -473,16 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Gebruiker_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-763">
-          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-          <folding>
-            <element signature="e#6#143#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/aanmelden.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -541,11 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Gebruikertype_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Gebruikertype.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -553,10 +510,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Gebruikertype_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-559" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Gebruiker_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-355">
+          <caret line="58" column="35" lean-forward="true" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
+          <folding>
+            <element signature="e#6#143#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Gebruiker.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="165" column="39" selection-start-line="165" selection-start-column="39" selection-end-line="165" selection-end-column="39" />
+        <state relative-caret-position="512">
+          <caret line="156" column="5" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
         </state>
       </provider>
     </entry>
