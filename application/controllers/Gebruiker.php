@@ -23,7 +23,7 @@ class Gebruiker extends CI_Controller{
      */
     function index()
     {
-        $data['titel'] = 'Aanmelden';
+        $data['titel'] = '';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
         $partials = array('hoofding' => 'main_header',
@@ -143,5 +143,15 @@ class Gebruiker extends CI_Controller{
         else
             show_error('The gebruiker you are trying to delete does not exist.');
     }
-    
+
+//    public function maakGebruiker()
+//    {
+//        $gebruiker = new stdClass();
+//        $gebruiker->voornaam = "isp";
+//        $gebruiker->email = "isp@isp.thomasmore.be";
+//        $gebruiker->paswoord = password_hash("isp", PASSWORD_DEFAULT);
+//        $gebruiker->gebruikertypeId = 1;
+//        $this->db->insert('gebruiker', $gebruiker);
+//        return $this->db->insert_id();
+//    }
 }

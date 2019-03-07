@@ -28,3 +28,4 @@
 </table>
 
 <?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>
+<?php //echo anchor('gebruiker/maakGebruiker', 'Registreren'); ?>
