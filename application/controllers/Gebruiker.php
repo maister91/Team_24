@@ -23,18 +23,6 @@ class Gebruiker extends CI_Controller{
      */
     function index()
     {
-        $data['titel'] = 'Home';
-        $data['gebruiker'] = $this->authex->getGebruikerInfo();
-
-        $partials = array('hoofding' => 'main_header',
-            'menu' => 'main_menu',
-            'inhoud' => 'gebruiker/index',
-            'voetnoot' => 'main_footer');
-
-        $this->template->load('main_master', $partials, $data);
-    }
-
-    public function meldAan(){
         $data['titel'] = 'Aanmelden';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
