@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file index.php
+ *
+ * View waar de gebruiker de gemaakte afspraken kan bekijken
+ * -gebruikt bootstrap
+ */
+?>
+
 <div class="pull-right">
 	<a href="<?php echo site_url('afspraak/add'); ?>" class="btn btn-success">Add</a> 
 </div>

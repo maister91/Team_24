@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file edit.php
+ *
+ * View waar je een mail kan aanpassen
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('mail/edit/'.$mail['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

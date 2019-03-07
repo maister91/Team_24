@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file edit.php
+ *
+ * View waar je een richting kan aanpassen
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('richting/edit/'.$richting['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

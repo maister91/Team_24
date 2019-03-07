@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file edit.php
+ *
+ * View waar de specificaties van een klas kan worden aangepast
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('kla/edit/'.$kla['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

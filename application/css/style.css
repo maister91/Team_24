@@ -1,0 +1,68 @@
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: black;
+    background-color: white;
+}
+
+#hoofding {
+    background: #939194;
+    height: 100px;
+    padding-top: 10px;
+    padding-left: 10px;
+    position: fixed;
+    width: 100%;
+}
+
+#menu {
+    top: 0;
+    position: absolute;
+    padding-left: 10px;
+    left: 10px;
+    height: auto;
+    width: 200px;
+    padding-top: 140px;
+    padding-bottom: 60px;
+    margin: 0px 10px 0px 0px;
+
+}
+
+#inhoud {
+    top: 0;
+    padding-left: 200px;
+    left: 170px;
+    height: auto;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    margin: 0px 10px 0px 0px;
+}
+
+#voetnoot {
+    background: #3e21b2;
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    padding-top: 0px;
+    padding-left: 10px;
+    color: white;
+}
+
+a:link {
+    color: #3e21b2;
+}
+
+a:active {
+    color: #3e21b2;
+}
+
+a:visited {
+    color: #3e21b2;
+}
+
+a:hover {
+    color: #447DC2;
+    text-decoration: underline;
+}

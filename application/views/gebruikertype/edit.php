@@ -1,3 +1,13 @@
+<?php
+/**
+ * @file edit.php
+ *
+ * View gebruikertype
+ * -gebruikt bootstrap
+ */
+?>
+
+
 <?php echo form_open('gebruikertype/edit/'.$gebruikertype['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

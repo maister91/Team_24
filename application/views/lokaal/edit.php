@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file edit.php
+ *
+ * View waar het lokaal voor een vak kan worden aangepast
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('lokaal/edit/'.$lokaal['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

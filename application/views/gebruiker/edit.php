@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file edit.php
+ *
+ * View waar de gebruiker gegevens kan aanpassen
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('gebruiker/edit/'.$gebruiker['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

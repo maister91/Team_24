@@ -1,3 +1,11 @@
+<?php
+/**
+ * @file add.php
+ *
+ * View waar een klas kan worden toegevoegd
+ * -max aantal leerlingen per klas wordt hier ook direct meegegeven
+ */
+?>
 <?php echo form_open('kla/add',array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

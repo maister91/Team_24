@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file index.php
+ *
+ * View waar de lokalen kunnen worden bekeken
+ * -gebruikt bootstrap
+ */
+?>
+
 <div class="pull-right">
 	<a href="<?php echo site_url('lokaal/add'); ?>" class="btn btn-success">Add</a> 
 </div>

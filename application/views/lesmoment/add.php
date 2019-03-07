@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file add.php
+ *
+ * View waar een lesmoment kan worden toegevoegd
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('lesmoment/add',array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

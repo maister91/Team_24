@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file index.php
+ *
+ * View waar je de verschillende trajecten kan bekijken
+ * -gebruikt bootstrap
+ */
+?>
+
 <div class="pull-right">
 	<a href="<?php echo site_url('traject/add'); ?>" class="btn btn-success">Add</a> 
 </div>
@@ -19,5 +28,8 @@
             <a href="<?php echo site_url('traject/remove/'.$t['id']); ?>" class="btn btn-danger btn-xs">Delete</a>
         </td>
     </tr>
+
 	<?php } ?>
+
 </table>
+<?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>

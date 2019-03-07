@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file add.php
+ *
+ * View waar de gebruiker een afspraak kan toevoegen
+ * -gebruikt bootstrap
+ */
+?>
+
 <?php echo form_open('afspraak/add',array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">

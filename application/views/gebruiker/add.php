@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file add.php
+ *
+ * View waar een gebruiker kan worden toegevoegd
+ * -waar de ISP verantwoordelijke een nieuwe docent kan toevoegen bijvoorbeeld
+ */
+?>
+
 <?php echo form_open('gebruiker/add',array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">
