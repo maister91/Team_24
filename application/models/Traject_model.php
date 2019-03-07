@@ -69,4 +69,9 @@ class Traject_model extends CI_Model
     {
         return $this->db->delete('traject',array('id'=>$id));
     }
+
+    function choose_traject($id)
+    {
+
+    }
 }

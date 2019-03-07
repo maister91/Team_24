@@ -69,6 +69,12 @@ class Richting_model extends CI_Model
     {
         return $this->db->delete('richting',array('id'=>$id));
     }
+
+    /**
+     *
+     * @param $dataRichting
+     * @return mixed
+     */
     function insertRichting($dataRichting)
     {
         $this->db->insert('richting', $dataRichting);
