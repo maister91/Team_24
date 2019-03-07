@@ -143,5 +143,12 @@ class Gebruiker extends CI_Controller{
         else
             show_error('The gebruiker you are trying to delete does not exist.');
     }
-    
+    public function haalKlasIdOp($klasid) {
+        $watDoen = $this->input->get('watDoen');
+        if ($watDoen == 'klasid') {
+            $data['klasid'] = $klasid;
+        }
+
+        $this->load->view("klas/index");
+    }
 }
