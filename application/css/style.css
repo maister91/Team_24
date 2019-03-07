@@ -8,7 +8,7 @@ body {
 }
 
 #hoofding {
-    background: #939194;
+    background: #169BD5;
     height: 100px;
     padding-top: 10px;
     padding-left: 10px;
@@ -31,7 +31,6 @@ body {
 
 #inhoud {
     top: 0;
-    padding-left: 200px;
     left: 170px;
     height: auto;
     padding-top: 120px;
@@ -40,7 +39,7 @@ body {
 }
 
 #voetnoot {
-    background: #3e21b2;
+    background: #169BD5;
     position: fixed;
     bottom: 0;
     height: 50px;
@@ -65,4 +64,24 @@ a:visited {
 a:hover {
     color: #447DC2;
     text-decoration: underline;
+}
+
+input[type=submit] {
+    background-color: #169BD5;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=text], input[type=email] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }

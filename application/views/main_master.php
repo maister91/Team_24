@@ -8,7 +8,7 @@
     <title>
         <?php echo $titel; ?>
     </title>
-    <?php echo pasStylesheetAan('style.css'); ?>
+    <?php echo pasStylesheetAan('css/style.css'); ?>
 </head>
 
 <body>
