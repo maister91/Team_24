@@ -6,7 +6,7 @@
  * -max aantal leerlingen per klas wordt hier ook direct meegegeven
  */
 ?>
-<?php echo form_open('kla/add',array("class"=>"form-horizontal")); ?>
+<?php echo form_open('klas/add',array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">
 		<label for="naam" class="col-md-4 control-label">Naam</label>

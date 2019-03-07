@@ -7,18 +7,18 @@
  */
 ?>
 
-<?php echo form_open('kla/edit/'.$kla['id'],array("class"=>"form-horizontal")); ?>
+<?php echo form_open('klas/edit/'.$klas['id'],array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">
 		<label for="naam" class="col-md-4 control-label">Naam</label>
 		<div class="col-md-8">
-			<input type="text" name="naam" value="<?php echo ($this->input->post('naam') ? $this->input->post('naam') : $kla['naam']); ?>" class="form-control" id="naam" />
+			<input type="text" name="naam" value="<?php echo ($this->input->post('naam') ? $this->input->post('naam') : $klas['naam']); ?>" class="form-control" id="naam" />
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="maxAantal" class="col-md-4 control-label">MaxAantal</label>
 		<div class="col-md-8">
-			<input type="text" name="maxAantal" value="<?php echo ($this->input->post('maxAantal') ? $this->input->post('maxAantal') : $kla['maxAantal']); ?>" class="form-control" id="maxAantal" />
+			<input type="text" name="maxAantal" value="<?php echo ($this->input->post('maxAantal') ? $this->input->post('maxAantal') : $klas['maxAantal']); ?>" class="form-control" id="maxAantal" />
 		</div>
 	</div>
 	

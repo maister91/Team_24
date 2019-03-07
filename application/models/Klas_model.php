@@ -22,7 +22,7 @@ class Klas_model extends CI_Model
      * @param $id de id van de klas
      * @return klas
      */
-    function get_kla($id)
+    function get_klas($id)
     {
         return $this->db->get_where('klas',array('id'=>$id))->row_array();
     }
@@ -42,7 +42,7 @@ class Klas_model extends CI_Model
      * @param $params zijn de parameteres die men moet ingeven voor een nieuwe klas
      * @return Record toegevoegd
      */
-    function add_kla($params)
+    function add_klas($params)
     {
         $this->db->insert('klas',$params);
         return $this->db->insert_id();
@@ -54,7 +54,7 @@ class Klas_model extends CI_Model
      * @param $params de parameteres die men moet ingeven voor de klas aan te passen
      * @return record gewijzigd
      */
-    function update_kla($id,$params)
+    function update_klas($id,$params)
     {
         $this->db->where('id',$id);
         return $this->db->update('klas',$params);
@@ -65,7 +65,7 @@ class Klas_model extends CI_Model
      * @param $id de id van de record dat verwijderd wordt
      * @return record verwijderd
      */
-    function delete_kla($id)
+    function delete_klas($id)
     {
         return $this->db->delete('klas',array('id'=>$id));
     }
