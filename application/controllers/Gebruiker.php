@@ -144,14 +144,24 @@ class Gebruiker extends CI_Controller{
             show_error('The gebruiker you are trying to delete does not exist.');
     }
 
-//    public function maakGebruiker()
-//    {
-//        $gebruiker = new stdClass();
-//        $gebruiker->voornaam = "isp";
-//        $gebruiker->email = "isp@isp.thomasmore.be";
-//        $gebruiker->paswoord = password_hash("isp", PASSWORD_DEFAULT);
-//        $gebruiker->gebruikertypeId = 1;
-//        $this->db->insert('gebruiker', $gebruiker);
-//        return $this->db->insert_id();
-//    }
+    public function haalKlasIdOp($klasid) {
+        $watDoen = $this->input->get('watDoen');
+        if ($watDoen == 'klasid') {
+            $data['klasid'] = $klasid;
+        }
+
+        $this->load->view("klas/index");
+    }
+
+    public function maakGebruiker()
+    {
+        $gebruiker = new stdClass();
+        $gebruiker->voornaam = "Melih";
+        $gebruiker->achternaam = "Doksanbir";
+        $gebruiker->email = "r0720857@student.thomasmore.be";
+        $gebruiker->paswoord = password_hash("r0720857", PASSWORD_DEFAULT);
+        $gebruiker->gebruikertypeId = 1;
+        $this->db->insert('gebruiker', $gebruiker);
+        return $this->db->insert_id();
+    }
 }

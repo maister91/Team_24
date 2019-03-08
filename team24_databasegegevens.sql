@@ -61,8 +61,9 @@ CREATE TABLE `gebruiker` (
 --
 
 INSERT INTO `gebruiker` (`id`, `gebruikertypeId`, `klasId`, `trajectId`, `afspraakId`, `voornaam`, `achternaam`, `email`, `paswoord`) VALUES
-(1, 1, NULL, NULL, NULL, 'Melih', 'Doksanbir', 'r0720857@student.thomasmore.be', 'r0720857'),
-(4, 1, 2, 1, 1, 'test', 'test', 'test', 'test');
+(1, 1, NULL, NULL, NULL, 'student', '', 'student@student.thomasmore.be', '$2y$10$mA.zxi.HHmms37m.7jMbReLLxprF0QxjvGAxC6PClG8/j0gbnZdhO'),
+(2, 2, NULL, NULL, NULL, 'docent', '', 'docent@docent.thomasmore.be', '$2y$10$at02OHrl0hae630baexpQelVzB7tCtuiWAWOBN/4ZpYvdeb9rcJdO'),
+(3, 3, NULL, NULL, NULL, 'isp', '', 'isp@isp.thomasmore.be', '$2y$10$3o47tu.GlfVCB8pnVaIgoeGdEgUYBwqArkcXfdl40VXnh2nIRaTpO');
 
 -- --------------------------------------------------------
 
