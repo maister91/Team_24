@@ -156,10 +156,10 @@ class Gebruiker extends CI_Controller{
     public function maakGebruiker()
     {
         $gebruiker = new stdClass();
-        $gebruiker->voornaam = "Melih";
-        $gebruiker->achternaam = "Doksanbir";
-        $gebruiker->email = "r0720857@student.thomasmore.be";
-        $gebruiker->paswoord = password_hash("r0720857", PASSWORD_DEFAULT);
+        $gebruiker->voornaam = "Simon";
+        $gebruiker->achternaam = "Smedts";
+        $gebruiker->email = "r0695798@student.thomasmore.be";
+        $gebruiker->paswoord = password_hash("r0695798", PASSWORD_DEFAULT);
         $gebruiker->gebruikertypeId = 1;
         $this->db->insert('gebruiker', $gebruiker);
         return $this->db->insert_id();
