@@ -10,13 +10,9 @@
 <h2>Ingelogd als
     <?php
         $gebruiker = $this->authex->getGebruikerInfo();
-        echo '<b>' . $gebruiker->voornaam . ' ' . $gebruiker->achternaam . '</b> ';
+        echo $gebruiker->voornaam . ' ' . $gebruiker->achternaam ;
     ?>
 </h2>
-
-<div class="pull-right">
-	<a href="<?php echo site_url('traject/add'); ?>" class="btn btn-success">Add</a> 
-</div>
 
 <table class="table table-striped table-bordered">
     <tr>
@@ -39,10 +35,5 @@
 	<?php } ?>
 
 </table>
-Welkom
-<?php
-$gebruiker = $this->authex->getGebruikerInfo();
-echo '<b>' . $gebruiker->voornaam . '</b> ';
-?>
 
 <?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>

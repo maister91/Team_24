@@ -40,11 +40,28 @@ body {
     background: #169BD5;
     position: fixed;
     bottom: 0;
-    height: 50px;
+    height: 150px;
     width: 100%;
     padding-top: 0px;
     padding-left: 10px;
     color: white;
+}
+
+td {
+    padding-right: 20px;
+}
+
+table {
+    display: inline-block;
+}
+
+#voetnoot table {
+    margin: 10px;
+    margin-left: 10%;
+}
+
+#ontwikkelaar {
+    margin: 10px;
 }
 
 a:link {

@@ -7,6 +7,13 @@
  */
 ?>
 
+<h2>Ingelogd als
+    <?php
+    $gebruiker = $this->authex->getGebruikerInfo();
+    echo $gebruiker->voornaam . ' ' . $gebruiker->achternaam ;
+    ?>
+</h2>
+
 <table class="table table-striped table-bordered">
     <tr>
         <th>ID</th>
