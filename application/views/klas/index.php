@@ -67,7 +67,7 @@
         <td></td>
     </tr>
 </table>
-<a href="<?php echo site_url('../isp_landing'); ?>" class="btn btn-info">Terug</a>
+<div class="btn btn-info"><?php echo divAnchor('Gebruikertype/isp', 'Terug');?></div>
 <div class="form-control">
     <button type="submit" class="btn">Doorgaan</button>
 </div>

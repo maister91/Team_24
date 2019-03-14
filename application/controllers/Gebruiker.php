@@ -28,7 +28,7 @@ class Gebruiker extends CI_Controller{
 
         $partials = array('hoofding' => 'main_header',
             'menu' => 'main_menu',
-            'inhoud' => 'aanmelden',
+            'inhoud' => 'gebruiker/index',
             'voetnoot' => 'main_footer');
 
         $this->template->load('main_master', $partials, $data);
@@ -57,7 +57,7 @@ class Gebruiker extends CI_Controller{
 
         $partials = array('hoofding' => 'main_header',
             'menu' => 'main_menu',
-            'inhoud' => 'fout_aanmelden',
+            'inhoud' => 'gebruiker/fout_aanmelden',
             'voetnoot' => 'main_footer');
 
         $this->template->load('main_master', $partials, $data);

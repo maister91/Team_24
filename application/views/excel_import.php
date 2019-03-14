@@ -43,7 +43,7 @@ $(document).ready(function(){
     $('#import_form').on('submit', function(event){
         event.preventDefault();
         $.ajax({
-   url:"<?php echo base_url(); ?>excel_import/import",
+   url:"<?php echo base_url(); ?>index.php/excel_import/import",
    method:"POST",
    data:new FormData(this),
    contentType:false,

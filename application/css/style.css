@@ -48,19 +48,19 @@ body {
 }
 
 a:link {
-    color: #3e21b2;
+    color: black;
 }
 
 a:active {
-    color: #3e21b2;
+    color: black;
 }
 
 a:visited {
-    color: #3e21b2;
+    color: black;
 }
 
 a:hover {
-    color: #447DC2;
+    color: black;
     text-decoration: underline;
 }
 

@@ -26,5 +26,10 @@
     <?php } ?>
 
 </table>
+Welkom
+<?php
+$gebruiker = $this->authex->getGebruikerInfo();
+    echo '<b>' . $gebruiker->voornaam . '</b> ';
+?>
 
 <?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>

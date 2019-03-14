@@ -7,6 +7,13 @@
  */
 ?>
 
+<h2>Ingelogd als
+    <?php
+        $gebruiker = $this->authex->getGebruikerInfo();
+        echo '<b>' . $gebruiker->voornaam . ' ' . $gebruiker->achternaam . '</b> ';
+    ?>
+</h2>
+
 <div class="pull-right">
 	<a href="<?php echo site_url('traject/add'); ?>" class="btn btn-success">Add</a> 
 </div>
@@ -32,4 +39,10 @@
 	<?php } ?>
 
 </table>
+Welkom
+<?php
+$gebruiker = $this->authex->getGebruikerInfo();
+echo '<b>' . $gebruiker->voornaam . '</b> ';
+?>
+
 <?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>
