@@ -18,6 +18,7 @@
 	<a href="<?php echo site_url('traject/add'); ?>" class="btn btn-success">Add</a>
 </div>
 
+
 <table class="table table-striped table-bordered">
     <tr>
 		<th>ID</th>
@@ -39,10 +40,12 @@
 	<?php } ?>
 
 </table>
+
 Welkom
 <?php
 $gebruiker = $this->authex->getGebruikerInfo();
 echo '<b>' . $gebruiker->voornaam . '</b> ';
 ?>
+
 
 <?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>
