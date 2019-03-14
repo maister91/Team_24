@@ -7,10 +7,6 @@
  */
 ?>
 <h1 class="text-center">ISP LANDING </h1>
-
-<table class="table table-borderless ">
-    <thead>
-
 <h2>Ingelogd als
     <?php
     $gebruiker = $this->authex->getGebruikerInfo();
@@ -18,12 +14,14 @@
     ?>
 </h2>
 
-<table class="table table-striped table-bordered">
+<table class="table table-borderless ">
+    <thead>
     <tr>
         <th>Klasindelingen aanpassen</th>
         <th>Afspraken</th>
         <th>Info beheren</th>
     </tr>
+    </thead>
     <tbody>
     <tr>
         <td><a href="#" class="btn btn-outline-primary"  role="button">Klasindeling aanpassen</a></td>
