@@ -32,7 +32,7 @@ $(document).ready(function(){
     function load_data()
     {
         $.ajax({
-   url:"<?php echo base_url(); ?>excel_import/fetch",
+   url:"<?php echo base_url(); ?>index.php/excel_import/fetch",
    method:"POST",
    success:function(data){
         $('#customer_data').html(data);
@@ -43,7 +43,7 @@ $(document).ready(function(){
     $('#import_form').on('submit', function(event){
         event.preventDefault();
         $.ajax({
-   url:"<?php echo base_url(); ?>excel_import/import",
+   url:"<?php echo base_url(); ?>index.php/excel_import/import",
    method:"POST",
    data:new FormData(this),
    contentType:false,

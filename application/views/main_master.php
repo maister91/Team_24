@@ -8,7 +8,10 @@
     <title>
         <?php echo $titel; ?>
     </title>
-    <?php echo pasStylesheetAan('style.css'); ?>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <?php echo pasStylesheetAan('css/style.css'); ?>
 </head>
 
 <body>

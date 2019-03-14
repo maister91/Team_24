@@ -1,1 +1,1 @@
-<?php echo toonAfbeelding('images/logo.png'); ?>
+<?php echo toonAfbeelding('images/logo.jpg'); ?>

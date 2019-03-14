@@ -2,4 +2,4 @@
 
     <p>Foute inloggegevens, probeer opnieuw!</p>
 
-<?php echo divanchor('gebruiker/meldAan', 'Terug');
+<?php echo divanchor('gebruiker/index', 'Terug');

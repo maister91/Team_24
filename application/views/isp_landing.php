@@ -6,25 +6,35 @@
  * -gebruikt bootstrap
  */
 ?>
+<h1 class="text-center">ISP LANDING </h1>
 
-<table class="table table-striped table-bordered">
+<table class="table table-borderless ">
+    <thead>
     <tr>
-        <th>ID</th>
-        <th>Beschrijving</th>
-        <th>Actions</th>
+        <th>Klasindelingen aanpassen</th>
+        <th>Afspraken</th>
+        <th>Info beheren</th>
     </tr>
-    <?php foreach($gebruikertype as $t){ ?>
-        <tr>
-            <td><?php echo $t['id']; ?></td>
-            <td><?php echo $t['beschrijving']; ?></td>
-            <td>
-                <a href="<?php echo site_url('traject/edit/'.$t['id']); ?>" class="btn btn-info btn-xs">Edit</a>
-                <a href="<?php echo site_url('traject/remove/'.$t['id']); ?>" class="btn btn-danger btn-xs">Delete</a>
-            </td>
-        </tr>
-
-    <?php } ?>
-
+    </thead>
+    <tbody>
+    <tr>
+        <td><a href="#" class="btn btn-outline-primary"  role="button">Klasindeling aanpassen</a></td>
+        <td> <a href="#" class="btn btn-outline-primary" role="button">Afspraken beheren</a></td>
+        <td> <a href="#" class="btn btn-info" role="button">Studenteninformatie beheren</a></td>
+    </tr>
+    <tr>
+        <td> <a href="#" class="btn btn-outline-primary" role="button">Klassen beheren</a></td>
+        <td></td>
+        <td> <a href="#" class="btn btn-info" role="button">Klasgegevens exporteren</a></td>
+    </tr>
+    <tr><td><a href="#" class="btn btn-outline-primary" role="button">Studenten beheren</a></td>
+    </tr>
+    </tbody>
 </table>
 
+
+
+
+
 <?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>
+<?php echo anchor('Excel_import/index', 'uurrooster importeren'); ?>
