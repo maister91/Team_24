@@ -1,7 +1,10 @@
 <?php
 
+class Klas extends CI_Controller
+{
 
-class Klas extends CI_Controller{
+    /* @var Klas_model */
+    public $Klas_model;
     function __construct()
     {
         parent::__construct();
@@ -16,7 +19,7 @@ class Klas extends CI_Controller{
         $data['klas'] = $this->Klas_model->get_all_klas();
 
         $data['_view'] = 'klas/index';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
 
     /*
@@ -24,20 +27,17 @@ class Klas extends CI_Controller{
      */
     function add()
     {
-        if(isset($_POST) && count($_POST) > 0)
-        {
-            $params = array(
-				'naam' => $this->input->post('naam'),
-				'maxAantal' => $this->input->post('maxAantal'),
-            );
+        if (isset($_POST) && count($_POST)>0) {
+            $params = [
+                'naam'      => $this->input->post('naam'),
+                'maxAantal' => $this->input->post('maxAantal'),
+            ];
 
             $klas_id = $this->Klas_model->add_klas($params);
             redirect('klas/index');
-        }
-        else
-        {
+        } else {
             $data['_view'] = 'klas/add';
-            $this->load->view('layouts/main',$data);
+            $this->load->view('layouts/main', $data);
         }
     }
 
@@ -49,25 +49,20 @@ class Klas extends CI_Controller{
         // check if the klas exists before trying to edit it
         $data['Klas'] = $this->Klas_model->get_klas($id);
 
-        if(isset($data['Klas']['id']))
-        {
-            if(isset($_POST) && count($_POST) > 0)
-            {
-                $params = array(
-					'naam' => $this->input->post('naam'),
-					'maxAantal' => $this->input->post('maxAantal'),
-                );
+        if (isset($data['Klas']['id'])) {
+            if (isset($_POST) && count($_POST)>0) {
+                $params = [
+                    'naam'      => $this->input->post('naam'),
+                    'maxAantal' => $this->input->post('maxAantal'),
+                ];
 
-                $this->Klas_model->update_klas($id,$params);
+                $this->Klas_model->update_klas($id, $params);
                 redirect('klas/index');
-            }
-            else
-            {
+            } else {
                 $data['_view'] = 'klas/edit';
-                $this->load->view('layouts/main',$data);
+                $this->load->view('layouts/main', $data);
             }
-        }
-        else
+        } else
             show_error('The klas you are trying to edit does not exist.');
     }
 
@@ -79,12 +74,10 @@ class Klas extends CI_Controller{
         $klas = $this->Klas_model->get_klas($id);
 
         // check if the klas exists before trying to delete it
-        if(isset($klas['id']))
-        {
+        if (isset($klas['id'])) {
             $this->Klas_model->delete_klas($id);
             redirect('klas/index');
-        }
-        else
+        } else
             show_error('The klas you are trying to delete does not exist.');
     }
 
