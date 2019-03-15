@@ -1,7 +1,11 @@
 <?php
 
+class Richting extends CI_Controller
+{
 
-class Richting extends CI_Controller{
+    /* @var Richting_model */
+    public $Richting_model;
+
     function __construct()
     {
         parent::__construct();
@@ -16,7 +20,7 @@ class Richting extends CI_Controller{
         $data['richting'] = $this->Richting_model->get_all_richting();
 
         $data['_view'] = 'richting/index';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
 
     /*
@@ -24,19 +28,16 @@ class Richting extends CI_Controller{
      */
     function add()
     {
-        if(isset($_POST) && count($_POST) > 0)
-        {
-            $params = array(
-				'naam' => $this->input->post('naam'),
-            );
+        if (isset($_POST) && count($_POST)>0) {
+            $params = [
+                'naam' => $this->input->post('naam'),
+            ];
 
             $richting_id = $this->Richting_model->add_richting($params);
             redirect('richting/index');
-        }
-        else
-        {
+        } else {
             $data['_view'] = 'richting/add';
-            $this->load->view('layouts/main',$data);
+            $this->load->view('layouts/main', $data);
         }
     }
 
@@ -48,24 +49,19 @@ class Richting extends CI_Controller{
         // check if the richting exists before trying to edit it
         $data['richting'] = $this->Richting_model->get_richting($id);
 
-        if(isset($data['richting']['id']))
-        {
-            if(isset($_POST) && count($_POST) > 0)
-            {
-                $params = array(
-					'naam' => $this->input->post('naam'),
-                );
+        if (isset($data['richting']['id'])) {
+            if (isset($_POST) && count($_POST)>0) {
+                $params = [
+                    'naam' => $this->input->post('naam'),
+                ];
 
-                $this->Richting_model->update_richting($id,$params);
+                $this->Richting_model->update_richting($id, $params);
                 redirect('richting/index');
-            }
-            else
-            {
+            } else {
                 $data['_view'] = 'richting/edit';
-                $this->load->view('layouts/main',$data);
+                $this->load->view('layouts/main', $data);
             }
-        }
-        else
+        } else
             show_error('The richting you are trying to edit does not exist.');
     }
 
@@ -77,12 +73,10 @@ class Richting extends CI_Controller{
         $richting = $this->Richting_model->get_richting($id);
 
         // check if the richting exists before trying to delete it
-        if(isset($richting['id']))
-        {
+        if (isset($richting['id'])) {
             $this->Richting_model->delete_richting($id);
             redirect('richting/index');
-        }
-        else
+        } else
             show_error('The richting you are trying to delete does not exist.');
     }
 

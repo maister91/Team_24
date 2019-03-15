@@ -1,7 +1,10 @@
 <?php
 
+class Gebruikertype extends CI_Controller
+{
 
-class Gebruikertype extends CI_Controller{
+    /* @var Gebruikertype_model */
+    public $Gebruikertype_model;
     function __construct()
     {
         parent::__construct();
@@ -16,7 +19,7 @@ class Gebruikertype extends CI_Controller{
         $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
         $data['_view'] = 'gebruikertype/index';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
 
     function docent()
@@ -24,7 +27,7 @@ class Gebruikertype extends CI_Controller{
         $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
         $data['_view'] = 'docent_landing';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
 
     function isp()
@@ -32,7 +35,7 @@ class Gebruikertype extends CI_Controller{
         $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
         $data['_view'] = 'isp_landing';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
 
     /*
@@ -40,19 +43,16 @@ class Gebruikertype extends CI_Controller{
      */
     function add()
     {
-        if(isset($_POST) && count($_POST) > 0)
-        {
-            $params = array(
-				'beschrijving' => $this->input->post('beschrijving'),
-            );
+        if (isset($_POST) && count($_POST)>0) {
+            $params = [
+                'beschrijving' => $this->input->post('beschrijving'),
+            ];
 
             $gebruikertype_id = $this->Gebruikertype_model->add_gebruikertype($params);
             redirect('gebruikertype/index');
-        }
-        else
-        {
+        } else {
             $data['_view'] = 'gebruikertype/add';
-            $this->load->view('layouts/main',$data);
+            $this->load->view('layouts/main', $data);
         }
     }
 
@@ -64,24 +64,19 @@ class Gebruikertype extends CI_Controller{
         // check if the gebruikertype exists before trying to edit it
         $data['gebruikertype'] = $this->Gebruikertype_model->get_gebruikertype($id);
 
-        if(isset($data['gebruikertype']['id']))
-        {
-            if(isset($_POST) && count($_POST) > 0)
-            {
-                $params = array(
-					'beschrijving' => $this->input->post('beschrijving'),
-                );
+        if (isset($data['gebruikertype']['id'])) {
+            if (isset($_POST) && count($_POST)>0) {
+                $params = [
+                    'beschrijving' => $this->input->post('beschrijving'),
+                ];
 
-                $this->Gebruikertype_model->update_gebruikertype($id,$params);
+                $this->Gebruikertype_model->update_gebruikertype($id, $params);
                 redirect('gebruikertype/index');
-            }
-            else
-            {
+            } else {
                 $data['_view'] = 'gebruikertype/edit';
-                $this->load->view('layouts/main',$data);
+                $this->load->view('layouts/main', $data);
             }
-        }
-        else
+        } else
             show_error('The gebruikertype you are trying to edit does not exist.');
     }
 
@@ -93,12 +88,10 @@ class Gebruikertype extends CI_Controller{
         $gebruikertype = $this->Gebruikertype_model->get_gebruikertype($id);
 
         // check if the gebruikertype exists before trying to delete it
-        if(isset($gebruikertype['id']))
-        {
+        if (isset($gebruikertype['id'])) {
             $this->Gebruikertype_model->delete_gebruikertype($id);
             redirect('gebruikertype/index');
-        }
-        else
+        } else
             show_error('The gebruikertype you are trying to delete does not exist.');
     }
 

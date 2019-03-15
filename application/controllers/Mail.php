@@ -1,7 +1,10 @@
 <?php
 
+class Mail extends CI_Controller
+{
 
-class Mail extends CI_Controller{
+    /* @var Mail_model */
+    public $Mail_model;
     function __construct()
     {
         parent::__construct();
@@ -16,7 +19,7 @@ class Mail extends CI_Controller{
         $data['mail'] = $this->Mail_model->get_all_mail();
 
         $data['_view'] = 'mail/index';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
 
     /*
@@ -24,20 +27,17 @@ class Mail extends CI_Controller{
      */
     function add()
     {
-        if(isset($_POST) && count($_POST) > 0)
-        {
-            $params = array(
-				'onderwerp' => $this->input->post('onderwerp'),
-				'beschrijving' => $this->input->post('beschrijving'),
-            );
+        if (isset($_POST) && count($_POST)>0) {
+            $params = [
+                'onderwerp'    => $this->input->post('onderwerp'),
+                'beschrijving' => $this->input->post('beschrijving'),
+            ];
 
             $mail_id = $this->Mail_model->add_mail($params);
             redirect('mail/index');
-        }
-        else
-        {
+        } else {
             $data['_view'] = 'mail/add';
-            $this->load->view('layouts/main',$data);
+            $this->load->view('layouts/main', $data);
         }
     }
 
@@ -49,25 +49,20 @@ class Mail extends CI_Controller{
         // check if the mail exists before trying to edit it
         $data['mail'] = $this->Mail_model->get_mail($id);
 
-        if(isset($data['mail']['id']))
-        {
-            if(isset($_POST) && count($_POST) > 0)
-            {
-                $params = array(
-					'onderwerp' => $this->input->post('onderwerp'),
-					'beschrijving' => $this->input->post('beschrijving'),
-                );
+        if (isset($data['mail']['id'])) {
+            if (isset($_POST) && count($_POST)>0) {
+                $params = [
+                    'onderwerp'    => $this->input->post('onderwerp'),
+                    'beschrijving' => $this->input->post('beschrijving'),
+                ];
 
-                $this->Mail_model->update_mail($id,$params);
+                $this->Mail_model->update_mail($id, $params);
                 redirect('mail/index');
-            }
-            else
-            {
+            } else {
                 $data['_view'] = 'mail/edit';
-                $this->load->view('layouts/main',$data);
+                $this->load->view('layouts/main', $data);
             }
-        }
-        else
+        } else
             show_error('The mail you are trying to edit does not exist.');
     }
 
@@ -79,12 +74,10 @@ class Mail extends CI_Controller{
         $mail = $this->Mail_model->get_mail($id);
 
         // check if the mail exists before trying to delete it
-        if(isset($mail['id']))
-        {
+        if (isset($mail['id'])) {
             $this->Mail_model->delete_mail($id);
             redirect('mail/index');
-        }
-        else
+        } else
             show_error('The mail you are trying to delete does not exist.');
     }
 
