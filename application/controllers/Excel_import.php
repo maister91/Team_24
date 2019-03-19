@@ -39,6 +39,37 @@ class Excel_import extends CI_Controller
                     if ($this->klas_model->getKlasByName($klasNaam) == null) {
                         $this->klas_model->insert(['naam'=>$klasNaam, 'maxAantal'=>25]);
                     }
+                    $richting = explode(' ', $klasNaam);
+                    if ($this->richting_model->get_richting_by_name($richting[1]) == null) {
+                        $this->richting_model->insertRichting(['naam'=>$richting[1]]);
+                    }
+                    foreach ($rooster as $weekdagId => $vakken) {
+                        $klas = $this->klas_model->getKlasByName($klasNaam);
+                        $richtingModel = $this->richting_model->get_richting_by_name($richting[1]);
+                        foreach ($vakken as $lesBlok => $vak) {
+                            if ($vak !== null) {
+                                if ($this->vak_model->get_vak_by_name_richting_fase($vak, $richtingModel['id'], $richting[0]) == null) {
+                                    $this->vak_model->insertVak(
+                                        [
+                                            'richtingId' => $richtingModel['id'],
+                                            'naam'       => $vak,
+                                            'fase'       => $richting[0],
+                                        ]
+                                    );
+                                }
+                                $this->lesmoment_model->insertLesmoment(
+                                    [
+                                        'weekdag'   => $weekdagId<=4?$weekdagId:$weekdagId-5,
+                                        'klasId'    => $klas['id'],
+                                        'lesblok'   => $lesBlok+1,
+                                        'maxAantal' => '25',
+                                        'vakId'     => $this->vak_model->get_vak_by_name_richting_fase($vak, $richtingModel['id'], $richting[0])['id'],
+                                        'semester'  => $weekdagId>=5?2:1,
+                                    ]
+                                );
+                            }
+                        }
+                    }
                 }
             } catch (Exception $exception) {
                 echo 'Er is iets mis gegaan met de import: '.$exception->getMessage();
@@ -181,15 +212,21 @@ class Excel_import extends CI_Controller
         return null;
     }
 
-    protected function richtingIdVoorVak($klasNaam)
+    protected function weekDagIdNaarTekst($weekdagId)
     {
-        substr($klasNaam, 2);
-        $vakId = 0;
-        switch ($klasNaam) {
-            case '':
-                $vakId = 0;
-                break;
-        }
+        $weekdagen = [
+            0 => 'maandag',
+            1 => 'dinsdag',
+            2 => 'woensdag',
+            3 => 'donderdag',
+            4 => 'vrijdag',
+            5 => 'maandag',
+            6 => 'dinsdag',
+            7 => 'woensdag',
+            8 => 'donderdag',
+            9 => 'vrijdag',
+        ];
+        return $weekdagen[$weekdagId];
     }
 }
 

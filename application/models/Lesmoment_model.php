@@ -70,11 +70,21 @@ class Lesmoment_model extends CI_Model
         return $this->db->delete('lesmoment',array('id'=>$id));
     }
 
+    function truncate_lesmoment()
+    {
+        return $this->db->truncate('lesmoment');
+    }
+
     /**
-     *
+     * @param $dataLesmoment
      */
     function insertLesmoment($dataLesmoment)
     {
         $this->db->insert('lesmoment', $dataLesmoment);
+    }
+
+    function get_lesmoment_by_klas_en_semester($klasId, $semester)
+    {
+        return $this->db->order_by('lesblok')->get_where('lesmoment',array('klasId'=>$klasId, 'semester'=>$semester))->result_array();
     }
 }
