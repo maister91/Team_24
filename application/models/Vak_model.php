@@ -17,6 +17,10 @@ class Vak_model extends CI_Model
         parent::__construct();
     }
 
+    public function get_vak_by_name($vakNaam)
+    {
+        return $this->db->get_where('vak', ['naam'=>$vakNaam])->row_array();
+    }
     /**
      * Haalt een vak op uit de tabel Vak
      * @param $id de id van het vak
