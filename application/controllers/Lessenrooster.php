@@ -22,7 +22,18 @@ class Lessenrooster extends CI_Controller
 
     function index()
     {
-        $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester(1164, 1);
+        $klasid=$this->input->post('klassen');
+        $semesterid=$this->input->post('semester');
+        var_dump($klasid);
+
+        var_dump($gebruiker = $this->authex->getGebruikerInfo());
+        echo $gebruiker->id;
+
+        if(array_key_exists('klaskeuze',$_POST)){
+            $this->Lesmoment_model->update_klas($klasid, $gebruiker->id);
+        }
+
+        $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasid, $semesterid);
         $rooster = [];
         foreach ($lesmomenten as $lesmoment) {
             $rooster[$lesmoment['lesblok']][$lesmoment['weekdag']] = [

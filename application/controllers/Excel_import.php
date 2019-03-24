@@ -38,6 +38,7 @@ class Excel_import extends CI_Controller
                 foreach ($lessenRooster as $klasNaam => $rooster) {
                     if ($this->klas_model->getKlasByName($klasNaam) == null) {
                         $this->klas_model->insert(['naam'=>$klasNaam, 'maxAantal'=>25]);
+
                     }
                     $richting = explode(' ', $klasNaam);
                     if ($this->richting_model->get_richting_by_name($richting[1]) == null) {

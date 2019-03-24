@@ -1,8 +1,14 @@
-<select name="klassen"><?php
+<form method="post" accept-charset="utf-8" action="<?php echo site_url("lessenrooster/index"); ?>">
+    <select name="klassen" onchange="this.form.submit()"><?php
         foreach ($klassen as $klas) {
-            echo '<option value="'.$klas['id'].'">'.$klas['naam'].'</option>';
+            echo '<option value="'.$klas['id'].'" selected>'.$klas['naam'].'</option>';
         }
-?></select>
+        ?></select>
+    <select name="semester" onchange="this.form.submit(); location = this.options[this.selectedIndex].value;" >
+        <option>1</option>
+        <option>2</option>
+    </select>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -37,4 +43,8 @@
             }
         }
     ?></tbody>
+
 </table>
+<form method="post">
+    <input class="btn-primary" type="submit" name="klaskeuze" id="klas" value="Klaskeuze maken" /><br/>
+</form>
