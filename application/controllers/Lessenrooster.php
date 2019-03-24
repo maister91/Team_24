@@ -22,19 +22,23 @@ class Lessenrooster extends CI_Controller
 
     function index()
     {
-        $klasid=$this->input->post('klassen');
-        $semesterid=$this->input->post('semester');
-        var_dump($klasid);
+        $klasId     = $this->input->post('klassen');
+        $semesterId = $this->input->post('semester');
 
-        var_dump($gebruiker = $this->authex->getGebruikerInfo());
-        echo $gebruiker->id;
-
-        if(array_key_exists('klaskeuze',$_POST)){
-            $this->Lesmoment_model->update_klas($klasid, $gebruiker->id);
+        $gebruikerId = $this->authex->getGebruikerInfo()->id;
+        $data['feedback'] = '';
+        if ($this->input->get('klasId')) {
+            $this->Lesmoment_model->update_klas($this->input->get('klasId'), $gebruikerId);
+            $klasId = $this->input->get('klasId');
+            $semesterId = $this->input->get('semesterId');
+            $data['feedback']    = 'keuzeSuccesvol';
+        }
+        if (array_key_exists('klaskeuze', $_POST)) {
+            $this->Lesmoment_model->update_klas($klasId, $gebruikerId);
         }
 
-        $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasid, $semesterid);
-        $rooster = [];
+        $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
+        $rooster     = [];
         foreach ($lesmomenten as $lesmoment) {
             $rooster[$lesmoment['lesblok']][$lesmoment['weekdag']] = [
                 'lesblok' => $lesmoment['lesblok'],
@@ -42,8 +46,10 @@ class Lessenrooster extends CI_Controller
             ];
         }
         $data['lesmomenten'] = $rooster;
-        $data['klassen'] = $this->klas_model->get_all_klas();
-        $data['_view'] = 'lessenrooster';
+        $data['klasId'] = $klasId;
+        $data['semesterId'] = $semesterId;
+        $data['klassen']     = $this->klas_model->get_all_klas();
+        $data['_view']       = 'lessenrooster';
         $this->load->view('layouts/main', $data);
 
     }

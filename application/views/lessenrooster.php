@@ -1,7 +1,19 @@
+<?php
+if ($feedback == 'keuzeSuccesvol') {
+    ?><div class="alert alert-success" role="alert">
+        Klaskeuze is succesvol opgeslagen!
+    </div><?php
+}
+?>
 <form method="post" accept-charset="utf-8" action="<?php echo site_url("lessenrooster/index"); ?>">
-    <select name="klassen" onchange="this.form.submit()"><?php
+    <select name="klassen" onchange="this.form.submit()">
+        <option value="0">--- Maak een keuze ---</option><?php
         foreach ($klassen as $klas) {
-            echo '<option value="'.$klas['id'].'" selected>'.$klas['naam'].'</option>';
+            if ($klasId === $klas['id']) {
+                echo '<option value="'.$klas['id'].'" selected>'.$klas['naam'].'</option>';
+            } else {
+                echo '<option value="'.$klas['id'].'">'.$klas['naam'].'</option>';
+            }
         }
         ?></select>
     <select name="semester" onchange="this.form.submit(); location = this.options[this.selectedIndex].value;" >
@@ -9,6 +21,11 @@
         <option>2</option>
     </select>
 </form>
+<?php
+if ($klasId === null || $klasId === "0") {
+    return;
+}
+?>
 <table class="table">
     <thead>
         <tr>
@@ -45,6 +62,5 @@
     ?></tbody>
 
 </table>
-<form method="post">
-    <input class="btn-primary" type="submit" name="klaskeuze" id="klas" value="Klaskeuze maken" /><br/>
-</form>
+<a class="btn btn-primary" href="<?php echo site_url("lessenrooster/index"); ?>?klasId=<?php echo $klasId?>&semesterId=<?php echo $semesterId?>">Klaskeuze maken</a>
+

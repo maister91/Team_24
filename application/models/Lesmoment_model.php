@@ -87,9 +87,13 @@ class Lesmoment_model extends CI_Model
     {
         return $this->db->order_by('lesblok')->get_where('lesmoment',array('klasId'=>$klasId, 'semester'=>$semester))->result_array();
     }
-    function update_klas($klasid, $gebruikerid){
-        $this->db->where('id',$gebruikerid);
-        $this->db->set('klasId',$klasid);
-        return $this->db->update('gebruiker');
+
+    function update_klas($klasId, $gebruikerId)
+    {
+        return $this->db->update('gebruiker', [
+            'klasId' => $klasId
+        ], [
+            'id' => $gebruikerId,
+        ]);
     }
 }
