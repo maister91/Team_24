@@ -24,7 +24,9 @@ class Vak_model extends CI_Model
      */
     function get_vak($id)
     {
-        return $this->db->get_where('vak',array('id'=>$id))->row_array();
+        $this->db->where($id, 'id');
+        $query = $this->db->get('vak',array('id'=>$id))->row_array();
+        return $query->row();
     }
 
     /**
