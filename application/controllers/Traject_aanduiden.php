@@ -17,7 +17,7 @@ class Traject_aanduiden extends CI_Controller
     function keuzeTraject($id)
     {
         // check if the gebruiker exists before trying to edit it
-        $data['gebruiker'] = $this->Gebruiker_model->get_gebruiker($id);
+        $data['gebruiker'] = $this->Gebruiker_model->get($id);
 
         if(isset($data['gebruiker']['id']))
         {
