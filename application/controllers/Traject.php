@@ -17,8 +17,17 @@ class Traject extends CI_Controller
      */
     function index()
     {
-        $data['traject'] = $this->Traject_model->get_all_traject();
+        var_dump($trajectId     = $this->input->post('keuze'));
+        $gebruikerId = $this->authex->getGebruikerInfo()->id;
+        var_dump($this->authex->getGebruikerInfo());
 
+        if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['model'])) {
+            $this->Traject_model->update_traject(1, $gebruikerId);
+        }
+        if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['combi'])) {
+            $this->Traject_model->update_traject(2, $gebruikerId);
+        }
+        $data['trajecten'] = $this->Traject_model->get_all_traject();
         $data['_view'] = 'traject/index';
         $this->load->view('layouts/main', $data);
     }
@@ -28,9 +37,9 @@ class Traject extends CI_Controller
      */
     function add()
     {
-        if (isset($_POST) && count($_POST)>0) {
+        if (isset($_POST) && count($_POST) > 0) {
             $params = [
-                'naam'         => $this->input->post('naam'),
+                'naam' => $this->input->post('naam'),
                 'beschrijving' => $this->input->post('beschrijving'),
             ];
 
@@ -51,9 +60,9 @@ class Traject extends CI_Controller
         $data['traject'] = $this->Traject_model->get_traject($id);
 
         if (isset($data['traject']['id'])) {
-            if (isset($_POST) && count($_POST)>0) {
+            if (isset($_POST) && count($_POST) > 0) {
                 $params = [
-                    'naam'         => $this->input->post('naam'),
+                    'naam' => $this->input->post('naam'),
                     'beschrijving' => $this->input->post('beschrijving'),
                 ];
 

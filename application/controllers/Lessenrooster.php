@@ -33,10 +33,7 @@ class Lessenrooster extends CI_Controller
             $semesterId = $this->input->get('semesterId');
             $data['feedback']    = 'keuzeSuccesvol';
         }
-        if (array_key_exists('klaskeuze', $_POST)) {
-            $this->Lesmoment_model->update_klas($klasId, $gebruikerId);
-        }
-
+        var_dump($this->authex->getGebruikerInfo());
         $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
         $rooster     = [];
         foreach ($lesmomenten as $lesmoment) {

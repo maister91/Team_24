@@ -10,16 +10,22 @@ if ($feedback == 'keuzeSuccesvol') {
         <option value="0">--- Maak een keuze ---</option><?php
         foreach ($klassen as $klas) {
             if ($klasId === $klas['id']) {
-                echo '<option value="'.$klas['id'].'" selected>'.$klas['naam'].'</option>';
+                echo '<option value="' . $klas['id'] . '" selected>' . $klas['naam'] . '</option>';
             } else {
-                echo '<option value="'.$klas['id'].'">'.$klas['naam'].'</option>';
+                echo '<option value="' . $klas['id'] . '">' . $klas['naam'] . '</option>';
             }
         }
         ?></select>
-    <select name="semester" onchange="this.form.submit(); location = this.options[this.selectedIndex].value;" >
-        <option>1</option>
-        <option>2</option>
-    </select>
+    <select name="semester" onchange="this.form.submit()">
+        ><?php
+        if ($semesterId == 1) {
+            echo '<option selected>1</option>';
+            echo '<option>2</option>';
+        } else {
+            echo '<option>1 </option>';
+            echo '<option selected>2 </option>';
+        }
+        ?> </select>
 </form>
 <?php
 if ($klasId === null || $klasId === "0") {

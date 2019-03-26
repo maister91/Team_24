@@ -27,13 +27,10 @@ class Traject_model extends CI_Model
         return $this->db->get_where('traject',array('id'=>$id))->row_array();
     }
 
-    /**
-     * Haalt alle trajecten op uit de tabel Traject
-     * @return Alle trajecten
-     */
+    //
     function get_all_traject()
     {
-        $this->db->order_by('id', 'desc');
+        $this->db->order_by('naam', 'DESC');
         return $this->db->get('traject')->result_array();
     }
 
@@ -54,7 +51,7 @@ class Traject_model extends CI_Model
      * @param $params de parameteres die men moet ingeven voor het traject aan te passen
      * @return record gewijzigd
      */
-    function update_traject($id,$params)
+    function update_trajectid($id,$params)
     {
         $this->db->where('id',$id);
         return $this->db->update('traject',$params);
@@ -70,8 +67,13 @@ class Traject_model extends CI_Model
         return $this->db->delete('traject',array('id'=>$id));
     }
 
-    function choose_traject($id)
+    function update_traject($trajectId, $gebruikerId)
     {
-
+        return $this->db->update('gebruiker', [
+            'trajectId' => $trajectId
+        ], [
+            'id' => $gebruikerId,
+        ]);
     }
+
 }
