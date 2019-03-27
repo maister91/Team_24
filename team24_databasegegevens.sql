@@ -63,16 +63,13 @@ CREATE TABLE `gebruiker` (
 INSERT INTO `gebruiker` (`id`, `gebruikertypeId`, `klasId`, `trajectId`, `afspraakId`, `voornaam`, `achternaam`, `email`, `paswoord`) VALUES
 (1, 1, NULL, NULL, NULL, 'student', '', 'student@student.thomasmore.be', '$2y$10$mA.zxi.HHmms37m.7jMbReLLxprF0QxjvGAxC6PClG8/j0gbnZdhO'),
 (2, 2, NULL, NULL, NULL, 'docent', '', 'docent@docent.thomasmore.be', '$2y$10$at02OHrl0hae630baexpQelVzB7tCtuiWAWOBN/4ZpYvdeb9rcJdO'),
-<<<<<<< HEAD
-(3, 3, NULL, NULL, NULL, 'isp', '', 'isp@isp.thomasmore.be', '$2y$10$3o47tu.GlfVCB8pnVaIgoeGdEgUYBwqArkcXfdl40VXnh2nIRaTpO');
-=======
 (3, 3, NULL, NULL, NULL, 'isp', '', 'isp@isp.thomasmore.be', '$2y$10$3o47tu.GlfVCB8pnVaIgoeGdEgUYBwqArkcXfdl40VXnh2nIRaTpO'),
 (4, 2, NULL, NULL, NULL, 'War', 'Op de Beeck', 'r0709145@student.thomasmore.be', '$2y$10$YHt6uKYFJm3x5D22uJtfZe0OqBIqpZGLLejQZXtQzZ1Y1LkZEjNwG'),
 (5, 1, NULL, NULL, NULL, 'Thomas', 'Dergent', 'r0699038@student.thomasmore.be', '$2y$10$kpMzFOLnEAUXRKI0yHB3G..drQs1/bpPQl2AVyIAa5wdhfEXb.922'),
 (6, 1, NULL, NULL, NULL, 'Raf', 'Van Elst', 'r0695265@student.thomasmore.be', '$2y$10$zCNqLiJjeYdZQbhGKNh94u7GGhGZxVhpHyrSPUbx1Uvj6OVE3wtXu'),
 (7, 3, NULL, NULL, NULL, 'Melih', 'Doksanbir', 'r0720857@student.thomasmore.be', '$2y$10$70MgO/PYKo8ehmQoHjer4uoaNVriUGqSgD0krJaOynIWaarC5FFo2'),
-(8, 1, NULL, NULL, NULL, 'Simon', 'Smedts', 'r0695798@student.thomasmore.be', '$2y$10$3gAFKTTlIEi5LmqO83f2quUe33ot8LfSVRW8N14YTDfT4EgK41wIu');
->>>>>>> 65f969d4920d45ff766cf258032a1e9f424373d3
+(8, 1, NULL, NULL, NULL, 'Simon', 'Smedts', 'r0695798@student.thomasmore.be', '$2y$10$3gAFKTTlIEi5LmqO83f2quUe33ot8LfSVRW8N14YTDfT4EgK41wIu'),
+(9, 4, NULL, NULL, NULL, 'opleidingsmanager', '', 'opleidingsmanager@opleidingsmanager.thomasmore.be', '$2y$10$baSCn6l.FKBS8jJG6bGUL.hxb33sFJVikvO5BvtZZMDK.jRVabxGy');
 
 -- --------------------------------------------------------
 
@@ -92,7 +89,8 @@ CREATE TABLE `gebruikertype` (
 INSERT INTO `gebruikertype` (`id`, `beschrijving`) VALUES
 (1, 'student'),
 (2, 'docent'),
-(3, 'isp');
+(3, 'isp'),
+(4, 'opleidingsmanager');
 
 -- --------------------------------------------------------
 

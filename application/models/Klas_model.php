@@ -41,8 +41,9 @@ class Klas_model extends CI_Model
      */
     function get_all_klas()
     {
-        $this->db->order_by('naam', 'ASC');
-        return $this->db->get('klas')->result_array();
+        $this->db->order_by('id', 'desc');
+        $query = $this->db->get('klas');
+        return $query->result();
     }
 
     /**

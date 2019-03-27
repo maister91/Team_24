@@ -7,3 +7,5 @@
     <?php  echo '<p>' .$trajecten[0]['beschrijving'] .'</p>' ?>
 </form>
 
+<?php  echo anchor('gebruiker/meldaf', 'Afmelden') ?>
+
