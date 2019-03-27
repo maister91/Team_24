@@ -16,24 +16,12 @@ body {
     width: 100%;
 }
 
-#menu {
-    top: 0;
-    position: absolute;
-    padding-left: 10px;
-    left: 10px;
-    height: auto;
-    width: 200px;
-    padding-top: 140px;
-    padding-bottom: 60px;
-    margin: 0px 10px 0px 0px;
-
-}
-
 #inhoud {
     height: auto;
     padding-top: 120px;
     padding-bottom: 60px;
     width: 99%;
+    margin-bottom: 150px;
 }
 
 #voetnoot {

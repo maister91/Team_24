@@ -5,7 +5,7 @@
 
 /**
  * @property Template $template
- * @property  Authex  $authex
+ * @property  Authex $authex
  */
 class Gebruiker extends CI_Controller
 {
@@ -24,20 +24,38 @@ class Gebruiker extends CI_Controller
      */
     function index()
     {
-        $data['titel']     = '';
+        $inhoud = null;
+        $ingelogd = $this->authex->getGebruikerInfo();
+        if ($ingelogd == null) {
+
+            $inhoud = "gebruiker/index";
+        } else {
+            switch ($ingelogd->gebruikertypeId) {
+                case 1: // gewone geregistreerde gebruiker
+                    $inhoud = "traject/index";
+                    break;
+                case 2: // administrator
+                    $inhoud = "docent_landing";
+                    break;
+                case 3:
+                    $inhoud = "isp_landing";
+                    break;
+            }
+        };
+        $data['titel'] = '';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
         $partials = ['hoofding' => 'main_header',
-                     'menu'     => 'main_menu',
-                     'inhoud'   => 'gebruiker/index',
-                     'voetnoot' => 'main_footer'];
+            'inhoud' => $inhoud,
+            'voetnoot' => 'main_footer'];
 
         $this->template->load('main_master', $partials, $data);
     }
 
-    public function controleerAanmelden()
+    public
+    function controleerAanmelden()
     {
-        $email    = $this->input->post('email');
+        $email = $this->input->post('email');
         $paswoord = $this->input->post('paswoord');
 
         if ($this->authex->meldAan($email, $paswoord)) {
@@ -47,21 +65,23 @@ class Gebruiker extends CI_Controller
         }
     }
 
-    public function meldAf()
+    public
+    function meldAf()
     {
         $this->authex->meldAf();
         redirect('gebruiker/index');
     }
 
-    public function toonFout()
+    public
+    function toonFout()
     {
-        $data['titel']     = 'Fout';
+        $data['titel'] = 'Fout';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
         $partials = ['hoofding' => 'main_header',
-                     'menu'     => 'main_menu',
-                     'inhoud'   => 'gebruiker/fout_aanmelden',
-                     'voetnoot' => 'main_footer'];
+            'menu' => 'main_menu',
+            'inhoud' => 'gebruiker/fout_aanmelden',
+            'voetnoot' => 'main_footer'];
 
         $this->template->load('main_master', $partials, $data);
     }
@@ -71,16 +91,16 @@ class Gebruiker extends CI_Controller
      */
     function add()
     {
-        if (isset($_POST) && count($_POST)>0) {
+        if (isset($_POST) && count($_POST) > 0) {
             $params = [
                 'gebruikertypeId' => $this->input->post('gebruikertypeId'),
-                'klasId'          => $this->input->post('klasId'),
-                'trajectId'       => $this->input->post('trajectId'),
-                'afspraakId'      => $this->input->post('afspraakId'),
-                'voornaam'        => $this->input->post('voornaam'),
-                'achternaam'      => $this->input->post('achternaam'),
-                'email'           => $this->input->post('email'),
-                'passwoord'       => $this->input->post('passwoord'),
+                'klasId' => $this->input->post('klasId'),
+                'trajectId' => $this->input->post('trajectId'),
+                'afspraakId' => $this->input->post('afspraakId'),
+                'voornaam' => $this->input->post('voornaam'),
+                'achternaam' => $this->input->post('achternaam'),
+                'email' => $this->input->post('email'),
+                'passwoord' => $this->input->post('passwoord'),
             ];
 
             $gebruiker_id = $this->Gebruiker_model->add_gebruiker($params);
@@ -100,16 +120,16 @@ class Gebruiker extends CI_Controller
         $data['gebruiker'] = $this->Gebruiker_model->get($id);
 
         if (isset($data['gebruiker']['id'])) {
-            if (isset($_POST) && count($_POST)>0) {
+            if (isset($_POST) && count($_POST) > 0) {
                 $params = [
                     'gebruikertypeId' => $this->input->post('gebruikertypeId'),
-                    'klasId'          => $this->input->post('klasId'),
-                    'trajectId'       => $this->input->post('trajectId'),
-                    'afspraakId'      => $this->input->post('afspraakId'),
-                    'voornaam'        => $this->input->post('voornaam'),
-                    'achternaam'      => $this->input->post('achternaam'),
-                    'email'           => $this->input->post('email'),
-                    'passwoord'       => $this->input->post('passwoord'),
+                    'klasId' => $this->input->post('klasId'),
+                    'trajectId' => $this->input->post('trajectId'),
+                    'afspraakId' => $this->input->post('afspraakId'),
+                    'voornaam' => $this->input->post('voornaam'),
+                    'achternaam' => $this->input->post('achternaam'),
+                    'email' => $this->input->post('email'),
+                    'passwoord' => $this->input->post('passwoord'),
                 ];
 
                 $this->Gebruiker_model->update_gebruiker($id, $params);
@@ -137,23 +157,25 @@ class Gebruiker extends CI_Controller
             show_error('The gebruiker you are trying to delete does not exist.');
     }
 
-    public function haalKlasIdOp($klasid)
+    public
+    function haalKlasIdOp($klasid)
     {
         $watDoen = $this->input->get('watDoen');
-        if ($watDoen=='klasid') {
+        if ($watDoen == 'klasid') {
             $data['klasid'] = $klasid;
         }
 
         $this->load->view("klas/index");
     }
 
-    public function maakGebruiker()
+    public
+    function maakGebruiker()
     {
-        $gebruiker                  = new stdClass();
-        $gebruiker->voornaam        = "Simon";
-        $gebruiker->achternaam      = "Smedts";
-        $gebruiker->email           = "r0695798@student.thomasmore.be";
-        $gebruiker->paswoord        = password_hash("r0695798", PASSWORD_DEFAULT);
+        $gebruiker = new stdClass();
+        $gebruiker->voornaam = "Simon";
+        $gebruiker->achternaam = "Smedts";
+        $gebruiker->email = "r0695798@student.thomasmore.be";
+        $gebruiker->paswoord = password_hash("r0695798", PASSWORD_DEFAULT);
         $gebruiker->gebruikertypeId = 1;
         $this->db->insert('gebruiker', $gebruiker);
         return $this->db->insert_id();

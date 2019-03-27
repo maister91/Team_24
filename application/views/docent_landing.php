@@ -20,7 +20,7 @@
         <th>Beschrijving</th>
         <th>Actions</th>
     </tr>
-    <?php foreach($gebruikertype as $t){ ?>
+    <?php foreach($gebruiker->gebruikertype as $t){ ?>
         <tr>
             <td><?php echo $t['id']; ?></td>
             <td><?php echo $t['beschrijving']; ?></td>
@@ -33,10 +33,5 @@
     <?php } ?>
 
 </table>
-Welkom
-<?php
-$gebruiker = $this->authex->getGebruikerInfo();
-    echo '<b>' . $gebruiker->voornaam . '</b> ';
-?>
 
 <?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>
