@@ -23,6 +23,52 @@ class Traject extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
+    function keuzeTraject()
+    {
+        var_dump($trajectId = $this->input->post('keuze'));
+        $gebruikerId = $this->authex->getGebruikerInfo()->id;
+        var_dump($this->authex->getGebruikerInfo());
+        if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['Model'])) {
+            $this->Traject_model->update_traject(1, $gebruikerId);
+        }
+        if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['Combi'])) {
+            $this->Traject_model->update_traject(2, $gebruikerId);
+
+        }
+        $data['trajecten'] = $this->Traject_model->get_all_traject();
+
+        $data['_view'] = 'traject/index';
+
+        $this->load->view('layouts/main', $data);
+    }
+    /*
+    function keuzeTraject($id)
+    {
+        // check if the gebruiker exists before trying to edit it
+        $data['gebruiker'] = $this->Gebruiker_model->get_gebruiker($id);
+
+        if(isset($data['gebruiker']['id']))
+        {
+            if(isset($_POST) && count($_POST) > 0)
+            {
+                $params = array(
+                    'gebruikertypeId' => $this->input->post('gebruikertypeId'),
+                    'trajectId' => $this->input->post('trajectId'))
+                ;
+
+                $this->Gebruiker_model->update_gebruiker($id,$params);
+                redirect('traject_aanduiden');
+            }
+            else
+            {
+                $data['_view'] = 'gebruiker/edit';
+                $this->load->view('layouts/main',$data);
+            }
+        }
+        else
+            show_error('The gebruiker you are trying to edit does not exist.');
+    } */
+
     /*
      * Adding a new traject
      */

@@ -54,7 +54,7 @@ class Traject_model extends CI_Model
      * @param $params de parameteres die men moet ingeven voor het traject aan te passen
      * @return record gewijzigd
      */
-    function update_traject($id,$params)
+    function update_trajectId($id,$params)
     {
         $this->db->where('id',$id);
         return $this->db->update('traject',$params);
@@ -70,8 +70,12 @@ class Traject_model extends CI_Model
         return $this->db->delete('traject',array('id'=>$id));
     }
 
-    function choose_traject($id)
+    function update_traject($trajectId, $gebruikerId)
     {
-
+        return $this->db->update('gebruiker', [
+            'trajectId' => $trajectId
+        ], [
+            'id' => $gebruikerId,
+        ]);
     }
 }
