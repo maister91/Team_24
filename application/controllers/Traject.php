@@ -44,7 +44,7 @@ class Traject extends CI_Controller
                 $data['_view'] = 'model_landing';
                 $this->load->view('layouts/main', $data);
             }
-            else {
+            else if ($knop == "Combi traject"){
                 $this->Traject_model->update_traject(2, $gebruikerId);
                 $data['_view'] = 'combi_landing';
                 $this->load->view('layouts/main', $data);
