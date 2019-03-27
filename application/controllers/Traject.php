@@ -17,17 +17,14 @@ class Traject extends CI_Controller
      */
     function index()
     {
-        $data['trajecten'] = $this->Traject_model->get_all_traject();
-        var_dump($trajectId = $this->input->post('keuze'));
-        $gebruikerId = $this->authex->getGebruikerInfo()->id;
-        var_dump($this->authex->getGebruikerInfo());
-
+        $data['titel'] = '';
         $data['trajecten'] = $this->Traject_model->get_all_traject();
 
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'traject/index',
+            'voetnoot' => 'main_footer'];
 
-        $data['_view'] = 'traject/index';
-
-        $this->load->view('layouts/main', $data);
+        $this->template->load('main_master', $partials, $data);
     }
 
 
@@ -35,19 +32,26 @@ class Traject extends CI_Controller
     {
         $data['trajecten'] = $this->Traject_model->get_all_traject();
         $gebruikerId = $this->authex->getGebruikerInfo()->id;
-        var_dump($this->authex->getGebruikerInfo());
 
         if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['knop'])) {
             $knop = $this->input->post("knop");
             if ($knop == "Model traject") {
                 $this->Traject_model->update_traject(1, $gebruikerId);
-                $data['_view'] = 'model_landing';
-                $this->load->view('layouts/main', $data);
+                $data['titel'] = 'Model student landing page';
+                $partials = ['hoofding' => 'main_header',
+                    'inhoud' => 'model_landing',
+                    'voetnoot' => 'main_footer'];
+
+                $this->template->load('main_master', $partials, $data);
             }
             else if ($knop == "Combi traject"){
                 $this->Traject_model->update_traject(2, $gebruikerId);
-                $data['_view'] = 'combi_landing';
-                $this->load->view('layouts/main', $data);
+                $data['titel'] = 'Combi student landing page';
+                $partials = ['hoofding' => 'main_header',
+                    'inhoud' => 'combi_landing',
+                    'voetnoot' => 'main_footer'];
+
+                $this->template->load('main_master', $partials, $data);
             }
         }
     }

@@ -7,7 +7,7 @@
  */
 ?>
 
-<h1>Model landing page</h1>
+<h1><?php echo $titel?></h1>
 
 <?php echo form_open('Traject/index'); ?>
     <button type='submit' name='Kiestraject'>Verander traject</button>

@@ -27,18 +27,20 @@ class Gebruiker extends CI_Controller
         $inhoud = null;
         $ingelogd = $this->authex->getGebruikerInfo();
         if ($ingelogd == null) {
-
             $inhoud = "gebruiker/index";
         } else {
             switch ($ingelogd->gebruikertypeId) {
                 case 1: // gewone geregistreerde gebruiker
-                    $inhoud = "traject/index";
+                    redirect('traject/index');
                     break;
                 case 2: // administrator
                     $inhoud = "docent_landing";
                     break;
                 case 3:
                     $inhoud = "isp_landing";
+                    break;
+                case 4:
+                    $inhoud = "opleidingmanager";
                     break;
             }
         };
