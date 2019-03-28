@@ -25,6 +25,7 @@ body {
 }
 
 #voetnoot {
+    position: absolute;
     background: #169BD5;
     bottom: 0;
     width: 100%;
