@@ -26,7 +26,7 @@
         <tr>
             <td><?php echo anchor('#', 'Klasindeling aanpassen', 'class="btn btn-outline-primary"'); ?></td>
             <td><?php echo anchor('#', 'Afspraken beheren', 'class="btn btn-outline-primary"'); ?></td>
-            <td><?php echo anchor('#', 'Studenteninformatie beheren', 'class="btn btn-info"'); ?></td>
+            <td><?php echo anchor('#', 'Studenteninformatie exporteren', 'class="btn btn-info"'); ?></td>
         </tr>
         <tr>
             <td><?php echo anchor('#', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
@@ -34,7 +34,9 @@
             <td><?php echo anchor('#', 'Klasgegevens exporteren', 'class="btn btn-info"'); ?></td>
         </tr>
         <tr>
-            <td><?php echo anchor('#', 'Studenten beheren', 'class="btn btn-outline-primary"'); ?></td>
+            <td><?php echo anchor('Gebruikeradmin/index', 'Studentinformatie beheren', 'class="btn btn-outline-primary"'); ?></td>
+            <td></td>
+            <td></td>
         </tr>
         </tbody>
     </table>

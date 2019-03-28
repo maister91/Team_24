@@ -201,3 +201,5 @@ class Gebruiker extends CI_Controller
         return $this->db->insert_id();
     }
 }
+
+

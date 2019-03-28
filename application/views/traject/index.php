@@ -15,9 +15,9 @@
 </h2>
 
 <form method="post" accept-charset="utf-8" action="<?php echo site_url("traject/kiesTraject"); ?>">
-    <input type="submit" name="knop" value="Model traject" class="btn btn-primary href=" href=" <?php echo site_url('lessenrooster/index'); ?>" >
+    <input type="submit" name="knop" value="Model traject" class="btn btn-primary" >
     <?php  echo '<p>' .$trajecten[1]['beschrijving'] .'</p>' ?>
-    <input type="submit" name="knop" value="Combi traject"  href="<?php echo site_url('traject/kiesTraject'); ?>" class="btn btn-primary">
+    <input type="submit" name="knop" value="Combi traject" class="btn btn-primary">
     <?php  echo '<p>' .$trajecten[0]['beschrijving'] .'</p>' ?>
 </form>
 
