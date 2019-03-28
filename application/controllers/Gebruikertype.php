@@ -25,6 +25,7 @@ class Gebruikertype extends CI_Controller
     function docent()
     {
         $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Simon Smedts';
         $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
         $partials = ['hoofding' => 'main_header',
@@ -37,6 +38,8 @@ class Gebruikertype extends CI_Controller
     function isp()
     {
         $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Melih Doksanbir';
+        $data['tester'] = 'War Op de Beeck';
         $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
         $partials = ['hoofding' => 'main_header',
@@ -49,6 +52,8 @@ class Gebruikertype extends CI_Controller
     function opleidingmanager()
     {
         $data['titel'] = '';
+        $data['ontwikkelaar'] = 'War Op de Beeck';
+        $data['tester'] = 'Simon Smedts';
         $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
         $partials = ['hoofding' => 'main_header',

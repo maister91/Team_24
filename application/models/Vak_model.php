@@ -33,10 +33,11 @@ class Vak_model extends CI_Model
      * Haalt alle vakken op uit de tabel Vak
      * @return Alle vakken
      */
-    function get_all_vak()
+    function get_all_vak($id)
     {
-        $this->db->order_by('id', 'desc');
-        return $this->db->get('vak')->result_array();
+        $this->db->where('id', $id);
+        $query = $this->db->get('vak');
+        return $query->row();
     }
 
     /**

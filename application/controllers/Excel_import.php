@@ -26,6 +26,8 @@ class Excel_import extends CI_Controller
     function index()
     {
         $data['titel'] = 'Importeer uurrooster';
+        $data['ontwikkelaar'] = 'Melih Doksanbir';
+        $data['tester'] = 'Thomas Dergent';
 
         $partials = ['hoofding' => 'main_header',
             'inhoud' => 'excel_import',

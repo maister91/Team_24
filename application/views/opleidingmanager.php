@@ -33,7 +33,7 @@
         <tr>
             <td><?php echo anchor('#', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
             <td></td>
-            <td><?php echo anchor('Klas/index', 'Klasgegevens exporteren', 'class="btn btn-info"'); ?></td>
+            <td><?php echo anchor('Export_klas/index', 'Klasgegevens exporteren', 'class="btn btn-info"'); ?></td>
             <td><?php echo anchor('#', 'Docenten en ISP verantwoordelijken beheren', 'class="btn btn-outline-primary"'); ?></td>
         </tr>
         <tr>

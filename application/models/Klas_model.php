@@ -31,11 +31,11 @@ class Klas_model extends CI_Model
      * Haalt alle klassen op uit de tabel Klas
      * @return Alle klassen
      */
-    function get_all_klas()
+    function get_all_klas($id)
     {
-        $this->db->order_by('id', 'desc');
+        $this->db->where('id', $id);
         $query = $this->db->get('klas');
-        return $query->result();
+        return $query->row();
     }
 
     /**

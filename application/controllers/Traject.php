@@ -18,6 +18,8 @@ class Traject extends CI_Controller
     function index()
     {
         $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Simon Smedts';
+        $data['tester'] = 'Melih Doksanbir';
         $data['trajecten'] = $this->Traject_model->get_all_traject();
 
         $partials = ['hoofding' => 'main_header',

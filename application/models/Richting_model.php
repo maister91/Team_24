@@ -31,10 +31,11 @@ class Richting_model extends CI_Model
      * Haalt alle richtingen op uit de tabel Richting
      * @return Alle richtingen
      */
-    function get_all_richting()
+    function get_all_richting($id)
     {
-        $this->db->order_by('id', 'desc');
-        return $this->db->get('richting')->result_array();
+        $this->db->where('id', $id);
+        $query = $this->db->get('richting');
+        return $query->row();
     }
 
     /**

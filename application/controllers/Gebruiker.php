@@ -45,6 +45,8 @@ class Gebruiker extends CI_Controller
             }
         };
         $data['titel'] = '';
+        $data['ontwikkelaar'] = 'War Op de Beeck';
+        $data['tester'] = 'Simon Smedts';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
         $partials = ['hoofding' => 'main_header',

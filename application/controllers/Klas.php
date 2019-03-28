@@ -9,7 +9,7 @@ class Klas extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Klas_model');
-        $this->load->library('EXcel');
+        $this->load->library('excel');
     }
 
     /*
@@ -23,32 +23,6 @@ class Klas extends CI_Controller
             'inhoud'   => 'klas/export',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
-    }
-
-    public function createXLS() {
-        // create file name
-        $fileName = 'data-'.time().'.xlsx';
-        // load excel library
-        $this->load->library('EXcel');
-        $empInfo = $this->Klas_model->get_all_klas();
-        $objPHPExcel = new PHPExcel();
-        $objPHPExcel->setActiveSheetIndex(0);
-        // set Header
-        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Klas');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Max aantal');
-        // set Row
-        $rowCount = 2;
-        foreach ($empInfo as $k) {
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $k->naam);
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $k->maxAantal);
-            $rowCount++;
-        }
-        header('Content-type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="Klasgegevens.xlsx"');
-        header('Cache-Control: max-age=0');
-
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save('php://output');
     }
 
     /*
