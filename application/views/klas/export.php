@@ -16,4 +16,6 @@
 </table>
 <br>
 <br>
-<p><?php echo anchor('#', 'KLasgegevens exporteren', 'class="btn btn-outline-primary"'); ?></p>
+<p><?php echo anchor('Klas/createXLS', 'KLasgegevens exporteren', 'class="pull-right btn btn-outline-primary btn-xs"'); ?></p>
+<p><?php echo anchor('gebruikertype/opleidingmanager', 'Terug'); ?></p>
+

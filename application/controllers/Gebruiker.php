@@ -34,13 +34,13 @@ class Gebruiker extends CI_Controller
                     redirect('traject/index');
                     break;
                 case 2: // administrator
-                    $inhoud = "docent_landing";
+                    redirect('gebruikertype/docent');
                     break;
                 case 3:
-                    $inhoud = "isp_landing";
+                    redirect('gebruikertype/isp');
                     break;
                 case 4:
-                    $inhoud = "opleidingmanager";
+                    redirect('gebruikertype/opleidingmanager');
                     break;
             }
         };

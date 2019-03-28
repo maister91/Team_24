@@ -24,18 +24,38 @@ class Gebruikertype extends CI_Controller
 
     function docent()
     {
+        $data['titel'] = '';
         $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
-        $data['_view'] = 'docent_landing';
-        $this->load->view('layouts/main', $data);
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'docent_landing',
+            'voetnoot' => 'main_footer'];
+
+        $this->template->load('main_master', $partials, $data);
     }
 
     function isp()
     {
+        $data['titel'] = '';
         $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
-        $data['_view'] = 'isp_landing';
-        $this->load->view('layouts/main', $data);
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'isp_landing',
+            'voetnoot' => 'main_footer'];
+
+        $this->template->load('main_master', $partials, $data);
+    }
+
+    function opleidingmanager()
+    {
+        $data['titel'] = '';
+        $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
+
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'opleidingmanager',
+            'voetnoot' => 'main_footer'];
+
+        $this->template->load('main_master', $partials, $data);
     }
 
     /*
