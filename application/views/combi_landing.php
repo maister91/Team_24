@@ -9,7 +9,7 @@
             <?php echo form_close(); ?>
         </td>
         <td>
-            <?php echo form_open('Traject/index'); ?>
+            <?php echo form_open('Gebruiker/index_simulatie'); ?>
             <button type='submit' name='Simulatie' class="btn btn-primary">Simulatie</button>
             <?php echo form_close(); ?>
         </td>

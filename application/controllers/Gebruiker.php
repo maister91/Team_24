@@ -54,6 +54,24 @@ class Gebruiker extends CI_Controller
         $this->template->load('main_master', $partials, $data);
     }
 
+    function index_simulatie(){
+            $data['titel'] = 'Studietraject simuleren';
+            $partials = ['hoofding' => 'main_header',
+                'inhoud' => 'gebruiker/simulatie',
+                'voetnoot' => 'main_footer'];
+
+            $this->template->load('main_master', $partials, $data);
+    }
+
+    function index_klaskeuze(){
+            $data['titel'] = 'Klaskeuze';
+            $partials = ['hoofding' => 'main_header',
+                'inhoud' => 'gebruiker/klaskeuze',
+                'voetnoot' => 'main_footer'];
+
+            $this->template->load('main_master', $partials, $data);
+    }
+
     public
     function controleerAanmelden()
     {
