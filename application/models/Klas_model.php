@@ -42,8 +42,12 @@ class Klas_model extends CI_Model
      */
     function get_all_klassen()
     {
+<<<<<<< HEAD
         $this->db->order_by('id', 'desc');
 
+=======
+        $this->db->order_by('naam', 'ASC');
+>>>>>>> parent of fed6d4b... landing pages, exporteren
         return $this->db->get('klas')->result_array();
     }
 

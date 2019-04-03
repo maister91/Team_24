@@ -6,11 +6,11 @@
  * -gebruikt bootstrap
  */
 ?>
-<h1 class="text-center"><?php $title?></h1>
+<h1 class="text-center">ISP LANDING </h1>
 <h2>Ingelogd als
     <?php
     $gebruiker = $this->authex->getGebruikerInfo();
-    echo $gebruiker->voornaam . ' ' . $gebruiker->achternaam;
+    echo $gebruiker->voornaam . ' ' . $gebruiker->achternaam ;
     ?>
 </h2>
 
@@ -24,20 +24,23 @@
     </thead>
     <tbody>
     <tr>
-        <td><?php echo anchor('#', 'Klasindeling aanpassen', 'class="btn btn-outline-primary"'); ?></td>
-        <td><?php echo anchor('#', 'Afspraken beheren', 'class="btn btn-outline-primary"'); ?></td>
-        <td><?php echo anchor('#', 'Studenteninformatie beheren', 'class="btn btn-info"'); ?></td>
+        <td><a href="#" class="btn btn-outline-primary"  role="button">Klasindeling aanpassen</a></td>
+        <td> <a href="#" class="btn btn-outline-primary" role="button">Afspraken beheren</a></td>
+        <td> <a href="#" class="btn btn-info" role="button">Studenteninformatie beheren</a></td>
     </tr>
     <tr>
-        <td><?php echo anchor('#', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
+        <td> <a href="#" class="btn btn-outline-primary" role="button">Klassen beheren</a></td>
         <td></td>
-        <td><?php echo anchor('#', 'Klasgegevens exporteren', 'class="btn btn-info"'); ?></td>
+        <td> <a href="#" class="btn btn-info" role="button">Klasgegevens exporteren</a></td>
     </tr>
-    <tr>
-        <td><?php echo anchor('#', 'Studenten beheren', 'class="btn btn-outline-primary"'); ?></td>
+    <tr><td><a href="#" class="btn btn-outline-primary" role="button">Studenten beheren</a></td>
     </tr>
     </tbody>
 </table>
 
 
-<?php echo divAnchor('Gebruiker/meldAf', 'Afmelden'); ?>
+
+
+
+<?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>
+<?php echo anchor('Excel_import/index', 'uurrooster importeren'); ?>

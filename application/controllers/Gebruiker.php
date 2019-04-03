@@ -24,37 +24,12 @@ class Gebruiker extends CI_Controller
      */
     function index()
     {
-        $inhoud = null;
-        $data['titel'] = '';
-
+        $data['titel']     = '';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
-        $ingelogd = $this->authex->getGebruikerInfo();
-        if ($ingelogd == null) {
-            $inhoud = "gebruiker/index";
-        }else{
-            switch ($ingelogd->gebruikertypeId) {
-                case 1: // gewone geregistreerde gebruiker
-                    $inhoud = "traject/index";
-                    $data['titel'] = 'Trajectkeuze maken';
-                    break;
-                case 2: // administrator
-                    $inhoud = "docent_landing";
-                    $data['titel']     = 'Docent landing page';
-                    break;
-                case 3:
-                    $inhoud = "isp_landing";
-                    $data['titel']     = 'ISP landing page';
-                    break;
-                case 4:
-                    $inhoud = "opleidingmanager";
-                    $data['titel']     = 'Opleidingsmanager landing page';
-                    break;
-            }
-        }
-
         $partials = ['hoofding' => 'main_header',
-                     'inhoud'   => $inhoud,
+                     'menu'     => 'main_menu',
+                     'inhoud'   => 'gebruiker/index',
                      'voetnoot' => 'main_footer'];
 
         $this->template->load('main_master', $partials, $data);
@@ -84,6 +59,7 @@ class Gebruiker extends CI_Controller
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 
         $partials = ['hoofding' => 'main_header',
+                     'menu'     => 'main_menu',
                      'inhoud'   => 'gebruiker/fout_aanmelden',
                      'voetnoot' => 'main_footer'];
 
@@ -174,10 +150,11 @@ class Gebruiker extends CI_Controller
     public function maakGebruiker()
     {
         $gebruiker                  = new stdClass();
-        $gebruiker->voornaam        = "Opleidingsmanager";
-        $gebruiker->email           = "opleidingmanager@opleidingmanager.thomasmore.be";
-        $gebruiker->paswoord        = password_hash("opleidingmanager", PASSWORD_DEFAULT);
-        $gebruiker->gebruikertypeId = 4;
+        $gebruiker->voornaam        = "Simon";
+        $gebruiker->achternaam      = "Smedts";
+        $gebruiker->email           = "r0695798@student.thomasmore.be";
+        $gebruiker->paswoord        = password_hash("r0695798", PASSWORD_DEFAULT);
+        $gebruiker->gebruikertypeId = 1;
         $this->db->insert('gebruiker', $gebruiker);
         return $this->db->insert_id();
     }

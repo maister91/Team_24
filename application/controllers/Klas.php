@@ -16,14 +16,10 @@ class Klas extends CI_Controller
      */
     function index()
     {
-        $data['titel'] = '';
         $data['klas'] = $this->Klas_model->get_all_klas();
 
-        $partials = ['hoofding' => 'main_header',
-            'inhoud'   => 'klas/export',
-            'voetnoot' => 'main_footer'];
-
-        $this->template->load('main_master', $partials, $data);
+        $data['_view'] = 'klas/index';
+        $this->load->view('layouts/main', $data);
     }
 
     /*

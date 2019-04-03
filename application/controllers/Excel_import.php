@@ -1,10 +1,10 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * @property Klas_model $klas_model
+ * @property Klas_model      $klas_model
  * @property Lesmoment_model $lesmoment_model
- * @property Richting_model $richting_model
- * @property Vak_model $vak_model
+ * @property Richting_model  $richting_model
+ * @property Vak_model       $vak_model
  */
 class Excel_import extends CI_Controller
 {

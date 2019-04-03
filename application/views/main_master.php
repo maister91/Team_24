@@ -24,6 +24,9 @@
         </h4>
         <?php echo $inhoud; ?>
     </div>
+    <div id="menu">
+        <?php echo $menu; ?>
+    </div>
     <div id="voetnoot">
         <?php echo $voetnoot; ?>
     </div>
