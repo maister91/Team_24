@@ -26,7 +26,7 @@
     <tr>
         <td><a href="#" class="btn btn-outline-primary"  role="button">Klasindeling aanpassen</a></td>
         <td> <a href="#" class="btn btn-outline-primary" role="button">Afspraken beheren</a></td>
-        <td> <a href="#" class="btn btn-info" role="button">Studenteninformatie beheren</a></td>
+        <td> <a href="<?php echo site_url('gebruikeradmin/index/'); ?>" class="btn btn-info" role="button">Studenteninformatie beheren</a></td>
     </tr>
     <tr>
         <td> <a href="#" class="btn btn-outline-primary" role="button">Klassen beheren</a></td>

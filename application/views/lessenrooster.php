@@ -18,12 +18,12 @@ if ($feedback == 'keuzeSuccesvol') {
         ?></select>
     <select name="semester" onchange="this.form.submit()">
         ><?php
-        if ($semesterId == 1) {
-            echo '<option selected>1</option>';
-            echo '<option>2</option>';
+        if ($semesterId == 2) {
+            echo '<option selected>2</option>';
+            echo '<option>1</option>';
         } else {
-            echo '<option>1 </option>';
-            echo '<option selected>2 </option>';
+            echo '<option>2 </option>';
+            echo '<option selected>1 </option>';
         }
         ?> </select>
 </form>
