@@ -22,22 +22,6 @@ class Gebruikertype extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
-    function docent()
-    {
-        $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
-
-        $data['_view'] = 'docent_landing';
-        $this->load->view('layouts/main', $data);
-    }
-
-    function isp()
-    {
-        $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
-
-        $data['_view'] = 'isp_landing';
-        $this->load->view('layouts/main', $data);
-    }
-
     /*
      * Adding a new gebruikertype
      */

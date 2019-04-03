@@ -6,9 +6,9 @@
  * -gebruikt bootstrap
  */
 ?>
+
 <h1>Klaskeuze</h1>
 <h2>Kies een klas</h2>
-<?php echo form_open('klas/index' . $gebruiker['id']); ?>
 <form>
     <select class="form-control">
         <option selected="selected">- Kies een klas -</option>
