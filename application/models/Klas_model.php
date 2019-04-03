@@ -15,6 +15,7 @@ class Klas_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->load->model('gebruiker_model');
     }
 
     /**
@@ -22,9 +23,17 @@ class Klas_model extends CI_Model
      * @param $id de id van de klas
      * @return klas
      */
-    function get_klas($id)
+    function get_klas()
     {
-        return $this->db->get_where('klas',array('id'=>$id))->row_array();
+        $this->db->order_by('id', 'desc');
+        $query = $this->db->get('klas');
+        $klassen = $query->result();
+
+        foreach($klassen as $klas){
+            $klas->gebruiker = $this->gebruiker_model->get_all_gebruiker($klas->id);
+        }
+
+        return $klassen;
     }
 
     /**
@@ -68,7 +77,8 @@ class Klas_model extends CI_Model
      */
     function delete_klas($id)
     {
-        return $this->db->delete('klas',array('id'=>$id));
+        $this->db->where('id', $id);
+        $this->db->delete('klas');
     }
 
     /**

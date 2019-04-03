@@ -1,61 +1,43 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: thoma
- * Date: 28/03/2019
- * Time: 15:15
- */
-?>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 
-<form action="" method="post">
-    <label>Kies een klas</label><br>
-    <select name="klas" size="10">
-        <?php foreach ($klas as $k) {
-        echo '<option>' . $k->naam . '</option>';
-    }
-    ?>>
-    </select><br>
-    <table class="table table-borderless ">
-        <tbody>
+<div class="col-12 mt-3">
+
+    <?php
+    $extraButton = array('class' => 'btn btn-warning btn-xs btn-round',
+        'data-toggle' => 'tooltip', 'title' => 'Klas toevoegen');
+    $button = form_button("knopnieuw", "<i class=\"fas fa-plus text-white\"></i>", $extraButton);
+    echo '<p>' . anchor('klas/maakNieuwe', $button) . '</p>';
+    ?>
+
+    <table class="table">
+        <thead>
         <tr>
-            <td>
-                <?php echo form_open('Klas/index_aanpassen'); ?>
-                <button type='submit' name='Aanpassen' class="btn btn-primary" value="Submit">Aanpassen</button>
-                <?php echo form_close(); ?>
-            </td>
-            <td>
-                <?php echo form_open('Gebruiker/index_simulatie'); ?>
-                <button type='submit' name='Toevoegen' class="btn btn-primary" value="Submit">Toevoegen</button>
-                <?php echo form_close(); ?>
-            </td>
-            <td>
-                <?php echo form_open('Gebruiker/meldAf'); ?>
-                <button type='submit' name='Verwijderen' class="btn btn-primary" value="Submit">Verwijderen</button>
-                <?php echo form_close(); ?>
-            </td>
+            <th>Naam</th>
+            <th></th>
+            <th></th>
         </tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach ($klassen as $k) {
+            $extraButtonNew = array('class' => 'btn btn-success btn-xs btn-round', 'data-toggle' => 'tooltip', 'title' => 'Klas wijzigen');
+            $buttonNew = form_button("knopnieuw","<i class=\"fas fa-pencil-alt\"></i>", $extraButtonNew);
+
+            $extraButton = array('class' => 'btn btn-danger btn-xs btn-round', 'data-toggle' => 'tooltip', 'title' => 'Klas verwijderen');
+            $button = form_button("knopverwijder" , "<i class=\"fas fa-times\"></i>", $extraButton);
+
+            echo "<tr> <td>" . $k->naam . "</td><td>" . anchor('klas/maakNieuwe/'. $k->id, $buttonNew) . "</td><td>" . anchor('klas/schrap/' . $k->id, $button) . "</td></tr>";
+        }
+        ?>
         </tbody>
     </table>
-</form>
 
-<table class="table table-borderless ">
-    <tbody>
-    <tr>
-        <td>
-            <?php echo form_open('Klas/index_aanpassen'); ?>
-            <button type='submit' name='Aanpassen' class="btn btn-primary" value="Submit">Aanpassen</button>
-            <?php echo form_close(); ?>
-        </td>
-        <td>
-            <?php echo form_open('Gebruiker/index_simulatie'); ?>
-            <button type='submit' name='Toevoegen' class="btn btn-primary" value="Submit">Toevoegen</button>
-            <?php echo form_close(); ?>
-        </td>
-        <td>
-            <?php echo form_open('Gebruiker/meldAf'); ?>
-            <button type='submit' name='Verwijderen' class="btn btn-primary" value="Submit">Verwijderen</button>
-            <?php echo form_close(); ?>
-        </td>
-    </tr>
-    </tbody>
-</table>
+</div>
+
+<div class='col-12 mt-4'> <?php echo anchor('gebruikertype/isp', 'Terug'); ?> </div>
+
+

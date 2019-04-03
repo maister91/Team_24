@@ -28,7 +28,7 @@ class Klas extends CI_Controller
     function index_beheren()
     {
         $data['titel'] = 'Klassen beheren';
-        $data['klas'] = $this->Klas_model->get_all_klas();
+        $data['klassen'] = $this->Klas_model->get_klas();
         $partials = ['hoofding' => 'main_header',
             'inhoud'   => 'klas/beheren',
             'voetnoot' => 'main_footer'];
@@ -128,6 +128,63 @@ class Klas extends CI_Controller
             redirect('klas/index');
         } else
             show_error('The klas you are trying to delete does not exist.');
+    }
+
+    function getEmptyKlas()
+    {
+        $klas = new stdClass();
+
+        $klas->id = 0;
+        $klas->naam = '';
+        $klas->maxAantal = 0;
+
+        return $klas;
+    }
+
+    function maakNieuwe()
+    {
+        if (isset($_POST) && count($_POST)>0) {
+            $params = [
+                'naam'      => $this->input->post('naam'),
+                'maxAantal' => $this->input->post('maxAantal'),
+            ];
+
+            $klas_id = $this->Klas_model->add_klas($params);
+            redirect('klas/Klas_model');
+        } else {
+            $data['_view'] = 'klas/add';
+            $this->load->view('layouts/main', $data);
+        }
+    }
+
+    function wijzig($id)
+    {
+        // check if the klas exists before trying to edit it
+        $data['Klas'] = $this->Klas_model->get_klas($id);
+
+        if (isset($data['Klas']['id'])) {
+            if (isset($_POST) && count($_POST)>0) {
+                $params = [
+                    'naam'      => $this->input->post('naam'),
+                    'maxAantal' => $this->input->post('maxAantal'),
+                ];
+
+                $this->Klas_model->update_klas($id, $params);
+                redirect('Klas/index_beheren');
+            } else {
+                $data['_view'] = 'klas/Klas_form';
+                $this->load->view('layouts/main', $data);
+            }
+        } else
+            show_error('The klas you are trying to edit does not exist.');
+    }
+
+    public function schrap($id)
+    {
+        $this->load->model('Klas_model');
+        $data['klas'] = $this->Klas_model->delete_klas($id);
+
+        redirect('/klas/index');
     }
 
 }
