@@ -18,11 +18,7 @@ class Klas_model extends CI_Model
         parent::__construct();
     }
 
-    public function getKlasByName($naam)
-    {
-        return $this->db->get_where('klas', ['naam'=>$naam])->row_array();
-    }
-
+   
     /**
      * Haalt een klas op uit de tabel Klas
      *
@@ -42,7 +38,6 @@ class Klas_model extends CI_Model
      */
     function get_all_klassen()
     {
-
         $this->db->order_by('naam', 'ASC');
         return $this->db->get('klas')->result_array();
     }
