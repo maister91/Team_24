@@ -9,6 +9,9 @@
 
 class Gebruiker_model extends CI_Model
 {
+    /* @var Traject_model */
+    public $traject_model;
+
     public function __construct()
     {
         /**
@@ -71,16 +74,31 @@ class Gebruiker_model extends CI_Model
      * Haalt alle gebruikers op uit de tabel Gebruiker
      * @return Alle gebruikers
      */
-    function get_all_gebruiker()
+    /*
+      * Get gebruiker by id
+      */
+    function get_gebruiker($id)
     {
-        $this->db->order_by('id', 'desc');
+        return $this->db->get_where('gebruiker',array('id'=>$id))->row_array();
+    }
+    function get_all_gebruikerby_type(){
+
+        $this->db->order_by('voornaam', 'asc');
         return $this->db->get('gebruiker')->result_array();
+
     }
 
-    /**
-     * Voegt een gebruiker toe aan de tabel Gebruiker
-     * @param $params zijn de parameteres die men moet ingeven voor een nieuwe gebruiker
-     * @return Record toegevoegd
+    /*
+     * Get all gebruikers
+     */
+    function get_all_gebruikers()
+    {
+        $this->db->order_by('id', 'asc');
+
+    }
+
+    /*
+     * function to add new gebruiker
      */
     function add_gebruiker($params)
     {
@@ -88,11 +106,8 @@ class Gebruiker_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    /**
-     * Bewerkt een  record (gebruiker) in de tabel Gebruiker
-     * @param $id de id van de record dat bewerkt wordt
-     * @param $params de parameteres die men moet ingeven voor de gebruiker aan te passen
-     * @return record gewijzigd
+    /*
+     * function to update gebruiker
      */
     function update_gebruiker($id,$params)
     {
@@ -100,10 +115,8 @@ class Gebruiker_model extends CI_Model
         return $this->db->update('gebruiker',$params);
     }
 
-    /**
-     * Verwijdert een record (Gebruiker) uit aan de tabel Gebruiker
-     * @param $idGebruiker de id van de record dat verwijderd wordt
-     * @return record verwijderd
+    /*
+     * function to delete gebruiker
      */
     function delete_gebruiker($id)
     {

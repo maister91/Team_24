@@ -29,58 +29,48 @@ class Klas_model extends CI_Model
      * @param $id  // De id van de klas
      * @return array
      */
+    /*
+     * Get klas by id
+     */
     function get_klas($id)
     {
-        return $this->db->get_where('klas', ['id' => $id])->row_array();
+        return $this->db->get_where('klas',array('id'=>$id))->row_array();
     }
 
-    /**
-     * Haalt alle klassen op uit de tabel Klas
-     *
-     * @return Klas_model[]
+    /*
+     * Get all klassen
      */
-    function get_all_klas()
+    function get_all_klassen()
     {
-        $this->db->order_by('naam', 'ASC');
+        $this->db->order_by('id', 'desc');
         return $this->db->get('klas')->result_array();
     }
 
-    /**
-     * Voegt een klas toe aan de tabel Klas
-     *
-     * @param $params zijn de parameteres die men moet ingeven voor een nieuwe klas
-     * @return Record toegevoegd
+    /*
+     * function to add new klas
      */
     function add_klas($params)
     {
-        $this->db->insert('klas', $params);
+        $this->db->insert('klas',$params);
         return $this->db->insert_id();
     }
 
-    /**
-     * Bewerkt een  record (klas) in de tabel Klas
-     *
-     * @param $id     de id van de record dat bewerkt wordt
-     * @param $params de parameteres die men moet ingeven voor de klas aan te passen
-     * @return record gewijzigd
+    /*
+     * function to update klas
      */
-    function update_klas($id, $params)
+    function update_klas($id,$params)
     {
-        $this->db->where('id', $id);
-        return $this->db->update('klas', $params);
+        $this->db->where('id',$id);
+        return $this->db->update('klas',$params);
     }
 
-    /**
-     * Verwijdert een record (Klas) uit aan de tabel Klas
-     *
-     * @param $id de id van de record dat verwijderd wordt
-     * @return record verwijderd
+    /*
+     * function to delete klas
      */
     function delete_klas($id)
     {
-        return $this->db->delete('klas', ['id' => $id]);
+        return $this->db->delete('klas',array('id'=>$id));
     }
-
     /**
      *
      */

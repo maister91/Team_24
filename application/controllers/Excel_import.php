@@ -16,6 +16,7 @@ class Excel_import extends CI_Controller
     {
         parent::__construct();
         $this->load->model('excel_import_model');
+        $this->load->model('excel_export_model');
         $this->load->model('klas_model');
         $this->load->model('lesmoment_model');
         $this->load->model('richting_model');
@@ -25,6 +26,7 @@ class Excel_import extends CI_Controller
 
     function index()
     {
+
         $this->load->view('excel_import');
 
     }

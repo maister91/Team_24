@@ -33,7 +33,7 @@ class Lessenrooster extends CI_Controller
             $semesterId = $this->input->get('semesterId');
             $data['feedback']    = 'keuzeSuccesvol';
         }
-        var_dump($this->authex->getGebruikerInfo());
+
         $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
         $rooster     = [];
         foreach ($lesmomenten as $lesmoment) {
@@ -45,7 +45,7 @@ class Lessenrooster extends CI_Controller
         $data['lesmomenten'] = $rooster;
         $data['klasId'] = $klasId;
         $data['semesterId'] = $semesterId;
-        $data['klassen']     = $this->klas_model->get_all_klas();
+        $data['klassen']     = $this->klas_model->get_all_klassen();
         $data['_view']       = 'lessenrooster';
         $this->load->view('layouts/main', $data);
 
