@@ -29,7 +29,7 @@
             <td><?php echo anchor('#', 'Studenteninformatie exporteren', 'class="btn btn-info"'); ?></td>
         </tr>
         <tr>
-            <td><?php echo anchor('#', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
+            <td><?php echo anchor('Klas/index_beheren', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
             <td></td>
             <td><?php echo anchor('Export_klas/index', 'Klasgegevens exporteren', 'class="btn btn-info"'); ?></td>
         </tr>
