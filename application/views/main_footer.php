@@ -23,10 +23,10 @@
                 <h5 class="text-uppercase">Dream Team</h5>
                 <ul class="list-unstyled">
                     <li>
-                        Ontwikkelaar : <?php echo $ontwikkelaar ?>
+                        <!--Ontwikkelaar : --><?php /*echo $ontwikkelaar */?>
                     </li>
                     <li>
-                        Tester : <?php echo $tester ?>
+                        <!--Tester : --><?php /*echo $tester */?>
                     </li>
                     <li>
                         Opdrachtgever : Christel Maes
