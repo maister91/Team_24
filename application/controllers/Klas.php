@@ -17,7 +17,9 @@ class Klas extends CI_Controller
      */
     function index()
     {
+
         $data['titel'] = '';
+
         $data['klas'] = $this->Klas_model->get_all_klas();
         $partials = ['hoofding' => 'main_header',
             'inhoud'   => 'klas/export',
@@ -27,8 +29,10 @@ class Klas extends CI_Controller
 
     function index_beheren()
     {
+        $data['ontwikkelaar'] = 'Thomas Dergent';
+        $data['tester'] = 'Melih Doksanbir';
         $data['titel'] = 'Klassen beheren';
-        $data['klassen'] = $this->Klas_model->get_klas();
+        $data['klassen'] = $this->Klas_model->get_klassen();
         $partials = ['hoofding' => 'main_header',
             'inhoud'   => 'klas/beheren',
             'voetnoot' => 'main_footer'];
@@ -141,42 +145,34 @@ class Klas extends CI_Controller
         return $klas;
     }
 
-    function maakNieuwe()
+    public function maakNieuwe()
     {
-        if (isset($_POST) && count($_POST)>0) {
-            $params = [
-                'naam'      => $this->input->post('naam'),
-                'maxAantal' => $this->input->post('maxAantal'),
-            ];
+        $data['ontwikkelaar'] = 'Thomas Dergent';
+        $data['tester'] = 'Melih Doksanbir';
+        $data['klas'] = $this->getEmptyKlas();
+        $data['titel'] = 'Klas toevoegen';
 
-            $klas_id = $this->Klas_model->add_klas($params);
-            redirect('klas/Klas_model');
-        } else {
-            $data['_view'] = 'klas/add';
-            $this->load->view('layouts/main', $data);
-        }
+        $partials = ['hoofding' => 'main_header',
+            'inhoud'   => 'klas/klas_form',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
     }
 
-    function wijzig($id)
+    public function wijzig($id)
     {
-        // check if the klas exists before trying to edit it
-        $data['Klas'] = $this->Klas_model->get_klas($id);
+        $data['ontwikkelaar'] = 'Thomas Dergent';
+        $data['tester'] = 'Melih Doksanbir';
+        $this->load->model('Klas_model');
+        $data['klas'] = $this->Klas_model->get_klas($id);
+        $data['titel'] = 'Klas wijzigen';
 
-        if (isset($data['Klas']['id'])) {
-            if (isset($_POST) && count($_POST)>0) {
-                $params = [
-                    'naam'      => $this->input->post('naam'),
-                    'maxAantal' => $this->input->post('maxAantal'),
-                ];
+        //var_dump($data['klas']);
 
-                $this->Klas_model->update_klas($id, $params);
-                redirect('Klas/index_beheren');
-            } else {
-                $data['_view'] = 'klas/Klas_form';
-                $this->load->view('layouts/main', $data);
-            }
-        } else
-            show_error('The klas you are trying to edit does not exist.');
+
+        $partials = ['hoofding' => 'main_header',
+            'inhoud'   => 'klas/klas_form',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
     }
 
     public function schrap($id)
@@ -184,7 +180,27 @@ class Klas extends CI_Controller
         $this->load->model('Klas_model');
         $data['klas'] = $this->Klas_model->delete_klas($id);
 
-        redirect('/klas/index');
+        redirect('/klas/index_beheren');
+    }
+
+    public function registreer()
+    {
+        $id = $this->input->post('id');
+
+        $klas = new stdClass();
+        $klas->id = $id;
+        $klas->naam = $this->input->post('naam');
+        $klas->maxAantal = $this->input->post('maxAantal');
+
+        $this->load->model('Klas_model');
+
+        if ($id == 0) {
+            $this->Klas_model->insert($klas);
+        } else {
+            $this->Klas_model->update_klas($klas);
+        }
+
+        redirect('/Klas/index_beheren');
     }
 
 }

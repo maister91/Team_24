@@ -17,6 +17,7 @@
         <thead>
         <tr>
             <th>Naam</th>
+            <th>Max aantal</th>
             <th></th>
             <th></th>
         </tr>
@@ -30,7 +31,7 @@
             $extraButton = array('class' => 'btn btn-danger btn-xs btn-round', 'data-toggle' => 'tooltip', 'title' => 'Klas verwijderen');
             $button = form_button("knopverwijder" , "<i class=\"fas fa-times\"></i>", $extraButton);
 
-            echo "<tr> <td>" . $k->naam . "</td><td>" . anchor('klas/maakNieuwe/'. $k->id, $buttonNew) . "</td><td>" . anchor('klas/schrap/' . $k->id, $button) . "</td></tr>";
+            echo "<tr> <td>" . $k->naam . "</td><td>" . $k->maxAantal . "</td><td>" . anchor('klas/wijzig/'. $k->id, $buttonNew) . "</td><td>" . anchor('klas/schrap/' . $k->id, $button) . "</td></tr>";
         }
         ?>
         </tbody>

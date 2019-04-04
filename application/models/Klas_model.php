@@ -23,8 +23,13 @@ class Klas_model extends CI_Model
      * @param $id de id van de klas
      * @return klas
      */
-    function get_klas()
+    function get_klas($id)
     {
+        $this->db->where('id', $id);
+        $query = $this->db->get('klas');
+        return $query->row();
+
+        /*
         $this->db->order_by('id', 'desc');
         $query = $this->db->get('klas');
         $klassen = $query->result();
@@ -34,7 +39,18 @@ class Klas_model extends CI_Model
         }
 
         return $klassen;
+        */
     }
+
+    function get_klassen(){
+        $this->db->order_by('id', 'desc');
+        $query = $this->db->get('klas');
+        $klassen = $query->result();
+        return $klassen;
+
+    }
+
+
 
     /**
      * Haalt alle klassen op uit de tabel Klas
@@ -64,10 +80,11 @@ class Klas_model extends CI_Model
      * @param $params de parameteres die men moet ingeven voor de klas aan te passen
      * @return record gewijzigd
      */
-    function update_klas($id,$params)
+
+    function update_klas($klas)
     {
-        $this->db->where('id',$id);
-        return $this->db->update('klas',$params);
+        $this->db->where('id', $klas->id);
+        $this->db->update('klas', $klas);
     }
 
     /**
