@@ -71,9 +71,15 @@ class Gebruiker_model extends CI_Model
      * Haalt alle gebruikers op uit de tabel Gebruiker
      * @return Alle gebruikers
      */
-    function get_all_gebruiker()
+    function get_all_gebruiker($id)
     {
-        $this->db->order_by('id', 'desc');
+        $this->db->where('id', $id);
+        $query = $this->db->get('gebruiker');
+        return $query->row();
+    }
+
+    function get_all_gebruikerby_type(){
+        $this->db->order_by('voornaam', 'asc');
         return $this->db->get('gebruiker')->result_array();
     }
 

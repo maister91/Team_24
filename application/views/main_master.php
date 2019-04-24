@@ -8,8 +8,8 @@
     <title>
         <?php echo $titel; ?>
     </title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--        font awesome (CDN) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -19,6 +19,7 @@
 </head>
 
 <body>
+<div id="container">
     <div id="hoofding">
         <?php echo $hoofding; ?>
     </div>
@@ -28,9 +29,12 @@
         </h4>
         <?php echo $inhoud; ?>
     </div>
-    <div id="voetnoot">
-        <?php echo $voetnoot; ?>
-    </div>
+</div>
+
+<div id="voetnoot">
+    <?php echo $voetnoot; ?>
+</div>
+
 </body>
 
 </html>

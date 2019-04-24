@@ -34,22 +34,14 @@ class Export_klas_model extends CI_Model
 
     function get_all_lesmoment()
     {
-        $this->db->order_by('klasId', 'desc');
+        $this->db->order_by('klasId', 'asc');
         $query = $this->db->get('lesmoment');
         $lesmomenten = $query->result();
 
         foreach ($lesmomenten as $lesmoment){
-            $lesmoment->klas = $this->klas_model->get_all_klas($lesmoment->klasId);
+            $lesmoment->klas = $this->klas_model->get_klas($lesmoment->klasId);
+            $lesmoment->vak = $this->vak_model->get_vak($lesmoment->vakId);
         }
-
-        foreach ($lesmomenten as $lesmoment){
-            $lesmoment->vak = $this->vak_model->get_all_vak($lesmoment->vakId);
-        }
-
-        foreach ($lesmomenten as $lesmoment){
-            $lesmoment->richting = $this->richting_model->get_all_richting($lesmoment->richtingId);
-        }
-
         return $lesmomenten;
     }
 }

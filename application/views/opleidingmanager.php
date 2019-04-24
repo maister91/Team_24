@@ -25,7 +25,7 @@
         </thead>
         <tbody>
         <tr>
-            <td><?php echo anchor('#', 'Klasindeling aanpassen', 'class="btn btn-outline-primary"'); ?></td>
+            <td><?php echo anchor('Klas/klasindeling', 'Klasindeling aanpassen', 'class="btn btn-outline-primary"'); ?></td>
             <td><?php echo anchor('#', 'Afspraken beheren', 'class="btn btn-outline-primary"'); ?></td>
             <td><?php echo anchor('#', 'Studenteninformatie beheren', 'class="btn btn-info"'); ?></td>
             <td><?php echo anchor('Excel_import/index', 'Uurrooster beheren', 'class="btn btn-outline-primary"'); ?></td>

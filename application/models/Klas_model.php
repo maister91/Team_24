@@ -5,8 +5,9 @@
  *
  * Model-klasse die alle methodes bevat voor de klassen
  *
+ * @property Gebruiker_model $gebruiker_model
  */
- 
+
 class Klas_model extends CI_Model
 {
     /**
@@ -15,34 +16,41 @@ class Klas_model extends CI_Model
     function __construct()
     {
         parent::__construct();
-        $this->load->model('gebruiker_model');
+        $this->load->model('Gebruiker_model');
+    }
+
+    public function getKlasByName($naam)
+    {
+        return $this->db->get_where('klas', ['naam' => $naam])->row_array();
     }
 
     /**
      * Haalt een klas op uit de tabel Klas
      * @param $id de id van de klas
-     * @return klas
+     * @return $klassen
      */
     function get_klas($id)
     {
         $this->db->where('id', $id);
         $query = $this->db->get('klas');
         return $query->row();
+    }
 
-        /*
-        $this->db->order_by('id', 'desc');
+    function get_klas_gebruiker()
+    {
+        $this->db->order_by('id', 'asc');
         $query = $this->db->get('klas');
         $klassen = $query->result();
 
-        foreach($klassen as $klas){
+        foreach ($klassen as $klas) {
             $klas->gebruiker = $this->gebruiker_model->get_all_gebruiker($klas->id);
         }
 
         return $klassen;
-        */
     }
 
-    function get_klassen(){
+    function get_klassen()
+    {
         $this->db->order_by('id', 'desc');
         $query = $this->db->get('klas');
         $klassen = $query->result();
@@ -51,16 +59,15 @@ class Klas_model extends CI_Model
     }
 
 
-
     /**
      * Haalt alle klassen op uit de tabel Klas
-     * @return Alle klassen
+     * @return result
      */
-    function get_all_klas($id)
+    function get_all_klas()
     {
-        $this->db->where('id', $id);
+        $this->db->order_by('id', 'desc');
         $query = $this->db->get('klas');
-        return $query->row();
+        return $query->result();
     }
 
     /**
@@ -70,7 +77,7 @@ class Klas_model extends CI_Model
      */
     function add_klas($params)
     {
-        $this->db->insert('klas',$params);
+        $this->db->insert('klas', $params);
         return $this->db->insert_id();
     }
 
@@ -86,6 +93,7 @@ class Klas_model extends CI_Model
         $this->db->where('id', $klas->id);
         $this->db->update('klas', $klas);
     }
+
 
     /**
      * Verwijdert een record (Klas) uit aan de tabel Klas

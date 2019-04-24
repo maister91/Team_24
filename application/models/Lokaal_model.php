@@ -69,8 +69,4 @@ class Lokaal_model extends CI_Model
     {
         return $this->db->delete('lokaal',array('id'=>$id));
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 3d7d0d292c888bb9d4267a5f8e6dac679e7b1d0f
 }

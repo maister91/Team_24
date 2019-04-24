@@ -17,6 +17,15 @@ class Vak_model extends CI_Model
         parent::__construct();
     }
 
+    public function get_vak_by_name_richting_fase($vakNaam, $richtingId, $fase)
+    {
+        return $this->db->get_where('vak', ['naam'=>$vakNaam, 'richtingId'=>$richtingId, 'fase'=>$fase])->row_array();
+    }
+    public function get_vak_by_name($vakNaam)
+    {
+        return $this->db->get_where('vak', ['naam'=>$vakNaam])->row_array();
+    }
+
     /**
      * Haalt een vak op uit de tabel Vak
      * @param $id de id van het vak
@@ -24,8 +33,8 @@ class Vak_model extends CI_Model
      */
     function get_vak($id)
     {
-        $this->db->where($id, 'id');
-        $query = $this->db->get('vak',array('id'=>$id))->row_array();
+        $this->db->where('id', $id);
+        $query = $this->db->get('vak');
         return $query->row();
     }
 
@@ -33,9 +42,9 @@ class Vak_model extends CI_Model
      * Haalt alle vakken op uit de tabel Vak
      * @return Alle vakken
      */
-    function get_all_vak($id)
+    function get_all_vak()
     {
-        $this->db->where('id', $id);
+        $this->db->order_by('id', 'desc');
         $query = $this->db->get('vak');
         return $query->row();
     }

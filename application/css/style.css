@@ -1,10 +1,20 @@
-body {
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
     height: 100%;
-    margin: 0px;
-    padding: 0px;
+}
+
+body {
     font-family: Verdana, Arial, Helvetica, sans-serif;
     color: black;
     background-color: white;
+}
+
+#container{
+    min-height: 100%;
 }
 
 #hoofding {
@@ -25,7 +35,6 @@ body {
 }
 
 #voetnoot {
-    position: absolute;
     background: #169BD5;
     bottom: 0;
     width: 100%;
