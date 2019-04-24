@@ -1,4 +1,12 @@
 <?php
+/**
+ * @file lessenrooster.php
+ *
+ * View
+ * - gebruikt bootstrap
+ */
+?>
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Excel_export extends CI_Controller {
     /* @var Excel_export_model */

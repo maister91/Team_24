@@ -1,3 +1,11 @@
+<?php
+/**
+ * @file excel_export.php
+ *
+ * View die de import van de excel toont
+ * - gebruikt bootstrap
+ */
+?>
 <!DOCTYPE html>
 <html>
 <head>

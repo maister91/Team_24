@@ -1,9 +1,9 @@
 <?php
 /**
- * @file index.php
+ * @file docent_landing.php
  *
- * View waar je de verschillende trajecten kan bekijken
- * -gebruikt bootstrap
+ * View waar de homepage is voor de docent
+ * - gebruikt bootstrap
  */
 ?>
 

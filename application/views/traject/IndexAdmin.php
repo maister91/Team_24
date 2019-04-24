@@ -3,7 +3,7 @@
  * @file indexAdmin.php
  *
  * View waar je de verschillende trajecten kan bewerken
- * -gebruikt bootstrap
+ * - gebruikt bootstrap
  */
 ?>
 

@@ -24,7 +24,6 @@ class Vak_model extends CI_Model
      * @param $richtingId De id van de richting
      * @param $fase De fase (het jaar) waar het vak in zit
      * @return de gegevens van de klas
-     * @return array
      */
     public function get_vak_by_name_richting_fase($vakNaam, $richtingId, $fase)
     {

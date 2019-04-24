@@ -1,4 +1,12 @@
 <?php
+/**
+ * @file index.php
+ * View waar de gebruiker kan inloggen
+ * - gebruikt bootstrap
+ */
+?>
+
+<?php
 $attributes = array('name' => 'mijnFormulier');
 echo form_open('Gebruiker/controleerAanmelden', $attributes);
 ?>
