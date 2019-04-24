@@ -19,8 +19,8 @@ class Afspraak_model extends CI_Model
 
     /**
      * Retourneert de record met id=$id uit de tabel Afspraak
-     * @param $id de id van het record dat opgevraagd wordt
-     * @return De opgevraagde record
+     * @param $id de id van de afspraak dat opgevraagd wordt
+     * @return De opgevraagde afspraak
      */
     function get_afspraak($id)
     {
@@ -29,6 +29,7 @@ class Afspraak_model extends CI_Model
 
     /**
      * Retourneert alle records uit de tabel Afspraak op volgorde
+     * @return alle afspraken op volgorde
      */
     function get_all_afspraak()
     {

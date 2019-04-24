@@ -5,6 +5,10 @@ class Excel_export_model extends CI_Model
     {
         parent::__construct();
     }
+
+    /**
+     * Haalt de gegevens voor export uit de databank
+     */
     function fetch_data()
     {
         $this->db->order_by("id", "desc");

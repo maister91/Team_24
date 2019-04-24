@@ -17,10 +17,25 @@ class Vak_model extends CI_Model
         parent::__construct();
     }
 
+    /**
+     *
+     * Geeft een vak met de opgegeven richting & fase
+     * @param $vakNaam De naam van het vak
+     * @param $richtingId De id van de richting
+     * @param $fase De fase (het jaar) waar het vak in zit
+     * @return de gegevens van de klas
+     * @return array
+     */
     public function get_vak_by_name_richting_fase($vakNaam, $richtingId, $fase)
     {
         return $this->db->get_where('vak', ['naam'=>$vakNaam, 'richtingId'=>$richtingId, 'fase'=>$fase])->row_array();
     }
+
+    /**
+     * Geeft een vak met de opgegeven naam
+     * @param $vakNaam De naam van het vak
+     * @return de gegevens van het vak
+     */
     public function get_vak_by_name($vakNaam)
     {
         return $this->db->get_where('vak', ['naam'=>$vakNaam])->row_array();
@@ -75,13 +90,18 @@ class Vak_model extends CI_Model
     /**
      * Verwijdert een record (vak) uit aan de tabel Vak
      * @param $id de id van de record dat verwijderd wordt
-     * @return record verwijdert
+     * @return record verwijderd
      */
     function delete_vak($id)
     {
         return $this->db->delete('vak',array('id'=>$id));
     }
 
+    /**
+     * Voegt een record (vak) toe aan de tabel Vak
+     * @param $dataVak De naam van het vak dat toegevoegd wordt
+     * @return record toegevoegd
+     */
     function insertVak($dataVak)
     {
         $this->db->insert('vak', $dataVak);

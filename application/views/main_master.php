@@ -6,81 +6,16 @@
  *
  * # Wat?
  * Je vindt hier ons Doxygen-commentaar bij het PHP-project <b>ISP-Planning</b>
- * - De commentaar bij onze model- en controllerklassen
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
+ * - De commentaar bij onze model- en controllerklassen vind je onder het
+ * menu <em>Klassen</em>
+ * - De commentaar bij onze viewbestanden vind je onder het menu
+ * <em>Bestanden</em>
+ * - Ook de originele commentaar geschreven bij het CodeIgniter-framework
+ * is opgenomen
+ *
+ * # Wie?
+ * Dit project is geschreven en becommentarieerd door War Op de Beeck,
+ * Melih Doksanbir, Simon Smedts & Thomas Dergent.
  */
 ?>
 <head>

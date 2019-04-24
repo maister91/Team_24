@@ -17,6 +17,11 @@ class Richting_model extends CI_Model
         parent::__construct();
     }
 
+    /**
+     * Geeft gegevens van een richting
+     * @param $richting De naam van de richting
+     * @return De gegevens van de richting
+     */
     public function get_richting_by_name($richting)
     {
         return $this->db->get_where('richting', ['naam'=>$richting])->row_array();

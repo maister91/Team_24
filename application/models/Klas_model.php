@@ -19,6 +19,11 @@ class Klas_model extends CI_Model
         $this->load->model('Gebruiker_model');
     }
 
+    /**
+     * Geeft een gebruiker-object met de opgegeven naam
+     * @param $naam De naam van de klas
+     * @return de gegevens van de klas
+     */
     public function getKlasByName($naam)
     {
         return $this->db->get_where('klas', ['naam' => $naam])->row_array();
@@ -36,6 +41,10 @@ class Klas_model extends CI_Model
         return $query->row();
     }
 
+    /**
+     * Haalt alle gebruikers van een klas naar boven gesorteerd op
+     * @return array van alle gebruikers van een klas
+     */
     function get_klas_gebruiker()
     {
         $this->db->order_by('id', 'asc');
@@ -49,6 +58,10 @@ class Klas_model extends CI_Model
         return $klassen;
     }
 
+    /**
+     * Haalt alle klassen op
+     * @return array van klassen
+     */
     function get_klassen()
     {
         $this->db->order_by('id', 'desc');
@@ -107,7 +120,8 @@ class Klas_model extends CI_Model
     }
 
     /**
-     *
+     * Stuurt de excelgegevens van Excel naar de database
+     * @param $data data van excel
      */
     function insert($data)
     {

@@ -71,7 +71,7 @@ class Lesmoment_model extends CI_Model
     }
 
     /**
-     *
+     * Verwijdert alle data van tabel lesmoment
      */
     function truncate_lesmoment()
     {
@@ -79,18 +79,31 @@ class Lesmoment_model extends CI_Model
     }
 
     /**
-     * @param $dataLesmoment
+     * Voegt een lesmoment toe aan de databank
+     * @param $dataLesmoment het lesmoment dat toegevoegd wordt
      */
     function insertLesmoment($dataLesmoment)
     {
         $this->db->insert('lesmoment', $dataLesmoment);
     }
 
+    /**
+     * Haal het lesmoment op van een bepaalde klas in een bepaald semester
+     * @param $klasId De klas id waar het lesmoment van opgevraagd wordt
+     * @param $semester Het semester waarin het lesmoment valt
+     * @return array van de lesmomenten
+     */
     function get_lesmoment_by_klas_en_semester($klasId, $semester)
     {
         return $this->db->order_by('lesblok')->get_where('lesmoment',array('klasId'=>$klasId, 'semester'=>$semester))->result_array();
     }
 
+    /**
+     * Update de gegevens van de klas
+     * @param $klasId ID van klas er geupdate wordt
+     * @param $gebruikerId Id van de gebruiken
+     * @return klas geupdate
+     */
     function update_klas($klasId, $gebruikerId)
     {
         return $this->db->update('gebruiker', [
