@@ -18,14 +18,37 @@ class Vak_model extends CI_Model
     }
 
     /**
+     *
+     * Geeft een vak met de opgegeven richting & fase
+     * @param $vakNaam De naam van het vak
+     * @param $richtingId De id van de richting
+     * @param $fase De fase (het jaar) waar het vak in zit
+     * @return de gegevens van de klas
+     */
+    public function get_vak_by_name_richting_fase($vakNaam, $richtingId, $fase)
+    {
+        return $this->db->get_where('vak', ['naam'=>$vakNaam, 'richtingId'=>$richtingId, 'fase'=>$fase])->row_array();
+    }
+
+    /**
+     * Geeft een vak met de opgegeven naam
+     * @param $vakNaam De naam van het vak
+     * @return de gegevens van het vak
+     */
+    public function get_vak_by_name($vakNaam)
+    {
+        return $this->db->get_where('vak', ['naam'=>$vakNaam])->row_array();
+    }
+
+    /**
      * Haalt een vak op uit de tabel Vak
      * @param $id de id van het vak
      * @return Vak
      */
     function get_vak($id)
     {
-        $this->db->where($id, 'id');
-        $query = $this->db->get('vak',array('id'=>$id))->row_array();
+        $this->db->where('id', $id);
+        $query = $this->db->get('vak');
         return $query->row();
     }
 
@@ -33,9 +56,9 @@ class Vak_model extends CI_Model
      * Haalt alle vakken op uit de tabel Vak
      * @return Alle vakken
      */
-    function get_all_vak($id)
+    function get_all_vak()
     {
-        $this->db->where('id', $id);
+        $this->db->order_by('id', 'desc');
         $query = $this->db->get('vak');
         return $query->row();
     }
@@ -66,13 +89,18 @@ class Vak_model extends CI_Model
     /**
      * Verwijdert een record (vak) uit aan de tabel Vak
      * @param $id de id van de record dat verwijderd wordt
-     * @return record verwijdert
+     * @return record verwijderd
      */
     function delete_vak($id)
     {
         return $this->db->delete('vak',array('id'=>$id));
     }
 
+    /**
+     * Voegt een record (vak) toe aan de tabel Vak
+     * @param $dataVak De naam van het vak dat toegevoegd wordt
+     * @return record toegevoegd
+     */
     function insertVak($dataVak)
     {
         $this->db->insert('vak', $dataVak);

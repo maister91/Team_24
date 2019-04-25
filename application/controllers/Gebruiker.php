@@ -1,12 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-/*
+/**
+ * @class Gebruiker
+ * @brief Controller-klasse voor Gebruiker
+ *
+ * Controller-klasse met alle methodes voor de gebruikers
  */
 
-/**
- * @property Template $template
- * @property  Authex $authex
- */
 class Gebruiker extends CI_Controller
 {
 
@@ -56,22 +56,28 @@ class Gebruiker extends CI_Controller
         $this->template->load('main_master', $partials, $data);
     }
 
-    function index_simulatie(){
-            $data['titel'] = 'Studietraject simuleren';
-            $partials = ['hoofding' => 'main_header',
-                'inhoud' => 'gebruiker/simulatie',
-                'voetnoot' => 'main_footer'];
+    function index_simulatie()
+    {
+        $data['ontwikkelaar'] = 'War Op de Beeck';
+        $data['tester'] = 'Simon Smedts';
+        $data['titel'] = 'Studietraject simuleren';
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'gebruiker/simulatie',
+            'voetnoot' => 'main_footer'];
 
-            $this->template->load('main_master', $partials, $data);
+        $this->template->load('main_master', $partials, $data);
     }
 
-    function index_klaskeuze(){
-            $data['titel'] = 'Klaskeuze';
-            $partials = ['hoofding' => 'main_header',
-                'inhoud' => 'gebruiker/klaskeuze',
-                'voetnoot' => 'main_footer'];
+    function index_klaskeuze()
+    {
+        $data['ontwikkelaar'] = 'War Op de Beeck';
+        $data['tester'] = 'Simon Smedts';
+        $data['titel'] = 'Klaskeuze';
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'gebruiker/klaskeuze',
+            'voetnoot' => 'main_footer'];
 
-            $this->template->load('main_master', $partials, $data);
+        $this->template->load('main_master', $partials, $data);
     }
 
     public
@@ -97,6 +103,8 @@ class Gebruiker extends CI_Controller
     public
     function toonFout()
     {
+        $data['ontwikkelaar'] = 'War Op de Beeck';
+        $data['tester'] = 'Simon Smedts';
         $data['titel'] = 'Fout';
         $data['gebruiker'] = $this->authex->getGebruikerInfo();
 

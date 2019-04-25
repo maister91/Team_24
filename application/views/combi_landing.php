@@ -1,5 +1,12 @@
 <h1><?php echo $titel?></h1>
-
+<?php
+/**
+ * @file combi_landing.php
+ *
+ * View waar je de homepage van de combistudent kunt bekijken
+ * - gebruikt bootstrap
+ */
+?>
 <table class="table table-borderless ">
     <thead>
     <tr>

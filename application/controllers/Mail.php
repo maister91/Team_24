@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @class Mail
+ * @brief Controller-klasse voor Mail
+ *
+ * Controller-klasse met alle methodes voor de mails
+ */
+
 class Mail extends CI_Controller
 {
 

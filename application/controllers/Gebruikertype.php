@@ -1,10 +1,18 @@
 <?php
 
+/**
+ * @class Gebruikertype
+ * @brief Controller-klasse voor Gebruikertype
+ *
+ * Controller-klasse met alle methodes voor de gebruikertype
+ */
+
 class Gebruikertype extends CI_Controller
 {
 
     /* @var Gebruikertype_model */
     public $Gebruikertype_model;
+
     function __construct()
     {
         parent::__construct();
@@ -24,43 +32,80 @@ class Gebruikertype extends CI_Controller
 
     function docent()
     {
-        $data['titel'] = '';
-        $data['ontwikkelaar'] = 'Simon Smedts';
-        $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
+        $ingelogd = $this->authex->getGebruikerInfo();
+        if ($ingelogd == null) {
+            redirect('gebruiker/index');
+        } else {
+            switch ($ingelogd->gebruikertypeId) {
+                case 2:
+                    $data['titel'] = '';
+                    $data['ontwikkelaar'] = 'Simon Smedts';
+                    $data['tester'] = 'War Op de Beeck';
+                    $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
-        $partials = ['hoofding' => 'main_header',
-            'inhoud' => 'docent_landing',
-            'voetnoot' => 'main_footer'];
+                    $partials = ['hoofding' => 'main_header',
+                        'inhoud' => 'docent_landing',
+                        'voetnoot' => 'main_footer'];
 
-        $this->template->load('main_master', $partials, $data);
+                    $this->template->load('main_master', $partials, $data);
+                    break;
+                case 1 || 3 || 4: // gewone geregistreerde gebruiker
+                    redirect('gebruiker/meldAf');
+                    break;
+            }
+        };
     }
 
     function isp()
     {
-        $data['titel'] = '';
-        $data['ontwikkelaar'] = 'Melih Doksanbir';
-        $data['tester'] = 'War Op de Beeck';
-        $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
+        $ingelogd = $this->authex->getGebruikerInfo();
+        if ($ingelogd == null) {
+            redirect('gebruiker/index');
+        } else {
+            switch ($ingelogd->gebruikertypeId) {
+                case 3:
+                    $data['titel'] = '';
+                    $data['ontwikkelaar'] = 'Melih Doksanbir';
+                    $data['tester'] = 'War Op de Beeck';
+                    $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
-        $partials = ['hoofding' => 'main_header',
-            'inhoud' => 'isp_landing',
-            'voetnoot' => 'main_footer'];
+                    $partials = ['hoofding' => 'main_header',
+                        'inhoud' => 'isp_landing',
+                        'voetnoot' => 'main_footer'];
 
-        $this->template->load('main_master', $partials, $data);
+                    $this->template->load('main_master', $partials, $data);
+                    break;
+                case 1 || 2 || 4: // gewone geregistreerde gebruiker
+                    redirect('gebruiker/meldAf');
+                    break;
+            }
+        };
     }
 
     function opleidingmanager()
     {
-        $data['titel'] = '';
-        $data['ontwikkelaar'] = 'War Op de Beeck';
-        $data['tester'] = 'Simon Smedts';
-        $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
+        $ingelogd = $this->authex->getGebruikerInfo();
+        if ($ingelogd == null) {
+            redirect('gebruiker/index');
+        } else {
+            switch ($ingelogd->gebruikertypeId) {
+                case 4:
+                    $data['titel'] = '';
+                    $data['ontwikkelaar'] = 'War Op de Beeck';
+                    $data['tester'] = 'Simon Smedts';
+                    $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
 
-        $partials = ['hoofding' => 'main_header',
-            'inhoud' => 'opleidingmanager',
-            'voetnoot' => 'main_footer'];
+                    $partials = ['hoofding' => 'main_header',
+                        'inhoud' => 'opleidingmanager',
+                        'voetnoot' => 'main_footer'];
 
-        $this->template->load('main_master', $partials, $data);
+                    $this->template->load('main_master', $partials, $data);
+                    break;
+                case 1 || 2 || 3: // gewone geregistreerde gebruiker
+                    redirect('gebruiker/meldAf');
+                    break;
+            }
+        };
     }
 
     /*
@@ -68,7 +113,7 @@ class Gebruikertype extends CI_Controller
      */
     function add()
     {
-        if (isset($_POST) && count($_POST)>0) {
+        if (isset($_POST) && count($_POST) > 0) {
             $params = [
                 'beschrijving' => $this->input->post('beschrijving'),
             ];
@@ -90,7 +135,7 @@ class Gebruikertype extends CI_Controller
         $data['gebruikertype'] = $this->Gebruikertype_model->get_gebruikertype($id);
 
         if (isset($data['gebruikertype']['id'])) {
-            if (isset($_POST) && count($_POST)>0) {
+            if (isset($_POST) && count($_POST) > 0) {
                 $params = [
                     'beschrijving' => $this->input->post('beschrijving'),
                 ];

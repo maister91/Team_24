@@ -1,16 +1,10 @@
 <?php
 /**
- * @class Klas_model
- * @brief Model-klasse voor klassen
+ * @class Export_klas_model
+ * @brief Model-klasse voor klassen te exporteren
  *
- * Model-klasse die alle methodes bevat voor de klassen
+ * Model-klasse die alle methodes bevat voor de klassen te exporteren
  *
- */
-
-/**
- * @property Klas_model $klas_model
- * @property Vak_model $vak_model
- * @property Richting_model $richting_model
  */
 
 class Export_klas_model extends CI_Model
@@ -34,22 +28,14 @@ class Export_klas_model extends CI_Model
 
     function get_all_lesmoment()
     {
-        $this->db->order_by('klasId', 'desc');
+        $this->db->order_by('klasId', 'asc');
         $query = $this->db->get('lesmoment');
         $lesmomenten = $query->result();
 
         foreach ($lesmomenten as $lesmoment){
-            $lesmoment->klas = $this->klas_model->get_all_klas($lesmoment->klasId);
+            $lesmoment->klas = $this->klas_model->get_klas($lesmoment->klasId);
+            $lesmoment->vak = $this->vak_model->get_vak($lesmoment->vakId);
         }
-
-        foreach ($lesmomenten as $lesmoment){
-            $lesmoment->vak = $this->vak_model->get_all_vak($lesmoment->vakId);
-        }
-
-        foreach ($lesmomenten as $lesmoment){
-            $lesmoment->richting = $this->richting_model->get_all_richting($lesmoment->richtingId);
-        }
-
         return $lesmomenten;
     }
 }

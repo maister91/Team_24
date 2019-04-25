@@ -2,8 +2,8 @@
 /**
  * @file index.php
  *
- * View waar je de verschillende trajecten kan bekijken
- * -gebruikt bootstrap
+ * View waar de home (landing) page van de isp-verantwoordelijke getoond wordt
+ * - gebruikt bootstrap
  */
 ?>
     <h1 class="text-center"><?php $title?></h1>

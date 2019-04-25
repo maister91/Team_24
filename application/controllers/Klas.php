@@ -1,10 +1,18 @@
 <?php
 
+/**
+ * @class Klas
+ * @brief Controller-klasse voor Klas
+ *
+ * Controller-klasse met alle methodes voor de klassen
+ */
+
 class Klas extends CI_Controller
 {
 
     /* @var Klas_model */
     public $Klas_model;
+
     function __construct()
     {
         parent::__construct();
@@ -20,11 +28,55 @@ class Klas extends CI_Controller
 
         $data['titel'] = '';
 
-        $data['klas'] = $this->Klas_model->get_all_klas();
-        $partials = ['hoofding' => 'main_header',
-            'inhoud'   => 'klas/export',
-            'voetnoot' => 'main_footer'];
-        $this->template->load('main_master', $partials, $data);
+        $ingelogd = $this->authex->getGebruikerInfo();
+        if ($ingelogd == null) {
+            redirect('gebruiker/index');
+        } else {
+            switch ($ingelogd->gebruikertypeId) {
+                case 3 || 4:
+                    $data['titel'] = 'Klasindeling aanpassen';
+                    $data['ontwikkelaar'] = 'War Op de Beeck';
+                    $data['tester'] = 'Simon Smedts';
+                    $data['klassen'] = $this->Klas_model->get_all_klas();
+
+                    $partials = ['hoofding' => 'main_header',
+                        'inhoud' => 'klas/index',
+                        'voetnoot' => 'main_footer'];
+                    $this->template->load('main_master', $partials, $data);
+                    break;
+                case 1 || 2: // gewone geregistreerde gebruiker
+                    redirect('gebruiker/meldAf');
+                    break;
+            }
+        };
+    }
+
+    function klasindeling()
+    {
+        $ingelogd = $this->authex->getGebruikerInfo();
+        if ($ingelogd == null) {
+            redirect('gebruiker/index');
+        } else {
+            switch ($ingelogd->gebruikertypeId) {
+                case 3 || 4:
+                    $klasId = $this->input->post('klassen');
+
+                    $data['klasId'] = $klasId;
+                    $data['titel'] = 'Klasindeling aanpassen';
+                    $data['ontwikkelaar'] = 'War Op de Beeck';
+                    $data['tester'] = 'Simon Smedts';
+                    $data['klassen'] = $this->Klas_model->get_klas_gebruiker();
+
+                    $partials = ['hoofding' => 'main_header',
+                        'inhoud' => 'klas/edit',
+                        'voetnoot' => 'main_footer'];
+                    $this->template->load('main_master', $partials, $data);
+                    break;
+                case 1 || 2: // gewone geregistreerde gebruiker
+                    redirect('gebruiker/meldAf');
+                    break;
+            }
+        };
     }
 
     function index_beheren()
@@ -34,7 +86,7 @@ class Klas extends CI_Controller
         $data['titel'] = 'Klassen beheren';
         $data['klassen'] = $this->Klas_model->get_klassen();
         $partials = ['hoofding' => 'main_header',
-            'inhoud'   => 'klas/beheren',
+            'inhoud' => 'klas/beheren',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
     }
@@ -44,14 +96,15 @@ class Klas extends CI_Controller
         $data['titel'] = 'Klassen toevoegen';
         $data['klas'] = $this->Klas_model->get_all_klas();
         $partials = ['hoofding' => 'main_header',
-            'inhoud'   => 'klas/aanpassen',
+            'inhoud' => 'klas/aanpassen',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
     }
 
-    public function createXLS() {
+    public function createXLS()
+    {
         // create file name
-        $fileName = 'data-'.time().'.xlsx';
+        $fileName = 'data-' . time() . '.xlsx';
         // load excel library
         $this->load->library('EXcel');
         $empInfo = $this->Klas_model->get_all_klas();
@@ -80,9 +133,9 @@ class Klas extends CI_Controller
      */
     function add()
     {
-        if (isset($_POST) && count($_POST)>0) {
+        if (isset($_POST) && count($_POST) > 0) {
             $params = [
-                'naam'      => $this->input->post('naam'),
+                'naam' => $this->input->post('naam'),
                 'maxAantal' => $this->input->post('maxAantal'),
             ];
 
@@ -103,9 +156,9 @@ class Klas extends CI_Controller
         $data['Klas'] = $this->Klas_model->get_klas($id);
 
         if (isset($data['Klas']['id'])) {
-            if (isset($_POST) && count($_POST)>0) {
+            if (isset($_POST) && count($_POST) > 0) {
                 $params = [
-                    'naam'      => $this->input->post('naam'),
+                    'naam' => $this->input->post('naam'),
                     'maxAantal' => $this->input->post('maxAantal'),
                 ];
 
@@ -153,7 +206,7 @@ class Klas extends CI_Controller
         $data['titel'] = 'Klas toevoegen';
 
         $partials = ['hoofding' => 'main_header',
-            'inhoud'   => 'klas/klas_form',
+            'inhoud' => 'klas/klas_form',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
     }
@@ -170,7 +223,7 @@ class Klas extends CI_Controller
 
 
         $partials = ['hoofding' => 'main_header',
-            'inhoud'   => 'klas/klas_form',
+            'inhoud' => 'klas/klas_form',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
     }

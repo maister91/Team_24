@@ -17,9 +17,14 @@ class Gebruiker_model extends CI_Model
         parent::__construct();
     }
 
+    /**
+     * Geeft een gebruiker-object met de opgegeven $id
+     * @param $id De ID van de gebruiker
+     * @return gegevens van de gebruiker
+     */
     function get($id)
     {
-        // geef gebruiker-object met opgegeven $id
+        //
         $this->db->where('id', $id);
         $query = $this->db->get('gebruiker');
         return $query->row();
@@ -47,6 +52,12 @@ class Gebruiker_model extends CI_Model
         }
     }
 
+    /**
+     * Controleert het wachtwoord
+     * @param $id de id van de gebruiker
+     * @param $paswoord het ingevoerde paswoord
+     * @return 1 / 0 (ja of nee)
+     */
     function controleerWachtwoord($id, $paswoord)
     {
         // geef gebruiker-object met $email en $wachtwoord EN geactiveerd = 1
@@ -71,9 +82,19 @@ class Gebruiker_model extends CI_Model
      * Haalt alle gebruikers op uit de tabel Gebruiker
      * @return Alle gebruikers
      */
-    function get_all_gebruiker()
+    function get_all_gebruiker($id)
     {
-        $this->db->order_by('id', 'desc');
+        $this->db->where('id', $id);
+        $query = $this->db->get('gebruiker');
+        return $query->row();
+    }
+
+    /**
+     * Haalt alle gebruikers op uit de tabel Gebruiker gesorteerd op gebruikerstype
+     * @return Alle gebruikers gesorteerd op gebruikerstype
+     */
+    function get_all_gebruikerby_type(){
+        $this->db->order_by('voornaam', 'asc');
         return $this->db->get('gebruiker')->result_array();
     }
 

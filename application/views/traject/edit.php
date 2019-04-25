@@ -3,7 +3,7 @@
  * @file edit.php
  *
  * View waar je een traject kan aanpassen
- * -gebruikt bootstrap
+ * - gebruikt bootstrap
  */
 ?>
 

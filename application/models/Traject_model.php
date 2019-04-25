@@ -18,6 +18,19 @@ class Traject_model extends CI_Model
     }
 
     /**
+     * Geeft een Trajectmodel met de opgegeven $id
+     * @param $id De ID van het traject
+     * @return gegevens van het traject
+     */
+    function get($id)
+    {
+        // geef gebruiker-object met opgegeven $id
+        $this->db->where('id', $id);
+        $query = $this->db->get('traject');
+        return $query->row();
+    }
+
+    /**
      * Haalt een traject op uit de tabel Traject
      * @param $id de id van het traject
      * @return Traject
@@ -70,6 +83,11 @@ class Traject_model extends CI_Model
         return $this->db->delete('traject',array('id'=>$id));
     }
 
+    /**
+     * Update de trajectId van de gebruiker
+     * @param $trajectId De id van het traject die de gebruiker moet krijgen
+     * @param $gebruikerId De gebruiker die een trajectID toegewezen moet krijgen
+     */
     function update_traject($trajectId, $gebruikerId)
     {
         return $this->db->update('gebruiker', [

@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @class Vak
+ * @brief Controller-klasse voor Vak
+ *
+ * Controller-klasse met alle methodes voor de vakken
+ */
+
 class Vak extends CI_Controller
 {
 
