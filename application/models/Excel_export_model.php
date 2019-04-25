@@ -1,4 +1,10 @@
 <?php
+/**
+ * @class Excel_export_model
+ * @brief Model-klasse voor Excel export
+ *
+ * Model-klasse die alle methodes bevat voor het exporteren van excel bestanden
+ */
 class Excel_export_model extends CI_Model
 {
     function __construct()

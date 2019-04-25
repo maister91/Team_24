@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @class Afspraak
+ * @brief Controller-klasse voor afspraken
+ *
+ * Controller-klasse met alle methodes die gebruikt worden voor afspraken
+ */
 class Afspraak extends CI_Controller
 {
     /* @var Afspraak_model */
@@ -11,8 +17,8 @@ class Afspraak extends CI_Controller
         $this->load->model('Afspraak_model');
     }
 
-    /*
-     * Listing of afspraak
+    /**
+     *
      */
     function index()
     {
@@ -46,6 +52,10 @@ class Afspraak extends CI_Controller
     /*
      * Editing a afspraak
      */
+    /**
+     * Wijzigt de gegevens van een afspraak
+     * @param $id id van de afspraak
+     */
     function edit($id)
     {
         // check if the afspraak exists before trying to edit it
@@ -70,8 +80,9 @@ class Afspraak extends CI_Controller
             show_error('The afspraak you are trying to edit does not exist.');
     }
 
-    /*
-     * Deleting afspraak
+    /**
+     * Verwijdert een afspraak met de opgegeven id
+     * @param $id de id van de afspraak
      */
     function remove($id)
     {

@@ -1,16 +1,10 @@
 <?php
 /**
- * @class Klas_model
- * @brief Model-klasse voor klassen
+ * @class Export_klas_model
+ * @brief Model-klasse voor klassen te exporteren
  *
- * Model-klasse die alle methodes bevat voor de klassen
+ * Model-klasse die alle methodes bevat voor de klassen te exporteren
  *
- */
-
-/**
- * @property Klas_model $klas_model
- * @property Vak_model $vak_model
- * @property Richting_model $richting_model
  */
 
 class Export_klas_model extends CI_Model

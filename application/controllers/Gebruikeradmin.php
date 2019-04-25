@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * @class Gebruikeradmin
+ * @brief Controller-klasse voor Gebruikeradmin
+ *
+ * Controller-klasse met alle methodes voor de gebruikeradmin
+ */
+
 class Gebruikeradmin extends CI_Controller{
     function __construct()
     {

@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @class Richting
+ * @brief Controller-klasse voor Richting
+ *
+ * Controller-klasse met alle methodes voor de richtingen
+ */
+
 class Richting extends CI_Controller
 {
 

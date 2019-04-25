@@ -4,8 +4,6 @@
  * @brief Model-klasse voor klassen
  *
  * Model-klasse die alle methodes bevat voor de klassen
- *
- * @property Gebruiker_model $gebruiker_model
  */
 
 class Klas_model extends CI_Model

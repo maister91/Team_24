@@ -1,8 +1,10 @@
 <?php
 
 /**
- * @property Template $template
- * @property  Authex $authex
+ * @class Klas
+ * @brief Controller-klasse voor Klas
+ *
+ * Controller-klasse met alle methodes voor de klassen
  */
 
 class Klas extends CI_Controller

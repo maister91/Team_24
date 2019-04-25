@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @class Lesmoment
+ * @brief Controller-klasse voor Lesmoment
+ *
+ * Controller-klasse met alle methodes voor de lesmomenten
+ */
+
 class Lesmoment extends CI_Controller
 {
 

@@ -1,12 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-/*
+/**
+ * @class Gebruiker
+ * @brief Controller-klasse voor Gebruiker
+ *
+ * Controller-klasse met alle methodes voor de gebruikers
  */
 
-/**
- * @property Template $template
- * @property  Authex $authex
- */
 class Gebruiker extends CI_Controller
 {
 

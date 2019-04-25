@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @class Traject
+ * @brief Controller-klasse voor Traject
+ *
+ * Controller-klasse met alle methodes voor de trajecten
+ */
 class Traject extends CI_Controller
 {
 

@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * @class Lessenrooster
+ * @brief Controller-klasse voor Lesssenrooster
+ *
+ * Controller-klasse met alle methodes voor de lessenroosters
+ */
 class Lessenrooster extends CI_Controller
 {
     /* @var Lesmoment_model */

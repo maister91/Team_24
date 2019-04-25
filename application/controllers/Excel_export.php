@@ -1,9 +1,9 @@
 <?php
 /**
- * @file lessenrooster.php
+ * @class Excel_export
+ * @brief Controller-klasse voor export van excel bestanden
  *
- * View
- * - gebruikt bootstrap
+ * Controller-klasse met alle methodes die gebruikt worden voor de export van excel bestanden
  */
 ?>
 <?php

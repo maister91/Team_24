@@ -4,7 +4,6 @@
  * @brief Model-klasse voor lesmomenten
  *
  * Model-klasse die alle methodes bevat voor de lesmomenten
- *
  */
 
 class Lesmoment_model extends CI_Model

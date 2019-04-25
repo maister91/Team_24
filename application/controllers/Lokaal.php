@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @class Lokaal
+ * @brief Controller-klasse voor Lokaal
+ *
+ * Controller-klasse met alle methodes voor de lokalen
+ */
+
 class Lokaal extends CI_Controller
 {
 

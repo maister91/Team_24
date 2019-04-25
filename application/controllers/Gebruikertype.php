@@ -1,9 +1,10 @@
 <?php
 
-
 /**
- * @property Template $template
- * @property  Authex $authex
+ * @class Gebruikertype
+ * @brief Controller-klasse voor Gebruikertype
+ *
+ * Controller-klasse met alle methodes voor de gebruikertype
  */
 
 class Gebruikertype extends CI_Controller
