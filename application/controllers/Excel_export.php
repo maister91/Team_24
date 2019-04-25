@@ -11,6 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Excel_export extends CI_Controller {
     /* @var Excel_export_model */
     public $excel_export_model;
+
+
     function index()
     {
         $this->load->model("excel_export_model");

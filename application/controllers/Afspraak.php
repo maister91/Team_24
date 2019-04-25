@@ -18,7 +18,10 @@ class Afspraak extends CI_Controller
     }
 
     /**
+     * Toont de index pagina van afspraken
      *
+     * @see Afspraak_model::get_all_afspraak()
+     * @see afspraak/index.php
      */
     function index()
     {
@@ -28,8 +31,12 @@ class Afspraak extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
-    /*
-     * Adding a new afspraak
+    /**
+     * Voegt een afspraak toe
+     *
+     * @see Afspraak_model::add_afspraak()
+     * @see afspraak/index.php
+     * @see afpraak/add.php
      */
     function add()
     {
@@ -49,12 +56,14 @@ class Afspraak extends CI_Controller
         }
     }
 
-    /*
-     * Editing a afspraak
-     */
     /**
      * Wijzigt de gegevens van een afspraak
+     *
      * @param $id id van de afspraak
+     * @see Afspraak_model::get_afspraak()
+     * @see Afspraak_model::update_afspraak()
+     * @see afspraak/index.php
+     * @see afspraak/edit.php
      */
     function edit($id)
     {
@@ -83,6 +92,10 @@ class Afspraak extends CI_Controller
     /**
      * Verwijdert een afspraak met de opgegeven id
      * @param $id de id van de afspraak
+     *
+     * @see Afspraak_model::get_afspraak()
+     * @see Afspraak_model::delete_afspraak()
+     * @see afspraak/index.php
      */
     function remove($id)
     {
