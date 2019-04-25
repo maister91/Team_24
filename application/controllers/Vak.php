@@ -13,15 +13,23 @@ class Vak extends CI_Controller
     /* @var Vak_model */
     public $Vak_model;
 
+    /**
+     * Vak constructor.
+     */
+
     function __construct()
     {
         parent::__construct();
         $this->load->model('Vak_model');
     }
 
-    /*
-     * Listing of vak
+    /**
+     * Lijst van alle vakken tonen
+     *
+     * @see Vak_model::get_all_vak()
+     * @see vak/index.php
      */
+
     function index()
     {
         $data['vak'] = $this->Vak_model->get_all_vak();
@@ -30,8 +38,12 @@ class Vak extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
-    /*
-     * Adding a new vak
+    /**
+     * Voegt een vak toe
+     *
+     * @see Vak_model::get_all_vak()
+     * @see vak/index.php
+     * @see vak/add.php
      */
     function add()
     {
@@ -52,8 +64,16 @@ class Vak extends CI_Controller
         }
     }
 
-    /*
-     * Editing a vak
+
+    /**
+     * Een vak wijzigen
+     *
+     * @param $id Het id van het vak dat getoond wordt
+     * @see Vak_model::get_vak()
+     * @see Vak_model::update_vak()
+     * @see vak/index.php
+     * @see vak/edit.php
+     *
      */
     function edit($id)
     {
@@ -80,8 +100,13 @@ class Vak extends CI_Controller
             show_error('The vak you are trying to edit does not exist.');
     }
 
-    /*
-     * Deleting vak
+    /**
+     * Het verwijderen van een vak
+     *
+     * @param $id Het id van het vak dat verwijderd wordt
+     * @see Vak_model::get_vak()
+     * @see Vak_model::delete_vak()
+     * @see vak/index.php
      */
     function remove($id)
     {

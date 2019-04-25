@@ -12,6 +12,10 @@ class Traject extends CI_Controller
     /* @var Traject_model */
     public $Traject_model;
 
+    /**
+     * Traject constructor.
+     */
+
     function __construct()
     {
         parent::__construct();
@@ -21,6 +25,13 @@ class Traject extends CI_Controller
     /*
      * Listing of traject
      */
+
+    /**
+     * Toont lijst met alle trajecten
+     * @see Traject_model::get_all_traject()
+     * @see traject/index.php
+     */
+
     function index()
     {
         $data['titel'] = '';
@@ -35,6 +46,16 @@ class Traject extends CI_Controller
         $this->template->load('main_master', $partials, $data);
     }
 
+
+    /**
+     * Maken van keuze traject
+     * @see Traject_model::get_all_traject()
+     * @see authex::getGebruikerInfo()
+     * @see Traject_model::update_traject()
+     * @see model_landing.php
+     * @see combi_landing.php
+     *
+     */
 
     function kiesTraject()
     {
@@ -64,6 +85,15 @@ class Traject extends CI_Controller
         }
     }
 
+    /**
+     * Maken van keuze traject
+     * @param $id Het id van de gebruiker die een traject gaat kiezen
+     * @see Gebruiker_model::getGebruiker()
+     * @see Gebruiker_model::update_gebruiker()
+     * @see traject_aanduiden.php
+     * @see gebruiker/edit.php
+     */
+
     function keuzeTraject($id)
     {
         // check if the gebruiker exists before trying to edit it
@@ -91,9 +121,14 @@ class Traject extends CI_Controller
             show_error('The gebruiker you are trying to edit does not exist.');
     }
 
-    /*
-     * Adding a new traject
+    /**
+     * Voegt een nieuw traject toe
+     *
+     * @see Traject_model::add_traject()
+     * @see traject/index.php
+     * @see traject/add.php
      */
+
     function add()
     {
         if (isset($_POST) && count($_POST)>0) {
@@ -113,6 +148,17 @@ class Traject extends CI_Controller
     /*
      * Editing a traject
      */
+
+    /**
+     * Het wijzigen van een traject
+     *
+     * @param $id Het id van het huidige traject
+     * @see Traject_model::get_traject()
+     * @see Traject_model::update_traject()
+     * @see traject/index.php
+     * @see traject/edit.php
+     */
+
     function edit($id)
     {
         // check if the traject exists before trying to edit it
@@ -138,6 +184,16 @@ class Traject extends CI_Controller
     /*
      * Deleting traject
      */
+
+    /**
+     * Het verwijderen van een traject
+     *
+     * @param $id Het id van het traject dat wordt verwijderd
+     * @see Traject_model::get_traject()
+     * @see Traject_model::delete_traject()
+     * @see traject/index.php
+     */
+
     function remove($id)
     {
         $traject = $this->Traject_model->get_traject($id);

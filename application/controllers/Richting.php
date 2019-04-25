@@ -13,15 +13,24 @@ class Richting extends CI_Controller
     /* @var Richting_model */
     public $Richting_model;
 
+    /**
+     * Richting constructor.
+     */
+
     function __construct()
     {
         parent::__construct();
         $this->load->model('Richting_model');
     }
 
-    /*
-     * Listing of richting
+
+    /**
+     * Geeft een lijst weer met alle richtingen
+     *
+     * @see Richting_model::get_all_richting()
+     * @see richting/index.php
      */
+
     function index()
     {
         $data['richting'] = $this->Richting_model->get_all_richting();
@@ -30,9 +39,14 @@ class Richting extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
-    /*
-     * Adding a new richting
+    /**
+     * Voegt een nieuwe richting toe
+     *
+     * @see Richting_model::add_richting()
+     * @see richting/index.php
+     * @see richting/add.php
      */
+
     function add()
     {
         if (isset($_POST) && count($_POST)>0) {
@@ -51,6 +65,17 @@ class Richting extends CI_Controller
     /*
      * Editing a richting
      */
+
+    /**
+     * Een richting wijzigen
+     *
+     * @param $id Het id van de richting die getoond wordt
+     * @see Richting_model::get_richting()
+     * @see Richting_model::update_richting()
+     * @see richting/index.php
+     * @see richting/edit.php
+     */
+
     function edit($id)
     {
         // check if the richting exists before trying to edit it
@@ -75,6 +100,16 @@ class Richting extends CI_Controller
     /*
      * Deleting richting
      */
+
+    /**
+     * Verwijdert een richting
+     *
+     * @param $id Het id van de richting die wordt verwijderd
+     * @see Richting_model::get_richting()
+     * @see Richting_model::delete_richting()
+     * @see richting/index.php
+     */
+
     function remove($id)
     {
         $richting = $this->Richting_model->get_richting($id);

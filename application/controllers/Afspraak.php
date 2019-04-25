@@ -40,12 +40,12 @@ class Afspraak extends CI_Controller
      */
     function add()
     {
-        if (isset($_POST) && count($_POST)>0) {
+        if (isset($_POST) && count($_POST) > 0) {
             $params = [
                 'studentId' => $this->input->post('studentId'),
-                'docentId'  => $this->input->post('docentId'),
-                'lokaalId'  => $this->input->post('lokaalId'),
-                'tijdslot'  => $this->input->post('tijdslot'),
+                'docentId' => $this->input->post('docentId'),
+                'lokaalId' => $this->input->post('lokaalId'),
+                'tijdslot' => $this->input->post('tijdslot'),
             ];
 
             $afspraak_id = $this->Afspraak_model->add_afspraak($params);
@@ -71,12 +71,12 @@ class Afspraak extends CI_Controller
         $data['afspraak'] = $this->Afspraak_model->get_afspraak($id);
 
         if (isset($data['afspraak']['id'])) {
-            if (isset($_POST) && count($_POST)>0) {
+            if (isset($_POST) && count($_POST) > 0) {
                 $params = [
                     'studentId' => $this->input->post('studentId'),
-                    'docentId'  => $this->input->post('docentId'),
-                    'lokaalId'  => $this->input->post('lokaalId'),
-                    'tijdslot'  => $this->input->post('tijdslot'),
+                    'docentId' => $this->input->post('docentId'),
+                    'lokaalId' => $this->input->post('lokaalId'),
+                    'tijdslot' => $this->input->post('tijdslot'),
                 ];
 
                 $this->Afspraak_model->update_afspraak($id, $params);
@@ -108,6 +108,7 @@ class Afspraak extends CI_Controller
         } else
             show_error('The afspraak you are trying to delete does not exist.');
     }
+}
 
     /* gebruiken voor afpraak maken joinen
 
