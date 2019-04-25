@@ -11,6 +11,9 @@ class Afspraak extends CI_Controller
     /* @var Afspraak_model */
     public $Afspraak_model;
 
+    /**
+     * Afspraak constructor.
+     */
     function __construct()
     {
         parent::__construct();
@@ -35,7 +38,7 @@ class Afspraak extends CI_Controller
      * Voegt een afspraak toe
      *
      * @see Afspraak_model::add_afspraak()
-     * @see afspraak/index.php
+     * @see Afspraak::index
      * @see afpraak/add.php
      */
     function add()
@@ -62,7 +65,7 @@ class Afspraak extends CI_Controller
      * @param $id id van de afspraak
      * @see Afspraak_model::get_afspraak()
      * @see Afspraak_model::update_afspraak()
-     * @see afspraak/index.php
+     * @see Afspraak::index
      * @see afspraak/edit.php
      */
     function edit($id)
@@ -95,7 +98,7 @@ class Afspraak extends CI_Controller
      *
      * @see Afspraak_model::get_afspraak()
      * @see Afspraak_model::delete_afspraak()
-     * @see afspraak/index.php
+     * @see Afspraak::index
      */
     function remove($id)
     {

@@ -13,14 +13,25 @@ class Gebruiker extends CI_Controller
     /* @var Gebruiker_model */
     public $Gebruiker_model;
 
+    /**
+     * Gebruiker constructor.
+     */
     public function __construct()
     {
         parent::__construct();
         $this->load->helper('form');
     }
 
-    /*
-     * Listing of gebruiker
+    /**
+     * Toont de login pagina van de gebruiker
+     *
+     * @see authex::getGebruikerInfo()
+     *
+     * @see gebruiker/index.php
+     * @see Traject::index
+     * @see Gebruikertype::docent
+     * @see Gebruikertype::isp
+     * @see Gebruikertype::opleidingmanager
      */
     function index()
     {
@@ -56,6 +67,11 @@ class Gebruiker extends CI_Controller
         $this->template->load('main_master', $partials, $data);
     }
 
+    /**
+     * Toont de index pagina van de simulatie
+     *
+     * @see gebruiker/simulatie.php
+     */
     function index_simulatie()
     {
         $data['ontwikkelaar'] = 'War Op de Beeck';
@@ -68,6 +84,11 @@ class Gebruiker extends CI_Controller
         $this->template->load('main_master', $partials, $data);
     }
 
+    /**
+     * Toont de index pagina van de klaskeuze
+     *
+     * @see gebruiker/klaskeuze.php
+     */
     function index_klaskeuze()
     {
         $data['ontwikkelaar'] = 'War Op de Beeck';
@@ -80,6 +101,13 @@ class Gebruiker extends CI_Controller
         $this->template->load('main_master', $partials, $data);
     }
 
+    /**
+     * Controleert of het paswoord overeenkomt met de email
+     *
+     * @see authex::meldAan()
+     * @see Gebruiker::index()
+     * @see Gebruiker::toonFout
+     */
     public
     function controleerAanmelden()
     {
@@ -93,6 +121,12 @@ class Gebruiker extends CI_Controller
         }
     }
 
+    /**
+     * Meldt de gebruiker af
+     *
+     * @see authex::meldAf()
+     * @see Gebruiker::index
+     */
     public
     function meldAf()
     {
@@ -100,6 +134,12 @@ class Gebruiker extends CI_Controller
         redirect('gebruiker/index');
     }
 
+    /**
+     * Toont een fout als er iets misloopt bij het aanmelden
+     *
+     * @see authex::getGebruikerInfo()
+     * @see gebruiker/fout_aanmelden.php
+     */
     public
     function toonFout()
     {
@@ -116,8 +156,12 @@ class Gebruiker extends CI_Controller
         $this->template->load('main_master', $partials, $data);
     }
 
-    /*
-     * Adding a new gebruiker
+    /**
+     * Voegt een gebruiker toe aan de database
+     *
+     * @see Gebruiker_model::add_gebruiker()
+     * @see Gebruiker::index
+     * @see gebruiker/add.php
      */
     function add()
     {
@@ -141,8 +185,15 @@ class Gebruiker extends CI_Controller
         }
     }
 
-    /*
-     * Editing a gebruiker
+    /**
+     * Past de gegevens van een gebruiker met een bepaalde id aan
+     *
+     * @param $id de id van de gebruiker die aangepast wordt
+     * @see Gebruiker_model::get()
+     * @see Gebruiker_model::update_gebruiker()
+     * @see Gebruiker::index
+     * @see gebruiker/edit.php
+     *
      */
     function edit($id)
     {
@@ -172,8 +223,14 @@ class Gebruiker extends CI_Controller
             show_error('The gebruiker you are trying to edit does not exist.');
     }
 
-    /*
-     * Deleting gebruiker
+
+    /**
+     * Verwijdert een gebruiker met de opgegeven id
+     *
+     * @param $id de id van de gebruiekr die verwijdert wordt
+     * @see Gebruiker_model::get()
+     * @see Gebruiker_model::delete_gebruiker()
+     * @see Gebruiker::index
      */
     function remove($id)
     {
@@ -187,6 +244,12 @@ class Gebruiker extends CI_Controller
             show_error('The gebruiker you are trying to delete does not exist.');
     }
 
+    /**
+     * Haalt de gegevens van de klas op met opgegeven id
+     *
+     * @param $klasid de id van de klas die opgehaald wordt
+     * @see klas/index.php
+     */
     public
     function haalKlasIdOp($klasid)
     {
@@ -196,19 +259,6 @@ class Gebruiker extends CI_Controller
         }
 
         $this->load->view("klas/index");
-    }
-
-    public
-    function maakGebruiker()
-    {
-        $gebruiker = new stdClass();
-        $gebruiker->voornaam = "Simon";
-        $gebruiker->achternaam = "Smedts";
-        $gebruiker->email = "r0695798@student.thomasmore.be";
-        $gebruiker->paswoord = password_hash("r0695798", PASSWORD_DEFAULT);
-        $gebruiker->gebruikertypeId = 1;
-        $this->db->insert('gebruiker', $gebruiker);
-        return $this->db->insert_id();
     }
 }
 

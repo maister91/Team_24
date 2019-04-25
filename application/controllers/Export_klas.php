@@ -13,6 +13,9 @@ class Export_klas extends CI_Controller
     /* @var Export_klas_model */
     public $export_klas_model;
 
+    /**
+     * Export_klas constructor.
+     */
     function __construct()
     {
         parent::__construct();
@@ -20,8 +23,14 @@ class Export_klas extends CI_Controller
         $this->load->library('excel');
     }
 
-    /*
-     * Listing of klas
+    /**
+     * Toont de pagina voor de export van de klassen
+     *
+     * @see authex::getGebruikerInfo()
+     * @see export_klas_model::get_all_lesmoment()
+     * @see Gebruiker::meldAf
+     * @see Gebruiker::index.php
+     * @see klas/export.php
      */
     function index()
     {
@@ -48,6 +57,13 @@ class Export_klas extends CI_Controller
             }
         };
     }
+
+
+    /**
+     * Maakt een excel document aan van alle gegevens van een kalas
+     *
+     * @see export_klas_model::get_all_lesmoment()
+     */
 
     public function createXLS()
     {

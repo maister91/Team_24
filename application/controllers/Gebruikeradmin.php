@@ -8,13 +8,21 @@
  */
 
 class Gebruikeradmin extends CI_Controller{
+    /**
+     * Gebruikeradmin constructor.
+     */
     function __construct()
     {
         parent::__construct();
         $this->load->model('Gebruiker_model');
     }
-    /*
-     * Listing of gebruikers
+
+
+    /**
+     * toont de indexpagina van de admin gebruiker
+     *
+     * @see Gebruiker_model::get_all_gebruikerby_type()
+     * @see gebruikeradmin/index.php
      */
     function index()
     {
@@ -22,8 +30,17 @@ class Gebruikeradmin extends CI_Controller{
         $data['_view'] = 'gebruikeradmin/index';
         $this->load->view('layouts/main',$data);
     }
-    /*
-     * Adding a new gebruiker
+
+    /**
+     * voegt een nieuwe admin gebruiker toe (aan de databank)
+     *
+     * @see Gebruiker_model::add_gebruiker()
+     * @see Gebruikertype_model::get_all_gebruikertype()
+     * @see Klas_model::get_all_klassen()
+     * @see Traject_model::get_all_traject()
+     * @see Afspraak_model::get_all_afspraak()
+     * @see Gebruikeradmin::index
+     * @see gebruikeradmin/add.php
      */
     function add()
     {
@@ -57,8 +74,19 @@ class Gebruikeradmin extends CI_Controller{
             $this->load->view('layouts/main',$data);
         }
     }
-    /*
-     * Editing a gebruiker
+
+    /**
+     * Wijzigt de gegevens van admin gebruiker
+     *
+     * @param $id de id van de admin die gewijzigd moet worden
+     * @see Gebruiker_model::getGebruiker()
+     * @see Gebruikertype_model::get_all_gebruikertype()
+     * @see Klas_model::get_all_klassen()
+     * @see Traject_model::get_all_traject()
+     * @see Afspraak_model::get_all_afspraak()
+     * @see gebruikeradmin/index.php
+     * @see gebruikeradmin/edit.php
+     *
      */
     function edit($id)
     {
@@ -98,8 +126,14 @@ class Gebruikeradmin extends CI_Controller{
         else
             show_error('The gebruiker you are trying to edit does not exist.');
     }
-    /*
-     * Deleting gebruiker
+
+    /**
+     * Verwijdert een admin gebruiker
+     *
+     * @param $id de id van de admin gebruiker die verwijdert wordt
+     * @see Gebruiker_model::getGebruiker()
+     * @see Gebruiker_model::delete_gebruiker()
+     * @see gebruikeradmin::index()
      */
     function remove($id)
     {

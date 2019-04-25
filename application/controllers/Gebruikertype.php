@@ -13,14 +13,20 @@ class Gebruikertype extends CI_Controller
     /* @var Gebruikertype_model */
     public $Gebruikertype_model;
 
+    /**
+     * Gebruikertype constructor.
+     */
     function __construct()
     {
         parent::__construct();
         $this->load->model('Gebruikertype_model');
     }
 
-    /*
-     * Listing of gebruikertype
+    /**
+     * toont de index pagina van gebruikertype
+     *
+     * @see Gebruikertype_model::get_all_gebruikertype()
+     * @see gebruikertype/index.php
      */
     function index()
     {
@@ -30,6 +36,14 @@ class Gebruikertype extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
+    /**
+     * toont de index pagina van de docent
+     *
+     * @see authex::getGebruikerInfo()
+     * @see Gebruikertype_model::get_all_gebruikertype()
+     * @see docent_landing.php
+     *
+     */
     function docent()
     {
         $ingelogd = $this->authex->getGebruikerInfo();
@@ -56,6 +70,15 @@ class Gebruikertype extends CI_Controller
         };
     }
 
+    /**
+     * toont de index pagina van de isp-verantwoordelijke
+     *
+     * @see authex::getGebruikerInfo()
+     * @see Gebruikertype_model::get_all_gebruikertype()
+     * @see Gebruiker::index()
+     * @see isp_landing.php
+     *
+     */
     function isp()
     {
         $ingelogd = $this->authex->getGebruikerInfo();
@@ -82,6 +105,14 @@ class Gebruikertype extends CI_Controller
         };
     }
 
+    /**
+     * toont de index pagina van de opleidingsmanager
+     *
+     * @see authex::getGebruikerInfo()
+     * @see Gebruikertype_model::get_all_gebruikertype()
+     * @see opleidingmanager.php
+     *
+     */
     function opleidingmanager()
     {
         $ingelogd = $this->authex->getGebruikerInfo();
@@ -108,8 +139,11 @@ class Gebruikertype extends CI_Controller
         };
     }
 
-    /*
-     * Adding a new gebruikertype
+    /**
+     * voegt een gebruikerstype toe aan de databank
+     *
+     * @see Gebruikertype_model::add_gebruikertype()
+     * @see gebruikertype/add.php
      */
     function add()
     {
@@ -126,8 +160,15 @@ class Gebruikertype extends CI_Controller
         }
     }
 
-    /*
-     * Editing a gebruikertype
+    /**
+     * Wijzigt een bestaande gebruikerstype
+     *
+     * @param $id de id van het gebruikerstype die gewijzigd wordt
+     * @see Gebruikertype_model::get_gebruikertype()
+     * @see Gebruikertype_model::update_gebruikertype()
+     * @see Gebruikertype::index()
+     * @see gebruikertype/edit.php
+
      */
     function edit($id)
     {
@@ -150,8 +191,13 @@ class Gebruikertype extends CI_Controller
             show_error('The gebruikertype you are trying to edit does not exist.');
     }
 
-    /*
-     * Deleting gebruikertype
+    /**
+     * Verwijdert een bestaande gebruikerstype
+     *
+     * @param $id de id van het gebruikerstype die verwijdert wordt
+     * @see Gebruikertype_model::get_gebruikertype()
+     * @see Gebruikertype_model::delete_gebruikertype()
+     * @see Gebruikertype::index()
      */
     function remove($id)
     {
