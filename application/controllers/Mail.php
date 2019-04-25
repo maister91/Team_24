@@ -12,15 +12,24 @@ class Mail extends CI_Controller
 
     /* @var Mail_model */
     public $Mail_model;
+
+    /**
+     * Mail constructor.
+     */
+
     function __construct()
     {
         parent::__construct();
         $this->load->model('Mail_model');
     }
 
-    /*
-     * Listing of mail
+    /**
+     * Lijst van de mails
+     *
+     * @see Mail_model::get_all_mail()
+     * @see mail/index.php
      */
+
     function index()
     {
         $data['mail'] = $this->Mail_model->get_all_mail();
@@ -29,9 +38,14 @@ class Mail extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
-    /*
-     * Adding a new mail
+    /**
+     * Een mail toevoegen
+     *
+     * @see Mail_model::add_mail()
+     * @see mail/index.php
+     * @see mail/add.php
      */
+
     function add()
     {
         if (isset($_POST) && count($_POST)>0) {
@@ -48,9 +62,16 @@ class Mail extends CI_Controller
         }
     }
 
-    /*
-     * Editing a mail
+    /**
+     * Een mail wijzigen
+     *
+     * @param $id Het id van de mail die gewijzigd wordt
+     * @see Mail_model::get_mail()
+     * @see Mail_model::update_mail()
+     * @see mail/index.php
+     * @see mail/edit.php
      */
+
     function edit($id)
     {
         // check if the mail exists before trying to edit it
@@ -76,6 +97,15 @@ class Mail extends CI_Controller
     /*
      * Deleting mail
      */
+
+    /**
+     * Verwijderd een mail
+     *
+     * @param $id Het id van de mail die wordt verwijderd
+     * @see Mail_model::get_mail()
+     * @see mail/index.php
+     */
+
     function remove($id)
     {
         $mail = $this->Mail_model->get_mail($id);

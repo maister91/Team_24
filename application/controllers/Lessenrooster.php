@@ -14,6 +14,11 @@ class Lessenrooster extends CI_Controller
     public $vak_model;
     /* @var Klas_model */
     public $klas_model;
+
+    /**
+     * Lessenrooster constructor.
+     */
+
     function __construct()
     {
         parent::__construct();
@@ -21,6 +26,18 @@ class Lessenrooster extends CI_Controller
         $this->load->model('vak_model');
         $this->load->model('klas_model');
     }
+
+    /**
+     * Geeft het lessenrooster weer
+     *
+     * @see authex::getGebruikerInfo()
+     * @see Lesmoment_model::update_klas()
+     * @see Lesmoment_model::get_lesmoment_by_klas_en_semester()
+     * @see Vak_model::get_vak()
+     * @see Klas_model::get_all_klas()
+     * @see lessenrooster.php
+     */
+
     function index()
     {
         $klasId = $this->input->post('klassen');
@@ -38,13 +55,13 @@ class Lessenrooster extends CI_Controller
         foreach ($lesmomenten as $lesmoment) {
             $rooster[$lesmoment['lesblok']][$lesmoment['weekdag']] = [
                 'lesblok' => $lesmoment['lesblok'],
-                'vakNaam' => $this->vak_model->get_vak($lesmoment['vakId'])['naam'],
+                'vakNaam' => $this->Vak_model->get_vak($lesmoment['vakId'])['naam'],
             ];
         }
         $data['lesmomenten'] = $rooster;
         $data['klasId'] = $klasId;
         $data['semesterId'] = $semesterId;
-        $data['klassen'] = $this->klas_model->get_all_klas();
+        $data['klassen'] = $this->Klas_model->get_all_klas();
         $data['titel'] = '';
         $data['ontwikkelaar'] = 'Melih Doksanbir';
         $data['tester'] = 'Thomas Dergent';

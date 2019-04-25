@@ -12,15 +12,24 @@ class Lokaal extends CI_Controller
 
     /* @var Lokaal_model */
     public $Lokaal_model;
+
+    /**
+     * Lokaal constructor.
+     */
+
     function __construct()
     {
         parent::__construct();
         $this->load->model('Lokaal_model');
     }
 
-    /*
-     * Listing of lokaal
+    /**
+     * Toont een lijst met de lokalen
+     *
+     * @see Lokaal_model::get_all_lokaal()
+     * @ see lokaal/index.php
      */
+
     function index()
     {
         $data['lokaal'] = $this->Lokaal_model->get_all_lokaal();
@@ -29,9 +38,14 @@ class Lokaal extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
-    /*
-     * Adding a new lokaal
+    /**
+     * Voegt een nieuw lokaal toe
+     *
+     * @see Lokaal_model::add_lokaal()
+     * @see lokaal/index.php
+     * @see lokaal/add.php
      */
+
     function add()
     {
         if (isset($_POST) && count($_POST)>0) {
@@ -50,6 +64,18 @@ class Lokaal extends CI_Controller
     /*
      * Editing a lokaal
      */
+
+    /**
+     * Wijzigt een lokaal
+     *
+     * @param $id Het id van het lokaal dat wordt gewijzigd
+     *
+     * @see Lokaal_model::get_lokaal()
+     * @see Lokaal_model::update_lokaal()
+     * @see lokaal/idnex.php
+     * @see lokaal/edit.php
+     */
+
     function edit($id)
     {
         // check if the lokaal exists before trying to edit it
@@ -74,6 +100,17 @@ class Lokaal extends CI_Controller
     /*
      * Deleting lokaal
      */
+
+    /**
+     * Verwijderd een lokaal
+     *
+     * @param $id Het id van het lokaal dat verwijderd wordt
+     *
+     * @see Lokaal_model::get_lokaal()
+     * @see Lokaal_model::delete_lokaal()
+     * @see lokaal/index.php
+     */
+    
     function remove($id)
     {
         $lokaal = $this->Lokaal_model->get_lokaal($id);
