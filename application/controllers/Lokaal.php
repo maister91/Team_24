@@ -42,7 +42,7 @@ class Lokaal extends CI_Controller
      * Voegt een nieuw lokaal toe
      *
      * @see Lokaal_model::add_lokaal()
-     * @see lokaal/index.php
+     * @see lokaal::index()
      * @see lokaal/add.php
      */
 
@@ -72,7 +72,7 @@ class Lokaal extends CI_Controller
      *
      * @see Lokaal_model::get_lokaal()
      * @see Lokaal_model::update_lokaal()
-     * @see lokaal/idnex.php
+     * @see lokaal::index()
      * @see lokaal/edit.php
      */
 
@@ -108,9 +108,9 @@ class Lokaal extends CI_Controller
      *
      * @see Lokaal_model::get_lokaal()
      * @see Lokaal_model::delete_lokaal()
-     * @see lokaal/index.php
+     * @see lokaal::index()
      */
-    
+
     function remove($id)
     {
         $lokaal = $this->Lokaal_model->get_lokaal($id);

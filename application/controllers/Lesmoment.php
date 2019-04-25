@@ -42,7 +42,7 @@ class Lesmoment extends CI_Controller
      * Een nieuw lesmoment toevoegen
      *
      * @see Lesmoment_model::add_lesmoment()
-     * @see lesmoment/index.php
+     * @see lesmoment::index()
      * @see lesmoment/add.php
      */
     function add()
@@ -72,7 +72,7 @@ class Lesmoment extends CI_Controller
      *
      * @see Lesmoment_model::get_lesmoment()
      * @see Lesmoment_model::update_lesmoment()
-     * @see lesmoment/index.php
+     * @see lesmoment::index()
      * @see lesmoment/edit.php
      */
 
@@ -108,7 +108,7 @@ class Lesmoment extends CI_Controller
      * @param $id Het id van het lesmoment dat verwijderd wordt
      * @see Lesmoment_model::get_lesmoment()
      * @see Lesmoment_model::delete_lesmoment()
-     * @see lesmoment/index.php
+     * @see lesmoment::index()
      */
 
     function remove($id)

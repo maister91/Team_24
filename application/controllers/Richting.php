@@ -43,7 +43,7 @@ class Richting extends CI_Controller
      * Voegt een nieuwe richting toe
      *
      * @see Richting_model::add_richting()
-     * @see richting/index.php
+     * @see richting::index()
      * @see richting/add.php
      */
 
@@ -72,7 +72,7 @@ class Richting extends CI_Controller
      * @param $id Het id van de richting die getoond wordt
      * @see Richting_model::get_richting()
      * @see Richting_model::update_richting()
-     * @see richting/index.php
+     * @see richting::index()
      * @see richting/edit.php
      */
 
@@ -107,7 +107,7 @@ class Richting extends CI_Controller
      * @param $id Het id van de richting die wordt verwijderd
      * @see Richting_model::get_richting()
      * @see Richting_model::delete_richting()
-     * @see richting/index.php
+     * @see richting::index()
      */
 
     function remove($id)

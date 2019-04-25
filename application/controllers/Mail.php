@@ -42,7 +42,7 @@ class Mail extends CI_Controller
      * Een mail toevoegen
      *
      * @see Mail_model::add_mail()
-     * @see mail/index.php
+     * @see mail::index()
      * @see mail/add.php
      */
 
@@ -68,7 +68,7 @@ class Mail extends CI_Controller
      * @param $id Het id van de mail die gewijzigd wordt
      * @see Mail_model::get_mail()
      * @see Mail_model::update_mail()
-     * @see mail/index.php
+     * @see mail::index()
      * @see mail/edit.php
      */
 

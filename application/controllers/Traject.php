@@ -90,7 +90,7 @@ class Traject extends CI_Controller
      * @param $id Het id van de gebruiker die een traject gaat kiezen
      * @see Gebruiker_model::getGebruiker()
      * @see Gebruiker_model::update_gebruiker()
-     * @see traject_aanduiden.php
+     * @see Traject::trajectaanduiden
      * @see gebruiker/edit.php
      */
 
@@ -125,7 +125,7 @@ class Traject extends CI_Controller
      * Voegt een nieuw traject toe
      *
      * @see Traject_model::add_traject()
-     * @see traject/index.php
+     * @see Traject::index()
      * @see traject/add.php
      */
 
@@ -155,7 +155,7 @@ class Traject extends CI_Controller
      * @param $id Het id van het huidige traject
      * @see Traject_model::get_traject()
      * @see Traject_model::update_traject()
-     * @see traject/index.php
+     * @see Traject::index()
      * @see traject/edit.php
      */
 
@@ -191,7 +191,7 @@ class Traject extends CI_Controller
      * @param $id Het id van het traject dat wordt verwijderd
      * @see Traject_model::get_traject()
      * @see Traject_model::delete_traject()
-     * @see traject/index.php
+     * @see Traject::index()
      */
 
     function remove($id)

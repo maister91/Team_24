@@ -13,6 +13,10 @@ class Klas extends CI_Controller
     /* @var Klas_model */
     public $Klas_model;
 
+    /**
+     * Klas constructor.
+     */
+
     function __construct()
     {
         parent::__construct();
@@ -22,6 +26,17 @@ class Klas extends CI_Controller
 
     /*
      * Listing of klas
+     */
+
+    /**
+     * Lijst met de klassen
+     *
+     * @see authex::getGebruikerInfo()
+     *
+     * @see Klas::index()
+     * @see Klas_model::get_all_klas()
+     * @see Gebruiker::meldAf()
+     *
      */
     function index()
     {
@@ -51,6 +66,15 @@ class Klas extends CI_Controller
         };
     }
 
+    /**
+     * Geeft de klasindeling weer
+     *
+     * @see authex::getGebruikerInfo()
+     * @see Gebruiker::index()
+     * @see Klas_model::get_klas_gebruiker()
+     * @see klas/edit.php
+     * @see Gebruiker::meldAf()
+     */
     function klasindeling()
     {
         $ingelogd = $this->authex->getGebruikerInfo();
@@ -79,6 +103,12 @@ class Klas extends CI_Controller
         };
     }
 
+    /**
+     * De index beheren
+     *
+     * @see Klas_model::get_klassen()
+     * @see klas/beheren.php
+     */
     function index_beheren()
     {
         $data['ontwikkelaar'] = 'Thomas Dergent';
@@ -91,6 +121,12 @@ class Klas extends CI_Controller
         $this->template->load('main_master', $partials, $data);
     }
 
+    /**
+     * De index aanpasssen
+     * @see Klas_model::get_all_klas()
+     * @see klas/aanpassen.php
+     */
+
     function index_aanpassen()
     {
         $data['titel'] = 'Klassen toevoegen';
@@ -101,6 +137,11 @@ class Klas extends CI_Controller
         $this->template->load('main_master', $partials, $data);
     }
 
+    /**
+     * @throws PHPExcel_Exception
+     * @throws PHPExcel_Reader_Exception
+     * @throws PHPExcel_Writer_Exception
+     */
     public function createXLS()
     {
         // create file name
@@ -131,6 +172,14 @@ class Klas extends CI_Controller
     /*
      * Adding a new klas
      */
+
+    /**
+     * Een klas toevoegen
+     *
+     * @see Klas_model::add_klas()
+     * @see Klas::index()
+     * @see klas/add.php
+     */
     function add()
     {
         if (isset($_POST) && count($_POST) > 0) {
@@ -147,8 +196,14 @@ class Klas extends CI_Controller
         }
     }
 
-    /*
-     * Editing a klas
+    /**
+     * Een klas wijzigen
+     * @param $id Het id van de klas dat wordt gewijzigd
+     *
+     * @see Klas_model::get_klas()
+     * @see Klas_model::update_klas()
+     * @see Klas::index()
+     * @see klad/edit.php
      */
     function edit($id)
     {
@@ -172,8 +227,14 @@ class Klas extends CI_Controller
             show_error('The klas you are trying to edit does not exist.');
     }
 
-    /*
-     * Deleting klas
+    /**
+     * Een klas verwijderen
+     *
+     * @param $id Het id van een klas dat verwijderd wordt
+     *
+     * @see Klas_model::get_klas()
+     * @see Klas_model::delete_klas()
+     * @see Klas::index()
      */
     function remove($id)
     {
@@ -187,6 +248,11 @@ class Klas extends CI_Controller
             show_error('The klas you are trying to delete does not exist.');
     }
 
+    /**
+     * Haal lege klas op
+     * @return stdClass
+     */
+
     function getEmptyKlas()
     {
         $klas = new stdClass();
@@ -197,6 +263,13 @@ class Klas extends CI_Controller
 
         return $klas;
     }
+
+    /**
+     * Maak een nieuwe klas
+     *
+     * @see Klas::getEmptyKlas()
+     * @see klas/klas_form.php
+     */
 
     public function maakNieuwe()
     {
@@ -210,6 +283,16 @@ class Klas extends CI_Controller
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
     }
+
+    /**
+     * Wijzig een klas
+     *
+     * @param $id Het id van de klas die wordt gewijzigd
+     *
+     * @see Klas::$Klas_model
+     * @see Klas_model::get_klas()
+     * @see Klas::klas_form
+     */
 
     public function wijzig($id)
     {
@@ -228,6 +311,15 @@ class Klas extends CI_Controller
         $this->template->load('main_master', $partials, $data);
     }
 
+    /**
+     * Een klas verwijderen
+     *
+     * @param $id Het id van de klas dat wordt verwijderd
+     *
+     * @see Klas::$Klas_model
+     * @see Klas_model::delete_klas()
+     * @see Klas::index_beheren()
+     */
     public function schrap($id)
     {
         $this->load->model('Klas_model');
@@ -235,6 +327,14 @@ class Klas extends CI_Controller
 
         redirect('/klas/index_beheren');
     }
+
+    /**
+     * Het registreren van een klas
+     *
+     * @see Klas_model::insert()
+     * @see Klas_model::update_klas()
+     * @see Klas::index_beheren()
+     */
 
     public function registreer()
     {

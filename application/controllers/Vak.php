@@ -41,8 +41,8 @@ class Vak extends CI_Controller
     /**
      * Voegt een vak toe
      *
-     * @see Vak_model::get_all_vak()
-     * @see vak/index.php
+     * @see Vak_model::add_vak()
+     * @see Vak::index()
      * @see vak/add.php
      */
     function add()
@@ -71,7 +71,7 @@ class Vak extends CI_Controller
      * @param $id Het id van het vak dat getoond wordt
      * @see Vak_model::get_vak()
      * @see Vak_model::update_vak()
-     * @see vak/index.php
+     * @see Vak::index()
      * @see vak/edit.php
      *
      */
@@ -106,7 +106,7 @@ class Vak extends CI_Controller
      * @param $id Het id van het vak dat verwijderd wordt
      * @see Vak_model::get_vak()
      * @see Vak_model::delete_vak()
-     * @see vak/index.php
+     * @see Vak::index()
      */
     function remove($id)
     {
