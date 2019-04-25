@@ -10,6 +10,7 @@
 <div class="container">
     <br/>
     <h3 align="center">Uurrooster importeren</h3>
+    <h2> <a href="<?php echo site_url("excel_import/handleiding"); ?>">handleiding</a></h2>
     <form action="<?php echo base_url(); ?>index.php/excel_import/import" method="post" id="import_form"
           enctype="multipart/form-data">
         <p><label>Select Excel File</label>

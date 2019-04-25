@@ -53,7 +53,7 @@ class Lessenrooster extends CI_Controller
 
         $data['_view'] = 'lessenrooster';
         $partials = ['hoofding' => 'main_header',
-            'inhoud' => 'traject/index',
+            'inhoud' => 'lessenrooster',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
 

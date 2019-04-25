@@ -30,6 +30,9 @@ class Excel_import extends CI_Controller
         $this->load->view('excel_import');
 
     }
+    function handleiding(){
+        $this->load->view("handleiding");
+    }
 
     function import()
     {
