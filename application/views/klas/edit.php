@@ -23,7 +23,7 @@
 <table>
     <?php
     foreach ($klassen as $klas){
-        echo '<tr><td>' . $klas->naam. ' ' . $klas->gebruiker->achternaam . '</td></tr>';
+        echo '<tr><td>' . $klas->gebruiker->achternaam . '</td></tr>';
     }
     ?>
 </table>

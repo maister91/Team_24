@@ -7,6 +7,9 @@
  */
 ?>
 
+<a href="#" data-toggle="tooltip" data-placement="right"
+   title="Hier kan u de beschikbare klasgegevens vinden. Met de knop vanonder kan u alle klasgegevens die hier te bekijken zijn in een excel bestand downloaden."><i
+            class="far fa-question-circle"></i></a>
 <h2>Beschikbare klasgegevens</h2>
 <table>
     <tr>

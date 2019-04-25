@@ -3,6 +3,6 @@
     "type": "project",
     "minimum-stability": "stable",
     "require": {
-        "phpoffice/phpexcel": "dev-master"
+        "phpoffice/phpspreadsheet": "^1.6"
     }
 }

@@ -128,5 +128,3 @@ class Afspraak extends CI_Controller
 
         return $klassen;
 
-}
-
