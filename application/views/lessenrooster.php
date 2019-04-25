@@ -1,4 +1,13 @@
 <?php
+/**
+ * @file lessenrooster.php
+ *
+ * View waar je de verschillende lessenroosters kan bekijken
+ * -gebruikt bootstrap
+ */
+?>
+
+<?php
 if ($feedback == 'keuzeSuccesvol') {
     ?><div class="alert alert-success" role="alert">
         Klaskeuze is succesvol opgeslagen!

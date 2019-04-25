@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file model_landing.php
+ *
+ * View waar je de functionaliteiten van een model student kan bekijken
+ * -gebruikt bootstrap
+ */
+?>
+
 <h1><?php echo $titel?></h1>
 
 <table class="table table-borderless ">

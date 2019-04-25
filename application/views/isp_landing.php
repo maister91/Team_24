@@ -1,9 +1,9 @@
 <?php
 /**
- * @file index.php
+ * @file isp_landing.php
  *
- * View waar de home (landing) page van de isp-verantwoordelijke getoond wordt
- * - gebruikt bootstrap
+ * View waar de verschillende functionaliteiten van de isp verantwoordelijke kunnen worden bekeken
+ * -gebruikt bootstrap
  */
 ?>
     <h1 class="text-center"><?php $title?></h1>

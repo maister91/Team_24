@@ -1,3 +1,12 @@
+<?php
+/**
+ * @file main_footer.php
+ *
+ * View waar de footer wordt samengesteld
+ * -gebruikt bootstrap
+ */
+?>
+
 <footer class="page-footer font-small blue pt-4">
     <div class="container-fluid text-center text-md-left">
         <div class="row">

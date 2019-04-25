@@ -1,4 +1,3 @@
-<h1><?php echo $titel?></h1>
 <?php
 /**
  * @file combi_landing.php
@@ -7,6 +6,9 @@
  * - gebruikt bootstrap
  */
 ?>
+
+<h1><?php echo $titel?></h1>
+
 <table class="table table-borderless ">
     <thead>
     <tr>
