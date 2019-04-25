@@ -84,7 +84,7 @@ class Gebruiker_model extends CI_Model
      */
     function get_all_gebruiker($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('klasId', $id);
         $query = $this->db->get('gebruiker');
         return $query->row();
     }

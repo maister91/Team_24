@@ -85,6 +85,7 @@ class Excel_import extends CI_Controller
             echo 'Data Imported successfully';
         }
     }
+
     protected function importVanExcel($path)
     {
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();

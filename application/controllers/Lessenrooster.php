@@ -44,13 +44,13 @@ class Lessenrooster extends CI_Controller
         $data['lesmomenten'] = $rooster;
         $data['klasId'] = $klasId;
         $data['semesterId'] = $semesterId;
-        $data['klassen'] = $this->klas_model->get_all_klassen();
+        $data['klassen'] = $this->klas_model->get_all_klas();
         $data['titel'] = '';
         $data['ontwikkelaar'] = 'Melih Doksanbir';
         $data['tester'] = 'Thomas Dergent';
         $data['_view'] = 'lessenrooster';
         $partials = ['hoofding' => 'main_header',
-            'inhoud' => 'traject/index',
+            'inhoud' => 'lessenrooster',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
     }
