@@ -25,7 +25,7 @@
         <tbody>
         <tr>
             <td><?php echo anchor('#', 'Klasindeling aanpassen', 'class="btn btn-outline-primary"'); ?></td>
-            <td><?php echo anchor('#', 'Afspraken beheren', 'class="btn btn-outline-primary"'); ?></td>
+            <td><?php echo anchor('', 'Afspraken beheren', 'class="btn btn-outline-primary"'); ?></td>
             <td><?php echo anchor('#', 'Studenteninformatie exporteren', 'class="btn btn-info"'); ?></td>
         </tr>
         <tr>
