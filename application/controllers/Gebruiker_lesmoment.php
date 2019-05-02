@@ -10,6 +10,9 @@
 class Gebruiker_lesmoment extends CI_Controller
 {
 
+    /**
+     * Gebruiker_lesmoment constructor.
+     */
     function __construct()
     {
         parent::__construct();

@@ -12,7 +12,12 @@ class Excel_export extends CI_Controller {
     /* @var Excel_export_model */
     public $excel_export_model;
 
-
+    /**
+     * Toont de export excel pagina
+     *
+     * @see Excel_export_model::fetch_data()
+     * @see excel_export.php
+     */
     function index()
     {
         $this->load->model("excel_export_model");
@@ -20,6 +25,12 @@ class Excel_export extends CI_Controller {
         $data['_view']       = 'excel_export';
         $this->load->view('layouts/main', $data);
     }
+
+    /**
+     * Alle records uit tabel gebruiker halen en in een excel zetten
+     *
+     * @see excel_export_model::fetch_data()
+     */
     function action()
     {
         $this->load->model("excel_export_model");
@@ -64,6 +75,11 @@ class Excel_export extends CI_Controller {
         $object_writer = PHPExcel_IOFactory::createWriter($object, 'Excel2007');
         $object_writer->save('php://output');
     }
+
+    /**
+     * Maakt een excel bestand aan en zet de gegevens van de action er in
+     *
+     */
     public function createXLS() {
         // create file name
         $fileName = 'data-'.time().'.xlsx';

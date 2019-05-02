@@ -12,6 +12,9 @@ class Excel_import extends CI_Controller
     /* @var Excel_import_model */
     public $excel_import_model;
 
+    /**
+     * Excel_import constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -23,6 +26,11 @@ class Excel_import extends CI_Controller
         $this->load->library('excel');
     }
 
+    /**
+     * Toont de excel import index pagina
+     *
+     * @see excel_import.php
+     */
     function index()
     {
         $data['titel'] = 'Importeer uurrooster';
@@ -37,6 +45,17 @@ class Excel_import extends CI_Controller
 
     }
 
+    /**
+     * Alle records uit excel halen en in een tabel van de database zetten
+     *
+     * @see klas_model::getKlasByName()
+     * @see klas_model::insert()
+     * @see richting_model::get_richting_by_name()
+     * @see richting_model::insertRichting()
+     * @see vak_model::get_vak_by_name_richting_fase()
+     * @see vak_model::insertVak()
+     * @see lesmoment_model::insertLesmoment()
+     */
     function import()
     {
         if (isset($_FILES["file"]["name"])) {
@@ -86,6 +105,11 @@ class Excel_import extends CI_Controller
         }
     }
 
+    /**
+     * importeert gegevens van een excel naar database
+     * @param $path het pad naar het excel bestand
+     * @return klassen
+     */
     protected function importVanExcel($path)
     {
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
@@ -126,6 +150,13 @@ class Excel_import extends CI_Controller
         }
         return $classes;
     }
+
+    /**
+     * Geeft het aantal uur voor een bepaald vak terug
+     *
+     * @param $vakNaam
+     * @return aantal uur voor bepaald vak
+     */
     protected function aantalUurVoorVak($vakNaam)
     {
         $data = [
@@ -217,6 +248,13 @@ class Excel_import extends CI_Controller
         }
         return null;
     }
+
+    /**
+     * zet id van weekdag om naar een dag in text
+     *
+     * @param $weekdagId
+     * @return weekdag in tekst
+     */
     protected function weekDagIdNaarTekst($weekdagId)
     {
         $weekdagen = [
