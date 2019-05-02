@@ -1,37 +1,36 @@
 <?php
 /**
- * @file docent_landing.php
+ * @file index.php
  *
- * View waar de homepage is voor de docent
+ * View waar de home (landing) page van de isp-verantwoordelijke getoond wordt
  * - gebruikt bootstrap
  */
 ?>
+    <h1 class="text-center"><?php $title?></h1>
+    <h2>Ingelogd als
+        <?php
+        $gebruiker = $this->authex->getGebruikerInfo();
+        echo $gebruiker->voornaam . ' ' . $gebruiker->achternaam;
+        ?>
+    </h2>
 
-<h2>Ingelogd als
-    <?php
-    $gebruiker = $this->authex->getGebruikerInfo();
-    echo $gebruiker->voornaam . ' ' . $gebruiker->achternaam ;
-    ?>
-</h2>
-
-<table class="table table-striped table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Beschrijving</th>
-        <th>Actions</th>
-    </tr>
-    <?php foreach($gebruiker->gebruikertype as $t){ ?>
+    <table class="table table-borderless ">
+        <thead>
         <tr>
-            <td><?php echo $t['id']; ?></td>
-            <td><?php echo $t['beschrijving']; ?></td>
-            <td>
-                <a href="<?php echo site_url('traject/edit/'.$t['id']); ?>" class="btn btn-info btn-xs">Edit</a>
-                <a href="<?php echo site_url('traject/remove/'.$t['id']); ?>" class="btn btn-danger btn-xs">Delete</a>
-            </td>
+            <th>Klasindelingen aanpassen</th>
+            <th>Afspraken</th>
+            <th>Info beheren</th>
         </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><?php echo anchor('Afspraak/index', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
+            <td></td>
+        </tbody>
+    </table>
 
-    <?php } ?>
 
-</table>
 
-<?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>
+
+
+<?php echo divAnchor('Gebruiker/meldAf', 'Afmelden'); ?>

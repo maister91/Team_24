@@ -108,23 +108,20 @@ class Afspraak extends CI_Controller
         } else
             show_error('The afspraak you are trying to delete does not exist.');
     }
-}
 
-    /* gebruiken voor afpraak maken joinen
-
-     * Haalt een klas op uit de tabel Klas
-     * @param $id de id van de klas
-     * @return klas
-
-    function get_klas()
+    public function registreer()
     {
-        $this->db->order_by('id', 'desc');
-        $query = $this->db->get('klas');
-        $klassen = $query->result();
+        $id = $this->input->post('id');
 
-        foreach($klassen as $klas){
-            $klas->gebruiker = $this->gebruiker_model->get_all_gebruiker($klas->id);
-        }
+        $afspraak = new stdClass();
+        $afspraak->id = $id;
+        $afspraak->studentId = $this->input->post('studentId');
+        $afspraak->docentId = $this->input->post('docentId');
+        $afspraak->lokaalId = $this->input->post('lokaalId');
+        $afspraak->tijdslot = $this->input->post('tijdslot');
 
-        return $klassen;
+        $this->load->model('Afspraak_model');
 
+        redirect('/Klas/index_beheren');
+    }
+}
