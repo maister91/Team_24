@@ -3,7 +3,8 @@
 <form method="post" accept-charset="utf-8" action="<?php echo site_url("traject/index"); ?>">
 <input type="submit" name="model" value="ModelTraject" class="btn btn-primary href=" href=" <?php echo site_url('lessenrooster/index'); ?>" >
    <?php  echo '<p>' .$trajecten[1]['beschrijving'] .'</p>' ?>
-<input type="submit" name="combi" value="CombiTraject"  href="<?php echo site_url('traject/index'); ?>" class="btn btn-primary">
+<input type="submit" name="combi" value="CombiTraject"  href="<?php echo site_url('traject/combi'); ?>" class="btn btn-primary">
     <?php  echo '<p>' .$trajecten[0]['beschrijving'] .'</p>' ?>
 </form>
 
+<a href="<?php echo site_url('traject/combi'); ?>"> traject samenstellen </a>
