@@ -230,14 +230,15 @@ class Traject extends CI_Controller
         foreach ($lesmomenten as $lesmoment) {
             $vak = $this->Vak_model->get_vak($lesmoment['vakId']);
             if (
-                in_array($vak['id'], json_decode($items, true))
+                in_array($vak['id'], json_decode($items, true)?:[])
                 || in_array($vak['id'], json_decode($items2, true)?:[])
                 || in_array($vak['id'], json_decode($items3, true)?:[])
             ) {
-                $rooster[$lesmoment['lesblok']][$lesmoment['weekdag']] = [
+                $klas = $this->Klas_model->get_klas($lesmoment['klasId']);
+                $rooster[$lesmoment['lesblok']][$lesmoment['weekdag']][$lesmoment['vakId']] = [
                     'lesblok' => $lesmoment['lesblok'],
                     'vakId'   => $vak['id'],
-                    'vakNaam' => $vak['naam'],
+                    'vakNaam' => '['.$klas['naam'].'] '.$vak['naam'],
                 ];
             }
         }
@@ -263,8 +264,11 @@ class Traject extends CI_Controller
                         <td><?php echo $i; ?></td><?php
                         for ($j = 0; $j <= 4; ++$j) {
                             if (isset($lesmoment[$j])) {
-                                ?>
-                                <td><?php echo $lesmoment[$j]['vakNaam']; ?></td><?php
+                                ?><td><?php
+                                foreach ($lesmoment[$j] as $vakken) {
+                                    echo $vakken['vakNaam'].'<br />';
+                                }
+                                ?></td><?php
                             } else {
                                 ?>
                                 <td></td><?php
