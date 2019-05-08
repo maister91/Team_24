@@ -17,26 +17,18 @@
     <table class="table table-borderless ">
         <thead>
         <tr>
+            <th>Exporteren van gegevens</th>
             <th>Klasindelingen aanpassen</th>
-            <th>Afspraken</th>
-            <th>Info beheren</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><?php echo anchor('#', 'Klasindeling aanpassen', 'class="btn btn-outline-primary"'); ?></td>
-            <td><?php echo anchor('', 'Afspraken beheren', 'class="btn btn-outline-primary"'); ?></td>
             <td><?php echo anchor('Gebruiker/export', 'Studenteninformatie exporteren', 'class="btn btn-info"'); ?></td>
-        </tr>
-        <tr>
-            <td><?php echo anchor('Klas/index_beheren', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
-            <td></td>
-            <td><?php echo anchor('Export_klas/index', 'Klasgegevens exporteren', 'class="btn btn-info"'); ?></td>
-        </tr>
-        <tr>
             <td><?php echo anchor('Gebruikeradmin/indexStudenten', 'Studentinformatie beheren', 'class="btn btn-outline-primary"'); ?></td>
-            <td></td>
-            <td></td>
+        </tr>
+        <tr>
+            <td><?php echo anchor('Export_klas/index', 'Klasgegevens exporteren', 'class="btn btn-info"'); ?></td>
+            <td><?php echo anchor('Klas/index_beheren', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
         </tr>
         </tbody>
     </table>

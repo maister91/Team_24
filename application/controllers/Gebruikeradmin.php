@@ -41,8 +41,14 @@ class Gebruikeradmin extends CI_Controller{
     function indexStudenten()
     {
         $data['gebruikers'] = $this->gebruikeradmin_model->get_all_studenten();
-        $data['_view'] = 'gebruikeradmin/indexStudenten';
-        $this->load->view('layouts/main',$data);
+        $data['titel'] = 'Klassen toevoegen';
+        $data['ontwikkelaar'] = 'Simon Smedts';
+        $data['tester'] = 'War Op de Beeck';
+        $data['klas'] = $this->klas_model->get_all_klas();
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'gebruikeradmin/indexStudenten',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
     }
 
     /**
@@ -250,7 +256,7 @@ class Gebruikeradmin extends CI_Controller{
         if(isset($gebruiker['id']))
         {
             $this->gebruiker_model->delete_gebruiker($id);
-            redirect('gebruikeradmin/index');
+            redirect('gebruikeradmin/indexStudenten');
         }
         else
             show_error('The gebruiker you are trying to delete does not exist.');

@@ -14,7 +14,6 @@ body {
 }
 
 #container{
-    min-height: 100%;
 }
 
 #hoofding {
@@ -35,10 +34,10 @@ body {
 }
 
 #voetnoot {
+    height: 170px;
     background: #169BD5;
     bottom: 0;
     width: 100%;
-    padding-top: 0px;
     padding-left: 10px;
     color: white;
 }
@@ -75,11 +74,6 @@ a:visited {
 a:hover {
     color: black;
     text-decoration: underline;
-}
-
-#login{
-    /*width: 30%;*/
-    /*margin: auto;*/
 }
 
 input[type=text], input[type=password] {
