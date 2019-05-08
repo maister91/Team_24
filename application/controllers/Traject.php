@@ -68,6 +68,9 @@ class Traject extends CI_Controller
         $data['klasId'] = $klasId;
         $data['semesterId'] = $semesterId;
         $data['klassen'] = $this->Klas_model->get_all_klassen();
+        $data['klassen1'] = $this->Klas_model->get_klassen_jaar(1);
+        $data['klassen2'] = $this->Klas_model->get_klassen_jaar(2);
+        $data['klassen3'] = $this->Klas_model->get_klassen_jaar(3);
         $data['vakken'] = $this->Vak_model->get_all_vak();
         $data['richtingen'] = $this->Richting_model->get_all_richting();
         $data['_view'] = 'traject/combi';
@@ -134,17 +137,53 @@ class Traject extends CI_Controller
             show_error('The traject you are trying to delete does not exist.');
     }
 
-    public function ajaxRequestPost()
+    public function ajaxRequestVakken()
     {
         $klasId = $this->input->post('klasId');
         $semesterId = $this->input->post('semesterId');
-        $items = $this->input->post('items');
 
         $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
+        $vakkenUniek = [];
+        foreach ($lesmomenten as $lesmoment) {
+            $vak = $this->Vak_model->get_vak($lesmoment['vakId']);
+            if (!in_array($vak, $vakkenUniek)) {
+                $vakkenUniek[] = $vak;
+            }
+        }
+        ob_start();
+            foreach ($vakkenUniek as $vak) {
+                ?><option value="<?php echo $vak['id'];?>"><?php echo $vak['naam'];?></option><?php
+            }
+        $html = ob_get_clean();
+        echo $html;
+    }
+
+    public function ajaxRequestPost()
+    {
+        $items = $this->input->post('items');
+        $items2 = $this->input->post('items3');
+        $items3 = $this->input->post('items2');
+
+        $klasId1 = $this->input->post('klasId1');
+        $semesterId1 = $this->input->post('semesterId1');
+        $klasId2 = $this->input->post('klasId2');
+        $semesterId2 = $this->input->post('semesterId2');
+        $klasId3 = $this->input->post('klasId3');
+        $semesterId3 = $this->input->post('semesterId3');
+
+        $lesmomenten1 = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId1, $semesterId1);
+        $lesmomenten2 = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId2, $semesterId2);
+        $lesmomenten3 = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId3, $semesterId3);
+        $lesmomenten = array_merge($lesmomenten1, $lesmomenten2, $lesmomenten3);
+        // $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
         $rooster = [];
         foreach ($lesmomenten as $lesmoment) {
             $vak = $this->Vak_model->get_vak($lesmoment['vakId']);
-            if (in_array($vak['id'], json_decode($items, true))) {
+            if (
+                in_array($vak['id'], json_decode($items, true))
+                || in_array($vak['id'], json_decode($items2, true)?:[])
+                || in_array($vak['id'], json_decode($items3, true)?:[])
+            ) {
                 $rooster[$lesmoment['lesblok']][$lesmoment['weekdag']] = [
                     'lesblok' => $lesmoment['lesblok'],
                     'vakId'   => $vak['id'],

@@ -40,6 +40,16 @@ class Klas_model extends CI_Model
         $this->db->order_by('naam', 'ASC');
         return $this->db->get('klas')->result_array();
     }
+
+    /*
+     * Get all klassen
+     */
+    function get_klassen_jaar($jaar)
+    {
+        $this->db->like('naam', $jaar);
+        $this->db->order_by('naam', 'ASC');
+        return $this->db->get('klas')->result_array();
+    }
     /*
      * function to add new klas
      */
