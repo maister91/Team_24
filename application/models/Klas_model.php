@@ -15,7 +15,14 @@ class Klas_model extends CI_Model
     {
         parent::__construct();
     }
-    public function getKlasByName($naam)
+
+
+    /**
+     * Geeft een gebruiker-object met de opgegeven naam
+     * @param $naam De naam van de klas
+     * @return de gegevens van de klas
+     */
+    function getKlasByName($naam)
     {
         return $this->db->get_where('klas', ['naam'=>$naam])->row_array();
     }
@@ -24,9 +31,6 @@ class Klas_model extends CI_Model
      *
      * @param $id  // De id van de klas
      * @return array
-     */
-    /*
-     * Get klas by id
      */
     function get_klas($id)
     {
@@ -53,8 +57,21 @@ class Klas_model extends CI_Model
         $this->db->order_by('naam', 'ASC');
         return $this->db->get('klas')->result_array();
     }
-    /*
-     * function to add new klas
+
+    /**
+     * Haalt alle klassen op uit tabel klas in een array gesorteerd op naam
+     * @return result array
+     */
+    function get_all_klassen()
+    {
+        $this->db->order_by('naam', 'ASC');
+        return $this->db->get('klas')->result_array();
+    }
+
+    /**
+     * Voegt een klas toe aan de tabel Klas
+     * @param $params zijn de parameteres die men moet ingeven voor een nieuwe klas
+     * @return Record toegevoegd
      */
     function add_klas($params)
     {
