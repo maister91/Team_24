@@ -1,16 +1,14 @@
 <?php
 
-/**
- * @property Template $template
- * @property Lesmoment_model $lesmoment_model
- */
-
 class Lesmoment extends CI_Controller
 {
+
+    /* @var Lesmoment_model */
+    public $Lesmoment_model;
     function __construct()
     {
         parent::__construct();
-        $this->load->model('lesmoment_model');
+        $this->load->model('Lesmoment_model');
     }
 
     /*
@@ -18,7 +16,7 @@ class Lesmoment extends CI_Controller
      */
     function index()
     {
-        $data['lesmoment'] = $this->lesmoment_model->get_all_lesmoment();
+        $data['lesmoment'] = $this->Lesmoment_model->get_all_lesmoment();
 
         $data['_view'] = 'lesmoment/index';
         $this->load->view('layouts/main', $data);
@@ -39,7 +37,7 @@ class Lesmoment extends CI_Controller
                 'maxAantal'  => $this->input->post('maxAantal'),
             ];
 
-            $lesmoment_id = $this->lesmoment_model->add_lesmoment($params);
+            $lesmoment_id = $this->Lesmoment_model->add_lesmoment($params);
             redirect('lesmoment/index');
         } else {
             $data['_view'] = 'lesmoment/add';
@@ -53,7 +51,7 @@ class Lesmoment extends CI_Controller
     function edit($id)
     {
         // check if the lesmoment exists before trying to edit it
-        $data['lesmoment'] = $this->lesmoment_model->get_lesmoment($id);
+        $data['lesmoment'] = $this->Lesmoment_model->get_lesmoment($id);
 
         if (isset($data['lesmoment']['id'])) {
             if (isset($_POST) && count($_POST)>0) {
@@ -66,7 +64,7 @@ class Lesmoment extends CI_Controller
                     'maxAantal'  => $this->input->post('maxAantal'),
                 ];
 
-                $this->lesmoment_model->update_lesmoment($id, $params);
+                $this->Lesmoment_model->update_lesmoment($id, $params);
                 redirect('lesmoment/index');
             } else {
                 $data['_view'] = 'lesmoment/edit';
@@ -81,11 +79,11 @@ class Lesmoment extends CI_Controller
      */
     function remove($id)
     {
-        $lesmoment = $this->lesmoment_model->get_lesmoment($id);
+        $lesmoment = $this->Lesmoment_model->get_lesmoment($id);
 
         // check if the lesmoment exists before trying to delete it
         if (isset($lesmoment['id'])) {
-            $this->lesmoment_model->delete_lesmoment($id);
+            $this->Lesmoment_model->delete_lesmoment($id);
             redirect('lesmoment/index');
         } else
             show_error('The lesmoment you are trying to delete does not exist.');

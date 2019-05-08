@@ -32,4 +32,3 @@
         </tr>
     <?php } ?>
 </table>
-<?php echo anchor('gebruikertype/isp', 'terug'); ?>

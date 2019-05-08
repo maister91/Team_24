@@ -17,6 +17,15 @@ class Traject_model extends CI_Model
         parent::__construct();
     }
 
+
+
+    function get($id)
+    {
+        // geef gebruiker-object met opgegeven $id
+        $this->db->where('id', $id);
+        $query = $this->db->get('traject');
+        return $query->row();
+    }
     /**
      * Haalt een traject op uit de tabel Traject
      * @param $id de id van het traject

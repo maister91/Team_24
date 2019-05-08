@@ -1,16 +1,14 @@
 <?php
 
-/**
- * @property Template $template
- * @property Klas_model $klas_model
- */
-
 class Klas extends CI_Controller
 {
+
+    /* @var Klas_model */
+    public $Klas_model;
     function __construct()
     {
         parent::__construct();
-        $this->load->model('klas_model');
+        $this->load->model('Klas_model');
     }
 
     /*
@@ -18,7 +16,7 @@ class Klas extends CI_Controller
      */
     function index()
     {
-        $data['klas'] = $this->klas_model->get_all_klas();
+        $data['klas'] = $this->Klas_model->get_all_klas();
 
         $data['_view'] = 'klas/index';
         $this->load->view('layouts/main', $data);
@@ -35,7 +33,7 @@ class Klas extends CI_Controller
                 'maxAantal' => $this->input->post('maxAantal'),
             ];
 
-            $klas_id = $this->klas_model->add_klas($params);
+            $klas_id = $this->Klas_model->add_klas($params);
             redirect('klas/index');
         } else {
             $data['_view'] = 'klas/add';
@@ -49,7 +47,7 @@ class Klas extends CI_Controller
     function edit($id)
     {
         // check if the klas exists before trying to edit it
-        $data['Klas'] = $this->klas_model->get_klas($id);
+        $data['Klas'] = $this->Klas_model->get_klas($id);
 
         if (isset($data['Klas']['id'])) {
             if (isset($_POST) && count($_POST)>0) {
@@ -58,7 +56,7 @@ class Klas extends CI_Controller
                     'maxAantal' => $this->input->post('maxAantal'),
                 ];
 
-                $this->klas_model->update_klas($id, $params);
+                $this->Klas_model->update_klas($id, $params);
                 redirect('klas/index');
             } else {
                 $data['_view'] = 'klas/edit';
@@ -73,11 +71,11 @@ class Klas extends CI_Controller
      */
     function remove($id)
     {
-        $klas = $this->klas_model->get_klas($id);
+        $klas = $this->Klas_model->get_klas($id);
 
         // check if the klas exists before trying to delete it
         if (isset($klas['id'])) {
-            $this->klas_model->delete_klas($id);
+            $this->Klas_model->delete_klas($id);
             redirect('klas/index');
         } else
             show_error('The klas you are trying to delete does not exist.');

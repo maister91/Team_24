@@ -17,30 +17,39 @@ class Richting_model extends CI_Model
         parent::__construct();
     }
 
-    /**
-     * Haalt een richting op uit de tabel Richting
-     * @param $id de id van de mail
-     * @return Richting
-     */
-    function get_richting($id)
-    {
-        return $this->db->get_where('richting',array('id'=>$id))->row_array();
-    }
 
+    /**
+     * Geeft gegevens van een richting
+     * @param $richting De naam van de richting
+     * @return De gegevens van de richting
+     */
     public function get_richting_by_name($richting)
     {
         return $this->db->get_where('richting', ['naam'=>$richting])->row_array();
     }
 
     /**
-     * Haalt alle richtingen op uit de tabel Richting
-     * @return Alle richtingen
+     * Haalt een richting op uit de tabel Richting
+     *
+     * @param $id // de id van de mail
+     * @return array
      */
-    function get_all_richting($id)
+    function get_richting($id)
     {
         $this->db->where('id', $id);
         $query = $this->db->get('richting');
         return $query->row();
+    }
+
+    /**
+     * Haalt alle richtingen op uit de tabel Richting
+     * @return Richting_model[]
+     */
+    function get_all_richting()
+    {
+        $this->db->order_by('id', 'desc');
+        $query = $this->db->get('richting');
+        return $query->result();
     }
 
     /**

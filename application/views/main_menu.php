@@ -1,5 +1,4 @@
 <?php
-
 if ($gebruiker != null) { // wel aangemeld
     switch ($gebruiker->gebruikertypeId) {
         case 1: // gewone geregistreerde gebruiker

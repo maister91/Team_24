@@ -1,16 +1,17 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * @property Template $template
  * @property Klas_model      $klas_model
  * @property Lesmoment_model $lesmoment_model
  * @property Richting_model  $richting_model
  * @property Vak_model       $vak_model
- * @property Excel_import_model $excel_import_model
- * @property Excel_export_model $excel_export_model
  */
 class Excel_import extends CI_Controller
 {
+
+    /* @var Excel_import_model */
+    public $excel_import_model;
+
     public function __construct()
     {
         parent::__construct();
@@ -26,13 +27,7 @@ class Excel_import extends CI_Controller
     function index()
     {
 
-        $data['titel'] = '';
-        $data['ontwikkelaar'] = 'Melih Doksanbir';
-        $data['tester'] = 'War Op de Beeck';
-        $partials = ['hoofding' => 'main_header',
-            'inhoud' => 'excel_import',
-            'voetnoot' => 'main_footer'];
-        $this->template->load('main_master', $partials, $data);
+        $this->load->view('excel_import');
 
     }
     function handleiding(){

@@ -24,7 +24,7 @@ class Lokaal_model extends CI_Model
      */
     function get_lokaal($id)
     {
-        return $this->db->get_where('lokaal',array('id'=>$id))->row_array();
+        return $this->db->get_where('lokaal', array('id' => $id))->row_array();
     }
 
     /**
@@ -44,7 +44,7 @@ class Lokaal_model extends CI_Model
      */
     function add_lokaal($params)
     {
-        $this->db->insert('lokaal',$params);
+        $this->db->insert('lokaal', $params);
         return $this->db->insert_id();
     }
 
@@ -54,10 +54,10 @@ class Lokaal_model extends CI_Model
      * @param $params de parameteres die men moet ingeven voor het lokaal aan te passen
      * @return record gewijzigd
      */
-    function update_lokaal($id,$params)
+    function update_lokaal($id, $params)
     {
-        $this->db->where('id',$id);
-        return $this->db->update('lokaal',$params);
+        $this->db->where('id', $id);
+        return $this->db->update('lokaal', $params);
     }
 
     /**
@@ -67,6 +67,6 @@ class Lokaal_model extends CI_Model
      */
     function delete_lokaal($id)
     {
-        return $this->db->delete('lokaal',array('id'=>$id));
+        return $this->db->delete('lokaal', array('id' => $id));
     }
 }

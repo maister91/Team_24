@@ -6,7 +6,6 @@
  * Model-klasse die alle methodes bevat voor de lesmomenten
  *
  */
-
 class Lesmoment_model extends CI_Model
 {
     /**
@@ -16,7 +15,6 @@ class Lesmoment_model extends CI_Model
     {
         parent::__construct();
     }
-
     /**
      * Haalt een lesmoment op uit de tabel Lesmoment
      * @param $id de id van de gebruiker
@@ -26,7 +24,6 @@ class Lesmoment_model extends CI_Model
     {
         return $this->db->get_where('lesmoment',array('id'=>$id))->row_array();
     }
-
     /**
      * Haalt alle lesmomenten op uit de tabel Lesmoment
      * @return Alle lesmomenten
@@ -36,7 +33,6 @@ class Lesmoment_model extends CI_Model
         $this->db->order_by('id', 'desc');
         return $this->db->get('lesmoment')->result_array();
     }
-
     /**
      * Voegt een lesmoment toe aan de tabel Lesmoment
      * @param $params zijn de parameteres die men moet ingeven voor een nieuw lesmoment
@@ -47,7 +43,6 @@ class Lesmoment_model extends CI_Model
         $this->db->insert('lesmoment',$params);
         return $this->db->insert_id();
     }
-
     /**
      * Bewerkt een  record (lesmoment) in de tabel Lesmoment
      * @param $id de id van de record dat bewerkt wordt
@@ -59,7 +54,6 @@ class Lesmoment_model extends CI_Model
         $this->db->where('id',$id);
         return $this->db->update('lesmoment',$params);
     }
-
     /**
      * Verwijdert een record (Lesmoment) uit aan de tabel Lesmoment
      * @param $id de id van de record dat verwijderd wordt
@@ -69,12 +63,10 @@ class Lesmoment_model extends CI_Model
     {
         return $this->db->delete('lesmoment',array('id'=>$id));
     }
-
     function truncate_lesmoment()
     {
         return $this->db->truncate('lesmoment');
     }
-
     /**
      * @param $dataLesmoment
      */
@@ -82,12 +74,10 @@ class Lesmoment_model extends CI_Model
     {
         $this->db->insert('lesmoment', $dataLesmoment);
     }
-
     function get_lesmoment_by_klas_en_semester($klasId, $semester)
     {
         return $this->db->order_by('lesblok')->get_where('lesmoment',array('klasId'=>$klasId, 'semester'=>$semester))->result_array();
     }
-
     function update_klas($klasId, $gebruikerId)
     {
         return $this->db->update('gebruiker', [
