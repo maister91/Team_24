@@ -16,7 +16,7 @@
     </thead>
     <tbody>
     <tr>
-        <td><?php echo anchor('Gebruiker/index_simulatie', 'Simulatie', 'class="btn btn-outline-primary"'); ?></td>
+        <td><?php echo anchor('traject/combi', 'Simulatie', 'class="btn btn-outline-primary"'); ?></td>
         <td><?php echo anchor('#', 'Afspraken bekijken', 'class="btn btn-info"'); ?></td>
     </tr>
     <tr>

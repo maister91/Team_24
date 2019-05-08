@@ -31,8 +31,53 @@ class Traject extends CI_Controller
     {
         $gebruikerId = $this->authex->getGebruikerInfo()->id;
         $data['trajecten'] = $this->Traject_model->get_all_traject();
+        $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Simon Smedts';
+        $data['tester'] ='Melih Doksanbir';
         $data['_view'] = 'traject/index';
-        $this->load->view('layouts/main', $data);
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'traject/index',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
+
+
+    }
+    /**
+     * Maken van keuze traject
+     * @see Traject_model::get_all_traject()
+     * @see authex::getGebruikerInfo()
+     * @see Traject_model::update_traject()
+     * @see model_landing.php
+     * @see combi_landing.php
+     *
+     */
+    function kiesTraject()
+    {
+        $data['trajecten'] = $this->Traject_model->get_all_traject();
+        $gebruikerId = $this->authex->getGebruikerInfo()->id;
+        if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['knop'])) {
+            $knop = $this->input->post("knop");
+            if ($knop == "Model traject") {
+                $this->Traject_model->update_traject(1, $gebruikerId);
+                $data['titel'] = 'Model student landing page';
+                $data['ontwikkelaar'] = 'Melih Doksanbir';
+                $data['tester'] ='';
+                $partials = ['hoofding' => 'main_header',
+                    'inhoud' => 'model_landing',
+                    'voetnoot' => 'main_footer'];
+                $this->template->load('main_master', $partials, $data);
+            }
+            else if ($knop == "Combi traject"){
+                $this->Traject_model->update_traject(2, $gebruikerId);
+                $data['titel'] = 'Combi student landing page';
+                $data['ontwikkelaar'] = 'Melih Doksanbir';
+                $data['tester'] ='';
+                $partials = ['hoofding' => 'main_header',
+                    'inhoud' => 'combi_landing',
+                    'voetnoot' => 'main_footer'];
+                $this->template->load('main_master', $partials, $data);
+            }
+        }
     }
 
     function combi()
@@ -73,8 +118,13 @@ class Traject extends CI_Controller
         $data['klassen3'] = $this->Klas_model->get_klassen_jaar(3);
         $data['vakken'] = $this->Vak_model->get_all_vak();
         $data['richtingen'] = $this->Richting_model->get_all_richting();
-        $data['_view'] = 'traject/combi';
-        $this->load->view('layouts/main', $data);
+        $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Melih Doksanbir';
+        $data['tester'] ='';
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'traject/combi',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
     }
 
 

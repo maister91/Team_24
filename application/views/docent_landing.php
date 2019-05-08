@@ -15,16 +15,9 @@
     </h2>
 
     <table class="table table-borderless ">
-        <thead>
-        <tr>
-            <th>Klasindelingen aanpassen</th>
-            <th>Afspraken</th>
-            <th>Info beheren</th>
-        </tr>
-        </thead>
         <tbody>
         <tr>
-            <td><?php echo anchor('Afspraak/index', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
+            <td><?php echo anchor('Afspraak/index', 'Afspraken beheren', 'class="btn btn-outline-primary"'); ?></td>
             <td></td>
         </tbody>
     </table>

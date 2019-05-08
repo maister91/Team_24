@@ -96,7 +96,11 @@ foreach ($vakkenUniek as $vakken) {
     $alleVakIds[] = $vakken['id'];
 }
 ?>
-
+<br>
+<br>
+<?php echo form_open('Gebruiker/meldAf'); ?>
+<button type='submit' name='Afmelden' class="btn btn-primary">Afmelden</button>
+<?php echo form_close(); ?>
 <script type="text/javascript">
     $(function() {
         var vakken = JSON.stringify(<?php echo json_encode($alleVakIds); ?>);

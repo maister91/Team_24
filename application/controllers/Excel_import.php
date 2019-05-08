@@ -1,6 +1,16 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
+ * @class Excel_import
+ * @brief Controller-klasse voor Excel bestand van uuroosters te importeren
+ *
+ * Controller-klasse waar de methodes inzitten voor:
+ * -Uuroosters te importeren
+ * -Een gebruikershandleiding te tonen
+ */
+
+/**
+ * @property Template $template
  * @property Klas_model      $klas_model
  * @property Lesmoment_model $lesmoment_model
  * @property Richting_model  $richting_model
@@ -9,14 +19,9 @@
 class Excel_import extends CI_Controller
 {
 
-    /* @var Excel_import_model */
-    public $excel_import_model;
-
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('excel_import_model');
-        $this->load->model('excel_export_model');
         $this->load->model('klas_model');
         $this->load->model('lesmoment_model');
         $this->load->model('richting_model');
@@ -26,10 +31,15 @@ class Excel_import extends CI_Controller
 
     function index()
     {
-
-        $this->load->view('excel_import');
-
+        $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Melih Doksanbir';
+        $data['tester'] = 'War Op de Beeck';
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'excel_import',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
     }
+
     function handleiding(){
         $this->load->view("handleiding");
     }

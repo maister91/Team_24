@@ -1,11 +1,12 @@
 <?php
+
 /**
  * @class Excel_import_model
- * @brief Model-klasse voor Excel import
+ * @brief Model-klasse voor excel te importeren
  *
- * Model-klasse die alle methodes bevat voor het importeren van excel bestanden
+ * Model-klasse die mathodes bevat waar worden opgevraagd
+ *
  */
-
 class Excel_import_model extends CI_Model
 {
     /**

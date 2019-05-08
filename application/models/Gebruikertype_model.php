@@ -18,13 +18,25 @@ class Gebruikertype_model extends CI_Model
     }
 
     /**
-     * Haalt een gebruikerstype met lesmoment op uit de tabel Gebruikertype
+     * Haalt een gebruikerstype array met lesmoment op uit de tabel Gebruikertype
      * @param $id de id van de gebruikertype
      * @return Gebruikertype
      */
     function get_gebruikertype($id)
     {
         return $this->db->get_where('gebruikertype',array('id'=>$id))->row_array();
+    }
+
+    /**
+     * Haalt een gebruikerstype  met lesmoment op uit de tabel Gebruikertype
+     * @param $id de id van de gebruikertype
+     * @return Gebruikertype
+     */
+    function get_gebruikertype_object($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('gebruikertype');
+        return $query->row();
     }
 
     /**
