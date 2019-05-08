@@ -4,6 +4,7 @@
  * @brief Model-klasse voor lesmomenten
  *
  * Model-klasse die alle methodes bevat voor de lesmomenten
+ *
  */
 
 class Lesmoment_model extends CI_Model
@@ -69,40 +70,24 @@ class Lesmoment_model extends CI_Model
         return $this->db->delete('lesmoment',array('id'=>$id));
     }
 
-    /**
-     * Verwijdert alle data van tabel lesmoment
-     */
     function truncate_lesmoment()
     {
         return $this->db->truncate('lesmoment');
     }
 
     /**
-     * Voegt een lesmoment toe aan de databank
-     * @param $dataLesmoment het lesmoment dat toegevoegd wordt
+     * @param $dataLesmoment
      */
     function insertLesmoment($dataLesmoment)
     {
         $this->db->insert('lesmoment', $dataLesmoment);
     }
 
-    /**
-     * Haal het lesmoment op van een bepaalde klas in een bepaald semester
-     * @param $klasId De klas id waar het lesmoment van opgevraagd wordt
-     * @param $semester Het semester waarin het lesmoment valt
-     * @return array van de lesmomenten
-     */
     function get_lesmoment_by_klas_en_semester($klasId, $semester)
     {
         return $this->db->order_by('lesblok')->get_where('lesmoment',array('klasId'=>$klasId, 'semester'=>$semester))->result_array();
     }
 
-    /**
-     * Update de gegevens van de klas
-     * @param $klasId ID van klas er geupdate wordt
-     * @param $gebruikerId Id van de gebruiken
-     * @return klas geupdate
-     */
     function update_klas($klasId, $gebruikerId)
     {
         return $this->db->update('gebruiker', [

@@ -3,18 +3,17 @@
     padding: 0;
 }
 
-html, body {
-    height: 100%;
-}
-
 body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     color: black;
     background-color: white;
 }
 
 #container{
-    min-height: 100%;
+    max-width: 90%;
 }
 
 #hoofding {
@@ -29,14 +28,15 @@ body {
 #inhoud {
     height: auto;
     padding-top: 120px;
-    padding-bottom: 60px;
-    width: 80%;
-    margin: auto;
+    width: 99%;
+    margin-bottom: 165px;
 }
 
 #voetnoot {
     background: #169BD5;
+    position: fixed;
     bottom: 0;
+    height: 150px;
     width: 100%;
     padding-top: 0px;
     padding-left: 10px;
@@ -103,7 +103,4 @@ input[type=submit] {
     border-radius: 3px;
     color: #fff;
 }
-
-
-
 

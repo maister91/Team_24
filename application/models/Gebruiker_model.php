@@ -7,6 +7,9 @@
  *
  */
 
+/**
+ * @property Klas_model $klas_model
+ */
 class Gebruiker_model extends CI_Model
 {
     public function __construct()
@@ -15,19 +18,21 @@ class Gebruiker_model extends CI_Model
          * Constructor
          */
         parent::__construct();
+        $this->load->model('klas_model');
     }
 
-    /**
-     * Geeft een gebruiker-object met de opgegeven $id
-     * @param $id De ID van de gebruiker
-     * @return gegevens van de gebruiker
-     */
     function get($id)
     {
-        //
+        // geef gebruiker-object met opgegeven $id
         $this->db->where('id', $id);
         $query = $this->db->get('gebruiker');
         return $query->row();
+    }
+
+    function get_gebruikers(){
+        $this->db->order_by('id', 'asc');
+        $query = $this->db->get('gebruiker');
+        return $query->result();
     }
 
     /**
@@ -52,12 +57,6 @@ class Gebruiker_model extends CI_Model
         }
     }
 
-    /**
-     * Controleert het wachtwoord
-     * @param $id de id van de gebruiker
-     * @param $paswoord het ingevoerde paswoord
-     * @return 1 / 0 (ja of nee)
-     */
     function controleerWachtwoord($id, $paswoord)
     {
         // geef gebruiker-object met $email en $wachtwoord EN geactiveerd = 1
@@ -82,17 +81,6 @@ class Gebruiker_model extends CI_Model
      * Haalt alle gebruikers op uit de tabel Gebruiker
      * @return Alle gebruikers
      */
-    function get_all_gebruiker($id)
-    {
-        $this->db->where('klasId', $id);
-        $query = $this->db->get('gebruiker');
-        return $query->row();
-    }
-
-    /**
-     * Haalt alle gebruikers op uit de tabel Gebruiker
-     * @return Alle gebruikers
-     */
     function get_gebruiker($id)
     {
         return $this->db->get_where('gebruiker',array('id'=>$id))->row_array();
@@ -103,14 +91,31 @@ class Gebruiker_model extends CI_Model
      * @return Alle gebruikers gesorteerd op gebruikerstype
      */
     function get_all_gebruikerby_type(){
+
         $this->db->order_by('voornaam', 'asc');
         return $this->db->get('gebruiker')->result_array();
+
     }
 
-    /**
-     * Voegt een gebruiker toe aan de tabel Gebruiker
-     * @param $params zijn de parameteres die men moet ingeven voor een nieuwe gebruiker
-     * @return Record toegevoegd
+    /*
+     * Get all gebruikers
+     */
+    function get_all_gebruikers()
+    {
+        $this->db->where('gebruikertypeId <', 2);
+        $this->db->order_by('id', 'asc');
+        $query = $this->db->get('gebruiker');
+        $gebruikers = $query->result();
+
+        foreach ($gebruikers as $gebruiker) {
+            $gebruiker->klas = $this->klas_model->get_klas_by_gebruiker($gebruiker->klasId);
+        }
+
+        return $gebruikers;
+    }
+
+    /*
+     * function to add new gebruiker
      */
     function add_gebruiker($params)
     {
@@ -118,11 +123,8 @@ class Gebruiker_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    /**
-     * Bewerkt een  record (gebruiker) in de tabel Gebruiker
-     * @param $id de id van de record dat bewerkt wordt
-     * @param $params de parameteres die men moet ingeven voor de gebruiker aan te passen
-     * @return record gewijzigd
+    /*
+     * function to update gebruiker
      */
     function update_gebruiker($id,$params)
     {
@@ -130,10 +132,8 @@ class Gebruiker_model extends CI_Model
         return $this->db->update('gebruiker',$params);
     }
 
-    /**
-     * Verwijdert een record (Gebruiker) uit aan de tabel Gebruiker
-     * @param $idGebruiker de id van de record dat verwijderd wordt
-     * @return record verwijderd
+    /*
+     * function to delete gebruiker
      */
     function delete_gebruiker($id)
     {

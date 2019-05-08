@@ -1,24 +1,21 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * @class Excel_import
- * @brief Controller-klasse voor Excel_import
- *
- * Controller-klasse met alle methodes voor de import van excel bestanden
+ * @property Template $template
+ * @property Klas_model      $klas_model
+ * @property Lesmoment_model $lesmoment_model
+ * @property Richting_model  $richting_model
+ * @property Vak_model       $vak_model
+ * @property Excel_import_model $excel_import_model
+ * @property Excel_export_model $excel_export_model
  */
 class Excel_import extends CI_Controller
 {
-
-    /* @var Excel_import_model */
-    public $excel_import_model;
-
-    /**
-     * Excel_import constructor.
-     */
     public function __construct()
     {
         parent::__construct();
         $this->load->model('excel_import_model');
+        $this->load->model('excel_export_model');
         $this->load->model('klas_model');
         $this->load->model('lesmoment_model');
         $this->load->model('richting_model');
@@ -26,36 +23,22 @@ class Excel_import extends CI_Controller
         $this->load->library('excel');
     }
 
-    /**
-     * Toont de excel import index pagina
-     *
-     * @see excel_import.php
-     */
     function index()
     {
-        $data['titel'] = 'Importeer uurrooster';
-        $data['ontwikkelaar'] = 'Melih Doksanbir';
-        $data['tester'] = 'Thomas Dergent';
 
+        $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Melih Doksanbir';
+        $data['tester'] = 'War Op de Beeck';
         $partials = ['hoofding' => 'main_header',
             'inhoud' => 'excel_import',
             'voetnoot' => 'main_footer'];
-
         $this->template->load('main_master', $partials, $data);
 
     }
+    function handleiding(){
+        $this->load->view("handleiding");
+    }
 
-    /**
-     * Alle records uit excel halen en in een tabel van de database zetten
-     *
-     * @see klas_model::getKlasByName()
-     * @see klas_model::insert()
-     * @see richting_model::get_richting_by_name()
-     * @see richting_model::insertRichting()
-     * @see vak_model::get_vak_by_name_richting_fase()
-     * @see vak_model::insertVak()
-     * @see lesmoment_model::insertLesmoment()
-     */
     function import()
     {
         if (isset($_FILES["file"]["name"])) {
@@ -65,6 +48,7 @@ class Excel_import extends CI_Controller
                 foreach ($lessenRooster as $klasNaam => $rooster) {
                     if ($this->klas_model->getKlasByName($klasNaam) == null) {
                         $this->klas_model->insert(['naam'=>$klasNaam, 'maxAantal'=>25]);
+
                     }
                     $richting = explode(' ', $klasNaam);
                     if ($this->richting_model->get_richting_by_name($richting[1]) == null) {
@@ -105,13 +89,9 @@ class Excel_import extends CI_Controller
         }
     }
 
-    /**
-     * importeert gegevens van een excel naar database
-     * @param $path het pad naar het excel bestand
-     * @return klassen
-     */
     protected function importVanExcel($path)
     {
+
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
         $reader->setReadDataOnly(true);
         $classes = [];
@@ -151,12 +131,6 @@ class Excel_import extends CI_Controller
         return $classes;
     }
 
-    /**
-     * Geeft het aantal uur voor een bepaald vak terug
-     *
-     * @param $vakNaam
-     * @return aantal uur voor bepaald vak
-     */
     protected function aantalUurVoorVak($vakNaam)
     {
         $data = [
@@ -249,12 +223,6 @@ class Excel_import extends CI_Controller
         return null;
     }
 
-    /**
-     * zet id van weekdag om naar een dag in text
-     *
-     * @param $weekdagId
-     * @return weekdag in tekst
-     */
     protected function weekDagIdNaarTekst($weekdagId)
     {
         $weekdagen = [
