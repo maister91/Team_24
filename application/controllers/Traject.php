@@ -32,8 +32,8 @@ class Traject extends CI_Controller
         $gebruikerId = $this->authex->getGebruikerInfo()->id;
         $data['trajecten'] = $this->Traject_model->get_all_traject();
         $data['titel'] = '';
-        $data['ontwikkelaar'] = 'Melih Doksanbir';
-        $data['tester'] = 'Thomas Dergent';
+        $data['ontwikkelaar'] = 'Simon Smedts';
+        $data['tester'] ='Melih Doksanbir';
         $data['_view'] = 'traject/index';
         $partials = ['hoofding' => 'main_header',
             'inhoud' => 'traject/index',
@@ -60,6 +60,8 @@ class Traject extends CI_Controller
             if ($knop == "Model traject") {
                 $this->Traject_model->update_traject(1, $gebruikerId);
                 $data['titel'] = 'Model student landing page';
+                $data['ontwikkelaar'] = 'Melih Doksanbir';
+                $data['tester'] ='';
                 $partials = ['hoofding' => 'main_header',
                     'inhoud' => 'model_landing',
                     'voetnoot' => 'main_footer'];
@@ -68,6 +70,8 @@ class Traject extends CI_Controller
             else if ($knop == "Combi traject"){
                 $this->Traject_model->update_traject(2, $gebruikerId);
                 $data['titel'] = 'Combi student landing page';
+                $data['ontwikkelaar'] = 'Melih Doksanbir';
+                $data['tester'] ='';
                 $partials = ['hoofding' => 'main_header',
                     'inhoud' => 'combi_landing',
                     'voetnoot' => 'main_footer'];
@@ -111,8 +115,13 @@ class Traject extends CI_Controller
         $data['klassen'] = $this->Klas_model->get_all_klassen();
         $data['vakken'] = $this->Vak_model->get_all_vak();
         $data['richtingen'] = $this->Richting_model->get_all_richting();
-        $data['_view'] = 'traject/combi';
-        $this->load->view('layouts/main', $data);
+        $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Melih Doksanbir';
+        $data['tester'] ='';
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'traject/combi',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
     }
 
 
