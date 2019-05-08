@@ -27,7 +27,7 @@ class Export_klas_model extends CI_Model
     }
 
     /**
-     * Haalt alle klassen op uit de tabel Klas
+     * Haalt alle lesmomenten op en joint klas en vak
      * @return $lesmomenten
      */
 

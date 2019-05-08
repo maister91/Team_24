@@ -20,6 +20,9 @@ class Gebruiker_model extends CI_Model
          */
         parent::__construct();
         $this->load->model('klas_model');
+        $this->load->model('klas_model');
+        $this->load->model('gebruikertype_model');
+        $this->load->model('traject_model');
     }
 
     function get($id)
@@ -113,8 +116,13 @@ class Gebruiker_model extends CI_Model
         return $gebruikers;
     }
 
-    /*
-     * function to add new gebruiker
+
+
+
+    /**
+     * Voegt een gebruiker toe aan de tabel Gebruiker
+     * @param $params zijn de parameteres die men moet ingeven voor een nieuwe gebruiker
+     * @return Record toegevoegd
      */
     function add_gebruiker($params)
     {
@@ -138,4 +146,7 @@ class Gebruiker_model extends CI_Model
     {
         return $this->db->delete('gebruiker',array('id'=>$id));
     }
+
+
 }
+
