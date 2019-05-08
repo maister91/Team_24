@@ -1,4 +1,4 @@
-<html>
+wex<html>
 <head>
     <title>Export Data to Excel in Codeigniter using PHPExcel</title>
 
@@ -42,7 +42,7 @@
             ?>
         </table>
         <div align="center">
-            <form method="post" action="<?php echo base_url(); ?>excel_export/action">
+            <form method="post" action="<?php echo base_url(); ?>excel_export/createXLS">
                 <input type="submit" name="export" class="btn btn-success" value="Export" />
             </form>
         </div>

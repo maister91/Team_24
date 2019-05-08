@@ -1,3 +1,11 @@
+<?php
+/**
+ * @file excel_export.php
+ *
+ * View die de import van de excel toont
+ * - gebruikt bootstrap
+ */
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +18,6 @@
 <div class="container">
     <br/>
     <h3 align="center">Uurrooster importeren</h3>
-    <h2> <a href="<?php echo site_url("excel_import/handleiding"); ?>">handleiding</a></h2>
     <form action="<?php echo base_url(); ?>index.php/excel_import/import" method="post" id="import_form"
           enctype="multipart/form-data">
         <p><label>Select Excel File</label>
@@ -22,7 +29,7 @@
     <div class="table-responsive" id="customer_data">
     </div>
 </div>
-<p><?php echo anchor('gebruiker/index', 'Terug'); ?></p>
+<p><?php echo anchor('gebruikertype/opleidingmanager', 'Terug'); ?></p>
 </body>
 </html>
 
