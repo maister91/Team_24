@@ -34,6 +34,39 @@ class Traject extends CI_Controller
         $data['_view'] = 'traject/index';
         $this->load->view('layouts/main', $data);
     }
+    /**
+     * Maken van keuze traject
+     * @see Traject_model::get_all_traject()
+     * @see authex::getGebruikerInfo()
+     * @see Traject_model::update_traject()
+     * @see model_landing.php
+     * @see combi_landing.php
+     *
+     */
+    function kiesTraject()
+    {
+        $data['trajecten'] = $this->Traject_model->get_all_traject();
+        $gebruikerId = $this->authex->getGebruikerInfo()->id;
+        if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['knop'])) {
+            $knop = $this->input->post("knop");
+            if ($knop == "Model traject") {
+                $this->Traject_model->update_traject(1, $gebruikerId);
+                $data['titel'] = 'Model student landing page';
+                $partials = ['hoofding' => 'main_header',
+                    'inhoud' => 'model_landing',
+                    'voetnoot' => 'main_footer'];
+                $this->template->load('main_master', $partials, $data);
+            }
+            else if ($knop == "Combi traject"){
+                $this->Traject_model->update_traject(2, $gebruikerId);
+                $data['titel'] = 'Combi student landing page';
+                $partials = ['hoofding' => 'main_header',
+                    'inhoud' => 'combi_landing',
+                    'voetnoot' => 'main_footer'];
+                $this->template->load('main_master', $partials, $data);
+            }
+        }
+    }
 
     function combi()
     {
