@@ -6,6 +6,12 @@
  * Time: 15:36
  */
 
+
+/**
+ * @property Klas_model $klas_model
+ * @property Gebruikertype_model $gebruikertype_model
+ * @property Traject_model $traject_model
+ */
 class Gebruikeradmin_model extends CI_Model
 {
     public function __construct()

@@ -31,13 +31,13 @@
             <td><?php echo anchor('Excel_import/index', 'Uurrooster beheren', 'class="btn btn-outline-primary"'); ?></td>
         </tr>
         <tr>
-            <td><?php echo anchor('#', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
+            <td><?php echo anchor('klas/index_beheren', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
             <td></td>
             <td><?php echo anchor('Export_klas/index', 'Klasgegevens exporteren', 'class="btn btn-info"'); ?></td>
             <td><?php echo anchor('#', 'Docenten en ISP verantwoordelijken beheren', 'class="btn btn-outline-primary"'); ?></td>
         </tr>
         <tr>
-            <td><?php echo anchor('#', 'Studenten beheren', 'class="btn btn-outline-primary"'); ?></td>
+            <td><?php echo anchor('Gebruikeradmin/indexStudenten', 'Studenten beheren', 'class="btn btn-outline-primary"'); ?></td>
             <td></td>
             <td></td>
             <td><?php echo anchor('#', 'Currriculum aanpassen', 'class="btn btn-outline-primary"'); ?></td>

@@ -2,19 +2,21 @@
 /**
  * @property Template $template
  * @property Gebruiker_model $gebruiker_model
- * @property Afspraak_model $afspraak_model
  * @property Klas_model $klas_model
- * @property Traject_model $traject_model
  * @property Gebruikertype_model $gebruikertype_model
+ * @property Gebruikeradmin_model $gebruikeradmin_model
+ * @property Traject_model $traject_model
+ * @property Afspraak_model $afspraak_model
  */
 class Gebruikeradmin extends CI_Controller{
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Gebruiker_model');
-        $this->load->model('Klas_model');
-        $this->load->model('Gebruikertype_model');
-        $this->load->model('Gebruikeradmin_model');
+        $this->load->model('gebruiker_model');
+        $this->load->model('klas_model');
+        $this->load->model('afspraak_model');
+        $this->load->model('gebruikertype_model');
+        $this->load->model('gebruikeradmin_model');
     }
 
     /*
@@ -38,7 +40,7 @@ class Gebruikeradmin extends CI_Controller{
      */
     function indexStudenten()
     {
-        $data['gebruikers'] = $this->Gebruikeradmin_model->get_all_studenten();
+        $data['gebruikers'] = $this->gebruikeradmin_model->get_all_studenten();
         $data['_view'] = 'gebruikeradmin/indexStudenten';
         $this->load->view('layouts/main',$data);
     }
@@ -75,16 +77,9 @@ class Gebruikeradmin extends CI_Controller{
         }
         else
         {
-            $this->load->model('Gebruikertype_model');
             $data['all_gebruikertype'] = $this->gebruikertype_model->get_all_gebruikertype();
-
-            $this->load->model('Klas_model');
             $data['all_klassen'] = $this->klas_model->get_all_klassen();
-
-            $this->load->model('Traject_model');
             $data['all_traject'] = $this->traject_model->get_all_traject();
-
-            $this->load->model('Afspraak_model');
             $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
 
             $data['_view'] = 'gebruikeradmin/add';
@@ -117,21 +112,17 @@ class Gebruikeradmin extends CI_Controller{
                 'voornaam' => $this->input->post('voornaam'),
                 'achternaam' => $this->input->post('achternaam'),
                 'email' => $this->input->post('email'),
-                'paswoord' => $hash,
+                'paswoord' => $hash
             );
-            $gebruiker_id = $this->Gebruiker_model->add_gebruiker($params);
+            $this->gebruiker_model->add_gebruiker($params);
             redirect('gebruikeradmin/indexStudenten');
         }
         else
         {
-            $this->load->model('Gebruikertype_model');
-            $data['all_gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
-            $this->load->model('Klas_model');
-            $data['all_klassen'] = $this->Klas_model->get_all_klassen();
-            $this->load->model('Traject_model');
-            $data['all_traject'] = $this->Traject_model->get_all_traject();
-            $this->load->model('Afspraak_model');
-            $data['all_afspraak'] = $this->Afspraak_model->get_all_afspraak();
+            $data['all_gebruikertype'] = $this->gebruikertype_model->get_all_gebruikertype();
+            $data['all_klassen'] = $this->klas_model->get_all_klassen();
+            $data['all_traject'] = $this->traject_model->get_all_traject();
+            $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
             $data['_view'] = 'gebruikeradmin/addStudent';
             $this->load->view('layouts/main',$data);
         }
@@ -211,7 +202,7 @@ class Gebruikeradmin extends CI_Controller{
     function editStudent($id)
     {
         // check if the gebruiker exists before trying to edit it
-        $data['gebruiker'] = $this->Gebruiker_model->get_gebruiker($id);
+        $data['gebruiker'] = $this->gebruiker_model->get_gebruiker($id);
         if(isset($data['gebruiker']['id']))
         {
             if(isset($_POST) && count($_POST) > 0)
@@ -226,19 +217,15 @@ class Gebruikeradmin extends CI_Controller{
                     'email' => $this->input->post('email'),
                     'paswoord' => $this->input->post('paswoord'),
                 );
-                $this->Gebruiker_model->update_gebruiker($id,$params);
+                $this->gebruiker_model->update_gebruiker($id,$params);
                 redirect('gebruikeradmin/indexStudenten');
             }
             else
             {
-                $this->load->model('Gebruikertype_model');
-                $data['all_gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
-                $this->load->model('Klas_model');
-                $data['all_klassen'] = $this->Klas_model->get_all_klassen();
-                $this->load->model('Traject_model');
-                $data['all_traject'] = $this->Traject_model->get_all_traject();
-                $this->load->model('Afspraak_model');
-                $data['all_afspraak'] = $this->Afspraak_model->get_all_afspraak();
+                $data['all_gebruikertype'] = $this->gebruikertype_model->get_all_gebruikertype();
+                $data['all_klassen'] = $this->klas_model->get_all_klassen();
+                $data['all_traject'] = $this->traject_model->get_all_traject();
+                $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
                 $data['_view'] = 'gebruikeradmin/editStudent';
                 $this->load->view('layouts/main',$data);
             }
