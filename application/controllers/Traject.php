@@ -31,8 +31,16 @@ class Traject extends CI_Controller
     {
         $gebruikerId = $this->authex->getGebruikerInfo()->id;
         $data['trajecten'] = $this->Traject_model->get_all_traject();
+        $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Melih Doksanbir';
+        $data['tester'] = 'Thomas Dergent';
         $data['_view'] = 'traject/index';
-        $this->load->view('layouts/main', $data);
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'traject/index',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
+
+
     }
     /**
      * Maken van keuze traject
