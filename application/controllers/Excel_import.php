@@ -31,7 +31,13 @@ class Excel_import extends CI_Controller
 
     function index()
     {
-        $this->load->view('excel_import');
+        $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Melih Doksanbir';
+        $data['tester'] = 'War Op de Beeck';
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'excel_import',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
     }
 
     function handleiding(){

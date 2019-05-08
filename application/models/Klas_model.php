@@ -32,6 +32,19 @@ class Klas_model extends CI_Model
     {
         return $this->db->get_where('klas',array('id'=>$id))->row_array();
     }
+
+    function get_klas_by_lesmoment($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('klas');
+        return $query->row();
+    }
+
+    function get_klas_by_gebruiker($id){
+        $this->db->where('id', $id);
+        $query = $this->db->get('klas');
+        return $query->row();
+    }
     /*
      * Get all klassen
      */

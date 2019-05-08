@@ -23,6 +23,13 @@ class Vak_model extends CI_Model
     {
         return $this->db->get_where('vak', ['naam'=>$vakNaam])->row_array();
     }
+
+    function get_vak_by_lesmoment($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('vak');
+        return $query->row();
+    }
     /**
      * Haalt een vak op uit de tabel Vak
      * @param $id de id van het vak
