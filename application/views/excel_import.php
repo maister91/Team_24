@@ -21,10 +21,6 @@
     <br/>
     <div class="table-responsive" id="customer_data">
     </div>
-    <div>
-        <?php
-        force_download('\Team_24\application\test\lessenrooster.xlsl', NULL) ?>
-    </div>
 </div>
 
 </body>

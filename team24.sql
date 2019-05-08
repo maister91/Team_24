@@ -1,4 +1,4 @@
-SET NAMES utf8mb4;
+﻿SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -88,6 +88,8 @@ CREATE TABLE `gebruikertype`  (
 INSERT INTO `gebruikertype` VALUES (1, 'student');
 INSERT INTO `gebruikertype` VALUES (2, 'docent');
 INSERT INTO `gebruikertype` VALUES (3, 'isp');
+INSERT INTO `gebruikertype` VALUES (4, 'opleidingsmanager');
+
 
 -- ----------------------------
 -- Table structure for klas
