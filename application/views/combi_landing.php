@@ -1,31 +1,14 @@
-<h1><?php echo $titel?></h1>
 <?php
 /**
- * @file combi_landing.php
- *
- * View waar je de homepage van de combistudent kunt bekijken
- * - gebruikt bootstrap
+ * Created by PhpStorm.
+ * User: simon
+ * Date: 25/03/2019
+ * Time: 22:49
  */
 ?>
-<table class="table table-borderless ">
-    <thead>
-    <tr>
-        <th>Studietraject</th>
-        <th>Afspraken</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td><?php echo anchor('Gebruiker/index_simulatie', 'Simulatie', 'class="btn btn-outline-primary"'); ?></td>
-        <td><?php echo anchor('#', 'Afspraken bekijken', 'class="btn btn-info"'); ?></td>
-    </tr>
-    <tr>
-        <td>
-            <?php echo form_open('Gebruiker/meldAf'); ?>
-            <button type='submit' name='Afmelden' class="btn btn-primary">Afmelden</button>
-            <?php echo form_close(); ?>
-        </td>
-        <td></td>
-    </tr>
-    </tbody>
-</table>
+
+<h1>Combi landing page</h1>
+
+<?php echo form_open('Traject/index'); ?>
+    <button class="btn btn-primary" type='submit' name='Kiestraject'>Verander traject</button>
+<?php echo form_close(); ?>

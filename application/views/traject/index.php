@@ -3,7 +3,7 @@
  * @file index.php
  *
  * View waar je de verschillende trajecten kan bekijken
- * - gebruikt bootstrap
+ * -gebruikt bootstrap
  */
 ?>
 

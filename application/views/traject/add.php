@@ -3,7 +3,7 @@
  * @file add.php
  *
  * View waar je een traject kan toevoegen
- * - gebruikt bootstrap
+ * -gebruikt bootstrap
  */
 ?>
 
