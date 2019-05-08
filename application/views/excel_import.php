@@ -1,6 +1,6 @@
 <?php
 /**
- * @file excel_export.php
+ * @file excel_import.php
  *
  * View die de import van de excel toont
  * - gebruikt bootstrap

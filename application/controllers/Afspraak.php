@@ -1,14 +1,25 @@
 <?php
+/**
+ * @class Afspraak
+ * @brief Controller-klasse voor Afspraken
+ *
+ * Controller-klasse waar de methodes inzitten voor:
+ * -Afspraken te bekijken
+ * -Afspraken toe te voegen
+ * -Afspraken te bewerken
+ * -Afspraken te verwijderen
+ */
 
+/**
+ * @property Template $template
+ * @property Afspraak_model $afspraak_model
+ */
 class Afspraak extends CI_Controller
 {
-    /* @var Afspraak_model */
-    public $Afspraak_model;
-
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Afspraak_model');
+        $this->load->model('afspraak_model');
     }
 
     /*
@@ -16,7 +27,7 @@ class Afspraak extends CI_Controller
      */
     function index()
     {
-        $data['afspraak'] = $this->Afspraak_model->get_all_afspraak();
+        $data['afspraak'] = $this->afspraak_model->get_all_afspraak();
 
         $data['_view'] = 'afspraak/index';
         $this->load->view('layouts/main', $data);
@@ -35,7 +46,7 @@ class Afspraak extends CI_Controller
                 'tijdslot'  => $this->input->post('tijdslot'),
             ];
 
-            $afspraak_id = $this->Afspraak_model->add_afspraak($params);
+            $afspraak_id = $this->afspraak_model->add_afspraak($params);
             redirect('afspraak/index');
         } else {
             $data['_view'] = 'afspraak/add';
@@ -49,7 +60,7 @@ class Afspraak extends CI_Controller
     function edit($id)
     {
         // check if the afspraak exists before trying to edit it
-        $data['afspraak'] = $this->Afspraak_model->get_afspraak($id);
+        $data['afspraak'] = $this->afspraak_model->get_afspraak($id);
 
         if (isset($data['afspraak']['id'])) {
             if (isset($_POST) && count($_POST)>0) {
@@ -60,7 +71,7 @@ class Afspraak extends CI_Controller
                     'tijdslot'  => $this->input->post('tijdslot'),
                 ];
 
-                $this->Afspraak_model->update_afspraak($id, $params);
+                $this->afspraak_model->update_afspraak($id, $params);
                 redirect('afspraak/index');
             } else {
                 $data['_view'] = 'afspraak/edit';
@@ -75,11 +86,11 @@ class Afspraak extends CI_Controller
      */
     function remove($id)
     {
-        $afspraak = $this->Afspraak_model->get_afspraak($id);
+        $afspraak = $this->afspraak_model->get_afspraak($id);
 
         // check if the afspraak exists before trying to delete it
         if (isset($afspraak['id'])) {
-            $this->Afspraak_model->delete_afspraak($id);
+            $this->afspraak_model->delete_afspraak($id);
             redirect('afspraak/index');
         } else
             show_error('The afspraak you are trying to delete does not exist.');

@@ -4,7 +4,7 @@
  * @class Export_klas
  * @brief Controller-klasse voor Export_klas
  *
- * Controller-klasse met alle methodes voor de export van een klas
+ * Controller-klasse met alle methodes voor het exporteren van klasgegevens
  */
 
 class Export_klas extends CI_Controller

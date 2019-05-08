@@ -1,4 +1,12 @@
 <?php
+/**
+ * @property Template $template
+ * @property Gebruiker_model $gebruiker_model
+ * @property Afspraak_model $afspraak_model
+ * @property Klas_model $klas_model
+ * @property Traject_model $traject_model
+ * @property Gebruikertype_model $gebruikertype_model
+ */
 class Gebruikeradmin extends CI_Controller{
     function __construct()
     {
@@ -12,7 +20,7 @@ class Gebruikeradmin extends CI_Controller{
     function index()
     {
 
-        $data['gebruikers'] = $this->Gebruiker_model->get_all_gebruikerby_type();
+        $data['gebruikers'] = $this->gebruiker_model->get_all_gebruikerby_type();
 
         $data['_view'] = 'gebruikeradmin/index';
         $this->load->view('layouts/main',$data);
@@ -37,22 +45,22 @@ class Gebruikeradmin extends CI_Controller{
                 'paswoord' => $hash,
             );
 
-            $gebruiker_id = $this->Gebruiker_model->add_gebruiker($params);
+            $gebruiker_id = $this->gebruiker_model->add_gebruiker($params);
             redirect('gebruikeradmin/index');
         }
         else
         {
             $this->load->model('Gebruikertype_model');
-            $data['all_gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
+            $data['all_gebruikertype'] = $this->gebruikertype_model->get_all_gebruikertype();
 
             $this->load->model('Klas_model');
-            $data['all_klassen'] = $this->Klas_model->get_all_klassen();
+            $data['all_klassen'] = $this->klas_model->get_all_klassen();
 
             $this->load->model('Traject_model');
-            $data['all_traject'] = $this->Traject_model->get_all_traject();
+            $data['all_traject'] = $this->traject_model->get_all_traject();
 
             $this->load->model('Afspraak_model');
-            $data['all_afspraak'] = $this->Afspraak_model->get_all_afspraak();
+            $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
 
             $data['_view'] = 'gebruikeradmin/add';
             $this->load->view('layouts/main',$data);
@@ -65,7 +73,7 @@ class Gebruikeradmin extends CI_Controller{
     function edit($id)
     {
         // check if the gebruiker exists before trying to edit it
-        $data['gebruiker'] = $this->Gebruiker_model->get_gebruiker($id);
+        $data['gebruiker'] = $this->gebruiker_model->get_gebruiker($id);
 
         if(isset($data['gebruiker']['id']))
         {
@@ -82,22 +90,22 @@ class Gebruikeradmin extends CI_Controller{
                     'paswoord' => $this->input->post('paswoord'),
                 );
 
-                $this->Gebruiker_model->update_gebruiker($id,$params);
+                $this->gebruiker_model->update_gebruiker($id,$params);
                 redirect('gebruikeradmin/index');
             }
             else
             {
                 $this->load->model('Gebruikertype_model');
-                $data['all_gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
+                $data['all_gebruikertype'] = $this->gebruikertype_model->get_all_gebruikertype();
 
                 $this->load->model('Klas_model');
-                $data['all_klassen'] = $this->Klas_model->get_all_klassen();
+                $data['all_klassen'] = $this->klas_model->get_all_klassen();
 
                 $this->load->model('Traject_model');
-                $data['all_traject'] = $this->Traject_model->get_all_traject();
+                $data['all_traject'] = $this->traject_model->get_all_traject();
 
                 $this->load->model('Afspraak_model');
-                $data['all_afspraak'] = $this->Afspraak_model->get_all_afspraak();
+                $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
 
                 $data['_view'] = 'gebruikeradmin/edit';
                 $this->load->view('layouts/main',$data);
@@ -112,12 +120,12 @@ class Gebruikeradmin extends CI_Controller{
      */
     function remove($id)
     {
-        $gebruiker = $this->Gebruiker_model->get_gebruiker($id);
+        $gebruiker = $this->gebruiker_model->get_gebruiker($id);
 
         // check if the gebruiker exists before trying to delete it
         if(isset($gebruiker['id']))
         {
-            $this->Gebruiker_model->delete_gebruiker($id);
+            $this->gebruiker_model->delete_gebruiker($id);
             redirect('gebruikeradmin/index');
         }
         else

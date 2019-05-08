@@ -6,7 +6,7 @@
  * - gebruikt bootstrap
  */
 ?>
-    <h1 class="text-center"><?php $title?></h1>
+    <h1 class="text-center"><?php $title ?></h1>
     <h2>Ingelogd als
         <?php
         $gebruiker = $this->authex->getGebruikerInfo();
@@ -26,7 +26,7 @@
         <tr>
             <td><?php echo anchor('#', 'Klasindeling aanpassen', 'class="btn btn-outline-primary"'); ?></td>
             <td><?php echo anchor('', 'Afspraken beheren', 'class="btn btn-outline-primary"'); ?></td>
-            <td><?php echo anchor('#', 'Studenteninformatie exporteren', 'class="btn btn-info"'); ?></td>
+            <td><?php echo anchor('Gebruiker/export', 'Studenteninformatie exporteren', 'class="btn btn-info"'); ?></td>
         </tr>
         <tr>
             <td><?php echo anchor('Klas/index_beheren', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
@@ -40,6 +40,5 @@
         </tr>
         </tbody>
     </table>
-
 
 <?php echo divAnchor('Gebruiker/meldAf', 'Afmelden'); ?>
