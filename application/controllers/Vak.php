@@ -1,21 +1,10 @@
 <?php
 
-/**
- * @class Vak
- * @brief Controller-klasse voor Vak
- *
- * Controller-klasse met alle methodes voor de vakken
- */
-
 class Vak extends CI_Controller
 {
 
     /* @var Vak_model */
     public $Vak_model;
-
-    /**
-     * Vak constructor.
-     */
 
     function __construct()
     {
@@ -23,13 +12,9 @@ class Vak extends CI_Controller
         $this->load->model('Vak_model');
     }
 
-    /**
-     * Lijst van alle vakken tonen
-     *
-     * @see Vak_model::get_all_vak()
-     * @see vak/index.php
+    /*
+     * Listing of vak
      */
-
     function index()
     {
         $data['vak'] = $this->Vak_model->get_all_vak();
@@ -38,12 +23,8 @@ class Vak extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
-    /**
-     * Voegt een vak toe
-     *
-     * @see Vak_model::add_vak()
-     * @see Vak::index()
-     * @see vak/add.php
+    /*
+     * Adding a new vak
      */
     function add()
     {
@@ -64,16 +45,8 @@ class Vak extends CI_Controller
         }
     }
 
-
-    /**
-     * Een vak wijzigen
-     *
-     * @param $id Het id van het vak dat getoond wordt
-     * @see Vak_model::get_vak()
-     * @see Vak_model::update_vak()
-     * @see Vak::index()
-     * @see vak/edit.php
-     *
+    /*
+     * Editing a vak
      */
     function edit($id)
     {
@@ -100,13 +73,8 @@ class Vak extends CI_Controller
             show_error('The vak you are trying to edit does not exist.');
     }
 
-    /**
-     * Het verwijderen van een vak
-     *
-     * @param $id Het id van het vak dat verwijderd wordt
-     * @see Vak_model::get_vak()
-     * @see Vak_model::delete_vak()
-     * @see Vak::index()
+    /*
+     * Deleting vak
      */
     function remove($id)
     {

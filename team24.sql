@@ -1,7 +1,4 @@
-CREATE DATABASE IF NOT EXISTS `project` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `project`;
-
-SET NAMES utf8mb4;
+﻿SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -51,15 +48,14 @@ CREATE TABLE `gebruiker`  (
 -- ----------------------------
 -- Records of gebruiker
 -- ----------------------------
-INSERT INTO `gebruiker` VALUES (1, 1, 1162, NULL, NULL, 'student', '', 'student@student.thomasmore.be', '$2y$10$mA.zxi.HHmms37m.7jMbReLLxprF0QxjvGAxC6PClG8/j0gbnZdhO');
-INSERT INTO `gebruiker` VALUES (2, 2, 1162, NULL, NULL, 'docent', '', 'docent@docent.thomasmore.be', '$2y$10$at02OHrl0hae630baexpQelVzB7tCtuiWAWOBN/4ZpYvdeb9rcJdO');
-INSERT INTO `gebruiker` VALUES (3, 3, 1162, NULL, NULL, 'isp', '', 'isp@isp.thomasmore.be', '$2y$10$3o47tu.GlfVCB8pnVaIgoeGdEgUYBwqArkcXfdl40VXnh2nIRaTpO');
-INSERT INTO `gebruiker` VALUES (4, 2, 1173, NULL, NULL, 'War', 'Op de Beeck', 'r0709145@student.thomasmore.be', '$2y$10$YHt6uKYFJm3x5D22uJtfZe0OqBIqpZGLLejQZXtQzZ1Y1LkZEjNwG');
-INSERT INTO `gebruiker` VALUES (5, 1, 1173, NULL, NULL, 'Thomas', 'Dergent', 'r0699038@student.thomasmore.be', '$2y$10$kpMzFOLnEAUXRKI0yHB3G..drQs1/bpPQl2AVyIAa5wdhfEXb.922');
-INSERT INTO `gebruiker` VALUES (6, 1, 1173, NULL, NULL, 'Raf', 'Van Elst', 'r0695265@student.thomasmore.be', '$2y$10$zCNqLiJjeYdZQbhGKNh94u7GGhGZxVhpHyrSPUbx1Uvj6OVE3wtXu');
-INSERT INTO `gebruiker` VALUES (7, 3, 1173, NULL, NULL, 'Melih', 'Doksanbir', 'r0720857@student.thomasmore.be', '$2y$10$70MgO/PYKo8ehmQoHjer4uoaNVriUGqSgD0krJaOynIWaarC5FFo2');
-INSERT INTO `gebruiker` VALUES (8, 1, 1173, NULL, NULL, 'Simon', 'Smedts', 'r0695798@student.thomasmore.be', '$2y$10$3gAFKTTlIEi5LmqO83f2quUe33ot8LfSVRW8N14YTDfT4EgK41wIu');
-INSERT INTO `gebruiker` VALUES (9, 4, 1162, NULL, NULL, 'opleidingsmanager', '', 'opleidingsmanager@opleidingsmanager.thomasmore.be', '$2y$10$baSCn6l.FKBS8jJG6bGUL.hxb33sFJVikvO5BvtZZMDK.jRVabxGy');
+INSERT INTO `gebruiker` VALUES (1, 1, NULL, NULL, NULL, 'student', '', 'student@student.thomasmore.be', '$2y$10$mA.zxi.HHmms37m.7jMbReLLxprF0QxjvGAxC6PClG8/j0gbnZdhO');
+INSERT INTO `gebruiker` VALUES (2, 2, NULL, NULL, NULL, 'docent', '', 'docent@docent.thomasmore.be', '$2y$10$at02OHrl0hae630baexpQelVzB7tCtuiWAWOBN/4ZpYvdeb9rcJdO');
+INSERT INTO `gebruiker` VALUES (3, 3, NULL, NULL, NULL, 'isp', '', 'isp@isp.thomasmore.be', '$2y$10$3o47tu.GlfVCB8pnVaIgoeGdEgUYBwqArkcXfdl40VXnh2nIRaTpO');
+INSERT INTO `gebruiker` VALUES (4, 2, NULL, NULL, NULL, 'War', 'Op de Beeck', 'r0709145@student.thomasmore.be', '$2y$10$YHt6uKYFJm3x5D22uJtfZe0OqBIqpZGLLejQZXtQzZ1Y1LkZEjNwG');
+INSERT INTO `gebruiker` VALUES (5, 1, NULL, NULL, NULL, 'Thomas', 'Dergent', 'r0699038@student.thomasmore.be', '$2y$10$kpMzFOLnEAUXRKI0yHB3G..drQs1/bpPQl2AVyIAa5wdhfEXb.922');
+INSERT INTO `gebruiker` VALUES (6, 1, NULL, NULL, NULL, 'Raf', 'Van Elst', 'r0695265@student.thomasmore.be', '$2y$10$zCNqLiJjeYdZQbhGKNh94u7GGhGZxVhpHyrSPUbx1Uvj6OVE3wtXu');
+INSERT INTO `gebruiker` VALUES (7, 3, NULL, NULL, NULL, 'Melih', 'Doksanbir', 'r0720857@student.thomasmore.be', '$2y$10$70MgO/PYKo8ehmQoHjer4uoaNVriUGqSgD0krJaOynIWaarC5FFo2');
+INSERT INTO `gebruiker` VALUES (8, 1, NULL, NULL, NULL, 'Simon', 'Smedts', 'r0695798@student.thomasmore.be', '$2y$10$3gAFKTTlIEi5LmqO83f2quUe33ot8LfSVRW8N14YTDfT4EgK41wIu');
 
 -- ----------------------------
 -- Table structure for gebruiker_lesmoment
@@ -75,16 +71,6 @@ CREATE TABLE `gebruiker_lesmoment`  (
   CONSTRAINT `gebruiker_lesmoment_ibfk_3` FOREIGN KEY (`gebruikerId`) REFERENCES `gebruiker` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `gebruiker_lesmoment_ibfk_4` FOREIGN KEY (`lesmomentId`) REFERENCES `lesmoment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
-INSERT INTO `gebruiker_lesmoment` VALUES (1, 4, 2220, '');
-INSERT INTO `gebruiker_lesmoment` VALUES (2, 5, 2221, '');
-INSERT INTO `gebruiker_lesmoment` VALUES (3, 6, 2222, '');
-INSERT INTO `gebruiker_lesmoment` VALUES (4, 7, 2223, '');
-INSERT INTO `gebruiker_lesmoment` VALUES (5, 8, 2224, '');
-INSERT INTO `gebruiker_lesmoment` VALUES (6, 9, 2225, '');
-INSERT INTO `gebruiker_lesmoment` VALUES (7, 3, 2226, '');
-INSERT INTO `gebruiker_lesmoment` VALUES (8, 2, 2227, '');
-INSERT INTO `gebruiker_lesmoment` VALUES (9, 1, 2228, '');
 
 -- ----------------------------
 -- Table structure for gebruikertype
@@ -103,6 +89,7 @@ INSERT INTO `gebruikertype` VALUES (1, 'student');
 INSERT INTO `gebruikertype` VALUES (2, 'docent');
 INSERT INTO `gebruikertype` VALUES (3, 'isp');
 INSERT INTO `gebruikertype` VALUES (4, 'opleidingsmanager');
+
 
 -- ----------------------------
 -- Table structure for klas

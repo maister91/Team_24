@@ -1,35 +1,19 @@
 <?php
 
-/**
- * @class Lesmoment
- * @brief Controller-klasse voor Lesmoment
- *
- * Controller-klasse met alle methodes voor de lesmomenten
- */
-
 class Lesmoment extends CI_Controller
 {
 
     /* @var Lesmoment_model */
     public $Lesmoment_model;
-
-    /**
-     * Lesmoment constructor.
-     */
-
     function __construct()
     {
         parent::__construct();
         $this->load->model('Lesmoment_model');
     }
 
-    /**
-     * Lijst van alle lesmomenten weergeven
-     *
-     * @see Lesmoment_model::get_all_lesmoment()
-     * @see lesmoment/index.php
+    /*
+     * Listing of lesmoment
      */
-
     function index()
     {
         $data['lesmoment'] = $this->Lesmoment_model->get_all_lesmoment();
@@ -38,12 +22,8 @@ class Lesmoment extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
-    /**
-     * Een nieuw lesmoment toevoegen
-     *
-     * @see Lesmoment_model::add_lesmoment()
-     * @see lesmoment::index()
-     * @see lesmoment/add.php
+    /*
+     * Adding a new lesmoment
      */
     function add()
     {
@@ -65,17 +45,9 @@ class Lesmoment extends CI_Controller
         }
     }
 
-    /**
-     * Het wijzigen van een lesmoment
-     *
-     * @param $id Het id van het lesmoment dat gewijzigd wordt
-     *
-     * @see Lesmoment_model::get_lesmoment()
-     * @see Lesmoment_model::update_lesmoment()
-     * @see lesmoment::index()
-     * @see lesmoment/edit.php
+    /*
+     * Editing a lesmoment
      */
-
     function edit($id)
     {
         // check if the lesmoment exists before trying to edit it
@@ -102,15 +74,9 @@ class Lesmoment extends CI_Controller
             show_error('The lesmoment you are trying to edit does not exist.');
     }
 
-    /**
-     * Verwijder een lesmoment
-     *
-     * @param $id Het id van het lesmoment dat verwijderd wordt
-     * @see Lesmoment_model::get_lesmoment()
-     * @see Lesmoment_model::delete_lesmoment()
-     * @see lesmoment::index()
+    /*
+     * Deleting lesmoment
      */
-
     function remove($id)
     {
         $lesmoment = $this->Lesmoment_model->get_lesmoment($id);

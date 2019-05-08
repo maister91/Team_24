@@ -17,6 +17,7 @@ class Richting_model extends CI_Model
         parent::__construct();
     }
 
+
     /**
      * Geeft gegevens van een richting
      * @param $richting De naam van de richting
@@ -29,8 +30,9 @@ class Richting_model extends CI_Model
 
     /**
      * Haalt een richting op uit de tabel Richting
-     * @param $id de id van de mail
-     * @return Richting
+     *
+     * @param $id // de id van de mail
+     * @return array
      */
     function get_richting($id)
     {
@@ -41,7 +43,7 @@ class Richting_model extends CI_Model
 
     /**
      * Haalt alle richtingen op uit de tabel Richting
-     * @return Alle richtingen
+     * @return Richting_model[]
      */
     function get_all_richting()
     {

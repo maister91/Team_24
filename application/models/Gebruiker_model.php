@@ -9,6 +9,9 @@
 
 class Gebruiker_model extends CI_Model
 {
+    /* @var Traject_model */
+    public $traject_model;
+
     public function __construct()
     {
         /**
@@ -17,14 +20,9 @@ class Gebruiker_model extends CI_Model
         parent::__construct();
     }
 
-    /**
-     * Geeft een gebruiker-object met de opgegeven $id
-     * @param $id De ID van de gebruiker
-     * @return gegevens van de gebruiker
-     */
     function get($id)
     {
-        //
+        // geef gebruiker-object met opgegeven $id
         $this->db->where('id', $id);
         $query = $this->db->get('gebruiker');
         return $query->row();
@@ -52,12 +50,6 @@ class Gebruiker_model extends CI_Model
         }
     }
 
-    /**
-     * Controleert het wachtwoord
-     * @param $id de id van de gebruiker
-     * @param $paswoord het ingevoerde paswoord
-     * @return 1 / 0 (ja of nee)
-     */
     function controleerWachtwoord($id, $paswoord)
     {
         // geef gebruiker-object met $email en $wachtwoord EN geactiveerd = 1
@@ -82,35 +74,31 @@ class Gebruiker_model extends CI_Model
      * Haalt alle gebruikers op uit de tabel Gebruiker
      * @return Alle gebruikers
      */
-    function get_all_gebruiker($id)
-    {
-        $this->db->where('klasId', $id);
-        $query = $this->db->get('gebruiker');
-        return $query->row();
-    }
-
-    /**
-     * Haalt alle gebruikers op uit de tabel Gebruiker
-     * @return Alle gebruikers
-     */
+    /*
+      * Get gebruiker by id
+      */
     function get_gebruiker($id)
     {
         return $this->db->get_where('gebruiker',array('id'=>$id))->row_array();
     }
-
-    /**
-     * Haalt alle gebruikers op uit de tabel Gebruiker gesorteerd op gebruikerstype
-     * @return Alle gebruikers gesorteerd op gebruikerstype
-     */
     function get_all_gebruikerby_type(){
+
         $this->db->order_by('voornaam', 'asc');
         return $this->db->get('gebruiker')->result_array();
+
     }
 
-    /**
-     * Voegt een gebruiker toe aan de tabel Gebruiker
-     * @param $params zijn de parameteres die men moet ingeven voor een nieuwe gebruiker
-     * @return Record toegevoegd
+    /*
+     * Get all gebruikers
+     */
+    function get_all_gebruikers()
+    {
+        $this->db->order_by('id', 'asc');
+
+    }
+
+    /*
+     * function to add new gebruiker
      */
     function add_gebruiker($params)
     {
@@ -118,11 +106,8 @@ class Gebruiker_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    /**
-     * Bewerkt een  record (gebruiker) in de tabel Gebruiker
-     * @param $id de id van de record dat bewerkt wordt
-     * @param $params de parameteres die men moet ingeven voor de gebruiker aan te passen
-     * @return record gewijzigd
+    /*
+     * function to update gebruiker
      */
     function update_gebruiker($id,$params)
     {
@@ -130,10 +115,8 @@ class Gebruiker_model extends CI_Model
         return $this->db->update('gebruiker',$params);
     }
 
-    /**
-     * Verwijdert een record (Gebruiker) uit aan de tabel Gebruiker
-     * @param $idGebruiker de id van de record dat verwijderd wordt
-     * @return record verwijderd
+    /*
+     * function to delete gebruiker
      */
     function delete_gebruiker($id)
     {

@@ -1,30 +1,18 @@
 <?php
 
-/**
- * @class Afspraak
- * @brief Controller-klasse voor afspraken
- *
- * Controller-klasse met alle methodes die gebruikt worden voor afspraken
- */
 class Afspraak extends CI_Controller
 {
     /* @var Afspraak_model */
     public $Afspraak_model;
 
-    /**
-     * Afspraak constructor.
-     */
     function __construct()
     {
         parent::__construct();
         $this->load->model('Afspraak_model');
     }
 
-    /**
-     * Toont de index pagina van afspraken
-     *
-     * @see Afspraak_model::get_all_afspraak()
-     * @see afspraak/index.php
+    /*
+     * Listing of afspraak
      */
     function index()
     {
@@ -34,21 +22,17 @@ class Afspraak extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
-    /**
-     * Voegt een afspraak toe
-     *
-     * @see Afspraak_model::add_afspraak()
-     * @see Afspraak::index
-     * @see afpraak/add.php
+    /*
+     * Adding a new afspraak
      */
     function add()
     {
-        if (isset($_POST) && count($_POST) > 0) {
+        if (isset($_POST) && count($_POST)>0) {
             $params = [
                 'studentId' => $this->input->post('studentId'),
-                'docentId' => $this->input->post('docentId'),
-                'lokaalId' => $this->input->post('lokaalId'),
-                'tijdslot' => $this->input->post('tijdslot'),
+                'docentId'  => $this->input->post('docentId'),
+                'lokaalId'  => $this->input->post('lokaalId'),
+                'tijdslot'  => $this->input->post('tijdslot'),
             ];
 
             $afspraak_id = $this->Afspraak_model->add_afspraak($params);
@@ -59,14 +43,8 @@ class Afspraak extends CI_Controller
         }
     }
 
-    /**
-     * Wijzigt de gegevens van een afspraak
-     *
-     * @param $id id van de afspraak
-     * @see Afspraak_model::get_afspraak()
-     * @see Afspraak_model::update_afspraak()
-     * @see Afspraak::index
-     * @see afspraak/edit.php
+    /*
+     * Editing a afspraak
      */
     function edit($id)
     {
@@ -74,12 +52,12 @@ class Afspraak extends CI_Controller
         $data['afspraak'] = $this->Afspraak_model->get_afspraak($id);
 
         if (isset($data['afspraak']['id'])) {
-            if (isset($_POST) && count($_POST) > 0) {
+            if (isset($_POST) && count($_POST)>0) {
                 $params = [
                     'studentId' => $this->input->post('studentId'),
-                    'docentId' => $this->input->post('docentId'),
-                    'lokaalId' => $this->input->post('lokaalId'),
-                    'tijdslot' => $this->input->post('tijdslot'),
+                    'docentId'  => $this->input->post('docentId'),
+                    'lokaalId'  => $this->input->post('lokaalId'),
+                    'tijdslot'  => $this->input->post('tijdslot'),
                 ];
 
                 $this->Afspraak_model->update_afspraak($id, $params);
@@ -92,13 +70,8 @@ class Afspraak extends CI_Controller
             show_error('The afspraak you are trying to edit does not exist.');
     }
 
-    /**
-     * Verwijdert een afspraak met de opgegeven id
-     * @param $id de id van de afspraak
-     *
-     * @see Afspraak_model::get_afspraak()
-     * @see Afspraak_model::delete_afspraak()
-     * @see Afspraak::index
+    /*
+     * Deleting afspraak
      */
     function remove($id)
     {
@@ -112,19 +85,4 @@ class Afspraak extends CI_Controller
             show_error('The afspraak you are trying to delete does not exist.');
     }
 
-    public function registreer()
-    {
-        $id = $this->input->post('id');
-
-        $afspraak = new stdClass();
-        $afspraak->id = $id;
-        $afspraak->studentId = $this->input->post('studentId');
-        $afspraak->docentId = $this->input->post('docentId');
-        $afspraak->lokaalId = $this->input->post('lokaalId');
-        $afspraak->tijdslot = $this->input->post('tijdslot');
-
-        $this->load->model('Afspraak_model');
-
-        redirect('/Klas/index_beheren');
-    }
 }

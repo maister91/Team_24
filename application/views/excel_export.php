@@ -1,11 +1,3 @@
-<?php
-/**
- * @file excel_export.php
- *
- * View die de export van de excel toont
- * - gebruikt bootstrap
- */
-?>
 <html>
 <head>
     <title>Export Data to Excel in Codeigniter using PHPExcel</title>
@@ -33,6 +25,8 @@
             <?php
             foreach($gebruikergegevens as $row)
             {
+
+
                 echo '
      <tr>
       <td>'.$row->gebruikertypeId.'</td>

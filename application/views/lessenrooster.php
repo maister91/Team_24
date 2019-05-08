@@ -1,6 +1,7 @@
 <?php
 if ($feedback == 'keuzeSuccesvol') {
-    ?><div class="alert alert-success" role="alert">
+    ?>
+    <div class="alert alert-success" role="alert">
         Klaskeuze is succesvol opgeslagen!
     </div><?php
 }
@@ -47,16 +48,21 @@ if ($klasId === null || $klasId === "0") {
     for ($i = 1; $i <= 5; ++$i) {
         if (isset($lesmomenten[$i])) {
             $lesmoment = $lesmomenten[$i];
-            ?><tr><td><?php echo $i; ?></td><?php
+            ?>
+            <tr>
+            <td><?php echo $i; ?></td><?php
             for ($j = 0; $j <= 4; ++$j) {
                 if (isset($lesmoment[$j])) {
-                    ?><td><?php echo $lesmoment[$j]['vakNaam']; ?></td><?php
+                    ?>
+                    <td><?php echo $lesmoment[$j]['vakNaam']; ?></td><?php
                 } else {
-                    ?><td></td><?php
+                    ?>
+                    <td></td><?php
                 }
             }
         } else {
-            ?><tr>
+            ?>
+            <tr>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -68,5 +74,6 @@ if ($klasId === null || $klasId === "0") {
     ?></tbody>
 
 </table>
-<a class="btn btn-primary" href="<?php echo site_url("lessenrooster/index"); ?>?klasId=<?php echo $klasId?>&semesterId=<?php echo $semesterId?>">Klaskeuze maken</a>
-<p><?php echo anchor('gebruikertype/opleidingmanager', 'Terug'); ?></p>
+<a class="btn btn-primary"
+   href="<?php echo site_url("lessenrooster/index"); ?>?klasId=<?php echo $klasId ?>&semesterId=<?php echo $semesterId ?>">Klaskeuze
+    maken</a>
