@@ -42,6 +42,11 @@ class Klas_model extends CI_Model
         return $this->db->get_where('klas',array('id'=>$id))->row_array();
     }
 
+    function get_klas_gebruikers($id)
+    {
+        return $this->db->get_where('klas',array('id'=>$id))->row_array();
+    }
+
     function get_klas_by_lesmoment($id)
     {
         $this->db->where('id', $id);
@@ -53,6 +58,17 @@ class Klas_model extends CI_Model
         $this->db->where('id', $id);
         $query = $this->db->get('klas');
         return $query->row();
+    }
+
+    function get_klas_studenten($klasId)
+    {
+        $this->db->select('*');
+        $this->db->from('klas');
+        $this->db->join('lesmoment', 'lesmoment.klasId = klas.id');
+        $this->db->join('gebruiker_lesmoment', 'gebruiker_lesmoment.lesmomentId = lesmoment.id');
+        $this->db->where('klas.id', $klasId);
+        $query = $this->db->get();
+        return $query->result();
     }
 
     function get_klassen()
@@ -86,9 +102,9 @@ class Klas_model extends CI_Model
      * Haalt alle klassen op uit de tabel Klas
      * @return result
      */
-    function get_all_klas()
+    function get_all_klas($orderBy = 'id')
     {
-        $this->db->order_by('id', 'desc');
+        $this->db->order_by('id', 'asc');
         $query = $this->db->get('klas');
         return $query->result();
     }

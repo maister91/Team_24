@@ -2,7 +2,7 @@
     <?php
     $attributenFormulier = array('id' => 'klasFormulier');
     echo form_open('klas/registreer', $attributenFormulier);
-    echo form_hidden('id', $klas->id);
+    echo form_hidden('id', $klas['id']);
     ?>
 
     <div class="form-group">
@@ -10,7 +10,7 @@
         echo form_label('Naam', 'naam');
         echo form_input(array('name' => 'naam',
             'id' => 'naam',
-            'value' => $klas->naam,
+            'value' => $klas['naam'],
             'class' => 'form-control',
             'placeholder' => 'Naam',
             'required' => 'required'));
@@ -22,7 +22,7 @@
         echo form_label('Maximum aantal', 'maxAantal');
         echo form_input(array('name' => 'maxAantal',
             'id' => 'maxAantal',
-            'value' => $klas->maxAantal,
+            'value' => $klas['maxAantal'],
             'class' => 'form-control',
             'placeholder' => 'Maximum aantal',
             'required' => 'required'));

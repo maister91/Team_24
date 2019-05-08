@@ -12,6 +12,8 @@
  * @property  Authex $authex
  * @property Gebruiker_model $gebruiker_model
  * @property Export_klas_model $export_klas_model
+ * @property Gebruiker_lesmoment_model Gebruiker_lesmoment_model
+ * @property Klas_model $Klas_model
  */
 class Export_klas extends CI_Controller
 {
@@ -23,6 +25,8 @@ class Export_klas extends CI_Controller
         parent::__construct();
         $this->load->model('export_klas_model');
         $this->load->model('gebruiker_model');
+        $this->load->model('Gebruiker_lesmoment_model');
+        $this->load->model('Klas_model');
         $this->load->library('excel');
         $this->load->library('pagination');
     }
@@ -45,6 +49,22 @@ class Export_klas extends CI_Controller
         } else {
             switch ($ingelogd->gebruikertypeId) {
                 case 3 || 4:
+                    $klassen = [];
+                    foreach ($this->Klas_model->get_all_klas('naam') as $klas) {
+                        $klasGebruiker = [];
+                        foreach ($this->Klas_model->get_klas_studenten($klas->id) as $lesmomentGebruiker) {
+                            if (!array_key_exists($lesmomentGebruiker->gebruikerId, $klasGebruiker)) {
+                                $gebruiker = $this->gebruiker_model->get($lesmomentGebruiker->gebruikerId);
+                                $klasGebruiker[$lesmomentGebruiker->gebruikerId] = $gebruiker->email;
+                            }
+                        }
+                        $klassen[] = [
+                            'naam'         => $klas->naam,
+                            'maxAantal'    => $klas->maxAantal,
+                            'huidigAantal' => count($klasGebruiker),
+                            'gebruikers'    => implode(', ', $klasGebruiker),
+                        ];
+                    }
                     $config['base_url'] = site_url('/Export_klas/index');
                     $config['total_rows'] = $this->export_klas_model->getCountAll();
                     $config['per_page'] = $aantal;
@@ -53,8 +73,7 @@ class Export_klas extends CI_Controller
                     $data['titel'] = '';
                     $data['ontwikkelaar'] = 'War Op de Beeck';
                     $data['tester'] = 'Melih Doksanbir';
-                    $data['lesmomenten'] = $this->export_klas_model->get_all_lesmoment($aantal, $startrij);
-                    $data['gebruikers'] = $this->gebruiker_model->get_gebruikers();
+                    $data['klassen'] = $klassen;
                     $data['links'] = $this->pagination->create_links();
                     $partials = ['hoofding' => 'main_header',
                         'inhoud' => 'klas/export',
