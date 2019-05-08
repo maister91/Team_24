@@ -32,13 +32,10 @@
         ?></select>
 </form>
 <?php
-<<<<<<< HEAD
 if (empty($vakkenUniek)) {
     ?><div class="alert-warning">Geen lessen beschikbaar in de gemaakte selectie.</div><?php
     return;
 }
-=======
->>>>>>> 6f245572bc82e07ae91c80d8af8bbf4d464c6c2b
 ?>
 <div id="feedback"></div>
 <div id="lessenrooster">
@@ -62,17 +59,9 @@ if (empty($vakkenUniek)) {
                 <td><?php echo $i; ?></td><?php
                 for ($j = 0; $j <= 4; ++$j) {
                     if (isset($lesmoment[$j])) {
-<<<<<<< HEAD
                         ?><td><?php echo $lesmoment[$j]['vakNaam']; ?></td><?php
                     } else {
                         ?><td></td><?php
-=======
-                        ?>
-                        <td id="js_vak_<?php echo $lesmoment[$j]['vakId']?>"><?php echo $lesmoment[$j]['vakNaam']; ?></td><?php
-                    } else {
-                        ?>
-                        <td></td><?php
->>>>>>> 6f245572bc82e07ae91c80d8af8bbf4d464c6c2b
                     }
                 }
             } else {
@@ -100,11 +89,7 @@ foreach ($vakkenUniek as $vakken) {
         var vakken = JSON.stringify(<?php echo json_encode($alleVakIds); ?>);
         $('select').selectpicker();
         $('#js_vakken').change(function() {
-<<<<<<< HEAD
             $('#feedback').html('<p class="alert-info"><strong>Bezig met het ophalen van de aangepaste lessenrooster...</strong></p>');
-=======
-            $('#feedback').html('<p class="alert-info"><strong>Bezig met het ophalen van de aangepaste lessenrooster</strong></p>');
->>>>>>> 6f245572bc82e07ae91c80d8af8bbf4d464c6c2b
             $.ajax({
                 type: "POST",
                 url: "<?php echo site_url("traject/ajaxRequestPost"); ?>",
