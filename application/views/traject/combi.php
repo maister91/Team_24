@@ -81,7 +81,15 @@
         </div>
     </div>
     <div class="row">
-        <div id="feedback"></div>
+        <div class="col-sm-4">
+            <div id="feedback"></div>
+        </div>
+        <div class="col-sm-6">
+            <div id="feedback"></div>
+        </div>
+        <div class="col-sm-2">
+            <button id="save_traject" class="btn btn-primary">Sla keuze op</button>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
@@ -90,12 +98,6 @@
         </div>
     </div>
 </div>
-<?php
-$alleVakIds = [];
-foreach ($vakkenUniek as $vakken) {
-    $alleVakIds[] = $vakken['id'];
-}
-?>
 <br>
 <br>
 <?php echo form_open('Gebruiker/meldAf'); ?>
@@ -103,7 +105,6 @@ foreach ($vakkenUniek as $vakken) {
 <?php echo form_close(); ?>
 <script type="text/javascript">
     $(function() {
-        var vakken = JSON.stringify(<?php echo json_encode($alleVakIds); ?>);
         $('select').selectpicker();
         $('#js_vakken_1, #js_vakken_2, #js_vakken_3').change(function() {
             var klasId = $('#klas_1').val();
@@ -175,6 +176,20 @@ foreach ($vakkenUniek as $vakken) {
                 data: {klasId: klasId, semesterId: semesterId},
                 success: function(data){
                     $('#js_vakken_3').html(data).selectpicker('refresh');
+                },
+                failure: function(errMsg) {
+                    console.log('fail');
+                }
+            });
+        });
+        $('#save_traject').click(function() {
+            $.ajax({
+                type: "POST",
+                url: "<?php echo site_url("traject/ajaxSaveTraject"); ?>",
+                data: {},
+                success: function(data){
+                    $('#save_traject').html(data);
+                    $('#save_traject').attr('disabled', true);
                 },
                 failure: function(errMsg) {
                     console.log('fail');

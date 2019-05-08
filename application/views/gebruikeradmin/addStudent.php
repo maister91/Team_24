@@ -9,7 +9,7 @@
                 foreach($all_gebruikertype as $gebruikertype)
                 {
                     $selected = ($gebruikertype['id'] == $this->input->post('gebruikertypeId')) ? ' selected="selected"' : "";
-                    echo '<option value="'.$gebruikertype['id'].'" '.$selected.'>'.$gebruikertype['id'].'</option>';
+                    echo '<option value="'.$gebruikertype['id'].'" '.$selected.'>'.$gebruikertype['beschrijving'].'</option>';
                 }
                 ?>
             </select>
@@ -24,7 +24,7 @@
                 foreach($all_klassen as $klas)
                 {
                     $selected = ($klas['id'] == $this->input->post('klasId')) ? ' selected="selected"' : "";
-                    echo '<option value="'.$klas['id'].'" '.$selected.'>'.$klas['id'].'</option>';
+                    echo '<option value="'.$klas['id'].'" '.$selected.'>'.$klas['naam'].'</option>';
                 }
                 ?>
             </select>
@@ -39,7 +39,7 @@
                 foreach($all_traject as $traject)
                 {
                     $selected = ($traject['id'] == $this->input->post('trajectId')) ? ' selected="selected"' : "";
-                    echo '<option value="'.$traject['id'].'" '.$selected.'>'.$traject['id'].'</option>';
+                    echo '<option value="'.$traject['id'].'" '.$selected.'>'.$traject['naam'].'</option>';
                 }
                 ?>
             </select>
