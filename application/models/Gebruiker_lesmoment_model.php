@@ -68,4 +68,9 @@ class Gebruiker_lesmoment_model extends CI_Model
     {
         return $this->db->delete('gebruiker_lesmoment',array('id'=>$id));
     }
+
+    function delete_gebruiker_lesmoment_gebuiker($gebruikerId)
+    {
+        return $this->db->delete('gebruiker_lesmoment',array('gebruikerId'=>$gebruikerId));
+    }
 }
