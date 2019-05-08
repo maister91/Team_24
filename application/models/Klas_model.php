@@ -49,14 +49,6 @@ class Klas_model extends CI_Model
         $query = $this->db->get('klas');
         return $query->row();
     }
-    /*
-     * Get all klassen
-     */
-    function get_all_klassen()
-    {
-        $this->db->order_by('naam', 'ASC');
-        return $this->db->get('klas')->result_array();
-    }
 
     /**
      * Haalt alle klassen op uit tabel klas in een array gesorteerd op naam
