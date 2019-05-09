@@ -12,8 +12,6 @@
  * @property  Authex $authex
  * @property Gebruiker_model $gebruiker_model
  * @property Export_klas_model $export_klas_model
- * @property Gebruiker_lesmoment_model Gebruiker_lesmoment_model
- * @property Klas_model $Klas_model
  */
 class Export_klas extends CI_Controller
 {
@@ -25,8 +23,6 @@ class Export_klas extends CI_Controller
         parent::__construct();
         $this->load->model('export_klas_model');
         $this->load->model('gebruiker_model');
-        $this->load->model('Gebruiker_lesmoment_model');
-        $this->load->model('Klas_model');
         $this->load->library('excel');
     }
 
@@ -48,6 +44,7 @@ class Export_klas extends CI_Controller
         } else {
             switch ($ingelogd->gebruikertypeId) {
                 case 3 || 4:
+<<<<<<< HEAD
                     $klassen = [];
                     foreach ($this->Klas_model->get_all_klas('naam') as $klas) {
                         $klasGebruiker = [];
@@ -68,6 +65,19 @@ class Export_klas extends CI_Controller
                     $data['ontwikkelaar'] = 'War Op de Beeck';
                     $data['tester'] = 'Melih Doksanbir';
                     $data['klassen'] = $klassen;
+=======
+                    $config['base_url'] = site_url('/Export_klas/index');
+                    $config['total_rows'] = $this->export_klas_model->getCountAll();
+                    $config['per_page'] = $aantal;
+
+                    $this->pagination->initialize($config);
+                    $data['titel'] = '';
+                    $data['ontwikkelaar'] = 'War Op de Beeck';
+                    $data['tester'] = 'Melih Doksanbir';
+                    $data['lesmomenten'] = $this->export_klas_model->get_all_lesmoment($aantal, $startrij);
+                    $data['gebruikers'] = $this->gebruiker_model->get_gebruikers();
+                    $data['links'] = $this->pagination->create_links();
+>>>>>>> parent of 4e08cc3... dev
                     $partials = ['hoofding' => 'main_header',
                         'inhoud' => 'klas/export',
                         'voetnoot' => 'main_footer'];

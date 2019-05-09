@@ -24,7 +24,10 @@ class Lessenrooster extends CI_Controller
         $this->load->model('lesmoment_model');
         $this->load->model('vak_model');
         $this->load->model('klas_model');
+<<<<<<< HEAD
         $this->load->model('gebruiker_lesmoment_model');
+=======
+>>>>>>> parent of 4e08cc3... dev
     }
 
     function index()
@@ -35,8 +38,10 @@ class Lessenrooster extends CI_Controller
         $gebruikerId = $this->authex->getGebruikerInfo()->id;
         $data['feedback'] = '';
         if ($this->input->get('klasId')) {
+            $this->lesmoment_model->update_klas($this->input->get('klasId'), $gebruikerId);
             $klasId = $this->input->get('klasId');
             $semesterId = $this->input->get('semesterId');
+<<<<<<< HEAD
             $this->lesmoment_model->update_klas($this->input->get('klasId'), $gebruikerId);
             $keuzeLesmomenten = $this->lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
             $this->gebruiker_lesmoment_model->delete_gebruiker_lesmoment_gebuiker($gebruikerId);
@@ -48,6 +53,8 @@ class Lessenrooster extends CI_Controller
                 ];
                 $this->gebruiker_lesmoment_model->add_gebruiker_lesmoment($params);
             }
+=======
+>>>>>>> parent of 4e08cc3... dev
             $data['feedback'] = 'keuzeSuccesvol';
         }
 

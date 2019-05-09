@@ -1,5 +1,4 @@
 <?php
-
 class Traject extends CI_Controller
 {
     /* @var Traject_model */
@@ -14,7 +13,6 @@ class Traject extends CI_Controller
     public $Lesmoment_model;
     /* @var Gebruiker_lesmoment_model */
     public $Gebruiker_lesmoment_model;
-
     function __construct()
     {
         parent::__construct();
@@ -25,7 +23,6 @@ class Traject extends CI_Controller
         $this->load->model('Lesmoment_model');
         $this->load->model('Gebruiker_lesmoment_model');
     }
-
     /*
      * Listing of traject
      */
@@ -35,14 +32,13 @@ class Traject extends CI_Controller
         $data['trajecten'] = $this->Traject_model->get_all_traject();
         $data['titel'] = '';
         $data['ontwikkelaar'] = 'Simon Smedts';
-        $data['tester'] = 'Melih Doksanbir';
+        $data['tester'] ='Melih Doksanbir';
         $data['_view'] = 'traject/index';
         $partials = ['hoofding' => 'main_header',
             'inhoud' => 'traject/index',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
     }
-
     /**
      * Maken van keuze traject
      * @see Traject_model::get_all_traject()
@@ -62,16 +58,17 @@ class Traject extends CI_Controller
                 $this->Traject_model->update_traject(1, $gebruikerId);
                 $data['titel'] = 'Model student landing page';
                 $data['ontwikkelaar'] = 'Melih Doksanbir';
-                $data['tester'] = '';
+                $data['tester'] ='';
                 $partials = ['hoofding' => 'main_header',
                     'inhoud' => 'model_landing',
                     'voetnoot' => 'main_footer'];
                 $this->template->load('main_master', $partials, $data);
-            } else if ($knop == "Combi traject") {
+            }
+            else if ($knop == "Combi traject"){
                 $this->Traject_model->update_traject(2, $gebruikerId);
                 $data['titel'] = 'Combi student landing page';
                 $data['ontwikkelaar'] = 'Melih Doksanbir';
-                $data['tester'] = '';
+                $data['tester'] ='';
                 $partials = ['hoofding' => 'main_header',
                     'inhoud' => 'combi_landing',
                     'voetnoot' => 'main_footer'];
@@ -79,7 +76,6 @@ class Traject extends CI_Controller
             }
         }
     }
-
     function combi()
     {
         $data['feedback'] = '';
@@ -91,13 +87,12 @@ class Traject extends CI_Controller
         $data['richtingen'] = $this->Richting_model->get_all_richting();
         $data['titel'] = '';
         $data['ontwikkelaar'] = 'Melih Doksanbir';
-        $data['tester'] = '';
+        $data['tester'] ='';
         $partials = ['hoofding' => 'main_header',
             'inhoud' => 'traject/combi',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
     }
-
     /*
      * Adding a new traject
      */
@@ -115,7 +110,6 @@ class Traject extends CI_Controller
             $this->load->view('layouts/main', $data);
         }
     }
-
     /*
      * SaveTraject
      */
@@ -127,12 +121,11 @@ class Traject extends CI_Controller
             $this->Gebruiker_lesmoment_model->add_gebruiker_lesmoment([
                 'gebruikerId' => $gebruikerId,
                 'lesmomentId' => $lesmoment['id'],
-                'naam' => 'Combi traject'
+                'naam'        => 'Combi traject'
             ]);
         }
         echo 'Opgeslagen!';
     }
-
     /*
      * Editing a traject
      */
@@ -155,7 +148,6 @@ class Traject extends CI_Controller
         } else
             show_error('The traject you are trying to edit does not exist.');
     }
-
     /*
      * Deleting traject
      */
@@ -169,7 +161,6 @@ class Traject extends CI_Controller
         } else
             show_error('The traject you are trying to delete does not exist.');
     }
-
     public function ajaxRequestVakken()
     {
         $klasId = $this->input->post('klasId');
@@ -184,13 +175,11 @@ class Traject extends CI_Controller
         }
         ob_start();
         foreach ($vakkenUniek as $vak) {
-            ?>
-            <option value="<?php echo $vak['id']; ?>"><?php echo $vak['naam']; ?></option><?php
+            ?><option value="<?php echo $vak['id'];?>"><?php echo $vak['naam'];?></option><?php
         }
         $html = ob_get_clean();
         echo $html;
     }
-
     public function ajaxRequestPost()
     {
         $this->session->unset_userdata('lesmomenten');
@@ -213,24 +202,23 @@ class Traject extends CI_Controller
         foreach ($lesmomenten as $lesmoment) {
             $vak = $this->Vak_model->get_vak($lesmoment['vakId']);
             if (
-                in_array($vak['id'], json_decode($items, true) ?: [])
-                || in_array($vak['id'], json_decode($items2, true) ?: [])
-                || in_array($vak['id'], json_decode($items3, true) ?: [])
+                in_array($vak['id'], json_decode($items, true)?:[])
+                || in_array($vak['id'], json_decode($items2, true)?:[])
+                || in_array($vak['id'], json_decode($items3, true)?:[])
             ) {
                 $geselecteerdeLesMomenten[] = $lesmoment;
                 $klas = $this->Klas_model->get_klas($lesmoment['klasId']);
                 $rooster[$lesmoment['lesblok']][$lesmoment['weekdag']][$lesmoment['vakId']] = [
                     'lesblok' => $lesmoment['lesblok'],
-                    'vakId' => $vak['id'],
-                    'vakNaam' => '[' . $klas['naam'] . '] ' . $vak['naam'],
+                    'vakId'   => $vak['id'],
+                    'vakNaam' => '['.$klas['naam'].'] '.$vak['naam'],
                 ];
             }
         }
-        $this->session->set_userdata(['lesmomenten' => $geselecteerdeLesMomenten]);
+        $this->session->set_userdata(['lesmomenten'=>$geselecteerdeLesMomenten]);
         $lesmomenten = $rooster;
         ob_start();
-        ?>
-        <table class="table">
+        ?><table class="table">
         <thead>
         <tr>
             <th></th>
@@ -250,10 +238,9 @@ class Traject extends CI_Controller
                 <td><?php echo $i; ?></td><?php
                 for ($j = 0; $j <= 4; ++$j) {
                     if (isset($lesmoment[$j])) {
-                        ?>
-                        <td><?php
+                        ?><td><?php
                         foreach ($lesmoment[$j] as $vakken) {
-                            echo '<span class="alert-warning">' . $vakken['vakNaam'] . '</span><br />';
+                            echo '<span class="alert-warning">'.$vakken['vakNaam'].'</span><br />';
                         }
                         ?></td><?php
                     } else {

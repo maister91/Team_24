@@ -44,11 +44,6 @@ class Klas_model extends CI_Model
         return $query->row();
     }
 
-    function get_klas_gebruikers($id)
-    {
-        return $this->db->get_where('klas',array('id'=>$id))->row_array();
-    }
-
     function get_klas_by_lesmoment($id)
     {
         $this->db->where('id', $id);
@@ -62,6 +57,7 @@ class Klas_model extends CI_Model
         return $query->row();
     }
 
+<<<<<<< HEAD
     function get_klas_studenten($klasId)
     {
         $this->db->select('*');
@@ -82,6 +78,8 @@ class Klas_model extends CI_Model
         return $query->result();
     }
 
+=======
+>>>>>>> parent of 4e08cc3... dev
     function get_klassen()
     {
         $this->db->order_by('id', 'asc');
@@ -113,9 +111,9 @@ class Klas_model extends CI_Model
      * Haalt alle klassen op uit de tabel Klas
      * @return result
      */
-    function get_all_klas($orderBy = 'id')
+    function get_all_klas()
     {
-        $this->db->order_by('id', 'asc');
+        $this->db->order_by('id', 'desc');
         $query = $this->db->get('klas');
         return $query->result();
     }
