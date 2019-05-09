@@ -83,8 +83,13 @@ class Gebruikeradmin extends CI_Controller{
             $data['all_klassen'] = $this->klas_model->get_all_klassen();
             $data['all_traject'] = $this->traject_model->get_all_traject();
             $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
-            $data['_view'] = 'gebruikeradmin/addStudent';
-            $this->load->view('layouts/main',$data);
+            $data['titel'] = 'Klassen toevoegen';
+            $data['ontwikkelaar'] = 'Simon Smedts';
+            $data['tester'] = 'War Op de Beeck';
+            $partials = ['hoofding' => 'main_header',
+                'inhoud' => 'gebruikeradmin/addStudent',
+                'voetnoot' => 'main_footer'];
+            $this->template->load('main_master', $partials, $data);
         }
     }
 
@@ -128,8 +133,13 @@ class Gebruikeradmin extends CI_Controller{
                 $data['all_klassen'] = $this->klas_model->get_all_klassen();
                 $data['all_traject'] = $this->traject_model->get_all_traject();
                 $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
-                $data['_view'] = 'gebruikeradmin/editStudent';
-                $this->load->view('layouts/main',$data);
+                $data['titel'] = 'Klassen toevoegen';
+                $data['ontwikkelaar'] = 'Simon Smedts';
+                $data['tester'] = 'War Op de Beeck';
+                $partials = ['hoofding' => 'main_header',
+                    'inhoud' => 'gebruikeradmin/editStudent',
+                    'voetnoot' => 'main_footer'];
+                $this->template->load('main_master', $partials, $data);
             }
         }
         else
