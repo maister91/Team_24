@@ -21,9 +21,10 @@ body {
     background: #169BD5;
     height: 100px;
     padding-top: 10px;
-    padding-left: 10px;
+    padding-left: 30px;
     position: fixed;
     width: 100%;
+    z-index: 1000;
 }
 
 #inhoud {
@@ -98,6 +99,23 @@ input[type=submit] {
     border-radius: 3px;
     color: #fff;
 }
+
+
+
+#tabel td{
+    border-bottom: 1px solid #ccc;
+}
+
+#tabel{
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+#tabel tr:last-child{
+    border: none;
+}
+
+
 
 
 

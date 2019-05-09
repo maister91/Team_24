@@ -75,7 +75,7 @@ class Klas_model extends CI_Model
 
     function get_klassen()
     {
-        $this->db->order_by('id', 'desc');
+        $this->db->order_by('id', 'asc');
         $query = $this->db->get('klas');
         $klassen = $query->result();
         return $klassen;

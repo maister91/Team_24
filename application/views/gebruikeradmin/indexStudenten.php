@@ -3,7 +3,8 @@
     <a href="<?php echo site_url('gebruikeradmin/addStudent'); ?>" class="btn btn-success">Gebruiker toevoegen</a>
 </div>
 <br>
-<table class="table table-striped table-borderless">
+<!--<table class="table table-striped table-borderless">-->
+<table id="tabel">
     <tr>
         <th>Gebruikertype</th>
         <th>Klas</th>
