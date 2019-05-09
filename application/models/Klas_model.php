@@ -36,7 +36,9 @@ class Klas_model extends CI_Model
      */
     function get_klas($id)
     {
-        return $this->db->get_where('klas',array('id'=>$id))->row_array();
+        $this->db->where('id', $id);
+        $query = $this->db->get('klas');
+        return $query->row();
     }
     function get_klas_gebruikers($id)
     {
