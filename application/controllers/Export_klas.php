@@ -28,7 +28,6 @@ class Export_klas extends CI_Controller
         $this->load->model('Gebruiker_lesmoment_model');
         $this->load->model('Klas_model');
         $this->load->library('excel');
-        $this->load->library('pagination');
     }
 
     /**
@@ -62,7 +61,7 @@ class Export_klas extends CI_Controller
                             'naam' => $klas->naam,
                             'maxAantal' => $klas->maxAantal,
                             'huidigAantal' => count($klasGebruiker),
-                            'gebruikers' => implode(', ', $klasGebruiker),
+                            'gebruikers' => $klasGebruiker,
                         ];
                     }
                     $data['titel'] = '';
