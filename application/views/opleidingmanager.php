@@ -25,7 +25,7 @@
         <tbody>
         <tr>
             <td><?php echo anchor('Gebruiker/export', 'Studenteninformatie exporteren', 'class="btn btn-info"'); ?></td>
-            <td><?php echo anchor('Excel_import/index', 'Uurrooster beheren', 'class="btn btn-outline-primary"'); ?></td>
+            <td><?php echo anchor('Excel_import/index', 'Uurrooster importeren', 'class="btn btn-outline-primary"'); ?></td>
             <td><?php echo anchor('klas/index_beheren', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
         </tr>
         <tr>
