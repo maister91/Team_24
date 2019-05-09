@@ -70,6 +70,15 @@ class Klas_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    function get_klas_all_studenten()
+    {
+        $this->db->select('*');
+        $this->db->from('klas');
+        $this->db->join('lesmoment', 'lesmoment.klasId = klas.id');
+        $this->db->join('gebruiker_lesmoment', 'gebruiker_lesmoment.lesmomentId = lesmoment.id');
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     function get_klassen()
     {

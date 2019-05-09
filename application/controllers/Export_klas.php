@@ -99,25 +99,22 @@ class Export_klas extends CI_Controller
         $alphabet = array('F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
         // load excel library
         $this->load->library('excel');
-        $empInfo = $this->export_klas_model->get_all_lesmoment_for_export();
+        $empInfo = $this->Klas_model->get_klas_all_studenten();
         $data = $this->gebruiker_model->get_gebruikers();
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->setActiveSheetIndex(0);
         // set Header
         $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Klas');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Vak');
-        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Weekdag');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Lesblok');
-        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Semester');
-        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Studenten');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Huidig Aantal');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Max Aantal Studenten');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Studenten');
         // set Row
         $rowCount = 3;
         foreach ($empInfo as $k) {
             $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $k->klas->naam);
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $k->vak->naam);
-            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $k->weekdag);
-            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $k->lesblok);
-            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $k->semester);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $k->klas->naam);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $k->klas->maxAantal);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $k->klas->student);
             $row = $alphabet[0];
             foreach ($data as $d) {
                 if ($d->klasId == $k->klas->id) {
