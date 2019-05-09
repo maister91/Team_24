@@ -24,10 +24,8 @@
         <td><?php echo $klas['naam']?></td>
         <td><?php echo $klas['huidigAantal']?></td>
         <td><?php echo $klas['maxAantal']?></td>
+        <td><?php echo $klas['gebruikers']?></td>
         </tr><?php
-        foreach ($klas['gebruikers'] as $gebruiker){
-            echo '<tr><td></td><td></td><td></td><td>' . $gebruiker . '</td></tr>';
-        }
     }
     ?>
 </table>

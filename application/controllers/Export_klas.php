@@ -26,6 +26,7 @@ class Export_klas extends CI_Controller
         $this->load->model('Gebruiker_lesmoment_model');
         $this->load->model('Klas_model');
         $this->load->library('excel');
+        $this->load->library('pagination');
     }
     /**
      * Toont de pagina voor de export van de klassen
@@ -36,7 +37,7 @@ class Export_klas extends CI_Controller
      * @see Gebruiker::index.php
      * @see klas/export.php
      */
-    function index()
+    function index($startrij = 0)
     {
         $aantal = 20;
         $ingelogd = $this->authex->getGebruikerInfo();
@@ -55,16 +56,21 @@ class Export_klas extends CI_Controller
                             }
                         }
                         $klassen[] = [
-                            'naam' => $klas->naam,
-                            'maxAantal' => $klas->maxAantal,
+                            'naam'         => $klas->naam,
+                            'maxAantal'    => $klas->maxAantal,
                             'huidigAantal' => count($klasGebruiker),
-                            'gebruikers' => $klasGebruiker,
+                            'gebruikers'    => implode(', ', $klasGebruiker),
                         ];
                     }
+                    $config['base_url'] = site_url('/Export_klas/index');
+                    $config['total_rows'] = $this->export_klas_model->getCountAll();
+                    $config['per_page'] = $aantal;
+                    $this->pagination->initialize($config);
                     $data['titel'] = '';
                     $data['ontwikkelaar'] = 'War Op de Beeck';
                     $data['tester'] = 'Melih Doksanbir';
                     $data['klassen'] = $klassen;
+                    $data['links'] = $this->pagination->create_links();
                     $partials = ['hoofding' => 'main_header',
                         'inhoud' => 'klas/export',
                         'voetnoot' => 'main_footer'];
@@ -83,41 +89,37 @@ class Export_klas extends CI_Controller
      */
     public function createXLS()
     {
-        $alphabet = array('D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        $alphabet = array('F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
         // load excel library
         $this->load->library('excel');
-        $klassen = [];
-        foreach ($this->Klas_model->get_all_klas('naam') as $klas) {
-            $klasGebruiker = [];
-            foreach ($this->Klas_model->get_klas_studenten($klas->id) as $lesmomentGebruiker) {
-                if (!array_key_exists($lesmomentGebruiker->gebruikerId, $klasGebruiker)) {
-                    $gebruiker = $this->gebruiker_model->get($lesmomentGebruiker->gebruikerId);
-                    $klasGebruiker[$lesmomentGebruiker->gebruikerId] = $gebruiker->email;
-                }
-            }
-            $klassen[] = [
-                'naam' => $klas->naam,
-                'maxAantal' => $klas->maxAantal,
-                'huidigAantal' => count($klasGebruiker),
-                'gebruikers' => $klasGebruiker,
-            ];
-        }
+        $empInfo = $this->export_klas_model->get_all_lesmoment_for_export();
+        $data = $this->gebruiker_model->get_gebruikers();
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->setActiveSheetIndex(0);
         // set Header
         $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Klas');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'huidig aantal studenten');
-        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Max aantal studenten');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Studenten');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Vak');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Weekdag');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Lesblok');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Semester');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Studenten');
         // set Row
         $rowCount = 3;
-        foreach ($klassen as $k) {
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $k['naam']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $k['huidigAantal']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $k['maxAantal']);
-            foreach ($k['gebruikers'] as $gebruiker){
-                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $gebruiker);
-                $rowCount++;
+        foreach ($empInfo as $k) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $k->klas->naam);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $k->vak->naam);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $k->weekdag);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $k->lesblok);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $k->semester);
+            $row = $alphabet[0];
+            foreach ($data as $d) {
+                if ($d->klasId == $k->klas->id) {
+                    $objPHPExcel->getActiveSheet()->SetCellValue($row . $rowCount, $d->voornaam);
+                    $row ++;
+                    $objPHPExcel->getActiveSheet()->SetCellValue($row . $rowCount, $d->achternaam);
+                    $row++;
+                    $row++;
+                }
             }
             $rowCount++;
         }
