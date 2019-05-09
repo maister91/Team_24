@@ -17,8 +17,10 @@
         <td>Email</td>
     </tr>
     <?php foreach ($gebruikers as $gebruiker) {
-        echo '<tr>' . '<td>' . $gebruiker->voornaam . ' ' . $gebruiker->achternaam . '</td>'. '<td>' . $gebruiker->klas->naam . '</td>'
-            .  '<td>' . substr($gebruiker->email, 0, -22) . '</td>'
+        $klasNaam = isset($gebruiker->klas->naam) ? $gebruiker->klas->naam : "";
+        echo '<tr>
+                <td>' . $gebruiker->voornaam . ' ' . $gebruiker->achternaam . '</td>' . '<td>' . $klasNaam . '</td>'
+            . '<td>' . substr($gebruiker->email, 0, -22) . '</td>'
             . '<td>' . $gebruiker->email . '</td></tr>';
     }
     ?>

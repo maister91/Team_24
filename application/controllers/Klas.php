@@ -122,11 +122,11 @@ class Klas extends CI_Controller
 
     function getEmptyKlas()
     {
-        $klas = new stdClass();
+        $klas = [];
 
-        $klas->id = 0;
-        $klas->naam = '';
-        $klas->maxAantal = 0;
+        $klas['id'] = 0;
+        $klas['naam'] = '';
+        $klas['maxAantal'] = 0;
 
         return $klas;
     }

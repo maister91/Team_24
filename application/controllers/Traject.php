@@ -13,6 +13,7 @@ class Traject extends CI_Controller
     public $Lesmoment_model;
     /* @var Gebruiker_lesmoment_model */
     public $Gebruiker_lesmoment_model;
+
     function __construct()
     {
         parent::__construct();
@@ -23,6 +24,7 @@ class Traject extends CI_Controller
         $this->load->model('Lesmoment_model');
         $this->load->model('Gebruiker_lesmoment_model');
     }
+
     /*
      * Listing of traject
      */
@@ -174,9 +176,9 @@ class Traject extends CI_Controller
             }
         }
         ob_start();
-        foreach ($vakkenUniek as $vak) {
-            ?><option value="<?php echo $vak['id'];?>"><?php echo $vak['naam'];?></option><?php
-        }
+            foreach ($vakkenUniek as $vak) {
+                ?><option value="<?php echo $vak['id'];?>"><?php echo $vak['naam'];?></option><?php
+            }
         $html = ob_get_clean();
         echo $html;
     }
@@ -219,48 +221,48 @@ class Traject extends CI_Controller
         $lesmomenten = $rooster;
         ob_start();
         ?><table class="table">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Maandag</th>
-            <th>Dinsdag</th>
-            <th>Woensdag</th>
-            <th>Donderdag</th>
-            <th>Vrijdag</th>
-        </tr>
-        </thead>
-        <tbody><?php
-        for ($i = 1; $i <= 5; ++$i) {
-            if (isset($lesmomenten[$i])) {
-                $lesmoment = $lesmomenten[$i];
-                ?>
-                <tr>
-                <td><?php echo $i; ?></td><?php
-                for ($j = 0; $j <= 4; ++$j) {
-                    if (isset($lesmoment[$j])) {
-                        ?><td><?php
-                        foreach ($lesmoment[$j] as $vakken) {
-                            echo '<span class="alert-warning">'.$vakken['vakNaam'].'</span><br />';
-                        }
-                        ?></td><?php
-                    } else {
+            <thead>
+            <tr>
+                <th></th>
+                <th>Maandag</th>
+                <th>Dinsdag</th>
+                <th>Woensdag</th>
+                <th>Donderdag</th>
+                <th>Vrijdag</th>
+            </tr>
+            </thead>
+            <tbody><?php
+                for ($i = 1; $i <= 5; ++$i) {
+                    if (isset($lesmomenten[$i])) {
+                        $lesmoment = $lesmomenten[$i];
                         ?>
-                        <td></td><?php
+                        <tr>
+                        <td><?php echo $i; ?></td><?php
+                        for ($j = 0; $j <= 4; ++$j) {
+                            if (isset($lesmoment[$j])) {
+                                ?><td><?php
+                                foreach ($lesmoment[$j] as $vakken) {
+                                    echo '<span class="alert-warning">'.$vakken['vakNaam'].'</span><br />';
+                                }
+                                ?></td><?php
+                            } else {
+                                ?>
+                                <td></td><?php
+                            }
+                        }
+                    } else {
+                            ?>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr><?php
+                        }
                     }
-                }
-            } else {
-                ?>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr><?php
-            }
-        }
-        ?></tbody>
-        </table><?php
+                    ?></tbody>
+                </table><?php
         $data = ob_get_clean();
         echo $data;
     }

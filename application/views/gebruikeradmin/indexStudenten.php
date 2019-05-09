@@ -23,7 +23,7 @@
                 ?></td>
             <td><?php
                 if ($g->klas != null) {
-                    echo $g->klas->naam;
+                    echo $g->klas['naam'];
                 }
                 ?></td>
             <td><?php
