@@ -18,7 +18,7 @@ body {
 }
 
 #hoofding {
-    background: #169BD5;
+    background: #0d7cad;
     height: 100px;
     padding-top: 10px;
     padding-left: 30px;
@@ -37,7 +37,7 @@ body {
 
 #voetnoot {
     height: 170px;
-    background: #169BD5;
+    background: #0d7cad;
     bottom: 0;
     width: 100%;
     padding-left: 10px;
@@ -90,7 +90,7 @@ input[type=text], input[type=password] {
 }
 
 input[type=submit] {
-    background-color: #169BD5;
+    background-color: #0d7cad;
     padding: 10px 32px;
     text-align: center;
     text-decoration: none;
