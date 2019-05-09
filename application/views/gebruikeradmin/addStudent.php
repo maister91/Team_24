@@ -92,3 +92,5 @@
     </div>
 
 <?php echo form_close(); ?>
+<br>
+<p><?php echo anchor('Gebruikeradmin/indexStudenten', 'Annuleren', 'class="btn btn-info"'); ?></p>

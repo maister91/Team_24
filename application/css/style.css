@@ -14,16 +14,17 @@ body {
 }
 
 #container{
-    min-height: 100%;
+    min-height: calc(100vh - 170px);
 }
 
 #hoofding {
-    background: #169BD5;
+    background: #0d7cad;
     height: 100px;
     padding-top: 10px;
-    padding-left: 10px;
+    padding-left: 30px;
     position: fixed;
     width: 100%;
+    z-index: 1000;
 }
 
 #inhoud {
@@ -35,10 +36,10 @@ body {
 }
 
 #voetnoot {
-    background: #169BD5;
+    height: 170px;
+    background: #0d7cad;
     bottom: 0;
     width: 100%;
-    padding-top: 0px;
     padding-left: 10px;
     color: white;
 }
@@ -77,11 +78,6 @@ a:hover {
     text-decoration: underline;
 }
 
-#login{
-    /*width: 30%;*/
-    /*margin: auto;*/
-}
-
 input[type=text], input[type=password] {
     background-color: #f6f6f6;
     color: #0d0d0d;
@@ -94,7 +90,7 @@ input[type=text], input[type=password] {
 }
 
 input[type=submit] {
-    background-color: #169BD5;
+    background-color: #0d7cad;
     padding: 10px 32px;
     text-align: center;
     text-decoration: none;
@@ -103,6 +99,23 @@ input[type=submit] {
     border-radius: 3px;
     color: #fff;
 }
+
+
+
+#tabel td{
+    border-bottom: 1px solid #ccc;
+}
+
+#tabel{
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+#tabel tr:last-child{
+    border: none;
+}
+
+
 
 
 

@@ -17,30 +17,21 @@
     <table class="table table-borderless ">
         <thead>
         <tr>
-            <th>Klasindelingen aanpassen</th>
-            <th>Afspraken</th>
-            <th>Info beheren</th>
-            <th>Opleidingsmanager opties</th>
+            <th>Exporteren van gegevens</th>
+            <th>Uurooster</th>
+            <th>Beheren van klassen en studenten</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><?php echo anchor('Klas/klasindeling', 'Klasindeling aanpassen', 'class="btn btn-outline-primary"'); ?></td>
-            <td><?php echo anchor('#', 'Afspraken beheren', 'class="btn btn-outline-primary"'); ?></td>
             <td><?php echo anchor('Gebruiker/export', 'Studenteninformatie exporteren', 'class="btn btn-info"'); ?></td>
-            <td><?php echo anchor('Excel_import/index', 'Uurrooster beheren', 'class="btn btn-outline-primary"'); ?></td>
-        </tr>
-        <tr>
+            <td><?php echo anchor('Excel_import/index', 'Uurrooster importeren', 'class="btn btn-outline-primary"'); ?></td>
             <td><?php echo anchor('klas/index_beheren', 'Klassen beheren', 'class="btn btn-outline-primary"'); ?></td>
-            <td></td>
-            <td><?php echo anchor('Export_klas/index', 'Klasgegevens exporteren', 'class="btn btn-info"'); ?></td>
-            <td><?php echo anchor('#', 'Docenten en ISP verantwoordelijken beheren', 'class="btn btn-outline-primary"'); ?></td>
         </tr>
         <tr>
+            <td><?php echo anchor('Export_klas/index', 'Klasgegevens exporteren', 'class="btn btn-info"'); ?></td>
+            <td></td>
             <td><?php echo anchor('Gebruikeradmin/indexStudenten', 'Studenten beheren', 'class="btn btn-outline-primary"'); ?></td>
-            <td></td>
-            <td></td>
-            <td><?php echo anchor('#', 'Currriculum aanpassen', 'class="btn btn-outline-primary"'); ?></td>
         </tr>
         </tbody>
     </table>

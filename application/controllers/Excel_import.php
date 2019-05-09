@@ -90,7 +90,7 @@ class Excel_import extends CI_Controller
             } catch (Exception $exception) {
                 echo 'Er is iets mis gegaan met de import: '.$exception->getMessage();
             }
-            echo 'Data Imported successfully';
+            redirect('Excel_import/index');
         }
     }
 

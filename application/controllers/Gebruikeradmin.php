@@ -24,13 +24,10 @@ class Gebruikeradmin extends CI_Controller{
      */
     function index()
     {
-
         $data['gebruikers'] = $this->gebruiker_model->get_all_gebruikerby_type();
-
         $data['_view'] = 'gebruikeradmin/index';
         $this->load->view('layouts/main',$data);
     }
-
 
     /**
      * toont de indexpagina van de admin gebruiker
@@ -41,52 +38,15 @@ class Gebruikeradmin extends CI_Controller{
     function indexStudenten()
     {
         $data['gebruikers'] = $this->gebruikeradmin_model->get_all_studenten();
-        $data['_view'] = 'gebruikeradmin/indexStudenten';
-        $this->load->view('layouts/main',$data);
+        $data['titel'] = 'Klassen toevoegen';
+        $data['ontwikkelaar'] = 'Simon Smedts';
+        $data['tester'] = 'War Op de Beeck';
+        $data['klas'] = $this->klas_model->get_all_klas();
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'gebruikeradmin/indexStudenten',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
     }
-
-    /**
-     * voegt een nieuwe gebruiker toe (aan de databank)
-     *
-     * @see Gebruiker_model::add_gebruiker()
-     * @see Gebruikertype_model::get_all_gebruikertype()
-     * @see Klas_model::get_all_klassen()
-     * @see Traject_model::get_all_traject()
-     * @see Afspraak_model::get_all_afspraak()
-     * @see Gebruikeradmin::index
-     * @see gebruikeradmin/add.php
-     */
-    function add()
-    {
-        $hash = password_hash($this->input->post('paswoord'), PASSWORD_DEFAULT);
-        if(isset($_POST) && count($_POST) > 0)
-        {
-            $params = array(
-                'gebruikertypeId' => $this->input->post('gebruikertypeId'),
-                'klasId' => $this->input->post('klasId'),
-                'trajectId' => $this->input->post('trajectId'),
-                'afspraakId' => $this->input->post('afspraakId'),
-                'voornaam' => $this->input->post('voornaam'),
-                'achternaam' => $this->input->post('achternaam'),
-                'email' => $this->input->post('email'),
-                'paswoord' => $hash,
-            );
-
-            $gebruiker_id = $this->gebruiker_model->add_gebruiker($params);
-            redirect('gebruikeradmin/index');
-        }
-        else
-        {
-            $data['all_gebruikertype'] = $this->gebruikertype_model->get_all_gebruikertype();
-            $data['all_klassen'] = $this->klas_model->get_all_klassen();
-            $data['all_traject'] = $this->traject_model->get_all_traject();
-            $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
-
-            $data['_view'] = 'gebruikeradmin/add';
-            $this->load->view('layouts/main',$data);
-        }
-    }
-
 
     /**
      * voegt een nieuwe student toe (aan de databank)
@@ -123,67 +83,14 @@ class Gebruikeradmin extends CI_Controller{
             $data['all_klassen'] = $this->klas_model->get_all_klassen();
             $data['all_traject'] = $this->traject_model->get_all_traject();
             $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
-            $data['_view'] = 'gebruikeradmin/addStudent';
-            $this->load->view('layouts/main',$data);
+            $data['titel'] = 'Klassen toevoegen';
+            $data['ontwikkelaar'] = 'Simon Smedts';
+            $data['tester'] = 'War Op de Beeck';
+            $partials = ['hoofding' => 'main_header',
+                'inhoud' => 'gebruikeradmin/addStudent',
+                'voetnoot' => 'main_footer'];
+            $this->template->load('main_master', $partials, $data);
         }
-    }
-
-    /**
-     * Wijzigt de gegevens van admin gebruiker
-     *
-     * @param $id de id van de admin die gewijzigd moet worden
-     * @see Gebruiker_model::getGebruiker()
-     * @see Gebruikertype_model::get_all_gebruikertype()
-     * @see Klas_model::get_all_klassen()
-     * @see Traject_model::get_all_traject()
-     * @see Afspraak_model::get_all_afspraak()
-     * @see gebruikeradmin/index.php
-     * @see gebruikeradmin/edit.php
-     *
-     */
-    function edit($id)
-    {
-        // check if the gebruiker exists before trying to edit it
-        $data['gebruiker'] = $this->gebruiker_model->get_gebruiker($id);
-
-        if(isset($data['gebruiker']['id']))
-        {
-            if(isset($_POST) && count($_POST) > 0)
-            {
-                $params = array(
-                    'gebruikertypeId' => $this->input->post('gebruikertypeId'),
-                    'klasId' => $this->input->post('klasId'),
-                    'trajectId' => $this->input->post('trajectId'),
-                    'afspraakId' => $this->input->post('afspraakId'),
-                    'voornaam' => $this->input->post('voornaam'),
-                    'achternaam' => $this->input->post('achternaam'),
-                    'email' => $this->input->post('email'),
-                    'paswoord' => $this->input->post('paswoord'),
-                );
-
-                $this->gebruiker_model->update_gebruiker($id,$params);
-                redirect('gebruikeradmin/index');
-            }
-            else
-            {
-                $this->load->model('Gebruikertype_model');
-                $data['all_gebruikertype'] = $this->gebruikertype_model->get_all_gebruikertype();
-
-                $this->load->model('Klas_model');
-                $data['all_klassen'] = $this->klas_model->get_all_klassen();
-
-                $this->load->model('Traject_model');
-                $data['all_traject'] = $this->traject_model->get_all_traject();
-
-                $this->load->model('Afspraak_model');
-                $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
-
-                $data['_view'] = 'gebruikeradmin/edit';
-                $this->load->view('layouts/main',$data);
-            }
-        }
-        else
-            show_error('The gebruiker you are trying to edit does not exist.');
     }
 
     /**
@@ -226,8 +133,13 @@ class Gebruikeradmin extends CI_Controller{
                 $data['all_klassen'] = $this->klas_model->get_all_klassen();
                 $data['all_traject'] = $this->traject_model->get_all_traject();
                 $data['all_afspraak'] = $this->afspraak_model->get_all_afspraak();
-                $data['_view'] = 'gebruikeradmin/editStudent';
-                $this->load->view('layouts/main',$data);
+                $data['titel'] = 'Klassen toevoegen';
+                $data['ontwikkelaar'] = 'Simon Smedts';
+                $data['tester'] = 'War Op de Beeck';
+                $partials = ['hoofding' => 'main_header',
+                    'inhoud' => 'gebruikeradmin/editStudent',
+                    'voetnoot' => 'main_footer'];
+                $this->template->load('main_master', $partials, $data);
             }
         }
         else
@@ -250,7 +162,7 @@ class Gebruikeradmin extends CI_Controller{
         if(isset($gebruiker['id']))
         {
             $this->gebruiker_model->delete_gebruiker($id);
-            redirect('gebruikeradmin/index');
+            redirect('gebruikeradmin/indexStudenten');
         }
         else
             show_error('The gebruiker you are trying to delete does not exist.');

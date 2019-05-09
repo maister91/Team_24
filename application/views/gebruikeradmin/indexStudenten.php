@@ -1,8 +1,10 @@
+<br>
 <div class="pull-right">
-    <a href="<?php echo site_url('gebruikeradmin/addStudent'); ?>" class="btn btn-success">Add</a>
+    <a href="<?php echo site_url('gebruikeradmin/addStudent'); ?>" class="btn btn-success">Gebruiker toevoegen</a>
 </div>
-
-<table class="table table-striped table-bordered">
+<br>
+<!--<table class="table table-striped table-borderless">-->
+<table id="tabel">
     <tr>
         <th>Gebruikertype</th>
         <th>Klas</th>
@@ -12,7 +14,7 @@
         <th>Email</th>
         <th>Actions</th>
     </tr>
-    <?php foreach($gebruikers as $g){  ?>
+    <?php foreach ($gebruikers as $g) { ?>
         <tr>
             <td><?php
                 if ($g->gebruikertype != null) {
@@ -33,9 +35,12 @@
             <td><?php echo $g->achternaam; ?></td>
             <td><?php echo $g->email; ?></td>
             <td>
-                <a href="<?php echo site_url('gebruikeradmin/editStudent/'.$g->id); ?>" class="btn btn-info btn-xs">Edit</a>
-                <a href="<?php echo site_url('gebruikeradmin/remove/'.$g->id); ?>" class="btn btn-danger btn-xs">Delete</a>
+                <a href="<?php echo site_url('gebruikeradmin/editStudent/' . $g->id); ?>" class="btn btn-info btn-xs">Aanpassen</a>
+                <a href="<?php echo site_url('gebruikeradmin/remove/' . $g->id); ?>" class="btn btn-danger btn-xs">Verwijderen</a>
+
             </td>
+
         </tr>
     <?php } ?>
 </table>
+<p><?php echo anchor('gebruiker/index', 'Terug'); ?></p>

@@ -9,7 +9,7 @@
 
 
 <h2>Studenteninformatie</h2>
-<table>
+<table id="tabel">
     <tr>
         <td>Student</td>
         <td>Klas</td>
