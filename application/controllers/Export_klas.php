@@ -105,7 +105,7 @@ class Export_klas extends CI_Controller
                 'naam' => $klas->naam,
                 'maxAantal' => $klas->maxAantal,
                 'huidigAantal' => count($klasGebruiker),
-                'gebruikers' => implode(', ', $klasGebruiker),
+                'gebruikers' => $klasGebruiker,
             ];
         }
         $objPHPExcel = new PHPExcel();
@@ -121,9 +121,15 @@ class Export_klas extends CI_Controller
             $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $k['naam']);
             $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $k['huidigAantal']);
             $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $k['maxAantal']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $k['gebruikers']);
+            foreach ($k['gebruikers'] as $gebruiker){
+                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $gebruiker);
+                $rowCount++;
+            }
+
             $rowCount++;
         }
+
+
 
         header('Content-type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="Klasgegevens.xlsx"');
