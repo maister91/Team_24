@@ -1,27 +1,29 @@
 <?php
 
-/**
- * @property Template $template
- * @property Authex $authex
- * @property Traject_model $traject_model
- * @property Vak_model $vak_model
- * @property Richting_model $richting_model
- * @property Klas_model $klas_model
- * @property Lesmoment_model $lesmoment_model
- * @property Gebruiker_lesmoment_model $gebruiker_lesmoment_model
- */
-
 class Traject extends CI_Controller
 {
+    /* @var Traject_model */
+    public $Traject_model;
+    /* @var Vak_model */
+    public $Vak_model;
+    /* @var Richting_model */
+    public $Richting_model;
+    /* @var Klas_model */
+    public $Klas_model;
+    /* @var Lesmoment_model */
+    public $Lesmoment_model;
+    /* @var Gebruiker_lesmoment_model */
+    public $Gebruiker_lesmoment_model;
+
     function __construct()
     {
         parent::__construct();
-        $this->load->model('traject_model');
-        $this->load->model('vak_model');
-        $this->load->model('richting_model');
-        $this->load->model('klas_model');
-        $this->load->model('lesmoment_model');
-        $this->load->model('gebruiker_lesmoment_model');
+        $this->load->model('Traject_model');
+        $this->load->model('Vak_model');
+        $this->load->model('Richting_model');
+        $this->load->model('Klas_model');
+        $this->load->model('Lesmoment_model');
+        $this->load->model('Gebruiker_lesmoment_model');
     }
 
     /*
@@ -30,48 +32,46 @@ class Traject extends CI_Controller
     function index()
     {
         $gebruikerId = $this->authex->getGebruikerInfo()->id;
-        $data['trajecten'] = $this->traject_model->get_all_traject();
+        $data['trajecten'] = $this->Traject_model->get_all_traject();
         $data['titel'] = '';
         $data['ontwikkelaar'] = 'Simon Smedts';
-        $data['tester'] ='Melih Doksanbir';
+        $data['tester'] = 'Melih Doksanbir';
         $data['_view'] = 'traject/index';
         $partials = ['hoofding' => 'main_header',
             'inhoud' => 'traject/index',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
-
-
     }
+
     /**
      * Maken van keuze traject
-     * @see traject_model::get_all_traject()
+     * @see Traject_model::get_all_traject()
      * @see authex::getGebruikerInfo()
-     * @see traject_model::update_traject()
+     * @see Traject_model::update_traject()
      * @see model_landing.php
      * @see combi_landing.php
      *
      */
     function kiesTraject()
     {
-        $data['trajecten'] = $this->traject_model->get_all_traject();
+        $data['trajecten'] = $this->Traject_model->get_all_traject();
         $gebruikerId = $this->authex->getGebruikerInfo()->id;
         if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['knop'])) {
             $knop = $this->input->post("knop");
             if ($knop == "Model traject") {
-                $this->traject_model->update_traject(1, $gebruikerId);
+                $this->Traject_model->update_traject(1, $gebruikerId);
                 $data['titel'] = 'Model student landing page';
                 $data['ontwikkelaar'] = 'Melih Doksanbir';
-                $data['tester'] ='';
+                $data['tester'] = '';
                 $partials = ['hoofding' => 'main_header',
                     'inhoud' => 'model_landing',
                     'voetnoot' => 'main_footer'];
                 $this->template->load('main_master', $partials, $data);
-            }
-            else if ($knop == "Combi traject"){
-                $this->traject_model->update_traject(2, $gebruikerId);
+            } else if ($knop == "Combi traject") {
+                $this->Traject_model->update_traject(2, $gebruikerId);
                 $data['titel'] = 'Combi student landing page';
                 $data['ontwikkelaar'] = 'Melih Doksanbir';
-                $data['tester'] ='';
+                $data['tester'] = '';
                 $partials = ['hoofding' => 'main_header',
                     'inhoud' => 'combi_landing',
                     'voetnoot' => 'main_footer'];
@@ -83,19 +83,37 @@ class Traject extends CI_Controller
     function combi()
     {
         $data['feedback'] = '';
-        $data['klassen'] = $this->klas_model->get_all_klassen();
-        $data['klassen1'] = $this->klas_model->get_klassen_jaar(1);
-        $data['klassen2'] = $this->klas_model->get_klassen_jaar(2);
-        $data['klassen3'] = $this->klas_model->get_klassen_jaar(3);
-        $data['vakken'] = $this->vak_model->get_all_vak();
-        $data['richtingen'] = $this->richting_model->get_all_richting();
+        $data['klassen'] = $this->Klas_model->get_all_klassen();
+        $data['klassen1'] = $this->Klas_model->get_klassen_jaar(1);
+        $data['klassen2'] = $this->Klas_model->get_klassen_jaar(2);
+        $data['klassen3'] = $this->Klas_model->get_klassen_jaar(3);
+        $data['vakken'] = $this->Vak_model->get_all_vak();
+        $data['richtingen'] = $this->Richting_model->get_all_richting();
         $data['titel'] = '';
         $data['ontwikkelaar'] = 'Melih Doksanbir';
-        $data['tester'] ='';
+        $data['tester'] = '';
         $partials = ['hoofding' => 'main_header',
             'inhoud' => 'traject/combi',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
+    }
+
+    /*
+     * Adding a new traject
+     */
+    function add()
+    {
+        if (isset($_POST) && count($_POST) > 0) {
+            $params = [
+                'naam' => $this->input->post('naam'),
+                'beschrijving' => $this->input->post('beschrijving'),
+            ];
+            $traject_id = $this->Traject_model->add_traject($params);
+            redirect('traject/index');
+        } else {
+            $data['_view'] = 'traject/add';
+            $this->load->view('layouts/main', $data);
+        }
     }
 
     /*
@@ -104,35 +122,71 @@ class Traject extends CI_Controller
     function ajaxSaveTraject()
     {
         $gebruikerId = $this->authex->getGebruikerInfo()->id;
-        $this->gebruiker_lesmoment_model->delete_gebruiker_lesmoment_gebuiker($gebruikerId);
+        $this->Gebruiker_lesmoment_model->delete_gebruiker_lesmoment_gebuiker($gebruikerId);
         foreach ($this->session->userdata('lesmomenten') as $lesmoment) {
-            $params = [
+            $this->Gebruiker_lesmoment_model->add_gebruiker_lesmoment([
                 'gebruikerId' => $gebruikerId,
                 'lesmomentId' => $lesmoment['id'],
-                'naam'        => 'Combi traject'
-            ];
-            $this->gebruiker_lesmoment_model->add_gebruiker_lesmoment($params);
+                'naam' => 'Combi traject'
+            ]);
         }
         echo 'Opgeslagen!';
+    }
+
+    /*
+     * Editing a traject
+     */
+    function edit($id)
+    {
+        // check if the traject exists before trying to edit it
+        $data['traject'] = $this->Traject_model->get_traject($id);
+        if (isset($data['traject']['id'])) {
+            if (isset($_POST) && count($_POST) > 0) {
+                $params = [
+                    'naam' => $this->input->post('naam'),
+                    'beschrijving' => $this->input->post('beschrijving'),
+                ];
+                $this->Traject_model->update_traject($id, $params);
+                redirect('traject/index');
+            } else {
+                $data['_view'] = 'traject/edit';
+                $this->load->view('layouts/main', $data);
+            }
+        } else
+            show_error('The traject you are trying to edit does not exist.');
+    }
+
+    /*
+     * Deleting traject
+     */
+    function remove($id)
+    {
+        $traject = $this->Traject_model->get_traject($id);
+        // check if the traject exists before trying to delete it
+        if (isset($traject['id'])) {
+            $this->Traject_model->delete_traject($id);
+            redirect('traject/index');
+        } else
+            show_error('The traject you are trying to delete does not exist.');
     }
 
     public function ajaxRequestVakken()
     {
         $klasId = $this->input->post('klasId');
         $semesterId = $this->input->post('semesterId');
-
-        $lesmomenten = $this->lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
+        $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
         $vakkenUniek = [];
         foreach ($lesmomenten as $lesmoment) {
-            $vak = $this->vak_model->get_vak($lesmoment['vakId']);
+            $vak = $this->Vak_model->get_vak($lesmoment['vakId']);
             if (!in_array($vak, $vakkenUniek)) {
                 $vakkenUniek[] = $vak;
             }
         }
         ob_start();
-            foreach ($vakkenUniek as $vak) {
-                ?><option value="<?php echo $vak['id'];?>"><?php echo $vak['naam'];?></option><?php
-            }
+        foreach ($vakkenUniek as $vak) {
+            ?>
+            <option value="<?php echo $vak['id']; ?>"><?php echo $vak['naam']; ?></option><?php
+        }
         $html = ob_get_clean();
         echo $html;
     }
@@ -143,85 +197,83 @@ class Traject extends CI_Controller
         $items = $this->input->post('items');
         $items2 = $this->input->post('items3');
         $items3 = $this->input->post('items2');
-
         $klasId1 = $this->input->post('klasId1');
         $semesterId1 = $this->input->post('semesterId1');
         $klasId2 = $this->input->post('klasId2');
         $semesterId2 = $this->input->post('semesterId2');
         $klasId3 = $this->input->post('klasId3');
         $semesterId3 = $this->input->post('semesterId3');
-
-        $lesmomenten1 = $this->lesmoment_model->get_lesmoment_by_klas_en_semester($klasId1, $semesterId1);
-        $lesmomenten2 = $this->lesmoment_model->get_lesmoment_by_klas_en_semester($klasId2, $semesterId2);
-        $lesmomenten3 = $this->lesmoment_model->get_lesmoment_by_klas_en_semester($klasId3, $semesterId3);
+        $lesmomenten1 = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId1, $semesterId1);
+        $lesmomenten2 = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId2, $semesterId2);
+        $lesmomenten3 = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId3, $semesterId3);
         $lesmomenten = array_merge($lesmomenten1, $lesmomenten2, $lesmomenten3);
-        // $lesmomenten = $this->lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
+        // $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
         $rooster = [];
         $geselecteerdeLesMomenten = [];
         foreach ($lesmomenten as $lesmoment) {
-            $vak = $this->vak_model->get_vak($lesmoment['vakId']);
+            $vak = $this->Vak_model->get_vak($lesmoment['vakId']);
             if (
-                in_array($vak['id'], json_decode($items, true)?:[])
-                || in_array($vak['id'], json_decode($items2, true)?:[])
-                || in_array($vak['id'], json_decode($items3, true)?:[])
+                in_array($vak['id'], json_decode($items, true) ?: [])
+                || in_array($vak['id'], json_decode($items2, true) ?: [])
+                || in_array($vak['id'], json_decode($items3, true) ?: [])
             ) {
                 $geselecteerdeLesMomenten[] = $lesmoment;
-                $klas = $this->klas_model->get_klas($lesmoment['klasId']);
+                $klas = $this->Klas_model->get_klas($lesmoment['klasId']);
                 $rooster[$lesmoment['lesblok']][$lesmoment['weekdag']][$lesmoment['vakId']] = [
                     'lesblok' => $lesmoment['lesblok'],
-                    'vakId'   => $vak['id'],
-                    'vakNaam' => '['.$klas['naam'].'] '.$vak['naam'],
-
+                    'vakId' => $vak['id'],
+                    'vakNaam' => '[' . $klas['naam'] . '] ' . $vak['naam'],
                 ];
             }
         }
-        $this->session->set_userdata(['lesmomenten'=>$geselecteerdeLesMomenten]);
+        $this->session->set_userdata(['lesmomenten' => $geselecteerdeLesMomenten]);
         $lesmomenten = $rooster;
         ob_start();
-        ?><table class="table">
-            <thead>
-            <tr>
-                <th></th>
-                <th>Maandag</th>
-                <th>Dinsdag</th>
-                <th>Woensdag</th>
-                <th>Donderdag</th>
-                <th>Vrijdag</th>
-            </tr>
-            </thead>
-            <tbody><?php
-                for ($i = 1; $i <= 5; ++$i) {
-                    if (isset($lesmomenten[$i])) {
-                        $lesmoment = $lesmomenten[$i];
+        ?>
+        <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Maandag</th>
+            <th>Dinsdag</th>
+            <th>Woensdag</th>
+            <th>Donderdag</th>
+            <th>Vrijdag</th>
+        </tr>
+        </thead>
+        <tbody><?php
+        for ($i = 1; $i <= 5; ++$i) {
+            if (isset($lesmomenten[$i])) {
+                $lesmoment = $lesmomenten[$i];
+                ?>
+                <tr>
+                <td><?php echo $i; ?></td><?php
+                for ($j = 0; $j <= 4; ++$j) {
+                    if (isset($lesmoment[$j])) {
                         ?>
-                        <tr>
-                        <td><?php echo $i; ?></td><?php
-                        for ($j = 0; $j <= 4; ++$j) {
-                            if (isset($lesmoment[$j])) {
-                                ?><td><?php
-                                foreach ($lesmoment[$j] as $vakken) {
-                                    echo '<span class="alert-warning">'.$vakken['vakNaam'].'</span><br />';
-
-                                }
-                                ?></td><?php
-                            } else {
-                                ?>
-                                <td></td><?php
-                            }
+                        <td><?php
+                        foreach ($lesmoment[$j] as $vakken) {
+                            echo '<span class="alert-warning">' . $vakken['vakNaam'] . '</span><br />';
                         }
+                        ?></td><?php
                     } else {
-                            ?>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr><?php
-                        }
+                        ?>
+                        <td></td><?php
                     }
-                    ?></tbody>
-                </table><?php
+                }
+            } else {
+                ?>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr><?php
+            }
+        }
+        ?></tbody>
+        </table><?php
         $data = ob_get_clean();
         echo $data;
     }
