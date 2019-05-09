@@ -6,7 +6,6 @@
  * Controller-klasse waar de methodes inzitten voor:
  * -Lessenroosters te tonen
  */
-
 /**
  * @property Template $template
  * @property Authex $authex
@@ -15,7 +14,6 @@
  * @property Lesmoment_model $lesmoment_model
  * @property Gebruiker_lesmoment_model $gebruiker_lesmoment_model
  */
-
 class Lessenrooster extends CI_Controller
 {
     function __construct()
@@ -24,24 +22,17 @@ class Lessenrooster extends CI_Controller
         $this->load->model('lesmoment_model');
         $this->load->model('vak_model');
         $this->load->model('klas_model');
-<<<<<<< HEAD
         $this->load->model('gebruiker_lesmoment_model');
-=======
->>>>>>> parent of 4e08cc3... dev
     }
-
     function index()
     {
         $klasId = $this->input->post('klassen');
         $semesterId = $this->input->post('semester');
-
         $gebruikerId = $this->authex->getGebruikerInfo()->id;
         $data['feedback'] = '';
         if ($this->input->get('klasId')) {
-            $this->lesmoment_model->update_klas($this->input->get('klasId'), $gebruikerId);
             $klasId = $this->input->get('klasId');
             $semesterId = $this->input->get('semesterId');
-<<<<<<< HEAD
             $this->lesmoment_model->update_klas($this->input->get('klasId'), $gebruikerId);
             $keuzeLesmomenten = $this->lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
             $this->gebruiker_lesmoment_model->delete_gebruiker_lesmoment_gebuiker($gebruikerId);
@@ -53,11 +44,8 @@ class Lessenrooster extends CI_Controller
                 ];
                 $this->gebruiker_lesmoment_model->add_gebruiker_lesmoment($params);
             }
-=======
->>>>>>> parent of 4e08cc3... dev
             $data['feedback'] = 'keuzeSuccesvol';
         }
-
         $lesmomenten = $this->lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
         $rooster = [];
         foreach ($lesmomenten as $lesmoment) {
@@ -70,16 +58,13 @@ class Lessenrooster extends CI_Controller
         $data['klasId'] = $klasId;
         $data['semesterId'] = $semesterId;
         $data['klassen'] = $this->klas_model->get_all_klassen();
-
         $data['titel'] = '';
         $data['ontwikkelaar'] = 'Melih Doksanbir';
         $data['tester'] = 'Thomas Dergent';
-
         $data['_view'] = 'lessenrooster';
         $partials = ['hoofding' => 'main_header',
             'inhoud' => 'lessenrooster',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
-
     }
 }

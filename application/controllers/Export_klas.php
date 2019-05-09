@@ -1,17 +1,17 @@
 <?php
-
 /**
  * @class Export_klas
  * @brief Controller-klasse voor Export_klas
  *
  * Controller-klasse met alle methodes voor het exporteren van klasgegevens
  */
-
 /**
  * @property Template $template
  * @property  Authex $authex
  * @property Gebruiker_model $gebruiker_model
  * @property Export_klas_model $export_klas_model
+ * @property Gebruiker_lesmoment_model Gebruiker_lesmoment_model
+ * @property Klas_model $Klas_model
  */
 class Export_klas extends CI_Controller
 {
@@ -23,9 +23,10 @@ class Export_klas extends CI_Controller
         parent::__construct();
         $this->load->model('export_klas_model');
         $this->load->model('gebruiker_model');
+        $this->load->model('Gebruiker_lesmoment_model');
+        $this->load->model('Klas_model');
         $this->load->library('excel');
     }
-
     /**
      * Toont de pagina voor de export van de klassen
      *
@@ -44,7 +45,6 @@ class Export_klas extends CI_Controller
         } else {
             switch ($ingelogd->gebruikertypeId) {
                 case 3 || 4:
-<<<<<<< HEAD
                     $klassen = [];
                     foreach ($this->Klas_model->get_all_klas('naam') as $klas) {
                         $klasGebruiker = [];
@@ -65,19 +65,6 @@ class Export_klas extends CI_Controller
                     $data['ontwikkelaar'] = 'War Op de Beeck';
                     $data['tester'] = 'Melih Doksanbir';
                     $data['klassen'] = $klassen;
-=======
-                    $config['base_url'] = site_url('/Export_klas/index');
-                    $config['total_rows'] = $this->export_klas_model->getCountAll();
-                    $config['per_page'] = $aantal;
-
-                    $this->pagination->initialize($config);
-                    $data['titel'] = '';
-                    $data['ontwikkelaar'] = 'War Op de Beeck';
-                    $data['tester'] = 'Melih Doksanbir';
-                    $data['lesmomenten'] = $this->export_klas_model->get_all_lesmoment($aantal, $startrij);
-                    $data['gebruikers'] = $this->gebruiker_model->get_gebruikers();
-                    $data['links'] = $this->pagination->create_links();
->>>>>>> parent of 4e08cc3... dev
                     $partials = ['hoofding' => 'main_header',
                         'inhoud' => 'klas/export',
                         'voetnoot' => 'main_footer'];
@@ -89,14 +76,11 @@ class Export_klas extends CI_Controller
             }
         };
     }
-
-
     /**
      * Maakt een excel document aan van alle gegevens van een kalas
      *
      * @see export_klas_model::get_all_lesmoment()
      */
-
     public function createXLS()
     {
         $alphabet = array('D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
@@ -135,12 +119,8 @@ class Export_klas extends CI_Controller
                 $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $gebruiker);
                 $rowCount++;
             }
-
             $rowCount++;
         }
-
-
-
         header('Content-type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="Klasgegevens.xlsx"');
         header('Cache-Control: max-age=0');
