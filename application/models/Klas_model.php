@@ -6,7 +6,6 @@
  * Model-klasse die alle methodes bevat voor de klassen
  *
  */
-
 /**
  * @property Gebruiker_model $gebruiker_model
  */
@@ -20,8 +19,6 @@ class Klas_model extends CI_Model
         parent::__construct();
         $this->load->model('gebruiker_model');
     }
-
-
     /**
      * Geeft een gebruiker-object met de opgegeven naam
      * @param $naam De naam van de klas
@@ -39,46 +36,40 @@ class Klas_model extends CI_Model
      */
     function get_klas($id)
     {
-
-        $this->db->where('id', $id);
-        $query = $this->db->get('klas');
-        return $query->row();
         return $this->db->get_where('klas',array('id'=>$id))->row_array();
     }
-
+    function get_klas_gebruikers($id)
+    {
+        return $this->db->get_where('klas',array('id'=>$id))->row_array();
+    }
     function get_klas_by_lesmoment($id)
     {
         $this->db->where('id', $id);
         $query = $this->db->get('klas');
         return $query->row();
     }
-
     function get_klas_by_gebruiker($id){
         $this->db->where('id', $id);
         $query = $this->db->get('klas');
         return $query->row();
     }
-
-
-    function get_klas_all_studenten()
+    function get_klas_studenten($klasId)
     {
         $this->db->select('*');
         $this->db->from('klas');
         $this->db->join('lesmoment', 'lesmoment.klasId = klas.id');
         $this->db->join('gebruiker_lesmoment', 'gebruiker_lesmoment.lesmomentId = lesmoment.id');
+        $this->db->where('klas.id', $klasId);
         $query = $this->db->get();
         return $query->result();
     }
-
     function get_klassen()
     {
-        $this->db->order_by('id', 'asc');
+        $this->db->order_by('id', 'desc');
         $query = $this->db->get('klas');
         $klassen = $query->result();
         return $klassen;
-
     }
-
     /**
      * Haalt alle gebruikers van een klas naar boven gesorteerd op
      * @return array van alle gebruikers van een klas
@@ -88,26 +79,21 @@ class Klas_model extends CI_Model
         $this->db->order_by('id', 'asc');
         $query = $this->db->get('klas');
         $klassen = $query->result();
-
         foreach ($klassen as $klas) {
             $klas->gebruiker = $this->gebruiker_model->get_all_gebruiker($klas->id);
         }
-
         return $klassen;
     }
-
-
     /**
      * Haalt alle klassen op uit de tabel Klas
      * @return result
      */
-    function get_all_klas()
+    function get_all_klas($orderBy = 'id')
     {
-        $this->db->order_by('id', 'desc');
+        $this->db->order_by('id', 'asc');
         $query = $this->db->get('klas');
         return $query->result();
     }
-
     /**
      * Haalt alle klassen op uit tabel klas in een array gesorteerd op naam
      * @return result array
@@ -117,7 +103,6 @@ class Klas_model extends CI_Model
         $this->db->order_by('naam', 'ASC');
         return $this->db->get('klas')->result_array();
     }
-
     /*
      * Get all klassen
      */
@@ -139,21 +124,17 @@ class Klas_model extends CI_Model
         $this->db->insert('klas', $params);
         return $this->db->insert_id();
     }
-
     /**
      * Bewerkt een  record (klas) in de tabel Klas
      * @param $id de id van de record dat bewerkt wordt
      * @param $params de parameteres die men moet ingeven voor de klas aan te passen
      * @return record gewijzigd
      */
-
     function update_klas($klas)
     {
         $this->db->where('id', $klas->id);
         $this->db->update('klas', $klas);
     }
-
-
     /**
      * Verwijdert een record (Klas) uit aan de tabel Klas
      * @param $id de id van de record dat verwijderd wordt
@@ -164,7 +145,6 @@ class Klas_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->delete('klas');
     }
-
     /**
      * Stuurt de excelgegevens van Excel naar de database
      * @param $data data van excel
