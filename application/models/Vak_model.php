@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @class Vak_model
  * @brief Model-klasse voor Vakken
@@ -6,7 +7,6 @@
  * Model-klasse die alle methodes bevat voor de vakken
  *
  */
-
 class Vak_model extends CI_Model
 {
     /**
@@ -19,13 +19,21 @@ class Vak_model extends CI_Model
 
     public function get_vak_by_name_richting_fase($vakNaam, $richtingId, $fase)
     {
-        return $this->db->get_where('vak', ['naam'=>$vakNaam, 'richtingId'=>$richtingId, 'fase'=>$fase])->row_array();
+        return $this->db->get_where('vak', ['naam' => $vakNaam, 'richtingId' => $richtingId, 'fase' => $fase])->row_array();
     }
 
     public function get_vak_by_name($vakNaam)
     {
-        return $this->db->get_where('vak', ['naam'=>$vakNaam])->row_array();
+        return $this->db->get_where('vak', ['naam' => $vakNaam])->row_array();
     }
+
+    function get_vak_by_lesmoment($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('vak');
+        return $query->row();
+    }
+
     /**
      * Haalt een vak op uit de tabel Vak
      * @param $id de id van het vak
@@ -33,7 +41,7 @@ class Vak_model extends CI_Model
      */
     function get_vak($id)
     {
-        return $this->db->get_where('vak',array('id'=>$id))->row_array();
+        return $this->db->get_where('vak', array('id' => $id))->row_array();
     }
 
     /**
@@ -53,7 +61,7 @@ class Vak_model extends CI_Model
      */
     function add_vak($params)
     {
-        $this->db->insert('vak',$params);
+        $this->db->insert('vak', $params);
         return $this->db->insert_id();
     }
 
@@ -63,10 +71,10 @@ class Vak_model extends CI_Model
      * @param $params de parameteres die men moet ingeven voor het vak aan te passen
      * @return record gewijzigd
      */
-    function update_vak($id,$params)
+    function update_vak($id, $params)
     {
-        $this->db->where('id',$id);
-        return $this->db->update('vak',$params);
+        $this->db->where('id', $id);
+        return $this->db->update('vak', $params);
     }
 
     /**
@@ -76,13 +84,12 @@ class Vak_model extends CI_Model
      */
     function delete_vak($id)
     {
-        return $this->db->delete('vak',array('id'=>$id));
+        return $this->db->delete('vak', array('id' => $id));
     }
 
     function insertVak($dataVak)
     {
         $this->db->insert('vak', $dataVak);
         return $this->db->insert_id();
-
     }
 }

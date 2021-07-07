@@ -77,3 +77,8 @@ if ($klasId === null || $klasId === "0") {
 <a class="btn btn-primary"
    href="<?php echo site_url("lessenrooster/index"); ?>?klasId=<?php echo $klasId ?>&semesterId=<?php echo $semesterId ?>">Klaskeuze
     maken</a>
+<br>
+<br>
+<?php echo form_open('Gebruiker/meldAf'); ?>
+<button type='submit' name='Afmelden' class="btn btn-primary">Afmelden</button>
+<?php echo form_close(); ?>

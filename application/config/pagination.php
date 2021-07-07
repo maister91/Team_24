@@ -1,25 +1,23 @@
-<?php 
-$config['pagination']['page_query_string'] = TRUE;
-$config['pagination']['uri_segment'] = 3;
-                
-$config['pagination']['per_page'] = RECORDS_PER_PAGE;
+<?php
 
-$config['pagination']['prev_link'] = '‹';
-$config['pagination']['next_link'] = '›';
-$config['pagination']['full_tag_open'] = '<ul class="pagination">';
-$config['pagination']['next_tag_open'] = '<li>';
-$config['pagination']['next_tag_close'] = '</li>';
-$config['pagination']['prev_tag_open'] = '<li>';
-$config['pagination']['prev_tag_close'] = '</li>';
-$config['pagination']['num_tag_open'] = '<li>';
-$config['pagination']['num_tag_close'] = '</li>';
-$config['pagination']['cur_tag_open'] = '<li class="active"><a href="">';
-$config['pagination']['cur_tag_close'] = '</a></li>';
-$config['pagination']['full_tag_close'] = '</ul>';
-$config['pagination']['first_link'] = '‹‹';
-$config['pagination']['first_tag_open'] = '<li>';
-$config['pagination']['first_tag_close'] = '</li>';
-$config['pagination']['last_link'] = '››';
-$config['pagination']['last_tag_open'] = '<li>';
-$config['pagination']['last_tag_close'] = '</li>';
-?>
+/*
+ * personaliseren van pagination
+ */
+
+$config['first_link'] = 'Eerste';
+$config['first_tag_close'] = '&nbsp;'; // zorgt ervoor dat na 'Eerste' een spatie wordt gedrukt
+
+$config['last_link'] = 'Laatste';
+
+$config['prev_link'] = 'Vorige';
+$config['prev_tag_close'] = '&nbsp;'; // zorgt ervoor dat na 'Vorige' een spatie wordt gedrukt
+
+$config['next_link'] = 'Volgende';
+$config['next_tag_close'] = '&nbsp;'; // zorgt ervoor dat na 'Volgende' een spatie wordt gedrukt
+
+$config['num_tag_close'] = '&nbsp;'; // zorgt ervoor dat na de paginanummers een spatie wordt gedrukt
+
+$config['cur_tag_open'] = '<b>'; // zorgt ervoor dat huidige paginanummer in vet wordt gedrukt
+$config['cur_tag_close'] ='</b>&nbsp;'; // zorgt ervoor dat huidige paginanummer in vet wordt gedrukt en wordt gevolgd door een spatie
+
+//$config['display_pages']  =  FALSE ; // geen paginanummers zichtbaar

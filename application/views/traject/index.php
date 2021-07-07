@@ -1,10 +1,24 @@
-<title>KIES EEN TRAJECT</title>
+<?php
+/**
+ * @file index.php
+ *
+ * View waar je de verschillende trajecten kan bekijken
+ * - gebruikt bootstrap
+ */
+?>
 
-<form method="post" accept-charset="utf-8" action="<?php echo site_url("traject/index"); ?>">
-<input type="submit" name="model" value="ModelTraject" class="btn btn-primary href=" href=" <?php echo site_url('lessenrooster/index'); ?>" >
-   <?php  echo '<p>' .$trajecten[1]['beschrijving'] .'</p>' ?>
-<input type="submit" name="combi" value="CombiTraject"  href="<?php echo site_url('traject/combi'); ?>" class="btn btn-primary">
+<h2>Ingelogd als
+    <?php
+        $gebruiker = $this->authex->getGebruikerInfo();
+        echo '<b>' . $gebruiker->voornaam . ' ' . $gebruiker->achternaam . '</b> ';
+    ?>
+</h2>
+
+<form method="post" accept-charset="utf-8" action="<?php echo site_url("traject/kiesTraject"); ?>">
+    <input type="submit" name="knop" value="Model traject" class="btn btn-primary" >
+    <?php  echo '<p>' .$trajecten[1]['beschrijving'] .'</p>' ?>
+    <input type="submit" name="knop" value="Combi traject" class="btn btn-primary">
     <?php  echo '<p>' .$trajecten[0]['beschrijving'] .'</p>' ?>
 </form>
 
-<a href="<?php echo site_url('traject/combi'); ?>"> traject samenstellen </a>
+<?php echo divAnchor('Gebruiker/meldAf', 'Afmelden');?>

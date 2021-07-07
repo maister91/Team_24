@@ -1,40 +1,49 @@
 <?php
-
+/**
+ * @class Lessenrooster
+ * @brief Controller-klasse voor Lessenrooster
+ *
+ * Controller-klasse waar de methodes inzitten voor:
+ * -Lessenroosters te tonen
+ */
+/**
+ * @property Template $template
+ * @property Klas_model $klas_model
+ * @property Vak_model $vak_model
+ * @property Lesmoment_model $lesmoment_model
+ */
 class Lessenrooster extends CI_Controller
 {
-
-    /* @var Lesmoment_model */
-    public $Lesmoment_model;
-
-    /* @var Vak_model */
-    public $vak_model;
-
-    /* @var Klas_model */
-    public $klas_model;
-
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Lesmoment_model');
+        $this->load->model('lesmoment_model');
         $this->load->model('vak_model');
         $this->load->model('klas_model');
+        $this->load->model('Gebruiker_lesmoment_model');
     }
-
     function index()
     {
         $klasId = $this->input->post('klassen');
         $semesterId = $this->input->post('semester');
-
         $gebruikerId = $this->authex->getGebruikerInfo()->id;
         $data['feedback'] = '';
         if ($this->input->get('klasId')) {
-            $this->Lesmoment_model->update_klas($this->input->get('klasId'), $gebruikerId);
             $klasId = $this->input->get('klasId');
             $semesterId = $this->input->get('semesterId');
+            $this->lesmoment_model->update_klas($this->input->get('klasId'), $gebruikerId);
+            $keuzeLesmomenten = $this->lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
+            $this->Gebruiker_lesmoment_model->delete_gebruiker_lesmoment_gebuiker($gebruikerId);
+            foreach ($keuzeLesmomenten as $lesmoment) {
+                $this->Gebruiker_lesmoment_model->add_gebruiker_lesmoment([
+                    'gebruikerId' => $gebruikerId,
+                    'lesmomentId' => $lesmoment['id'],
+                    'naam'        => 'Model traject'
+                ]);
+            }
             $data['feedback'] = 'keuzeSuccesvol';
         }
-
-        $lesmomenten = $this->Lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
+        $lesmomenten = $this->lesmoment_model->get_lesmoment_by_klas_en_semester($klasId, $semesterId);
         $rooster = [];
         foreach ($lesmomenten as $lesmoment) {
             $rooster[$lesmoment['lesblok']][$lesmoment['weekdag']] = [
@@ -46,16 +55,13 @@ class Lessenrooster extends CI_Controller
         $data['klasId'] = $klasId;
         $data['semesterId'] = $semesterId;
         $data['klassen'] = $this->klas_model->get_all_klassen();
-
         $data['titel'] = '';
         $data['ontwikkelaar'] = 'Melih Doksanbir';
         $data['tester'] = 'Thomas Dergent';
-
         $data['_view'] = 'lessenrooster';
         $partials = ['hoofding' => 'main_header',
             'inhoud' => 'lessenrooster',
             'voetnoot' => 'main_footer'];
         $this->template->load('main_master', $partials, $data);
-
     }
 }

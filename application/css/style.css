@@ -1,48 +1,45 @@
-body {
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
     height: 100%;
-    margin: 0px;
-    padding: 0px;
+}
+
+body {
     font-family: Verdana, Arial, Helvetica, sans-serif;
     color: black;
     background-color: white;
 }
 
-#hoofding {
-    background: #169BD5;
-    height: 100px;
-    padding-top: 10px;
-    padding-left: 10px;
-    position: fixed;
-    width: 100%;
+#container{
+    min-height: calc(100vh - 170px);
 }
 
-#menu {
-    top: 0;
-    position: absolute;
-    padding-left: 10px;
-    left: 10px;
-    height: auto;
-    width: 200px;
-    padding-top: 140px;
-    padding-bottom: 60px;
-    margin: 0px 10px 0px 0px;
-
+#hoofding {
+    background: #0d7cad;
+    height: 100px;
+    padding-top: 10px;
+    padding-left: 30px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 
 #inhoud {
     height: auto;
     padding-top: 120px;
     padding-bottom: 60px;
-    width: 99%;
+    width: 80%;
+    margin: auto;
 }
 
 #voetnoot {
-    background: #169BD5;
-    position: fixed;
+    height: 170px;
+    background: #0d7cad;
     bottom: 0;
-    height: 150px;
     width: 100%;
-    padding-top: 0px;
     padding-left: 10px;
     color: white;
 }
@@ -81,11 +78,6 @@ a:hover {
     text-decoration: underline;
 }
 
-#login{
-    /*width: 30%;*/
-    /*margin: auto;*/
-}
-
 input[type=text], input[type=password] {
     background-color: #f6f6f6;
     color: #0d0d0d;
@@ -98,7 +90,7 @@ input[type=text], input[type=password] {
 }
 
 input[type=submit] {
-    background-color: #169BD5;
+    background-color: #0d7cad;
     padding: 10px 32px;
     text-align: center;
     text-decoration: none;
@@ -107,5 +99,24 @@ input[type=submit] {
     border-radius: 3px;
     color: #fff;
 }
+
+
+
+#tabel td{
+    border-bottom: 1px solid #ccc;
+}
+
+#tabel{
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+#tabel tr:last-child{
+    border: none;
+}
+
+
+
+
 
 

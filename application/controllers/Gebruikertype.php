@@ -1,98 +1,62 @@
 <?php
+/**
+ * @class Gebruikertype
+ * @brief Controller-klasse voor Gebruikertypes
+ *
+ * Controller-klasse waar de methodes inzitten voor:
+ * -Na het inloggen de gebruiker naar de juiste pagina door te sturen
+ */
+
+/**
+ * @property Template $template
+ * @property Gebruikertype_model $gebruikertype_model
+ */
 
 class Gebruikertype extends CI_Controller
 {
-
-    /* @var Gebruikertype_model */
-    public $Gebruikertype_model;
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Gebruikertype_model');
-    }
-
-    /*
-     * Listing of gebruikertype
-     */
-    function index()
-    {
-        $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
-
-        $data['_view'] = 'gebruikertype/index';
-        $this->load->view('layouts/main', $data);
+        $this->load->model('gebruikertype_model');
     }
 
     function docent()
     {
-        $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
+        $data['gebruikertype'] = $this->gebruikertype_model->get_all_gebruikertype();
 
-        $data['_view'] = 'docent_landing';
-        $this->load->view('layouts/main', $data);
+        $data['titel'] = '';
+        $data['ontwikkelaar'] = 'War Op de Beeck';
+        $data['tester'] ='Simon Smedts';
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'Docent_landing',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
     }
 
     function isp()
     {
-        $data['gebruikertype'] = $this->Gebruikertype_model->get_all_gebruikertype();
+        $data['gebruikertype'] = $this->gebruikertype_model->get_all_gebruikertype();
 
-        $data['_view'] = 'isp_landing';
-        $this->load->view('layouts/main', $data);
+        $data['titel'] = '';
+        $data['ontwikkelaar'] = 'Simon Smedts';
+        $data['tester'] ='War Op de Beeck';
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'isp_landing',
+            'voetnoot' => 'main_footer'];
+        $this->template->load('main_master', $partials, $data);
     }
 
-    /*
-     * Adding a new gebruikertype
-     */
-    function add()
+    function opleidingmanager()
     {
-        if (isset($_POST) && count($_POST)>0) {
-            $params = [
-                'beschrijving' => $this->input->post('beschrijving'),
-            ];
+        $data['titel'] = '';
+        $data['ontwikkelaar'] = 'War Op de Beeck';
+        $data['tester'] = 'Simon Smedts';
+        $data['gebruikertype'] = $this->gebruikertype_model->get_all_gebruikertype();
 
-            $gebruikertype_id = $this->Gebruikertype_model->add_gebruikertype($params);
-            redirect('gebruikertype/index');
-        } else {
-            $data['_view'] = 'gebruikertype/add';
-            $this->load->view('layouts/main', $data);
-        }
+        $partials = ['hoofding' => 'main_header',
+            'inhoud' => 'opleidingmanager',
+            'voetnoot' => 'main_footer'];
+
+        $this->template->load('main_master', $partials, $data);
     }
-
-    /*
-     * Editing a gebruikertype
-     */
-    function edit($id)
-    {
-        // check if the gebruikertype exists before trying to edit it
-        $data['gebruikertype'] = $this->Gebruikertype_model->get_gebruikertype($id);
-
-        if (isset($data['gebruikertype']['id'])) {
-            if (isset($_POST) && count($_POST)>0) {
-                $params = [
-                    'beschrijving' => $this->input->post('beschrijving'),
-                ];
-
-                $this->Gebruikertype_model->update_gebruikertype($id, $params);
-                redirect('gebruikertype/index');
-            } else {
-                $data['_view'] = 'gebruikertype/edit';
-                $this->load->view('layouts/main', $data);
-            }
-        } else
-            show_error('The gebruikertype you are trying to edit does not exist.');
-    }
-
-    /*
-     * Deleting gebruikertype
-     */
-    function remove($id)
-    {
-        $gebruikertype = $this->Gebruikertype_model->get_gebruikertype($id);
-
-        // check if the gebruikertype exists before trying to delete it
-        if (isset($gebruikertype['id'])) {
-            $this->Gebruikertype_model->delete_gebruikertype($id);
-            redirect('gebruikertype/index');
-        } else
-            show_error('The gebruikertype you are trying to delete does not exist.');
-    }
-
 }

@@ -34,3 +34,6 @@
     </tr>
 	<?php } ?>
 </table>
+
+<div class='col-12 mt-4'> <?php echo anchor('gebruikertype/docent', 'Terug'); ?> </div>
+

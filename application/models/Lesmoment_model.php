@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @class Lesmoment_model
  * @brief Model-klasse voor lesmomenten
@@ -6,7 +7,6 @@
  * Model-klasse die alle methodes bevat voor de lesmomenten
  *
  */
-
 class Lesmoment_model extends CI_Model
 {
     /**
@@ -24,7 +24,7 @@ class Lesmoment_model extends CI_Model
      */
     function get_lesmoment($id)
     {
-        return $this->db->get_where('lesmoment',array('id'=>$id))->row_array();
+        return $this->db->get_where('lesmoment', array('id' => $id))->row_array();
     }
 
     /**
@@ -44,7 +44,7 @@ class Lesmoment_model extends CI_Model
      */
     function add_lesmoment($params)
     {
-        $this->db->insert('lesmoment',$params);
+        $this->db->insert('lesmoment', $params);
         return $this->db->insert_id();
     }
 
@@ -54,10 +54,10 @@ class Lesmoment_model extends CI_Model
      * @param $params de parameteres die men moet ingeven voor het lesmoment aan te passen
      * @return record gewijzigd
      */
-    function update_lesmoment($id,$params)
+    function update_lesmoment($id, $params)
     {
-        $this->db->where('id',$id);
-        return $this->db->update('lesmoment',$params);
+        $this->db->where('id', $id);
+        return $this->db->update('lesmoment', $params);
     }
 
     /**
@@ -67,7 +67,7 @@ class Lesmoment_model extends CI_Model
      */
     function delete_lesmoment($id)
     {
-        return $this->db->delete('lesmoment',array('id'=>$id));
+        return $this->db->delete('lesmoment', array('id' => $id));
     }
 
     function truncate_lesmoment()
@@ -85,7 +85,7 @@ class Lesmoment_model extends CI_Model
 
     function get_lesmoment_by_klas_en_semester($klasId, $semester)
     {
-        return $this->db->order_by('lesblok')->get_where('lesmoment',array('klasId'=>$klasId, 'semester'=>$semester))->result_array();
+        return $this->db->order_by('lesblok')->get_where('lesmoment', array('klasId' => $klasId, 'semester' => $semester))->result_array();
     }
 
     function update_klas($klasId, $gebruikerId)

@@ -24,11 +24,7 @@ class Gebruiker_lesmoment_model extends CI_Model
      */
     function get_gebruiker_lesmoment($id)
     {
-<<<<<<< HEAD
-        return $this->db->get_where('gebruiker_lesmoment',array(''=>$id))->row_array();
-=======
         return $this->db->get_where('gebruiker_lesmoment',array('id'=>$id))->row_array();
->>>>>>> 3d7d0d292c888bb9d4267a5f8e6dac679e7b1d0f
     }
 
     /**
@@ -59,11 +55,7 @@ class Gebruiker_lesmoment_model extends CI_Model
      */
     function update_gebruiker_lesmoment($id,$params)
     {
-<<<<<<< HEAD
-        $this->db->where('',$id);
-=======
         $this->db->where('id',$id);
->>>>>>> 3d7d0d292c888bb9d4267a5f8e6dac679e7b1d0f
         return $this->db->update('gebruiker_lesmoment',$params);
     }
 
@@ -74,10 +66,11 @@ class Gebruiker_lesmoment_model extends CI_Model
      */
     function delete_gebruiker_lesmoment($id)
     {
-<<<<<<< HEAD
-        return $this->db->delete('gebruiker_lesmoment',array(''=>$id));
-=======
         return $this->db->delete('gebruiker_lesmoment',array('id'=>$id));
->>>>>>> 3d7d0d292c888bb9d4267a5f8e6dac679e7b1d0f
+    }
+
+    function delete_gebruiker_lesmoment_gebuiker($gebruikerId)
+    {
+        return $this->db->delete('gebruiker_lesmoment',array('gebruikerId'=>$gebruikerId));
     }
 }
